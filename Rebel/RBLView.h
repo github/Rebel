@@ -1,13 +1,13 @@
 //
-//  Rebel.m
+//  RBLView.h
 //  Rebel
 //
 //  Created by Justin Spahr-Summers on 2012-07-29.
 //  Copyright (c) 2012 GitHub. All rights reserved.
 //
 
-#import "Rebel.h"
+#import <Cocoa/Cocoa.h>
 
-@implementation Rebel
+@interface RBLView : NSView
 
 @end

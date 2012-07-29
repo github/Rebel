@@ -9,9 +9,11 @@
 /* Begin PBXBuildFile section */
 		D04844EA15C5F8AD00834EDE /* libExpecta.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D04844D215C5F89700834EDE /* libExpecta.a */; };
 		D04844EB15C5F8AD00834EDE /* libSpecta.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D04844DE15C5F89700834EDE /* libSpecta.a */; };
+		D0723FC015C5F9D8004DBDC7 /* RBLView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0723FBE15C5F9D8004DBDC7 /* RBLView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D0723FC115C5F9D8004DBDC7 /* RBLView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0723FBF15C5F9D8004DBDC7 /* RBLView.m */; };
+		D0723FC215C5FA13004DBDC7 /* Rebel.h in Headers */ = {isa = PBXBuildFile; fileRef = D09AE4EF15C5F45200ECAD10 /* Rebel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D09AE4E315C5F45200ECAD10 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D09AE4E215C5F45200ECAD10 /* Cocoa.framework */; };
 		D09AE4ED15C5F45200ECAD10 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D09AE4EB15C5F45200ECAD10 /* InfoPlist.strings */; };
-		D09AE4F115C5F45200ECAD10 /* Rebel.m in Sources */ = {isa = PBXBuildFile; fileRef = D09AE4F015C5F45200ECAD10 /* Rebel.m */; };
 		D09AE4F915C5F45300ECAD10 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D09AE4F815C5F45300ECAD10 /* SenTestingKit.framework */; };
 		D09AE4FA15C5F45300ECAD10 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D09AE4E215C5F45200ECAD10 /* Cocoa.framework */; };
 		D09AE4FD15C5F45300ECAD10 /* Rebel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D09AE4DF15C5F45200ECAD10 /* Rebel.framework */; };
@@ -118,6 +120,8 @@
 		D04844C115C5F89700834EDE /* Expecta.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Expecta.xcodeproj; path = RebelTests/expecta/Expecta.xcodeproj; sourceTree = "<group>"; };
 		D04844C415C5F89700834EDE /* Specta.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Specta.xcodeproj; path = RebelTests/specta/Specta.xcodeproj; sourceTree = "<group>"; };
 		D04844EC15C5F8DA00834EDE /* RebelTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RebelTests-Prefix.pch"; sourceTree = "<group>"; };
+		D0723FBE15C5F9D8004DBDC7 /* RBLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBLView.h; sourceTree = "<group>"; };
+		D0723FBF15C5F9D8004DBDC7 /* RBLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBLView.m; sourceTree = "<group>"; };
 		D09AE4DF15C5F45200ECAD10 /* Rebel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Rebel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D09AE4E215C5F45200ECAD10 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		D09AE4E515C5F45200ECAD10 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -127,7 +131,6 @@
 		D09AE4EC15C5F45200ECAD10 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D09AE4EE15C5F45200ECAD10 /* Rebel-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Rebel-Prefix.pch"; sourceTree = "<group>"; };
 		D09AE4EF15C5F45200ECAD10 /* Rebel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Rebel.h; sourceTree = "<group>"; };
-		D09AE4F015C5F45200ECAD10 /* Rebel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Rebel.m; sourceTree = "<group>"; };
 		D09AE4F715C5F45300ECAD10 /* RebelTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RebelTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D09AE4F815C5F45300ECAD10 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		D09AE50015C5F45300ECAD10 /* RebelTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RebelTests-Info.plist"; sourceTree = "<group>"; };
@@ -243,6 +246,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		D0723FBD15C5F9CD004DBDC7 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				D0723FBE15C5F9D8004DBDC7 /* RBLView.h */,
+				D0723FBF15C5F9D8004DBDC7 /* RBLView.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
 		D09AE4D315C5F45200ECAD10 = {
 			isa = PBXGroup;
 			children = (
@@ -289,7 +301,7 @@
 			isa = PBXGroup;
 			children = (
 				D09AE4EF15C5F45200ECAD10 /* Rebel.h */,
-				D09AE4F015C5F45200ECAD10 /* Rebel.m */,
+				D0723FBD15C5F9CD004DBDC7 /* Classes */,
 				D09AE4E915C5F45200ECAD10 /* Supporting Files */,
 			);
 			path = Rebel;
@@ -331,6 +343,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0723FC215C5FA13004DBDC7 /* Rebel.h in Headers */,
+				D0723FC015C5F9D8004DBDC7 /* RBLView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -512,7 +526,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D09AE4F115C5F45200ECAD10 /* Rebel.m in Sources */,
+				D0723FC115C5F9D8004DBDC7 /* RBLView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
