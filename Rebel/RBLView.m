@@ -17,7 +17,6 @@ static IMP RBLViewDrawRectIMP;
 
 @interface RBLView () {
 	struct {
-		unsigned opaque:1;
 		unsigned clearsContextBeforeDrawing:1;
 	} _flags;
 }
@@ -50,11 +49,11 @@ static IMP RBLViewDrawRectIMP;
 }
 
 - (BOOL)isOpaque {
-	return _flags.opaque;
+	return self.layer.opaque;
 }
 
 - (void)setOpaque:(BOOL)value {
-	_flags.opaque = (value ? 1 : 0);
+	self.layer.opaque = value;
 }
 
 - (BOOL)clearsContextBeforeDrawing {
