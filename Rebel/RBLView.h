@@ -25,4 +25,12 @@
  */
 @property (nonatomic, getter = isOpaque) BOOL opaque;
 
+/*
+ * Whether the graphics context for the view's drawing should be cleared to
+ * transparent black in RBLView's implementation of -drawRect:.
+ *
+ * Defaults to YES.
+ */
+@property (nonatomic, assign) BOOL clearsContextBeforeDrawing;
+
 @end

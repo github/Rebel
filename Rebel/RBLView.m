@@ -12,6 +12,7 @@
 @interface RBLView () {
 	struct {
 		unsigned opaque:1;
+		unsigned clearsContextBeforeDrawing:1;
 	} _flags;
 }
 
@@ -37,6 +38,14 @@
 	_flags.opaque = (value ? 1 : 0);
 }
 
+- (BOOL)clearsContextBeforeDrawing {
+	return _flags.clearsContextBeforeDrawing;
+}
+
+- (void)setClearsContextBeforeDrawing:(BOOL)value {
+	_flags.clearsContextBeforeDrawing = (value ? 1 : 0);
+}
+
 #pragma mark Lifecycle
 
 - (id)initWithFrame:(NSRect)frame {
@@ -48,6 +57,16 @@
 	self.layerContentsRedrawPolicy = NSViewLayerContentsRedrawDuringViewResize;
 
 	return self;
+}
+
+#pragma mark Drawing
+
+- (void)drawRect:(NSRect)rect {
+	CGContextRef context = [NSGraphicsContext currentContext].graphicsPort;
+
+	if (self.clearsContextBeforeDrawing) {
+		CGContextClearRect(context, rect);
+	}
 }
 
 @end
