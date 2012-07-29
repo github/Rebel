@@ -1,0 +1,444 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D09AE4E315C5F45200ECAD10 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D09AE4E215C5F45200ECAD10 /* Cocoa.framework */; };
+		D09AE4ED15C5F45200ECAD10 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D09AE4EB15C5F45200ECAD10 /* InfoPlist.strings */; };
+		D09AE4F115C5F45200ECAD10 /* Rebel.m in Sources */ = {isa = PBXBuildFile; fileRef = D09AE4F015C5F45200ECAD10 /* Rebel.m */; };
+		D09AE4F915C5F45300ECAD10 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D09AE4F815C5F45300ECAD10 /* SenTestingKit.framework */; };
+		D09AE4FA15C5F45300ECAD10 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D09AE4E215C5F45200ECAD10 /* Cocoa.framework */; };
+		D09AE4FD15C5F45300ECAD10 /* Rebel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D09AE4DF15C5F45200ECAD10 /* Rebel.framework */; };
+		D09AE50315C5F45300ECAD10 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D09AE50115C5F45300ECAD10 /* InfoPlist.strings */; };
+		D09AE50615C5F45300ECAD10 /* RebelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D09AE50515C5F45300ECAD10 /* RebelTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D09AE4FB15C5F45300ECAD10 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D09AE4D515C5F45200ECAD10 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D09AE4DE15C5F45200ECAD10;
+			remoteInfo = Rebel;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D09AE4DF15C5F45200ECAD10 /* Rebel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Rebel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D09AE4E215C5F45200ECAD10 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		D09AE4E515C5F45200ECAD10 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		D09AE4E615C5F45200ECAD10 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		D09AE4E715C5F45200ECAD10 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D09AE4EA15C5F45200ECAD10 /* Rebel-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Rebel-Info.plist"; sourceTree = "<group>"; };
+		D09AE4EC15C5F45200ECAD10 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D09AE4EE15C5F45200ECAD10 /* Rebel-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Rebel-Prefix.pch"; sourceTree = "<group>"; };
+		D09AE4EF15C5F45200ECAD10 /* Rebel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Rebel.h; sourceTree = "<group>"; };
+		D09AE4F015C5F45200ECAD10 /* Rebel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Rebel.m; sourceTree = "<group>"; };
+		D09AE4F715C5F45300ECAD10 /* RebelTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RebelTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D09AE4F815C5F45300ECAD10 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		D09AE50015C5F45300ECAD10 /* RebelTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RebelTests-Info.plist"; sourceTree = "<group>"; };
+		D09AE50215C5F45300ECAD10 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D09AE50415C5F45300ECAD10 /* RebelTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RebelTests.h; sourceTree = "<group>"; };
+		D09AE50515C5F45300ECAD10 /* RebelTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RebelTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D09AE4DB15C5F45200ECAD10 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D09AE4E315C5F45200ECAD10 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D09AE4F315C5F45300ECAD10 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D09AE4F915C5F45300ECAD10 /* SenTestingKit.framework in Frameworks */,
+				D09AE4FA15C5F45300ECAD10 /* Cocoa.framework in Frameworks */,
+				D09AE4FD15C5F45300ECAD10 /* Rebel.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D09AE4D315C5F45200ECAD10 = {
+			isa = PBXGroup;
+			children = (
+				D09AE4E815C5F45200ECAD10 /* Rebel */,
+				D09AE4FE15C5F45300ECAD10 /* RebelTests */,
+				D09AE4E115C5F45200ECAD10 /* Frameworks */,
+				D09AE4E015C5F45200ECAD10 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D09AE4E015C5F45200ECAD10 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D09AE4DF15C5F45200ECAD10 /* Rebel.framework */,
+				D09AE4F715C5F45300ECAD10 /* RebelTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D09AE4E115C5F45200ECAD10 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D09AE4E215C5F45200ECAD10 /* Cocoa.framework */,
+				D09AE4F815C5F45300ECAD10 /* SenTestingKit.framework */,
+				D09AE4E415C5F45200ECAD10 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D09AE4E415C5F45200ECAD10 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D09AE4E515C5F45200ECAD10 /* AppKit.framework */,
+				D09AE4E615C5F45200ECAD10 /* CoreData.framework */,
+				D09AE4E715C5F45200ECAD10 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		D09AE4E815C5F45200ECAD10 /* Rebel */ = {
+			isa = PBXGroup;
+			children = (
+				D09AE4EF15C5F45200ECAD10 /* Rebel.h */,
+				D09AE4F015C5F45200ECAD10 /* Rebel.m */,
+				D09AE4E915C5F45200ECAD10 /* Supporting Files */,
+			);
+			path = Rebel;
+			sourceTree = "<group>";
+		};
+		D09AE4E915C5F45200ECAD10 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D09AE4EA15C5F45200ECAD10 /* Rebel-Info.plist */,
+				D09AE4EB15C5F45200ECAD10 /* InfoPlist.strings */,
+				D09AE4EE15C5F45200ECAD10 /* Rebel-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D09AE4FE15C5F45300ECAD10 /* RebelTests */ = {
+			isa = PBXGroup;
+			children = (
+				D09AE50415C5F45300ECAD10 /* RebelTests.h */,
+				D09AE50515C5F45300ECAD10 /* RebelTests.m */,
+				D09AE4FF15C5F45300ECAD10 /* Supporting Files */,
+			);
+			path = RebelTests;
+			sourceTree = "<group>";
+		};
+		D09AE4FF15C5F45300ECAD10 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D09AE50015C5F45300ECAD10 /* RebelTests-Info.plist */,
+				D09AE50115C5F45300ECAD10 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		D09AE4DC15C5F45200ECAD10 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		D09AE4DE15C5F45200ECAD10 /* Rebel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D09AE50915C5F45300ECAD10 /* Build configuration list for PBXNativeTarget "Rebel" */;
+			buildPhases = (
+				D09AE4DA15C5F45200ECAD10 /* Sources */,
+				D09AE4DB15C5F45200ECAD10 /* Frameworks */,
+				D09AE4DC15C5F45200ECAD10 /* Headers */,
+				D09AE4DD15C5F45200ECAD10 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Rebel;
+			productName = Rebel;
+			productReference = D09AE4DF15C5F45200ECAD10 /* Rebel.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		D09AE4F615C5F45300ECAD10 /* RebelTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D09AE50C15C5F45300ECAD10 /* Build configuration list for PBXNativeTarget "RebelTests" */;
+			buildPhases = (
+				D09AE4F215C5F45300ECAD10 /* Sources */,
+				D09AE4F315C5F45300ECAD10 /* Frameworks */,
+				D09AE4F415C5F45300ECAD10 /* Resources */,
+				D09AE4F515C5F45300ECAD10 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D09AE4FC15C5F45300ECAD10 /* PBXTargetDependency */,
+			);
+			name = RebelTests;
+			productName = RebelTests;
+			productReference = D09AE4F715C5F45300ECAD10 /* RebelTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D09AE4D515C5F45200ECAD10 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0440;
+				ORGANIZATIONNAME = GitHub;
+			};
+			buildConfigurationList = D09AE4D815C5F45200ECAD10 /* Build configuration list for PBXProject "Rebel" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = D09AE4D315C5F45200ECAD10;
+			productRefGroup = D09AE4E015C5F45200ECAD10 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D09AE4DE15C5F45200ECAD10 /* Rebel */,
+				D09AE4F615C5F45300ECAD10 /* RebelTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D09AE4DD15C5F45200ECAD10 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D09AE4ED15C5F45200ECAD10 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D09AE4F415C5F45300ECAD10 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D09AE50315C5F45300ECAD10 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D09AE4F515C5F45300ECAD10 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D09AE4DA15C5F45200ECAD10 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D09AE4F115C5F45200ECAD10 /* Rebel.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D09AE4F215C5F45300ECAD10 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D09AE50615C5F45300ECAD10 /* RebelTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D09AE4FC15C5F45300ECAD10 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D09AE4DE15C5F45200ECAD10 /* Rebel */;
+			targetProxy = D09AE4FB15C5F45300ECAD10 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D09AE4EB15C5F45200ECAD10 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D09AE4EC15C5F45200ECAD10 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		D09AE50115C5F45300ECAD10 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D09AE50215C5F45300ECAD10 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D09AE50715C5F45300ECAD10 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		D09AE50815C5F45300ECAD10 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		D09AE50A15C5F45300ECAD10 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Rebel/Rebel-Prefix.pch";
+				INFOPLIST_FILE = "Rebel/Rebel-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Debug;
+		};
+		D09AE50B15C5F45300ECAD10 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Rebel/Rebel-Prefix.pch";
+				INFOPLIST_FILE = "Rebel/Rebel-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Release;
+		};
+		D09AE50D15C5F45300ECAD10 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Rebel/Rebel-Prefix.pch";
+				INFOPLIST_FILE = "RebelTests/RebelTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		D09AE50E15C5F45300ECAD10 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Rebel/Rebel-Prefix.pch";
+				INFOPLIST_FILE = "RebelTests/RebelTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D09AE4D815C5F45200ECAD10 /* Build configuration list for PBXProject "Rebel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D09AE50715C5F45300ECAD10 /* Debug */,
+				D09AE50815C5F45300ECAD10 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D09AE50915C5F45300ECAD10 /* Build configuration list for PBXNativeTarget "Rebel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D09AE50A15C5F45300ECAD10 /* Debug */,
+				D09AE50B15C5F45300ECAD10 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		D09AE50C15C5F45300ECAD10 /* Build configuration list for PBXNativeTarget "RebelTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D09AE50D15C5F45300ECAD10 /* Debug */,
+				D09AE50E15C5F45300ECAD10 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D09AE4D515C5F45200ECAD10 /* Project object */;
+}
