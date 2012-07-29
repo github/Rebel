@@ -12,6 +12,8 @@
 		D0723FC015C5F9D8004DBDC7 /* RBLView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0723FBE15C5F9D8004DBDC7 /* RBLView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0723FC115C5F9D8004DBDC7 /* RBLView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0723FBF15C5F9D8004DBDC7 /* RBLView.m */; };
 		D0723FC215C5FA13004DBDC7 /* Rebel.h in Headers */ = {isa = PBXBuildFile; fileRef = D09AE4EF15C5F45200ECAD10 /* Rebel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D0723FC615C5FB68004DBDC7 /* NSColor+RBLAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D0723FC415C5FB68004DBDC7 /* NSColor+RBLAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D0723FC715C5FB68004DBDC7 /* NSColor+RBLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D0723FC515C5FB68004DBDC7 /* NSColor+RBLAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D09AE4E315C5F45200ECAD10 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D09AE4E215C5F45200ECAD10 /* Cocoa.framework */; };
 		D09AE4ED15C5F45200ECAD10 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D09AE4EB15C5F45200ECAD10 /* InfoPlist.strings */; };
 		D09AE4F915C5F45300ECAD10 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D09AE4F815C5F45300ECAD10 /* SenTestingKit.framework */; };
@@ -122,6 +124,8 @@
 		D04844EC15C5F8DA00834EDE /* RebelTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RebelTests-Prefix.pch"; sourceTree = "<group>"; };
 		D0723FBE15C5F9D8004DBDC7 /* RBLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBLView.h; sourceTree = "<group>"; };
 		D0723FBF15C5F9D8004DBDC7 /* RBLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBLView.m; sourceTree = "<group>"; };
+		D0723FC415C5FB68004DBDC7 /* NSColor+RBLAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSColor+RBLAdditions.h"; sourceTree = "<group>"; };
+		D0723FC515C5FB68004DBDC7 /* NSColor+RBLAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor+RBLAdditions.m"; sourceTree = "<group>"; };
 		D09AE4DF15C5F45200ECAD10 /* Rebel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Rebel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D09AE4E215C5F45200ECAD10 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		D09AE4E515C5F45200ECAD10 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -255,6 +259,15 @@
 			name = Classes;
 			sourceTree = "<group>";
 		};
+		D0723FC315C5FB54004DBDC7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D0723FC415C5FB68004DBDC7 /* NSColor+RBLAdditions.h */,
+				D0723FC515C5FB68004DBDC7 /* NSColor+RBLAdditions.m */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		D09AE4D315C5F45200ECAD10 = {
 			isa = PBXGroup;
 			children = (
@@ -302,6 +315,7 @@
 			children = (
 				D09AE4EF15C5F45200ECAD10 /* Rebel.h */,
 				D0723FBD15C5F9CD004DBDC7 /* Classes */,
+				D0723FC315C5FB54004DBDC7 /* Extensions */,
 				D09AE4E915C5F45200ECAD10 /* Supporting Files */,
 			);
 			path = Rebel;
@@ -345,6 +359,7 @@
 			files = (
 				D0723FC215C5FA13004DBDC7 /* Rebel.h in Headers */,
 				D0723FC015C5F9D8004DBDC7 /* RBLView.h in Headers */,
+				D0723FC615C5FB68004DBDC7 /* NSColor+RBLAdditions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -527,6 +542,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0723FC115C5F9D8004DBDC7 /* RBLView.m in Sources */,
+				D0723FC715C5FB68004DBDC7 /* NSColor+RBLAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
