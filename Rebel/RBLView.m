@@ -100,4 +100,11 @@ static IMP RBLViewDrawRectIMP;
 	}
 }
 
+#pragma mark Layout
+
++ (BOOL)requiresConstraintBasedLayout {
+	// Necessary for -layout to be consistently invoked.
+	return YES;
+}
+
 @end
