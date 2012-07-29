@@ -6,27 +6,10 @@
 //  Copyright (c) 2012 GitHub. All rights reserved.
 //
 
-#import "RebelTests.h"
+SpecBegin(RebelTests)
 
-@implementation RebelTests
+	it(@"should run tests", ^{
+		expect(YES).to.beTruthy();
+	});
 
-- (void)setUp
-{
-    [super setUp];
-    
-    // Set-up code here.
-}
-
-- (void)tearDown
-{
-    // Tear-down code here.
-    
-    [super tearDown];
-}
-
-- (void)testExample
-{
-    STFail(@"Unit tests are not implemented yet in RebelTests");
-}
-
-@end
+SpecEnd

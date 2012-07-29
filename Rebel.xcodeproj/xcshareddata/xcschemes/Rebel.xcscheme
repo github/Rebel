@@ -20,6 +20,20 @@
                ReferencedContainer = "container:Rebel.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D09AE4F615C5F45300ECAD10"
+               BuildableName = "RebelTests.octest"
+               BlueprintName = "RebelTests"
+               ReferencedContainer = "container:Rebel.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
