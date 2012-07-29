@@ -1,3 +1,9 @@
 [submodule "Configuration"]
 	path = Configuration
 	url = git://github.com/jspahrsummers/xcconfigs.git
+[submodule "RebelTests/expecta"]
+	path = RebelTests/expecta
+	url = git://github.com/github/expecta.git
+[submodule "RebelTests/specta"]
+	path = RebelTests/specta
+	url = git://github.com/petejkim/specta.git
