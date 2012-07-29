@@ -8,6 +8,14 @@
 
 #import <Cocoa/Cocoa.h>
 
+/*
+ * A base class for saner and more full-featured layer-backed views.
+ */
 @interface RBLView : NSView
+
+/*
+ * The backing layer's background color, or nil if none has been set.
+ */
+@property (nonatomic, strong) NSColor *backgroundColor;
 
 @end

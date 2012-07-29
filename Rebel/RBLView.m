@@ -7,22 +7,28 @@
 //
 
 #import "RBLView.h"
+#import "NSColor+RBLAdditions.h"
 
 @implementation RBLView
 
-- (id)initWithFrame:(NSRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code here.
-    }
-    
-    return self;
+#pragma mark Properties
+
+- (NSColor *)backgroundColor {
+	return [NSColor rbl_colorWithCGColor:self.layer.backgroundColor];
 }
 
-- (void)drawRect:(NSRect)dirtyRect
-{
-    // Drawing code here.
+- (void)setBackgroundColor:(NSColor *)color {
+	self.layer.backgroundColor = color.rbl_CGColor;
+}
+
+#pragma mark Lifecycle
+
+- (id)initWithFrame:(NSRect)frame {
+	self = [super initWithFrame:frame];
+	if (self == nil) return nil;
+
+	self.wantsLayer = YES;
+	return self;
 }
 
 @end
