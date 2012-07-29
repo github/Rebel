@@ -9,6 +9,14 @@
 #import "RBLView.h"
 #import "NSColor+RBLAdditions.h"
 
+@interface RBLView () {
+	struct {
+		unsigned opaque:1;
+	} _flags;
+}
+
+@end
+
 @implementation RBLView
 
 #pragma mark Properties
@@ -19,6 +27,14 @@
 
 - (void)setBackgroundColor:(NSColor *)color {
 	self.layer.backgroundColor = color.rbl_CGColor;
+}
+
+- (BOOL)isOpaque {
+	return _flags.opaque;
+}
+
+- (void)setOpaque:(BOOL)value {
+	_flags.opaque = (value ? 1 : 0);
 }
 
 #pragma mark Lifecycle

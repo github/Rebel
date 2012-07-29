@@ -18,4 +18,11 @@
  */
 @property (nonatomic, strong) NSColor *backgroundColor;
 
+/*
+ * Whether the view's drawing completely fills its bounds with opaque content.
+ *
+ * Defaults to NO.
+ */
+@property (nonatomic, getter = isOpaque) BOOL opaque;
+
 @end
