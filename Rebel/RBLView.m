@@ -28,6 +28,9 @@
 	if (self == nil) return nil;
 
 	self.wantsLayer = YES;
+	self.layerContentsPlacement = NSViewLayerContentsPlacementScaleAxesIndependently;
+	self.layerContentsRedrawPolicy = NSViewLayerContentsRedrawDuringViewResize;
+
 	return self;
 }
 
