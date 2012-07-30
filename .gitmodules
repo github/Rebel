@@ -7,3 +7,6 @@
 [submodule "RebelTests/specta"]
 	path = RebelTests/specta
 	url = git://github.com/petejkim/specta.git
+[submodule "ReactiveCocoa"]
+	path = ReactiveCocoa
+	url = git://github.com/github/ReactiveCocoa.git
