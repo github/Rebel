@@ -142,4 +142,10 @@ static IMP RBLViewDrawRectIMP;
 	[super layout];
 }
 
+#pragma mark NSObject
+
+- (NSString *)description {
+	return [NSString stringWithFormat:@"<%@: %p>{ frame = %@, layer = <%@: %p>, contents = %@ }", self.class, self, NSStringFromRect(self.frame), self.layer.class, self.layer, self.contents];
+}
+
 @end
