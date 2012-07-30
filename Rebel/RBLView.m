@@ -75,6 +75,7 @@ static IMP RBLViewDrawRectIMP;
 
 	self.wantsLayer = YES;
 	self.layerContentsPlacement = NSViewLayerContentsPlacementScaleAxesIndependently;
+	self.clearsContextBeforeDrawing = YES;
 
 	if ([self.class doesCustomDrawing]) {
 		// Use more conservative defaults if -drawRect: is overridden, to ensure
