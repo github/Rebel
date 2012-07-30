@@ -16,6 +16,7 @@
 		D0723FC715C5FB68004DBDC7 /* NSColor+RBLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D0723FC515C5FB68004DBDC7 /* NSColor+RBLAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D0723FDC15C60846004DBDC7 /* NSColor+RBLAdditionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D0723FDB15C60846004DBDC7 /* NSColor+RBLAdditionsTests.m */; };
 		D0723FDE15C60D61004DBDC7 /* testimage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D0723FDD15C60D61004DBDC7 /* testimage.jpg */; };
+		D0723FE015C60E94004DBDC7 /* RBLViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D0723FDF15C60E94004DBDC7 /* RBLViewTests.m */; };
 		D09AE4E315C5F45200ECAD10 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D09AE4E215C5F45200ECAD10 /* Cocoa.framework */; };
 		D09AE4ED15C5F45200ECAD10 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D09AE4EB15C5F45200ECAD10 /* InfoPlist.strings */; };
 		D09AE4F915C5F45300ECAD10 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D09AE4F815C5F45300ECAD10 /* SenTestingKit.framework */; };
@@ -129,6 +130,7 @@
 		D0723FC515C5FB68004DBDC7 /* NSColor+RBLAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor+RBLAdditions.m"; sourceTree = "<group>"; };
 		D0723FDB15C60846004DBDC7 /* NSColor+RBLAdditionsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor+RBLAdditionsTests.m"; sourceTree = "<group>"; };
 		D0723FDD15C60D61004DBDC7 /* testimage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = testimage.jpg; sourceTree = "<group>"; };
+		D0723FDF15C60E94004DBDC7 /* RBLViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBLViewTests.m; sourceTree = "<group>"; };
 		D09AE4DF15C5F45200ECAD10 /* Rebel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Rebel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D09AE4E215C5F45200ECAD10 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		D09AE4E515C5F45200ECAD10 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -274,6 +276,7 @@
 			isa = PBXGroup;
 			children = (
 				D0723FDB15C60846004DBDC7 /* NSColor+RBLAdditionsTests.m */,
+				D0723FDF15C60E94004DBDC7 /* RBLViewTests.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -563,6 +566,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0723FDC15C60846004DBDC7 /* NSColor+RBLAdditionsTests.m in Sources */,
+				D0723FE015C60E94004DBDC7 /* RBLViewTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
