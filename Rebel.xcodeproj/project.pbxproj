@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D0410EAC15C61895003A3203 /* NSTextView+RBLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D0410EAA15C61895003A3203 /* NSTextView+RBLAdditions.m */; };
 		D04844EA15C5F8AD00834EDE /* libExpecta.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D04844D215C5F89700834EDE /* libExpecta.a */; };
 		D04844EB15C5F8AD00834EDE /* libSpecta.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D04844DE15C5F89700834EDE /* libSpecta.a */; };
 		D0723FC015C5F9D8004DBDC7 /* RBLView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0723FBE15C5F9D8004DBDC7 /* RBLView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -108,6 +109,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D0410EA915C61895003A3203 /* NSTextView+RBLAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTextView+RBLAdditions.h"; sourceTree = "<group>"; };
+		D0410EAA15C61895003A3203 /* NSTextView+RBLAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTextView+RBLAdditions.m"; sourceTree = "<group>"; };
 		D048449915C5F67700834EDE /* Common.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Common.xcconfig; sourceTree = "<group>"; };
 		D048449B15C5F67700834EDE /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		D048449C15C5F67700834EDE /* Profile.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Profile.xcconfig; sourceTree = "<group>"; };
@@ -274,6 +277,8 @@
 			children = (
 				D0723FC415C5FB68004DBDC7 /* NSColor+RBLAdditions.h */,
 				D0723FC515C5FB68004DBDC7 /* NSColor+RBLAdditions.m */,
+				D0410EA915C61895003A3203 /* NSTextView+RBLAdditions.h */,
+				D0410EAA15C61895003A3203 /* NSTextView+RBLAdditions.m */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -566,6 +571,7 @@
 				D0723FC115C5F9D8004DBDC7 /* RBLView.m in Sources */,
 				D0723FC715C5FB68004DBDC7 /* NSColor+RBLAdditions.m in Sources */,
 				D0723FE415C616AF004DBDC7 /* RBLResizableImage.m in Sources */,
+				D0410EAC15C61895003A3203 /* NSTextView+RBLAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
