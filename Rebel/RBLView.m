@@ -59,6 +59,18 @@ static IMP RBLViewDrawRectIMP;
 	_flags.clearsContextBeforeDrawing = (value ? 1 : 0);
 }
 
+- (void)setContents:(NSImage *)image {
+	if (image != nil) {
+		NSAssert(![self.class doesCustomDrawing], @"%@ should not have prerendered contents if -drawRect: is overridden", self);
+	}
+
+	_contents = image;
+
+	// We don't need to call -updateLayer or -drawRect: right now, but AppKit
+	// might later, so we still implement those methods despite doing this here.
+	self.layer.contents = image;
+}
+
 #pragma mark Initialization
 
 + (void)initialize {
@@ -98,9 +110,25 @@ static IMP RBLViewDrawRectIMP;
 - (void)drawRect:(NSRect)rect {
 	CGContextRef context = [NSGraphicsContext currentContext].graphicsPort;
 
-	if (self.clearsContextBeforeDrawing) {
+	if (self.clearsContextBeforeDrawing && !self.opaque) {
 		CGContextClearRect(context, rect);
 	}
+
+	if (self.contents != nil) {
+		NSCompositingOperation operation = (self.opaque ? NSCompositeCopy : NSCompositeSourceOver);
+		[self.contents drawInRect:self.bounds fromRect:NSZeroRect operation:operation fraction:1];
+	}
+}
+
+// 10.8+ only.
+- (void)updateLayer {
+	NSAssert(self.contents != nil, @"%@ does not have contents, %s should not be invoked", self, __func__);
+	self.layer.contents = self.contents;
+}
+
+// 10.8+ only.
+- (BOOL)wantsUpdateLayer {
+	return self.contents != nil;
 }
 
 #pragma mark Layout

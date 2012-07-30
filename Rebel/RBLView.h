@@ -48,6 +48,14 @@
 @property (nonatomic, assign) NSViewLayerContentsRedrawPolicy layerContentsRedrawPolicy;
 
 /*
+ * A prerendered image to use as the content for this view. This property is
+ * not the same as CALayer.contents, but does manipulate it.
+ *
+ * The behavior of this property is undefined if -drawRect: is overridden.
+ */
+@property (nonatomic, strong) NSImage *contents;
+
+/*
  * Subclasses may override this method to redraw the given rectangle. Any
  * override of this method should invoke super.
  */
