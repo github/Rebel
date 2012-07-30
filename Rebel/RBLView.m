@@ -30,15 +30,10 @@ static IMP RBLViewDrawRectIMP;
 
 @implementation RBLView
 
-#pragma mark Initialization
-
-+ (void)initialize {
-	if (self != [RBLView class]) return;
-
-	RBLViewDrawRectIMP = [self instanceMethodForSelector:@selector(drawRect:)];
-}
-
 #pragma mark Properties
+
+// Implemented by NSView.
+@dynamic layerContentsRedrawPolicy;
 
 - (NSColor *)backgroundColor {
 	return [NSColor rbl_colorWithCGColor:self.layer.backgroundColor];
@@ -62,6 +57,14 @@ static IMP RBLViewDrawRectIMP;
 
 - (void)setClearsContextBeforeDrawing:(BOOL)value {
 	_flags.clearsContextBeforeDrawing = (value ? 1 : 0);
+}
+
+#pragma mark Initialization
+
++ (void)initialize {
+	if (self != [RBLView class]) return;
+
+	RBLViewDrawRectIMP = [self instanceMethodForSelector:@selector(drawRect:)];
 }
 
 #pragma mark Lifecycle
@@ -104,6 +107,10 @@ static IMP RBLViewDrawRectIMP;
 + (BOOL)requiresConstraintBasedLayout {
 	// Necessary for -layout to be consistently invoked.
 	return YES;
+}
+
+- (void)layout {
+	[super layout];
 }
 
 @end

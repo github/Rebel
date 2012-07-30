@@ -33,4 +33,30 @@
  */
 @property (nonatomic, assign) BOOL clearsContextBeforeDrawing;
 
+/*
+ * Determines when the backing layer's contents should be redrawn.
+ *
+ * If -drawRect: is not overridden, this defaults to
+ * NSViewLayerContentsRedrawNever. If -drawRect: is overridden, this defaults to
+ * NSViewLayerContentsRedrawDuringViewResize.
+ *
+ * For better performance, subclasses should set the contentsCenter property of
+ * the backing layer to support scaling, and then change the value of this
+ * property to NSViewLayerContentsRedrawBeforeViewResize or
+ * NSViewLayerContentsRedrawOnSetNeedsDisplay.
+ */
+@property (nonatomic, assign) NSViewLayerContentsRedrawPolicy layerContentsRedrawPolicy;
+
+/*
+ * Subclasses may override this method to redraw the given rectangle. Any
+ * override of this method should invoke super.
+ */
+- (void)drawRect:(NSRect)rect;
+
+/*
+ * Subclasses may override this method to manually lay out subviews. Any
+ * override of this method should invoke super.
+ */
+- (void)layout;
+
 @end
