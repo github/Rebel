@@ -18,6 +18,7 @@ static IMP RBLViewDrawRectIMP;
 @interface RBLView () {
 	struct {
 		unsigned clearsContextBeforeDrawing:1;
+		unsigned flipped:1;
 	} _flags;
 }
 
@@ -49,6 +50,20 @@ static IMP RBLViewDrawRectIMP;
 
 - (void)setOpaque:(BOOL)value {
 	self.layer.opaque = value;
+}
+
+- (BOOL)isFlipped {
+	return _flags.flipped;
+}
+
+- (void)setFlipped:(BOOL)value {
+	if (value == self.flipped) return;
+
+	_flags.flipped = (value ? 1 : 0);
+
+	// Not sure how necessary these are, but it's probably a good idea.
+	[self setNeedsLayout:YES];
+	[self setNeedsDisplay:YES];
 }
 
 - (BOOL)clearsContextBeforeDrawing {
