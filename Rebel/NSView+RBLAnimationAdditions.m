@@ -28,6 +28,13 @@ static NSUInteger RBLAnimationContextCount = 0;
 	} completionHandler:completion];
 }
 
++ (void)rbl_animateWithDuration:(NSTimeInterval)duration animations:(void (^)(void))animations completion:(void (^)(void))completion {
+	[self rbl_animate:^{
+		[NSAnimationContext currentContext].duration = duration;
+		animations();
+	} completion:completion];
+}
+
 + (BOOL)rbl_isInAnimationContext {
 	return RBLAnimationContextCount > 0;
 }

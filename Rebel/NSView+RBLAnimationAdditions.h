@@ -26,6 +26,12 @@
 + (void)rbl_animate:(void (^)(void))animations completion:(void (^)(void))completion;
 
 /*
+ * Invokes +rbl_animate:completion:, setting the animation duration of the
+ * context before queuing the given animations.
+ */
++ (void)rbl_animateWithDuration:(NSTimeInterval)duration animations:(void (^)(void))animations completion:(void (^)(void))completion;
+
+/*
  * Returns whether the calling code is executing in an animation context created
  * by this category (like through -rbl_animate:completion:).
  *
