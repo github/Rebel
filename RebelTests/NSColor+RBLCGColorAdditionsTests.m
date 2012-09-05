@@ -21,13 +21,13 @@ SpecBegin(NSColorRBLCGColorAdditions)
 			CGColorRef rblColor = nsColor.rbl_CGColor;
 			expect(rblColor).notTo.beNil();
 
-			#if __MAC_10_8
-			// The result of our method should match that of the 10.8 API.
-			CGColorRef cgColor = nsColor.CGColor;
-			expect(cgColor).notTo.beNil();
+			if ([NSColor instancesRespondToSelector:@selector(CGColor)]) {
+				// The result of our method should match that of the 10.8 API.
+				CGColorRef cgColor = nsColor.CGColor;
+				expect(cgColor).notTo.beNil();
 
-			expect(CGColorEqualToColor(rblColor, cgColor)).to.beTruthy();
-			#endif
+				expect(CGColorEqualToColor(rblColor, cgColor)).to.beTruthy();
+			}
 		});
 
 		it(@"should return a CGColor for an predefined NSColor", ^{
@@ -52,11 +52,11 @@ SpecBegin(NSColorRBLCGColorAdditions)
 			NSColor *rblColor = [NSColor rbl_colorWithCGColor:cgColor];
 			expect(rblColor).notTo.beNil();
 
-			#if __MAC_10_8
-			// The result of our method should match that of the 10.8 API.
-			NSColor *nsColor = [NSColor colorWithCGColor:cgColor];
-			expect(rblColor).to.equal(nsColor);
-			#endif
+			if ([NSColor respondsToSelector:@selector(colorWithCGColor:)]) {
+				// The result of our method should match that of the 10.8 API.
+				NSColor *nsColor = [NSColor colorWithCGColor:cgColor];
+				expect(rblColor).to.equal(nsColor);
+			}
 		});
 
 		it(@"should return an NSColor for a constant CGColor", ^{
