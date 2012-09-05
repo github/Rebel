@@ -258,7 +258,7 @@
 				D08BB2ED15CB307200CC9868 /* README.md */,
 			);
 			name = Configuration;
-			path = ReactiveCocoa/external/xcconfigs;
+			path = ReactiveCocoa/ReactiveCocoaFramework/ReactiveCocoa/libextobjc/Configuration;
 			sourceTree = "<group>";
 		};
 		D08BB2DA15CB307200CC9868 /* Base */ = {
