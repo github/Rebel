@@ -38,4 +38,20 @@ describe(@"animation contexts", ^{
 	});
 });
 
+describe(@"animator proxies", ^{
+	NSView *view = [[NSView alloc] initWithFrame:NSZeroRect];
+
+	it(@"should not return an animator proxy outside of an animation context", ^{
+		// to.beEqual() will invoke -isEqual:, which might pass even if they're
+		// not identical.
+		expect(view.rbl_animator == view).to.beTruthy();
+	});
+
+	it(@"should return an animator proxy within an animation context", ^{
+		[NSView rbl_animate:^{
+			expect(view.rbl_animator == view).to.beFalsy();
+		} completion:nil];
+	});
+});
+
 SpecEnd
