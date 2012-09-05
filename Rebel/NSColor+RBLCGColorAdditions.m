@@ -1,5 +1,5 @@
 //
-//  NSColor+RBLAdditions.m
+//  NSColor+RBLCGColorAdditions.m
 //  Rebel
 //
 //  Created by Justin Spahr-Summers on 01.12.11.
@@ -9,7 +9,7 @@
 //  See the LICENSE file for more information.
 //
 
-#import "NSColor+RBLAdditions.h"
+#import "NSColor+RBLCGColorAdditions.h"
 
 static void drawCGImagePattern (void *info, CGContextRef context) {
     CGImageRef image = info;
@@ -24,7 +24,7 @@ static void releasePatternInfo (void *info) {
     CFRelease(info);
 }
 
-@implementation NSColor (RBLAdditions)
+@implementation NSColor (RBLCGColorAdditions)
 + (NSColor *)rbl_colorWithCGColor:(CGColorRef)color {
     if (color == nil) {
         return nil;

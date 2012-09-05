@@ -1,5 +1,5 @@
 //
-//  NSTextView+RBLAdditions.m
+//  NSTextView+RBLAntialiasingAdditions.m
 //  Rebel
 //
 //  Created by Justin Spahr-Summers on 10.03.12.
@@ -9,7 +9,7 @@
 //  See the LICENSE file for more information.
 //
 
-#import "NSTextView+RBLAdditions.h"
+#import "NSTextView+RBLAntialiasingAdditions.h"
 #import <objc/runtime.h>
 
 static void (*originalDrawRectIMP)(id, SEL, NSRect);
@@ -31,7 +31,7 @@ static void fixedDrawRect (NSTextView *self, SEL _cmd, NSRect rect) {
     originalDrawRectIMP(self, _cmd, rect);
 }
 
-@implementation NSTextView (RBLAdditions)
+@implementation NSTextView (RBLAntialiasingAdditions)
 
 + (void)load {
     Method drawRect = class_getInstanceMethod(self, @selector(drawRect:));

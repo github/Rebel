@@ -1,5 +1,5 @@
 //
-//  NSTextView+RBLAdditions.h
+//  NSTextView+RBLAntialiasingAdditions.h
 //  Rebel
 //
 //  Created by Justin Spahr-Summers on 10.03.12.
@@ -15,5 +15,5 @@
  * This private category fixes blurry text in layer-backed text views and text
  * fields.
  */
-@interface NSTextView (RBLAdditions)
+@interface NSTextView (RBLAntialiasingAdditions)
 @end

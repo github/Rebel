@@ -1,5 +1,5 @@
 //
-//  NSColor+RBLAdditions.h
+//  NSColor+RBLCGColorAdditions.h
 //  Rebel
 //
 //  Created by Justin Spahr-Summers on 01.12.11.
@@ -14,7 +14,7 @@
 /*
  * Extensions to NSColor for interoperability with CGColor.
  */
-@interface NSColor (RBLAdditions)
+@interface NSColor (RBLCGColorAdditions)
 
 /*
  * The CGColor corresponding to the receiver.
