@@ -26,6 +26,14 @@
 @property (nonatomic, getter = isOpaque) BOOL opaque;
 
 /*
+ * Whether the view's drawing and layout uses a flipped (top-left origin)
+ * coordinate system.
+ *
+ * Defaults to NO.
+ */
+@property (nonatomic, getter = isFlipped) BOOL flipped;
+
+/*
  * Whether the graphics context for the view's drawing should be cleared to
  * transparent black in RBLView's implementation of -drawRect:.
  *
