@@ -1,12 +1,12 @@
 //
-//  NSColor+RBLAdditionsTests.m
+//  NSColor+RBLCGColorAdditionsTests.m
 //  Rebel
 //
 //  Created by Justin Spahr-Summers on 2012-07-29.
 //  Copyright (c) 2012 GitHub. All rights reserved.
 //
 
-SpecBegin(NSColorRBLAdditions)
+SpecBegin(NSColorRBLCGColorAdditions)
 	
 	describe(@"CGColor from NSColor", ^{
 		__block NSColor *nsColor;
@@ -18,14 +18,16 @@ SpecBegin(NSColorRBLAdditions)
 		after(^{
 			expect(nsColor).notTo.beNil();
 
-			// The result of our method should match that of the 10.8 API.
 			CGColorRef rblColor = nsColor.rbl_CGColor;
 			expect(rblColor).notTo.beNil();
 
+			#if __MAC_10_8
+			// The result of our method should match that of the 10.8 API.
 			CGColorRef cgColor = nsColor.CGColor;
 			expect(cgColor).notTo.beNil();
 
 			expect(CGColorEqualToColor(rblColor, cgColor)).to.beTruthy();
+			#endif
 		});
 
 		it(@"should return a CGColor for an predefined NSColor", ^{
@@ -47,10 +49,14 @@ SpecBegin(NSColorRBLAdditions)
 		after(^{
 			expect(cgColor).notTo.beNil();
 
-			// The result of our method should match that of the 10.8 API.
 			NSColor *rblColor = [NSColor rbl_colorWithCGColor:cgColor];
+			expect(rblColor).notTo.beNil();
+
+			#if __MAC_10_8
+			// The result of our method should match that of the 10.8 API.
 			NSColor *nsColor = [NSColor colorWithCGColor:cgColor];
 			expect(rblColor).to.equal(nsColor);
+			#endif
 		});
 
 		it(@"should return an NSColor for a constant CGColor", ^{
