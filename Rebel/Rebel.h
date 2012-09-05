@@ -7,5 +7,6 @@
 //
 
 #import <Rebel/NSColor+RBLCGColorAdditions.h>
+#import <Rebel/NSView+RBLAnimationAdditions.h>
 #import <Rebel/RBLResizableImage.h>
 #import <Rebel/RBLView.h>
