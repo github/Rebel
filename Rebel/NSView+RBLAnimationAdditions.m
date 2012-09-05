@@ -12,6 +12,10 @@ static NSUInteger RBLAnimationContextCount = 0;
 
 @implementation NSView (RBLAnimationAdditions)
 
++ (void)rbl_animate:(void (^)(void))animations {
+	[self rbl_animate:animations completion:nil];
+}
+
 + (void)rbl_animate:(void (^)(void))animations completion:(void (^)(void))completion {
 	// It's not clear whether NSAnimationContext will accept a nil completion
 	// block.

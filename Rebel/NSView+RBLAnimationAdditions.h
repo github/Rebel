@@ -14,6 +14,11 @@
 @interface NSView (RBLAnimationAdditions)
 
 /*
+ * Invokes +rbl_animate:completion: with a nil completion block.
+ */
++ (void)rbl_animate:(void (^)(void))animations;
+
+/*
  * Executes the given animation block within a new NSAnimationContext. When all
  * animations in the group complete or are canceled, the given completion block
  * (if not nil) will be invoked.
