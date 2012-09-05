@@ -7,7 +7,7 @@
 //
 
 #import "RBLView.h"
-#import "NSColor+RBLAdditions.h"
+#import "NSColor+RBLCGColorAdditions.h"
 
 /*
  * The implementation pointer for -[RBLView drawRect:], used to identify when
