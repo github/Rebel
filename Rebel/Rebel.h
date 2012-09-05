@@ -6,6 +6,6 @@
 //  Copyright (c) 2012 GitHub. All rights reserved.
 //
 
-#import <Rebel/NSColor+RBLAdditions.h>
+#import <Rebel/NSColor+RBLCGColorAdditions.h>
 #import <Rebel/RBLResizableImage.h>
 #import <Rebel/RBLView.h>
