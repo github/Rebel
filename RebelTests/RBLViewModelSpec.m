@@ -6,8 +6,6 @@
 //  Copyright (c) 2012 GitHub. All rights reserved.
 //
 
-#import "RBLViewModel.h"
-
 @interface RBLTestViewModel : RBLViewModel
 @property (nonatomic, assign) BOOL gotPresentError;
 @end
