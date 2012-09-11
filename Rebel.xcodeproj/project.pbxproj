@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		889E5E0F15FFDAE0007F2445 /* RBLViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 889E5E0D15FFDAE0007F2445 /* RBLViewModel.h */; };
+		889E5E0F15FFDAE0007F2445 /* RBLViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 889E5E0D15FFDAE0007F2445 /* RBLViewModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		889E5E1015FFDAE0007F2445 /* RBLViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 889E5E0E15FFDAE0007F2445 /* RBLViewModel.m */; };
 		889E5E1315FFE049007F2445 /* RBLViewModelSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 889E5E1215FFE049007F2445 /* RBLViewModelSpec.m */; };
 		D0410EAC15C61895003A3203 /* NSTextView+RBLAntialiasingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D0410EAA15C61895003A3203 /* NSTextView+RBLAntialiasingAdditions.m */; };
