@@ -48,6 +48,8 @@ describe(@"tryToPerform:with:", ^{
 		result = [childViewModel tryToPerform:@selector(someOtherThing:) with:arg];
 		expect(result).to.beTruthy();
 		expect(childViewModel.argumentReceived).to.equal(arg);
+		expect(parentViewModel.argumentReceived).to.beNil();
+		expect(rootViewModel.argumentReceived).to.beNil();
 	});
 });
 
