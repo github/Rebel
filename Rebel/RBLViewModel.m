@@ -7,7 +7,6 @@
 //
 
 #import "RBLViewModel.h"
-#import <objc/message.h>
 
 @implementation RBLViewModel
 
@@ -34,7 +33,10 @@
 
 - (BOOL)tryToPerform:(SEL)action with:(id)object {
 	if ([self respondsToSelector:action]) {
-		objc_msgSend(self, action, object, nil);
+		NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[self methodSignatureForSelector:action]];
+		invocation.selector = action;
+		if (object != nil) [invocation setArgument:&object atIndex:2];
+		[invocation invokeWithTarget:self];
 		return YES;
 	} else {
 		return [self.parentViewModel tryToPerform:action with:object];
