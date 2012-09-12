@@ -35,7 +35,7 @@
 	if ([self respondsToSelector:action]) {
 		NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[self methodSignatureForSelector:action]];
 		invocation.selector = action;
-		if (object != nil) [invocation setArgument:&object atIndex:2];
+		[invocation setArgument:&object atIndex:2];
 		[invocation invokeWithTarget:self];
 		return YES;
 	} else {
