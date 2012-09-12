@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		883CD4CE1600CF7100F57354 /* RBLTestViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 883CD4CD1600CF7100F57354 /* RBLTestViewModel.m */; };
 		889E5E0F15FFDAE0007F2445 /* RBLViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 889E5E0D15FFDAE0007F2445 /* RBLViewModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		889E5E1015FFDAE0007F2445 /* RBLViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 889E5E0E15FFDAE0007F2445 /* RBLViewModel.m */; };
 		889E5E1315FFE049007F2445 /* RBLViewModelSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 889E5E1215FFE049007F2445 /* RBLViewModelSpec.m */; };
@@ -144,6 +145,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		883CD4CC1600CF7100F57354 /* RBLTestViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBLTestViewModel.h; sourceTree = "<group>"; };
+		883CD4CD1600CF7100F57354 /* RBLTestViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBLTestViewModel.m; sourceTree = "<group>"; };
 		889E5E0D15FFDAE0007F2445 /* RBLViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBLViewModel.h; sourceTree = "<group>"; };
 		889E5E0E15FFDAE0007F2445 /* RBLViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBLViewModel.m; sourceTree = "<group>"; };
 		889E5E1215FFE049007F2445 /* RBLViewModelSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBLViewModelSpec.m; sourceTree = "<group>"; };
@@ -263,6 +266,8 @@
 				D078B7DD15F6DB420063DDD5 /* NSView+RBLAnimationAdditionsSpec.m */,
 				D0723FDF15C60E94004DBDC7 /* RBLViewSpec.m */,
 				889E5E1215FFE049007F2445 /* RBLViewModelSpec.m */,
+				883CD4CC1600CF7100F57354 /* RBLTestViewModel.h */,
+				883CD4CD1600CF7100F57354 /* RBLTestViewModel.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -674,6 +679,7 @@
 				D0723FE015C60E94004DBDC7 /* RBLViewSpec.m in Sources */,
 				D078B7DE15F6DB420063DDD5 /* NSView+RBLAnimationAdditionsSpec.m in Sources */,
 				889E5E1315FFE049007F2445 /* RBLViewModelSpec.m in Sources */,
+				883CD4CE1600CF7100F57354 /* RBLTestViewModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
