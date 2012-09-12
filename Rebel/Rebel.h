@@ -10,3 +10,4 @@
 #import <Rebel/NSView+RBLAnimationAdditions.h>
 #import <Rebel/RBLResizableImage.h>
 #import <Rebel/RBLView.h>
+#import <Rebel/RBLViewModel.h>

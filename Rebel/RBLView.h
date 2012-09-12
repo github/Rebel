@@ -8,9 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 
-/*
- * A base class for saner and more full-featured layer-backed views.
- */
+@class RBLViewModel;
+
+// A base class for saner, more full-featured layer-backed views with support
+// for MVVM.
 @interface RBLView : NSView
 
 /*
@@ -62,6 +63,9 @@
  * The behavior of this property is undefined if -drawRect: is overridden.
  */
 @property (nonatomic, strong) NSImage *contents;
+
+// The view model which drives the view.
+@property (nonatomic, strong) RBLViewModel *viewModel;
 
 /*
  * Subclasses may override this method to redraw the given rectangle. Any
