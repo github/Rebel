@@ -6,28 +6,19 @@
 //  Copyright (c) 2012 GitHub. All rights reserved.
 //
 
-@interface RBLTestViewModel : RBLViewModel
-@property (nonatomic, assign) BOOL gotPresentError;
-@end
-
-@implementation RBLTestViewModel
-
-- (void)someOtherThing:(id)wat {
-	
-}
-
-- (BOOL)presentError:(NSError *)error {
-	self.gotPresentError = YES;
-	return [super presentError:error];
-}
-
-@end
+#import "RBLTestViewModel.h"
 
 SpecBegin(RBLViewModel)
 
-RBLTestViewModel *rootViewModel = [[RBLTestViewModel alloc] initWithModel:@"root" parentViewModel:nil];
-RBLTestViewModel *parentViewModel = [[RBLTestViewModel alloc] initWithModel:@"parent" parentViewModel:rootViewModel];
-RBLTestViewModel *childViewModel = [[RBLTestViewModel alloc] initWithModel:@"child" parentViewModel:parentViewModel];
+__block RBLTestViewModel *rootViewModel;
+__block RBLTestViewModel *parentViewModel;
+__block RBLTestViewModel *childViewModel;
+
+beforeEach(^{
+	rootViewModel = [[RBLTestViewModel alloc] initWithModel:@"root" parentViewModel:nil];
+	parentViewModel = [[RBLTestViewModel alloc] initWithModel:@"parent" parentViewModel:rootViewModel];
+	childViewModel = [[RBLTestViewModel alloc] initWithModel:@"child" parentViewModel:parentViewModel];
+});
 
 describe(@"the view model chain", ^{
 	it(@"should know its parent view model", ^{
@@ -53,22 +44,20 @@ describe(@"tryToPerform:with:", ^{
 		BOOL result = [childViewModel tryToPerform:@selector(presentError:) with:nil];
 		expect(result).to.beTruthy();
 
-		result = [childViewModel tryToPerform:@selector(someOtherThing:) with:@42];
+		id arg = @42;
+		result = [childViewModel tryToPerform:@selector(someOtherThing:) with:arg];
 		expect(result).to.beTruthy();
+		expect(childViewModel.argumentReceived).to.equal(arg);
 	});
 });
 
-describe(@"-presentError", ^{
+describe(@"-presentError:", ^{
 	it(@"should return NO when no one handled it", ^{
 		BOOL presented = [childViewModel presentError:nil];
 		expect(presented).to.beFalsy();
 	});
 
 	it(@"should travel up the parent view model chain", ^{
-		childViewModel.gotPresentError = NO;
-		parentViewModel.gotPresentError = NO;
-		rootViewModel.gotPresentError = NO;
-
 		[childViewModel presentError:nil];
 
 		expect(childViewModel.gotPresentError).to.beTruthy();
