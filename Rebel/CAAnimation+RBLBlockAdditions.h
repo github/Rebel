@@ -10,4 +10,6 @@
 
 @interface CAAnimation (RBLBlockAdditions)
 
+@property (nonatomic, copy) void(^rbl_completionBlock)();
+
 @end
