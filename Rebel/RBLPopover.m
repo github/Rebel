@@ -265,7 +265,6 @@ NSTimeInterval const RBLPopoverDefaultFadeoutDuration = 0.3;
 	void (^windowTeardown)() = ^ {
 		[self.popoverWindow.parentWindow removeChildWindow:self.popoverWindow];
 		[self.popoverWindow close];
-		self.popoverWindow.contentView = nil;
 		self.animating = NO;
 		
 		if (self.didCloseBlock != nil)
