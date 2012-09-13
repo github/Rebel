@@ -112,8 +112,7 @@ NSTimeInterval const RBLPopoverDefaultFadeoutDuration = 0.3;
     if (CGRectEqualToRect(positioningRect, CGRectZero))
         positioningRect = [positioningView bounds];
     
-    CGRect basePositioningRect = [positioningView convertRect:positioningRect toView:nil];
-    NSRect windowRelativeRect = [positioningView convertRect:basePositioningRect toView:nil];
+    NSRect windowRelativeRect = [positioningView convertRect:positioningRect toView:nil];
     CGRect screenPositioningRect = windowRelativeRect;
 	screenPositioningRect.origin = [positioningView.window convertBaseToScreen:windowRelativeRect.origin];
     self.originalViewSize = self.contentViewController.view.frame.size;
