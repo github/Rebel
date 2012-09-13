@@ -20,7 +20,7 @@ NSString *RBLCAAnimationCompletionBlockAssociatedObjectKey = @"RBLCAAnimationCom
 }
 
 - (void(^)())rbl_completionBlock {
-	return objc_getAssociatedObject(self, (__bridge const void *)(RBLCAAnimationCompletionBlockAssociatedObjectKey));
+	return objc_getAssociatedObject(self, &RBLCAAnimationCompletionBlockAssociatedObjectKey);
 }
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
