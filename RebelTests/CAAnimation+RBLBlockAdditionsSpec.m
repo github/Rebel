@@ -16,15 +16,15 @@ before(^{
 		NSLog(@"Hello World!");
 	};
 	
-	expect(animation).toNot.beNil;
+	expect(animation).toNot.beNil();
 });
 
 it(@"Should have set a completion block", ^ {
-	expect(animation.rbl_completionBlock).toNot.beNil;
+	expect(animation.rbl_completionBlock).toNot.beNil();
 });
 
 it(@"Should have set itself has a delegate", ^{
-	expect(animation.delegate == animation).to.beTruthy;
+	expect(animation.delegate == animation).to.beTruthy();
 });
 
 SpecEnd
