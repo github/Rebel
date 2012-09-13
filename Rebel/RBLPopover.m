@@ -8,6 +8,7 @@
 
 #import "RBLPopover.h"
 
+#import "CAAnimation+RBLBlockAdditions.h"
 #import <QuartzCore/QuartzCore.h>
 
 //***************************************************************************
@@ -218,14 +219,13 @@ NSTimeInterval const TUIPopoverDefaultFadeoutDuration = 0.3;
     
     CABasicAnimation *fadeInAnimation = [CABasicAnimation animationWithKeyPath:@"alphaValue"];
     fadeInAnimation.duration = 0.3;
-	//TODO: add completion blocks into rebel
-//    fadeInAnimation.tui_completionBlock = ^ {
-//        self.animating = NO;
-//        [self.contentViewController viewDidAppear:YES];
-//        
-//        if (self.didShowBlock)
-//            self.didShowBlock(self);
-//    };
+    fadeInAnimation.rbl_completionBlock = ^ {
+        self.animating = NO;
+        //[self.contentViewController viewDidAppear:YES];
+        
+        if (self.didShowBlock)
+            self.didShowBlock(self);
+    };
     
     self.popoverWindow.animations = [NSDictionary dictionaryWithObject:fadeInAnimation forKey:@"alphaValue"];
     self.animating = YES;
@@ -254,17 +254,17 @@ NSTimeInterval const TUIPopoverDefaultFadeoutDuration = 0.3;
     
     CABasicAnimation *fadeOutAnimation = [CABasicAnimation animationWithKeyPath:@"alphaValue"];
     fadeOutAnimation.duration = duration;
-//    fadeOutAnimation.tui_completionBlock = ^ {
-//        [self.popoverWindow.parentWindow removeChildWindow:self.popoverWindow];
-//        [self.popoverWindow close];
-//        self.popoverWindow.contentView = nil;
-//        self.animating = NO;
-//        
-//        if (self.didCloseBlock != nil)
-//            self.didCloseBlock(self);
-//        
-//        self.contentViewController.view.frame = CGRectMake(self.contentViewController.view.frame.origin.x, self.contentViewController.view.frame.origin.y, self.originalViewSize.width, self.originalViewSize.height);
-//    };
+    fadeOutAnimation.rbl_completionBlock = ^ {
+        [self.popoverWindow.parentWindow removeChildWindow:self.popoverWindow];
+        [self.popoverWindow close];
+        self.popoverWindow.contentView = nil;
+        self.animating = NO;
+        
+        if (self.didCloseBlock != nil)
+            self.didCloseBlock(self);
+        
+        self.contentViewController.view.frame = CGRectMake(self.contentViewController.view.frame.origin.x, self.contentViewController.view.frame.origin.y, self.originalViewSize.width, self.originalViewSize.height);
+    };
     
     self.popoverWindow.animations = [NSDictionary dictionaryWithObject:fadeOutAnimation forKey:@"alphaValue"];
     self.animating = YES;
