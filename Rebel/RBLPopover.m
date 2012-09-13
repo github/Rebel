@@ -207,12 +207,13 @@ NSTimeInterval const RBLPopoverDefaultFadeoutDuration = 0.3;
     self.contentViewController.view.frame = contentViewFrame;
     [backgroundView addSubview:self.contentViewController.view];
 	self.popoverWindow = [[NSWindow alloc] initWithContentRect:popoverScreenRect styleMask:NSBorderlessWindowMask backing:NSBackingStoreBuffered defer:NO];
-    [self.popoverWindow setReleasedWhenClosed:NO];
+	self.popoverWindow.hasShadow = YES;
+	self.popoverWindow.releasedWhenClosed = NO;
     RBLPopoverWindowContentView *contentView = [[RBLPopoverWindowContentView alloc] initWithFrame:backgroundView.bounds];
 	contentView.arrowEdge = [backgroundView arrowEdgeForPopoverEdge:popoverEdge];
     [contentView addSubview:backgroundView];
-    [self.popoverWindow setOpaque:NO];
-    [self.popoverWindow setBackgroundColor:[NSColor clearColor]];
+    self.popoverWindow.opaque = NO;
+	self.popoverWindow.backgroundColor = NSColor.clearColor;
     self.popoverWindow.contentView = contentView;
 	if (self.animates) {
 		self.popoverWindow.alphaValue = 0.0;
