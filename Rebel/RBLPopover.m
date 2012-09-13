@@ -63,6 +63,7 @@ NSTimeInterval const RBLPopoverDefaultFadeoutDuration = 0.3;
     _contentViewController = viewController;
     _backgroundViewClass = RBLPopoverBackgroundView.class;
 	_behaviour = RBLPopoverViewControllerBehaviourApplicationDefined;
+	_animates = YES;
 	
 	return self;
 }
@@ -213,24 +214,32 @@ NSTimeInterval const RBLPopoverDefaultFadeoutDuration = 0.3;
     [self.popoverWindow setOpaque:NO];
     [self.popoverWindow setBackgroundColor:[NSColor clearColor]];
     self.popoverWindow.contentView = contentView;
-    self.popoverWindow.alphaValue = 0.0;
+	if (self.animates) {
+		self.popoverWindow.alphaValue = 0.0;
+	}
     [positioningView.window addChildWindow:self.popoverWindow ordered:NSWindowAbove];
 	[self.popoverWindow makeKeyAndOrderFront:self];
 	[backgroundView updateMaskLayer];
     
-    CABasicAnimation *fadeInAnimation = [CABasicAnimation animationWithKeyPath:@"alphaValue"];
-    fadeInAnimation.duration = 0.3;
-    fadeInAnimation.rbl_completionBlock = ^ {
-        self.animating = NO;
+	void (^postDisplayBlock)() = ^ {
+		self.animating = NO;
         //[self.contentViewController viewDidAppear:YES];
         
         if (self.didShowBlock)
             self.didShowBlock(self);
-    };
-    
-    self.popoverWindow.animations = [NSDictionary dictionaryWithObject:fadeInAnimation forKey:@"alphaValue"];
-    self.animating = YES;
-    [self.popoverWindow.animator setAlphaValue:1.0];
+	};
+	
+	if (self.animates) {
+		CABasicAnimation *fadeInAnimation = [CABasicAnimation animationWithKeyPath:@"alphaValue"];
+		fadeInAnimation.duration = 0.3;
+		fadeInAnimation.rbl_completionBlock = postDisplayBlock;
+		
+		self.popoverWindow.animations = [NSDictionary dictionaryWithObject:fadeInAnimation forKey:@"alphaValue"];
+		self.animating = YES;
+		[self.popoverWindow.animator setAlphaValue:1.0];
+	} else {
+		postDisplayBlock();
+	}
 }
 
 #pragma mark -
@@ -252,24 +261,30 @@ NSTimeInterval const RBLPopoverDefaultFadeoutDuration = 0.3;
     
     if (self.willCloseBlock != nil)
         self.willCloseBlock(self);
-    
-    CABasicAnimation *fadeOutAnimation = [CABasicAnimation animationWithKeyPath:@"alphaValue"];
-    fadeOutAnimation.duration = duration;
-    fadeOutAnimation.rbl_completionBlock = ^ {
-        [self.popoverWindow.parentWindow removeChildWindow:self.popoverWindow];
-        [self.popoverWindow close];
-        self.popoverWindow.contentView = nil;
-        self.animating = NO;
-        
-        if (self.didCloseBlock != nil)
-            self.didCloseBlock(self);
-        
-        self.contentViewController.view.frame = CGRectMake(self.contentViewController.view.frame.origin.x, self.contentViewController.view.frame.origin.y, self.originalViewSize.width, self.originalViewSize.height);
-    };
-    
-    self.popoverWindow.animations = [NSDictionary dictionaryWithObject:fadeOutAnimation forKey:@"alphaValue"];
-    self.animating = YES;
-    [self.popoverWindow.animator setAlphaValue:0.0];
+	
+	void (^windowTeardown)() = ^ {
+		[self.popoverWindow.parentWindow removeChildWindow:self.popoverWindow];
+		[self.popoverWindow close];
+		//self.popoverWindow.contentView = nil; This causes a constraint exception throw
+		self.animating = NO;
+		
+		if (self.didCloseBlock != nil)
+			self.didCloseBlock(self);
+		
+		self.contentViewController.view.frame = CGRectMake(self.contentViewController.view.frame.origin.x, self.contentViewController.view.frame.origin.y, self.originalViewSize.width, self.originalViewSize.height);
+	};
+	
+	if (self.animates) {
+		CABasicAnimation *fadeOutAnimation = [CABasicAnimation animationWithKeyPath:@"alphaValue"];
+		fadeOutAnimation.duration = duration;
+		fadeOutAnimation.rbl_completionBlock = windowTeardown;
+		
+		self.popoverWindow.animations = [NSDictionary dictionaryWithObject:fadeOutAnimation forKey:@"alphaValue"];
+		self.animating = YES;
+		[self.popoverWindow.animator setAlphaValue:0.0];
+	} else {
+		windowTeardown();
+	}
 }
 
 - (IBAction)performClose:(id)sender
