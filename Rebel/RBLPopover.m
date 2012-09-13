@@ -511,18 +511,12 @@ CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 
 @implementation RBLPopoverWindowContentView
 
-@synthesize nsView = _nsView;
-@synthesize arrowEdge = _arrowEdge;;
-
 - (id)initWithFrame:(NSRect)frameRect {
     self = [super initWithFrame:frameRect];
     if(self == nil) return nil;
     
 	_arrowEdge = CGRectMinYEdge;
-    _nsView = [[TUINSView alloc] initWithFrame:self.bounds];
-    [self.nsView setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
-    [self.nsView tui_setOpaque:NO];
-    [self addSubview:self.nsView];
+	self.autoresizingMask = (NSViewWidthSizable | NSViewHeightSizable);
     
     return self;
 }
@@ -533,10 +527,6 @@ CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 
 - (void)drawRect:(NSRect)dirtyRect {
     [NSGraphicsContext saveGraphicsState];
-	
-    
-    CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
-    [[NSColor whiteColor] set];
 	
 	CGRect targetRect = CGRectZero;
 	switch (self.arrowEdge) {
@@ -557,7 +547,9 @@ CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 			break;
 	}
 	
-	CGContextFillRoundRect(context, targetRect, RBLPopoverBackgroundViewBorderRadius);
+	NSBezierPath *roundRectPath = [NSBezierPath bezierPathWithRoundedRect:targetRect xRadius:RBLPopoverBackgroundViewBorderRadius yRadius:RBLPopoverBackgroundViewBorderRadius];
+	[[NSColor whiteColor] set];
+	[roundRectPath fill];
     
     [NSGraphicsContext restoreGraphicsState];
 }
