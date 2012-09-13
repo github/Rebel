@@ -17,8 +17,8 @@
 
 @interface RBLPopoverBackgroundView ()
 
-@property (nonatomic, unsafe_unretained) CGRect screenOriginRect;
-@property (nonatomic, unsafe_unretained) CGRectEdge popoverEdge;
+@property (nonatomic) CGRect screenOriginRect;
+@property (nonatomic) CGRectEdge popoverEdge;
 
 - (CGRectEdge)arrowEdgeForPopoverEdge:(CGRectEdge)popoverEdge;
 - (void)updateMaskLayer;
@@ -43,8 +43,8 @@ NSTimeInterval const RBLPopoverDefaultFadeoutDuration = 0.3;
 
 @property (nonatomic, strong) NSWindow *popoverWindow;
 @property (nonatomic, unsafe_unretained) id transientEventMonitor;
-@property (nonatomic, unsafe_unretained) BOOL animating;
-@property (nonatomic, assign) CGSize originalViewSize;
+@property (nonatomic) BOOL animating;
+@property (nonatomic) CGSize originalViewSize;
 
 - (void)removeEventMonitor;
 
@@ -61,7 +61,7 @@ NSTimeInterval const RBLPopoverDefaultFadeoutDuration = 0.3;
 		return nil;
 	
     _contentViewController = viewController;
-    _backgroundViewClass = [RBLPopoverBackgroundView class];
+    _backgroundViewClass = RBLPopoverBackgroundView.class;
 	_behaviour = RBLPopoverViewControllerBehaviourApplicationDefined;
 	
 	return self;

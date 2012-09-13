@@ -26,10 +26,10 @@ typedef void (^RBLPopoverDelegateBlock)(RBLPopover *popover);
 @interface RBLPopover : NSResponder
 
 @property (nonatomic, strong) NSViewController *contentViewController;
-@property (nonatomic, unsafe_unretained) Class backgroundViewClass; //Must be a subclass of RBLPopoverBackgroundView
-@property (nonatomic, unsafe_unretained) CGSize contentSize; //CGSizeZero uses the size of the view on contentViewController
-@property (nonatomic, unsafe_unretained) BOOL animates;
-@property (nonatomic, unsafe_unretained) RBLPopoverViewControllerBehaviour behaviour;
+@property (nonatomic, strong) Class backgroundViewClass; //Must be a subclass of RBLPopoverBackgroundView
+@property (nonatomic) CGSize contentSize; //CGSizeZero uses the size of the view on contentViewController
+@property (nonatomic) BOOL animates;
+@property (nonatomic) RBLPopoverViewControllerBehaviour behaviour;
 @property (nonatomic, readonly) BOOL shown;
 @property (nonatomic, readonly) CGRect positioningRect;
 
