@@ -8,6 +8,8 @@
 
 #import "RBLPopover.h"
 
+#import <QuartzCore/QuartzCore.h>
+
 //***************************************************************************
 
 @interface RBLPopoverBackgroundView ()
@@ -73,17 +75,18 @@ NSTimeInterval const TUIPopoverDefaultFadeoutDuration = 0.3;
 #pragma mark -
 #pragma mark Showing
 
-- (void)showRelativeToRect:(CGRect)positioningRect ofView:(TUIView *)positioningView preferredEdge:(CGRectEdge)preferredEdge
+- (void)showRelativeToRect:(CGRect)positioningRect ofView:(NSView *)positioningView preferredEdge:(CGRectEdge)preferredEdge
 {
     if (self.shown)
         return;
     
-    [self.contentViewController viewWillAppear:YES]; //this will always be animated… in the current implementation
+	//TODO: Create RBLViewController with viewWillAppear
+    //[self.contentViewController viewWillAppear:YES]; //this will always be animated… in the current implementation
     
     if (self.willShowBlock != nil)
         self.willShowBlock(self);
     
-    if (self.behaviour != TUIPopoverViewControllerBehaviourApplicationDefined) {
+    if (self.behaviour != RBLPopoverViewControllerBehaviourApplicationDefined) {
 		if (self.transientEventMonitor != nil) {
 			[self removeEventMonitor];
 		}
@@ -93,7 +96,7 @@ NSTimeInterval const TUIPopoverDefaultFadeoutDuration = 0.3;
                 return event;
 			
 			static NSUInteger escapeKey = 53;
-			BOOL shouldClose = (event.type == NSLeftMouseDown || event.type == NSRightMouseDown ? (!NSPointInRect([NSEvent mouseLocation], self.popoverWindow.frame) && self.behaviour == TUIPopoverViewControllerBehaviourTransient) : event.keyCode == escapeKey);
+			BOOL shouldClose = (event.type == NSLeftMouseDown || event.type == NSRightMouseDown ? (!NSPointInRect([NSEvent mouseLocation], self.popoverWindow.frame) && self.behaviour == RBLPopoverViewControllerBehaviourTransient) : event.keyCode == escapeKey);
             
             if (shouldClose) {
                 [self close];
@@ -107,9 +110,9 @@ NSTimeInterval const TUIPopoverDefaultFadeoutDuration = 0.3;
         positioningRect = [positioningView bounds];
     
     CGRect basePositioningRect = [positioningView convertRect:positioningRect toView:nil];
-    NSRect windowRelativeRect = [positioningView.nsView convertRect:basePositioningRect toView:nil];
+    NSRect windowRelativeRect = [positioningView convertRect:basePositioningRect toView:nil];
     CGRect screenPositioningRect = windowRelativeRect;
-	screenPositioningRect.origin = [positioningView.nsWindow convertBaseToScreen:windowRelativeRect.origin];
+	screenPositioningRect.origin = [positioningView.window convertBaseToScreen:windowRelativeRect.origin];
     self.originalViewSize = self.contentViewController.view.frame.size;
     CGSize contentViewSize = (CGSizeEqualToSize(self.contentSize, CGSizeZero) ? self.contentViewController.view.frame.size : self.contentSize);
     
@@ -141,7 +144,7 @@ NSTimeInterval const TUIPopoverDefaultFadeoutDuration = 0.3;
     BOOL (^checkPopoverSizeForScreenWithPopoverEdge)(CGRectEdge) = ^ (CGRectEdge popoverEdge)
     {
         CGRect popoverRect = popoverRectForEdge(popoverEdge);
-        return NSContainsRect(positioningView.nsWindow.screen.visibleFrame, popoverRect);
+        return NSContainsRect(positioningView.window.screen.visibleFrame, popoverRect);
     };
     
     //This is as ugly as sin… but it gets the job done. I couldn't think of a nice way to code this but still get the desired behaviour
@@ -164,7 +167,7 @@ NSTimeInterval const TUIPopoverDefaultFadeoutDuration = 0.3;
         };
 		
 		CGRect (^fitRectToScreen)(CGRect) = ^ (CGRect proposedRect) {
-			NSRect screenRect = positioningView.nsWindow.screen.visibleFrame;
+			NSRect screenRect = positioningView.window.screen.visibleFrame;
 			
 			if (proposedRect.origin.y < NSMinY(screenRect))
 				proposedRect.origin.y = NSMinY(screenRect);
@@ -195,33 +198,34 @@ NSTimeInterval const TUIPopoverDefaultFadeoutDuration = 0.3;
     };
     
     CGRect popoverScreenRect = popoverRect();
-    TUIPopoverBackgroundView *backgroundView = [self.backgroundViewClass backgroundViewForContentSize:contentViewSize popoverEdge:popoverEdge originScreenRect:screenPositioningRect];
+    RBLPopoverBackgroundView *backgroundView = [self.backgroundViewClass backgroundViewForContentSize:contentViewSize popoverEdge:popoverEdge originScreenRect:screenPositioningRect];
     
     CGRect contentViewFrame = [self.backgroundViewClass contentViewFrameForBackgroundFrame:backgroundView.bounds popoverEdge:popoverEdge];
     self.contentViewController.view.frame = contentViewFrame;
     [backgroundView addSubview:self.contentViewController.view];
-    self.popoverWindow = [[TUINSWindow alloc] initWithContentRect:popoverScreenRect];
+	self.popoverWindow = [[NSWindow alloc] initWithContentRect:popoverScreenRect styleMask:NSBorderlessWindowMask backing:NSBackingStoreBuffered defer:NO];
     [self.popoverWindow setReleasedWhenClosed:NO];
     RBLPopoverWindowContentView *contentView = [[RBLPopoverWindowContentView alloc] initWithFrame:backgroundView.bounds];
 	contentView.arrowEdge = [backgroundView arrowEdgeForPopoverEdge:popoverEdge];
-    contentView.nsView.rootView = backgroundView;
+    [contentView addSubview:backgroundView];
     [self.popoverWindow setOpaque:NO];
     [self.popoverWindow setBackgroundColor:[NSColor clearColor]];
     self.popoverWindow.contentView = contentView;
     self.popoverWindow.alphaValue = 0.0;
-    [positioningView.nsWindow addChildWindow:self.popoverWindow ordered:NSWindowAbove];
+    [positioningView.window addChildWindow:self.popoverWindow ordered:NSWindowAbove];
 	[self.popoverWindow makeKeyAndOrderFront:self];
 	[backgroundView updateMaskLayer];
     
     CABasicAnimation *fadeInAnimation = [CABasicAnimation animationWithKeyPath:@"alphaValue"];
     fadeInAnimation.duration = 0.3;
-    fadeInAnimation.tui_completionBlock = ^ {
-        self.animating = NO;
-        [self.contentViewController viewDidAppear:YES];
-        
-        if (self.didShowBlock)
-            self.didShowBlock(self);
-    };
+	//TODO: add completion blocks into rebel
+//    fadeInAnimation.tui_completionBlock = ^ {
+//        self.animating = NO;
+//        [self.contentViewController viewDidAppear:YES];
+//        
+//        if (self.didShowBlock)
+//            self.didShowBlock(self);
+//    };
     
     self.popoverWindow.animations = [NSDictionary dictionaryWithObject:fadeInAnimation forKey:@"alphaValue"];
     self.animating = YES;
