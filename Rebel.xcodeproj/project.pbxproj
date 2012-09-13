@@ -14,6 +14,10 @@
 		306A81E91601E92000BF45F3 /* CAAnimation+RBLBlockAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 306A81E71601E92000BF45F3 /* CAAnimation+RBLBlockAdditions.m */; };
 		306A81EB1601EAE700BF45F3 /* CAAnimation+RBLBlockAdditionsSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 306A81EA1601EAE700BF45F3 /* CAAnimation+RBLBlockAdditionsSpec.m */; };
 		306A81ED1601F44200BF45F3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 306A81EC1601F44200BF45F3 /* QuartzCore.framework */; };
+		883CD4CE1600CF7100F57354 /* RBLTestViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 883CD4CD1600CF7100F57354 /* RBLTestViewModel.m */; };
+		889E5E0F15FFDAE0007F2445 /* RBLViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 889E5E0D15FFDAE0007F2445 /* RBLViewModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		889E5E1015FFDAE0007F2445 /* RBLViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 889E5E0E15FFDAE0007F2445 /* RBLViewModel.m */; };
+		889E5E1315FFE049007F2445 /* RBLViewModelSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 889E5E1215FFE049007F2445 /* RBLViewModelSpec.m */; };
 		D0410EAC15C61895003A3203 /* NSTextView+RBLAntialiasingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D0410EAA15C61895003A3203 /* NSTextView+RBLAntialiasingAdditions.m */; };
 		D04CBFC815F6D87B004A5BCC /* NSView+RBLAnimationAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D04CBFC615F6D87B004A5BCC /* NSView+RBLAnimationAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D04CBFC915F6D87B004A5BCC /* NSView+RBLAnimationAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D04CBFC715F6D87B004A5BCC /* NSView+RBLAnimationAdditions.m */; };
@@ -154,6 +158,11 @@
 		306A81E71601E92000BF45F3 /* CAAnimation+RBLBlockAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAAnimation+RBLBlockAdditions.m"; sourceTree = "<group>"; };
 		306A81EA1601EAE700BF45F3 /* CAAnimation+RBLBlockAdditionsSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAAnimation+RBLBlockAdditionsSpec.m"; sourceTree = "<group>"; };
 		306A81EC1601F44200BF45F3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		883CD4CC1600CF7100F57354 /* RBLTestViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBLTestViewModel.h; sourceTree = "<group>"; };
+		883CD4CD1600CF7100F57354 /* RBLTestViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBLTestViewModel.m; sourceTree = "<group>"; };
+		889E5E0D15FFDAE0007F2445 /* RBLViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBLViewModel.h; sourceTree = "<group>"; };
+		889E5E0E15FFDAE0007F2445 /* RBLViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBLViewModel.m; sourceTree = "<group>"; };
+		889E5E1215FFE049007F2445 /* RBLViewModelSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBLViewModelSpec.m; sourceTree = "<group>"; };
 		D0410EA915C61895003A3203 /* NSTextView+RBLAntialiasingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTextView+RBLAntialiasingAdditions.h"; sourceTree = "<group>"; };
 		D0410EAA15C61895003A3203 /* NSTextView+RBLAntialiasingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTextView+RBLAntialiasingAdditions.m"; sourceTree = "<group>"; };
 		D04844EC15C5F8DA00834EDE /* RebelTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RebelTests-Prefix.pch"; sourceTree = "<group>"; };
@@ -248,6 +257,8 @@
 				D0723FBF15C5F9D8004DBDC7 /* RBLView.m */,
 				306A81D91601C7A300BF45F3 /* RBLPopover.h */,
 				306A81DA1601C7A300BF45F3 /* RBLPopover.m */,
+				889E5E0D15FFDAE0007F2445 /* RBLViewModel.h */,
+				889E5E0E15FFDAE0007F2445 /* RBLViewModel.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -274,6 +285,9 @@
 				306A81EA1601EAE700BF45F3 /* CAAnimation+RBLBlockAdditionsSpec.m */,
 				D078B7DD15F6DB420063DDD5 /* NSView+RBLAnimationAdditionsSpec.m */,
 				D0723FDF15C60E94004DBDC7 /* RBLViewSpec.m */,
+				889E5E1215FFE049007F2445 /* RBLViewModelSpec.m */,
+				883CD4CC1600CF7100F57354 /* RBLTestViewModel.h */,
+				883CD4CD1600CF7100F57354 /* RBLTestViewModel.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -462,6 +476,7 @@
 				D04CBFC815F6D87B004A5BCC /* NSView+RBLAnimationAdditions.h in Headers */,
 				306A81E81601E92000BF45F3 /* CAAnimation+RBLBlockAdditions.h in Headers */,
 				306A81DB1601C7A300BF45F3 /* RBLPopover.h in Headers */,
+				889E5E0F15FFDAE0007F2445 /* RBLViewModel.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -677,6 +692,7 @@
 				D04CBFC915F6D87B004A5BCC /* NSView+RBLAnimationAdditions.m in Sources */,
 				306A81DC1601C7A300BF45F3 /* RBLPopover.m in Sources */,
 				306A81E91601E92000BF45F3 /* CAAnimation+RBLBlockAdditions.m in Sources */,
+				889E5E1015FFDAE0007F2445 /* RBLViewModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -688,6 +704,8 @@
 				D0723FE015C60E94004DBDC7 /* RBLViewSpec.m in Sources */,
 				D078B7DE15F6DB420063DDD5 /* NSView+RBLAnimationAdditionsSpec.m in Sources */,
 				306A81EB1601EAE700BF45F3 /* CAAnimation+RBLBlockAdditionsSpec.m in Sources */,
+				889E5E1315FFE049007F2445 /* RBLViewModelSpec.m in Sources */,
+				883CD4CE1600CF7100F57354 /* RBLTestViewModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
