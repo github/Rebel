@@ -254,17 +254,17 @@ NSTimeInterval const TUIPopoverDefaultFadeoutDuration = 0.3;
     
     CABasicAnimation *fadeOutAnimation = [CABasicAnimation animationWithKeyPath:@"alphaValue"];
     fadeOutAnimation.duration = duration;
-    fadeOutAnimation.tui_completionBlock = ^ {
-        [self.popoverWindow.parentWindow removeChildWindow:self.popoverWindow];
-        [self.popoverWindow close];
-        self.popoverWindow.contentView = nil;
-        self.animating = NO;
-        
-        if (self.didCloseBlock != nil)
-            self.didCloseBlock(self);
-        
-        self.contentViewController.view.frame = CGRectMake(self.contentViewController.view.frame.origin.x, self.contentViewController.view.frame.origin.y, self.originalViewSize.width, self.originalViewSize.height);
-    };
+//    fadeOutAnimation.tui_completionBlock = ^ {
+//        [self.popoverWindow.parentWindow removeChildWindow:self.popoverWindow];
+//        [self.popoverWindow close];
+//        self.popoverWindow.contentView = nil;
+//        self.animating = NO;
+//        
+//        if (self.didCloseBlock != nil)
+//            self.didCloseBlock(self);
+//        
+//        self.contentViewController.view.frame = CGRectMake(self.contentViewController.view.frame.origin.x, self.contentViewController.view.frame.origin.y, self.originalViewSize.width, self.originalViewSize.height);
+//    };
     
     self.popoverWindow.animations = [NSDictionary dictionaryWithObject:fadeOutAnimation forKey:@"alphaValue"];
     self.animating = YES;
