@@ -231,7 +231,7 @@ static NSTimeInterval const RBLPopoverDefaultFadeoutDuration = 0.3;
 		fadeInAnimation.duration = 0.3;
 		fadeInAnimation.rbl_completionBlock = postDisplayBlock;
 		
-		self.popoverWindow.animations = [NSDictionary dictionaryWithObject:fadeInAnimation forKey:@"alphaValue"];
+		self.popoverWindow.animations = @{@"alphaValue": fadeInAnimation};
 		self.animating = YES;
 		[self.popoverWindow.animator setAlphaValue:1.0];
 	} else {
