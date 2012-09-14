@@ -224,8 +224,7 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 		self.animating = NO;
         //[self.contentViewController viewDidAppear:YES];
         
-        if (self.didShowBlock)
-            self.didShowBlock(self);
+        if (self.didShowBlock) self.didShowBlock(self);
 	};
 	
 	if (self.animates) {
