@@ -62,9 +62,20 @@ typedef void (^RBLPopoverDelegateBlock)(RBLPopover *popover);
 // Whether the popover is currently visible.
 @property (nonatomic, readonly, getter = isShown) BOOL shown;
 
+// Called before the popover is closed.
 @property (nonatomic, copy) RBLPopoverDelegateBlock willCloseBlock;
+
+// Called after the close has completed.
+// Note that if the close is animated this block will be called _after_ the
+// animation has successfully completed.
 @property (nonatomic, copy) RBLPopoverDelegateBlock didCloseBlock;
+
+// Called before the popover is opened.
 @property (nonatomic, copy) RBLPopoverDelegateBlock willShowBlock;
+
+// Called after the block has opened.
+// Note that if the open is animated this block will be called _after_ the
+// animation has successfully completed.
 @property (nonatomic, copy) RBLPopoverDelegateBlock didShowBlock;
 
 // Designated initialiser.
