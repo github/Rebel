@@ -16,7 +16,7 @@ static void const *RBLCAAnimationCompletionBlockAssociatedObjectKey = @"RBLCAAni
 
 - (void)setRbl_completionBlock:(void(^)(void))block {
 	self.delegate = self;
-	objc_setAssociatedObject(self, &RBLCAAnimationCompletionBlockAssociatedObjectKey, block, OBJC_ASSOCIATION_COPY);
+	objc_setAssociatedObject(self, &RBLCAAnimationCompletionBlockAssociatedObjectKey, block, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
 - (void(^)(void))rbl_completionBlock {
