@@ -380,7 +380,6 @@
 		D09AE4D315C5F45200ECAD10 = {
 			isa = PBXGroup;
 			children = (
-				306A81EC1601F44200BF45F3 /* QuartzCore.framework */,
 				D09AE4E815C5F45200ECAD10 /* Rebel */,
 				D09AE4FE15C5F45300ECAD10 /* RebelTests */,
 				D09AE4E115C5F45200ECAD10 /* Frameworks */,
@@ -404,6 +403,7 @@
 				D08BB2EE15CB307D00CC9868 /* Expecta.xcodeproj */,
 				D08BB2F115CB307D00CC9868 /* Specta.xcodeproj */,
 				D06AD2FC15C636EF00A73D8E /* ReactiveCocoa.xcodeproj */,
+				306A81EC1601F44200BF45F3 /* QuartzCore.framework */,
 				D09AE4E215C5F45200ECAD10 /* Cocoa.framework */,
 				D09AE4F815C5F45300ECAD10 /* SenTestingKit.framework */,
 				D09AE4E415C5F45200ECAD10 /* Other Frameworks */,
