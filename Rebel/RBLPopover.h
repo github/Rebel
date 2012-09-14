@@ -34,13 +34,33 @@ typedef void (^RBLPopoverDelegateBlock)(RBLPopover *popover);
 
 @interface RBLPopover : NSResponder
 
+// The view controller providing the view displayed within the popover.
 @property (nonatomic, strong) NSViewController *contentViewController;
-@property (nonatomic, strong) Class backgroundViewClass; //Must be a subclass of RBLPopoverBackgroundView
-@property (nonatomic) CGSize contentSize; //CGSizeZero uses the size of the view on contentViewController
+
+// The class of which an instance is created which sits behind the
+// `contentViewController`'s view. This is useful for customising the appearance
+// of the popover.
+// Note that this must be a subclass of `RBLPopoverBackgroundView`.
+@property (nonatomic, strong) Class backgroundViewClass;
+
+// The size that, when displayed, the popover's content should be.
+// Passing `CGSizeZero` uses the size of the `contentViewController`'s view.
+@property (nonatomic) CGSize contentSize;
+
+// Whether the next open/close of the popover should be animated.
+// Note that this property is checked just before the animation is performed.
+// Therefore it is possible to animate the showing of the popover but hide the
+// closing and vice versa.
 @property (nonatomic) BOOL animates;
+
+// How the popover should respond to user events, in regard to automatically
+// closing the popover.
+// See the definition of `RBLPopoverViewControllerBehavior` for more
+// information.
 @property (nonatomic) RBLPopoverViewControllerBehavior behavior;
+
+// Whether the popover is currently visible.
 @property (nonatomic, readonly, getter = isShown) BOOL shown;
-@property (nonatomic, readonly) CGRect positioningRect;
 
 @property (nonatomic, copy) RBLPopoverDelegateBlock willCloseBlock;
 @property (nonatomic, copy) RBLPopoverDelegateBlock didCloseBlock;
