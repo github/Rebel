@@ -23,8 +23,7 @@ NSString *RBLCAAnimationCompletionBlockAssociatedObjectKey = @"RBLCAAnimationCom
 	return objc_getAssociatedObject(self, &RBLCAAnimationCompletionBlockAssociatedObjectKey);
 }
 
-- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
-{
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
 	if (flag && self.rbl_completionBlock != nil)
 		self.rbl_completionBlock();
 }
