@@ -43,11 +43,22 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 
 @interface RBLPopover ()
 
+// The window we are using to display the popover.
 @property (nonatomic, strong) NSWindow *popoverWindow;
+
+// The identifier for the event monitor we are using to watch for mouse clicks
+// outisde of the popover.
+// We are not responsible for it's memory management.
 @property (nonatomic, unsafe_unretained) id transientEventMonitor;
+
+// Whether the popover is currently animating, either in or out.
 @property (nonatomic, getter = isAnimating) BOOL animating;
+
+// The size the content view was before the popover was shown.
 @property (nonatomic) CGSize originalViewSize;
 
+// Correctly removes our event monitor watching for mouse clicks external to the
+// popover.
 - (void)removeEventMonitor;
 
 @end
