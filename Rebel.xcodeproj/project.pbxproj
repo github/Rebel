@@ -34,6 +34,9 @@
 		D09AE4FA15C5F45300ECAD10 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D09AE4E215C5F45200ECAD10 /* Cocoa.framework */; };
 		D09AE4FD15C5F45300ECAD10 /* Rebel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D09AE4DF15C5F45200ECAD10 /* Rebel.framework */; };
 		D09AE50315C5F45300ECAD10 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D09AE50115C5F45300ECAD10 /* InfoPlist.strings */; };
+		D0E91C581603CC7600D23E93 /* RBLClipView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E91C561603CC7600D23E93 /* RBLClipView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D0E91C591603CC7600D23E93 /* RBLClipView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E91C571603CC7600D23E93 /* RBLClipView.m */; };
+		D0E91C5B1603CDC300D23E93 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E91C5A1603CDC300D23E93 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -196,6 +199,9 @@
 		D09AE4F815C5F45300ECAD10 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		D09AE50015C5F45300ECAD10 /* RebelTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RebelTests-Info.plist"; sourceTree = "<group>"; };
 		D09AE50215C5F45300ECAD10 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D0E91C561603CC7600D23E93 /* RBLClipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBLClipView.h; sourceTree = "<group>"; };
+		D0E91C571603CC7600D23E93 /* RBLClipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBLClipView.m; sourceTree = "<group>"; };
+		D0E91C5A1603CDC300D23E93 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +209,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0E91C5B1603CDC300D23E93 /* QuartzCore.framework in Frameworks */,
 				D06AD30F15C6370700A73D8E /* ReactiveCocoa.framework in Frameworks */,
 				D09AE4E315C5F45200ECAD10 /* Cocoa.framework in Frameworks */,
 			);
@@ -236,6 +243,8 @@
 		D0723FBD15C5F9CD004DBDC7 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				D0E91C561603CC7600D23E93 /* RBLClipView.h */,
+				D0E91C571603CC7600D23E93 /* RBLClipView.m */,
 				D0723FE115C616AF004DBDC7 /* RBLResizableImage.h */,
 				D0723FE215C616AF004DBDC7 /* RBLResizableImage.m */,
 				D0723FBE15C5F9D8004DBDC7 /* RBLView.h */,
@@ -385,6 +394,7 @@
 				D06AD2FC15C636EF00A73D8E /* ReactiveCocoa.xcodeproj */,
 				D09AE4E215C5F45200ECAD10 /* Cocoa.framework */,
 				D09AE4F815C5F45300ECAD10 /* SenTestingKit.framework */,
+				D0E91C5A1603CDC300D23E93 /* QuartzCore.framework */,
 				D09AE4E415C5F45200ECAD10 /* Other Frameworks */,
 			);
 			name = Frameworks;
@@ -454,6 +464,7 @@
 				D0723FE315C616AF004DBDC7 /* RBLResizableImage.h in Headers */,
 				D04CBFC815F6D87B004A5BCC /* NSView+RBLAnimationAdditions.h in Headers */,
 				889E5E0F15FFDAE0007F2445 /* RBLViewModel.h in Headers */,
+				D0E91C581603CC7600D23E93 /* RBLClipView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -668,6 +679,7 @@
 				D0410EAC15C61895003A3203 /* NSTextView+RBLAntialiasingAdditions.m in Sources */,
 				D04CBFC915F6D87B004A5BCC /* NSView+RBLAnimationAdditions.m in Sources */,
 				889E5E1015FFDAE0007F2445 /* RBLViewModel.m in Sources */,
+				D0E91C591603CC7600D23E93 /* RBLClipView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
