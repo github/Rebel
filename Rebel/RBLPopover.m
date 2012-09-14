@@ -183,7 +183,7 @@ static NSTimeInterval const RBLPopoverDefaultFadeoutDuration = 0.3;
         
         NSUInteger attemptCount = 0;
         while (!checkPopoverSizeForScreenWithPopoverEdge(popoverEdge)) {
-            if (attemptCount > 4) {
+            if (attemptCount >= 4) {
 				popoverEdge = preferredEdge;
 				return fitRectToScreen(popoverRectForEdge(popoverEdge));
 				break;
