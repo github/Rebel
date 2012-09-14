@@ -43,7 +43,7 @@ static NSTimeInterval const RBLPopoverDefaultFadeoutDuration = 0.3;
 
 @property (nonatomic, strong) NSWindow *popoverWindow;
 @property (nonatomic, unsafe_unretained) id transientEventMonitor;
-@property (nonatomic) BOOL animating;
+@property (nonatomic, getter = isAnimating) BOOL animating;
 @property (nonatomic) CGSize originalViewSize;
 
 - (void)removeEventMonitor;
