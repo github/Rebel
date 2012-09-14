@@ -35,7 +35,7 @@
 
 //***************************************************************************
 
-static NSTimeInterval const RBLPopoverDefaultFadeoutDuration = 0.3;
+static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 
 //***************************************************************************
 
@@ -228,7 +228,7 @@ static NSTimeInterval const RBLPopoverDefaultFadeoutDuration = 0.3;
 	
 	if (self.animates) {
 		CABasicAnimation *fadeInAnimation = [CABasicAnimation animationWithKeyPath:@"alphaValue"];
-		fadeInAnimation.duration = 0.3;
+		fadeInAnimation.duration = RBLPopoverDefaultFadeDuration;
 		fadeInAnimation.rbl_completionBlock = postDisplayBlock;
 		
 		self.popoverWindow.animations = @{@"alphaValue": fadeInAnimation};
@@ -243,7 +243,7 @@ static NSTimeInterval const RBLPopoverDefaultFadeoutDuration = 0.3;
 #pragma mark Closing
 
 - (void)close {
-    [self closeWithFadeoutDuration:RBLPopoverDefaultFadeoutDuration];
+    [self closeWithFadeoutDuration:RBLPopoverDefaultFadeDuration];
 }
 
 - (void)closeWithFadeoutDuration:(NSTimeInterval)duration {
