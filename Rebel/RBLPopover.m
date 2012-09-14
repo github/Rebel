@@ -294,9 +294,9 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 
 //***************************************************************************
 
-CGFloat const RBLPopoverBackgroundViewBorderRadius = 5.0;
-CGFloat const RBLPopoverBackgroundViewArrowHeight = 17.0;
-CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
+static CGFloat const RBLPopoverBackgroundViewBorderRadius = 5.0;
+static CGFloat const RBLPopoverBackgroundViewArrowHeight = 17.0;
+static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 
 //***************************************************************************
 
