@@ -446,8 +446,8 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
     
 	_popoverEdge = popoverEdge;
 	_screenOriginRect = originScreenRect;
-	_strokeColor = [NSColor blackColor];
-	_fillColor = [NSColor whiteColor];
+	_strokeColor = NSColor.blackColor;
+	_fillColor = NSColor.whiteColor;
 	
 	return self;
 }
