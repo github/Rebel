@@ -24,8 +24,7 @@ static void const *RBLCAAnimationCompletionBlockAssociatedObjectKey = @"RBLCAAni
 }
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
-	if (flag && self.rbl_completionBlock != nil)
-		self.rbl_completionBlock();
+	if (flag && self.rbl_completionBlock != nil) self.rbl_completionBlock();
 }
 
 @end
