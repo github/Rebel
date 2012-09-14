@@ -29,7 +29,7 @@
 
 @interface RBLPopoverWindowContentView : NSView
 
-@property (nonatomic, unsafe_unretained) CGRectEdge arrowEdge;
+@property (nonatomic) CGRectEdge arrowEdge;
 
 @end
 
