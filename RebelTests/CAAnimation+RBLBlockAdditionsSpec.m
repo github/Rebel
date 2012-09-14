@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 GitHub. All rights reserved.
 //
 
-SpecBegin(CAAnimationRBLBlockAdditions);
+SpecBegin(CAAnimationRBLBlockAdditions)
 
 __block CAAnimation *animation = nil;
 __block BOOL completionExecuted = NO;
@@ -23,13 +23,13 @@ before(^{
 
 it(@"Should have set a completion block", ^ {
 	expect(animation.rbl_completionBlock).toNot.beNil();
-	expect(animation.rbl_completionBlock == completionBlock).to.beTruthy();
+	expect(animation.rbl_completionBlock).to.equal(completionBlock);
 	if (animation.rbl_completionBlock != nil) animation.rbl_completionBlock();
 	expect(completionExecuted).to.beTruthy();
 });
 
 it(@"Should have set itself has a delegate", ^{
-	expect(animation.delegate == animation).to.beTruthy();
+	expect(animation.delegate).to.equal(animation);
 });
 
 SpecEnd
