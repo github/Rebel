@@ -14,12 +14,12 @@ NSString *RBLCAAnimationCompletionBlockAssociatedObjectKey = @"RBLCAAnimationCom
 
 @implementation CAAnimation (RBLBlockAdditions)
 
-- (void)setRbl_completionBlock:(void(^)())block {
+- (void)setRbl_completionBlock:(void(^)(void))block {
 	self.delegate = self;
 	objc_setAssociatedObject(self, &RBLCAAnimationCompletionBlockAssociatedObjectKey, block, OBJC_ASSOCIATION_COPY);
 }
 
-- (void(^)())rbl_completionBlock {
+- (void(^)(void))rbl_completionBlock {
 	return objc_getAssociatedObject(self, &RBLCAAnimationCompletionBlockAssociatedObjectKey);
 }
 
