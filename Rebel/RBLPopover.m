@@ -35,7 +35,7 @@
 
 //***************************************************************************
 
-NSTimeInterval const RBLPopoverDefaultFadeoutDuration = 0.3;
+static NSTimeInterval const RBLPopoverDefaultFadeoutDuration = 0.3;
 
 //***************************************************************************
 
