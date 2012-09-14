@@ -522,7 +522,7 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 
 - (id)initWithFrame:(NSRect)frameRect {
     self = [super initWithFrame:frameRect];
-    if(self == nil) return nil;
+    if (self == nil) return nil;
     
 	_arrowEdge = CGRectMinYEdge;
 	self.autoresizingMask = (NSViewWidthSizable | NSViewHeightSizable);
