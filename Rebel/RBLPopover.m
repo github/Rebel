@@ -334,6 +334,7 @@ CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
             returnFrame.origin.y += RBLPopoverBackgroundViewArrowHeight;
             break;
         default:
+			NSAssert(NO, @"Failed to pass in a valid CGRectEdge");
             break;
     }
     
