@@ -90,7 +90,7 @@ static NSTimeInterval const RBLPopoverDefaultFadeoutDuration = 0.3;
 			[self removeEventMonitor];
 		}
 		
-        self.transientEventMonitor = [NSEvent addLocalMonitorForEventsMatchingMask:(NSLeftMouseDownMask | NSRightMouseDownMask | NSKeyUpMask) handler: ^ (NSEvent *event) {
+        self.transientEventMonitor = [NSEvent addLocalMonitorForEventsMatchingMask:(NSLeftMouseDownMask | NSRightMouseDownMask | NSKeyUpMask) handler: ^(NSEvent *event) {
             if (self.popoverWindow == nil) return event;
 			
 			static NSUInteger escapeKey = 53;
