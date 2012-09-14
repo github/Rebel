@@ -12,6 +12,18 @@
 
 @class RBLPopover;
 
+// Defines the different types of behavior of an `RBLPopover`
+//
+// RBLPopoverViewControllerBehaviorApplicationDefined - The application decides
+//                                                      when the popover should
+//                                                      open and close, by doing
+//                                                      so manually.
+// RBLPopoverViewControllerBehaviorTransient          - If there is a mouse
+//                                                      click anywhere other
+//                                                      than in the popover the
+//                                                      popover is closed.
+// RBLPopoverViewControllerBehaviorSemiTransient      - Unsupported, here for
+//                                                      forwards compatibility.
 typedef enum : NSUInteger {
 	RBLPopoverViewControllerBehaviorApplicationDefined = 0,
     RBLPopoverViewControllerBehaviorTransient = 1,
@@ -30,10 +42,8 @@ typedef void (^RBLPopoverDelegateBlock)(RBLPopover *popover);
 @property (nonatomic, readonly, getter = isShown) BOOL shown;
 @property (nonatomic, readonly) CGRect positioningRect;
 
-//Block callbacks
 @property (nonatomic, copy) RBLPopoverDelegateBlock willCloseBlock;
 @property (nonatomic, copy) RBLPopoverDelegateBlock didCloseBlock;
-
 @property (nonatomic, copy) RBLPopoverDelegateBlock willShowBlock;
 @property (nonatomic, copy) RBLPopoverDelegateBlock didShowBlock;
 
