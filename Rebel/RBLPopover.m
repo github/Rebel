@@ -61,7 +61,7 @@ NSTimeInterval const RBLPopoverDefaultFadeoutDuration = 0.3;
 	
     _contentViewController = viewController;
     _backgroundViewClass = RBLPopoverBackgroundView.class;
-	_behaviour = RBLPopoverViewControllerBehaviorApplicationDefined;
+	_behavior = RBLPopoverViewControllerBehaviorApplicationDefined;
 	_animates = YES;
 	
 	return self;
@@ -87,7 +87,7 @@ NSTimeInterval const RBLPopoverDefaultFadeoutDuration = 0.3;
     if (self.willShowBlock != nil)
         self.willShowBlock(self);
     
-    if (self.behaviour != RBLPopoverViewControllerBehaviorApplicationDefined) {
+    if (self.behavior != RBLPopoverViewControllerBehaviorApplicationDefined) {
 		if (self.transientEventMonitor != nil) {
 			[self removeEventMonitor];
 		}
@@ -97,7 +97,7 @@ NSTimeInterval const RBLPopoverDefaultFadeoutDuration = 0.3;
                 return event;
 			
 			static NSUInteger escapeKey = 53;
-			BOOL shouldClose = (event.type == NSLeftMouseDown || event.type == NSRightMouseDown ? (!NSPointInRect([NSEvent mouseLocation], self.popoverWindow.frame) && self.behaviour == RBLPopoverViewControllerBehaviorTransient) : event.keyCode == escapeKey);
+			BOOL shouldClose = (event.type == NSLeftMouseDown || event.type == NSRightMouseDown ? (!NSPointInRect([NSEvent mouseLocation], self.popoverWindow.frame) && self.behavior == RBLPopoverViewControllerBehaviorTransient) : event.keyCode == escapeKey);
             
             if (shouldClose) {
                 [self close];
@@ -147,7 +147,7 @@ NSTimeInterval const RBLPopoverDefaultFadeoutDuration = 0.3;
         return NSContainsRect(positioningView.window.screen.visibleFrame, popoverRect);
     };
     
-    //This is as ugly as sin… but it gets the job done. I couldn't think of a nice way to code this but still get the desired behaviour
+    //This is as ugly as sin… but it gets the job done. I couldn't think of a nice way to code this but still get the desired behavior
     __block CGRectEdge popoverEdge = preferredEdge;
     CGRect (^popoverRect)() = ^
     {

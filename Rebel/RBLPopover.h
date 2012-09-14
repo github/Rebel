@@ -26,7 +26,7 @@ typedef void (^RBLPopoverDelegateBlock)(RBLPopover *popover);
 @property (nonatomic, strong) Class backgroundViewClass; //Must be a subclass of RBLPopoverBackgroundView
 @property (nonatomic) CGSize contentSize; //CGSizeZero uses the size of the view on contentViewController
 @property (nonatomic) BOOL animates;
-@property (nonatomic) RBLPopoverViewControllerBehavior behaviour;
+@property (nonatomic) RBLPopoverViewControllerBehavior behavior;
 @property (nonatomic, readonly) BOOL shown;
 @property (nonatomic, readonly) CGRect positioningRect;
 
