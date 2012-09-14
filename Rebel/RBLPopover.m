@@ -54,7 +54,7 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 
 @implementation RBLPopover
 
-- (id)initWithContentViewController:(NSViewController *)viewController {
+- (instancetype)initWithContentViewController:(NSViewController *)viewController {
 	self = [super init];
 	if (self == nil)
 		return nil;
@@ -440,7 +440,7 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 }
 
 //originScreenRect is in the screen coordinate space
-- (id)initWithFrame:(CGRect)frame popoverEdge:(CGRectEdge)popoverEdge originScreenRect:(CGRect)originScreenRect {
+- (instancetype)initWithFrame:(CGRect)frame popoverEdge:(CGRectEdge)popoverEdge originScreenRect:(CGRect)originScreenRect {
 	self = [super initWithFrame:frame];
 	if (self == nil) return nil;
     

@@ -37,7 +37,7 @@ typedef void (^RBLPopoverDelegateBlock)(RBLPopover *popover);
 @property (nonatomic, copy) RBLPopoverDelegateBlock willShowBlock;
 @property (nonatomic, copy) RBLPopoverDelegateBlock didShowBlock;
 
-- (id)initWithContentViewController:(NSViewController *)viewController;
+- (instancetype)initWithContentViewController:(NSViewController *)viewController;
 
 - (void)showRelativeToRect:(CGRect)positioningRect ofView:(NSView *)positioningView preferredEdge:(CGRectEdge)preferredEdge;
 
@@ -53,7 +53,7 @@ typedef void (^RBLPopoverDelegateBlock)(RBLPopover *popover);
 + (CGRect)contentViewFrameForBackgroundFrame:(CGRect)frame popoverEdge:(CGRectEdge)popoverEdge;
 + (instancetype)backgroundViewForContentSize:(CGSize)contentSize popoverEdge:(CGRectEdge)popoverEdge originScreenRect:(CGRect)originScreenRect;
 
-- (id)initWithFrame:(CGRect)frame popoverEdge:(CGRectEdge)popoverEdge originScreenRect:(CGRect)originScreenRect;
+- (instancetype)initWithFrame:(CGRect)frame popoverEdge:(CGRectEdge)popoverEdge originScreenRect:(CGRect)originScreenRect;
 - (CGPathRef)newPopoverPathForEdge:(CGRectEdge)popoverEdge inFrame:(CGRect)frame; //override in subclasses to change the shape of the popover, but still use the default drawing.
 
 //Used in the default implementation
