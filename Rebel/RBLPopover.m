@@ -70,7 +70,7 @@ static NSTimeInterval const RBLPopoverDefaultFadeoutDuration = 0.3;
 #pragma mark -
 #pragma mark Derived Properties
 
-- (BOOL)shown {
+- (BOOL)isShown {
     return self.popoverWindow.isVisible;
 }
 
