@@ -545,7 +545,7 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 	}
 	
 	NSBezierPath *roundRectPath = [NSBezierPath bezierPathWithRoundedRect:targetRect xRadius:RBLPopoverBackgroundViewBorderRadius yRadius:RBLPopoverBackgroundViewBorderRadius];
-	[[NSColor whiteColor] set];
+	[NSColor.whiteColor set];
 	[roundRectPath fill];
     
     [NSGraphicsContext restoreGraphicsState];
