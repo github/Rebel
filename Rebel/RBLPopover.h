@@ -82,6 +82,8 @@ typedef void (^RBLPopoverDelegateBlock)(RBLPopover *popover);
 @property (nonatomic, copy) RBLPopoverDelegateBlock didShowBlock;
 
 // Designated initialiser.
+//
+// Returns a newly initialised `RBLPopover`.
 - (instancetype)initWithContentViewController:(NSViewController *)viewController;
 
 // Displays the popover
@@ -104,7 +106,7 @@ typedef void (^RBLPopoverDelegateBlock)(RBLPopover *popover);
 // Closes the popover with the given duration. If animates is set to NO the
 // popover closes immediately.
 //
-// duration - the duration of the fade animation.
+// duration - The duration of the fade animation.
 - (void)closeWithFadeoutDuration:(NSTimeInterval)duration;
 
 // Convenience method exposed for nib files.
@@ -114,15 +116,49 @@ typedef void (^RBLPopoverDelegateBlock)(RBLPopover *popover);
 
 @interface RBLPopoverBackgroundView : RBLView
 
+// Given a size of the content this should be overridden by subclasses to
+// describe how big the overall popover should be.
+//
+// contentSize - The size of the content contained within the popover.
+// popoverEdge - The edge that is adjacent to the `positioningRect`.
+//
+// Returns the overall size of the backgroundView as a `CGSize`.
 + (CGSize)sizeForBackgroundViewWithContentSize:(CGSize)contentSize popoverEdge:(CGRectEdge)popoverEdge;
-+ (CGRect)contentViewFrameForBackgroundFrame:(CGRect)frame popoverEdge:(CGRectEdge)popoverEdge;
-+ (instancetype)backgroundViewForContentSize:(CGSize)contentSize popoverEdge:(CGRectEdge)popoverEdge originScreenRect:(CGRect)originScreenRect;
 
+// Given a frame for the background this should be overridden by subclasses to
+// describe where the content should fit within the popover.
+//
+// frame            - The frame of the `backgroundView`.
+// popoverEdge      - The edge that is adjacent to the `positioningRect`.
+//
+// Returns the frame of the content relative to the given background view frame
+// as a `CGRect`.
++ (CGRect)contentViewFrameForBackgroundFrame:(CGRect)frame popoverEdge:(CGRectEdge)popoverEdge;
+
+// The designated initialiser.
+//
+// frame            - The frame of the background view.
+// popoverEdge      - The edge that is adjacent to the `positioningRect`.
+// originScreenRect - The frame of the screen which the popover has originated
+//                    on.
+//
+// Returns a newly initialised instance of `RBLPopoverBackgroundView`.
 - (instancetype)initWithFrame:(CGRect)frame popoverEdge:(CGRectEdge)popoverEdge originScreenRect:(CGRect)originScreenRect;
+
+// The outline shape of a popover.
+// This can be overridden by subclasses if they wish to change the shape of the
+// popover but still use the default drawing of a simple stroke and fill.
+//
+// popoverEdge - The edge that is adjacent to the `positioningRect`.
+// frame       - The frame of the background view.
+//
+// Returns a `CGPathRef` of the outline of the background view.
 - (CGPathRef)newPopoverPathForEdge:(CGRectEdge)popoverEdge inFrame:(CGRect)frame; //override in subclasses to change the shape of the popover, but still use the default drawing.
 
-//Used in the default implementation
+// The color used to stroke the outline of the background view.
 @property (nonatomic, strong) NSColor *strokeColor;
+
+// The color used to fill the shape of the background view.
 @property (nonatomic, strong) NSColor *fillColor;
 
 @end
