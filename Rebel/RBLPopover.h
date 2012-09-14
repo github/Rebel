@@ -27,7 +27,7 @@ typedef void (^RBLPopoverDelegateBlock)(RBLPopover *popover);
 @property (nonatomic) CGSize contentSize; //CGSizeZero uses the size of the view on contentViewController
 @property (nonatomic) BOOL animates;
 @property (nonatomic) RBLPopoverViewControllerBehavior behavior;
-@property (nonatomic, readonly) BOOL shown;
+@property (nonatomic, readonly, getter = isShown) BOOL shown;
 @property (nonatomic, readonly) CGRect positioningRect;
 
 //Block callbacks
