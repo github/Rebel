@@ -12,14 +12,11 @@
 
 @class RBLPopover;
 
-enum _RBLPopoverViewControllerBehaviour
-{
-    RBLPopoverViewControllerBehaviourApplicationDefined = 0,
-    RBLPopoverViewControllerBehaviourTransient = 1,
-    RBLPopoverViewControllerBehaviourSemiTransient = 2 //Currently not supported, here for forwards compatibility purposes
-};
-
-typedef NSUInteger RBLPopoverViewControllerBehaviour;
+typedef enum : NSUInteger {
+	RBLPopoverViewControllerBehaviorApplicationDefined = 0,
+    RBLPopoverViewControllerBehaviorTransient = 1,
+    RBLPopoverViewControllerBehaviorSemiTransient = 2 //Currently not supported, here for forwards compatibility purposes
+} RBLPopoverViewControllerBehavior;
 
 typedef void (^RBLPopoverDelegateBlock)(RBLPopover *popover);
 
@@ -29,7 +26,7 @@ typedef void (^RBLPopoverDelegateBlock)(RBLPopover *popover);
 @property (nonatomic, strong) Class backgroundViewClass; //Must be a subclass of RBLPopoverBackgroundView
 @property (nonatomic) CGSize contentSize; //CGSizeZero uses the size of the view on contentViewController
 @property (nonatomic) BOOL animates;
-@property (nonatomic) RBLPopoverViewControllerBehaviour behaviour;
+@property (nonatomic) RBLPopoverViewControllerBehavior behaviour;
 @property (nonatomic, readonly) BOOL shown;
 @property (nonatomic, readonly) CGRect positioningRect;
 

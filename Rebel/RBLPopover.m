@@ -61,7 +61,7 @@ NSTimeInterval const RBLPopoverDefaultFadeoutDuration = 0.3;
 	
     _contentViewController = viewController;
     _backgroundViewClass = RBLPopoverBackgroundView.class;
-	_behaviour = RBLPopoverViewControllerBehaviourApplicationDefined;
+	_behaviour = RBLPopoverViewControllerBehaviorApplicationDefined;
 	_animates = YES;
 	
 	return self;
@@ -87,7 +87,7 @@ NSTimeInterval const RBLPopoverDefaultFadeoutDuration = 0.3;
     if (self.willShowBlock != nil)
         self.willShowBlock(self);
     
-    if (self.behaviour != RBLPopoverViewControllerBehaviourApplicationDefined) {
+    if (self.behaviour != RBLPopoverViewControllerBehaviorApplicationDefined) {
 		if (self.transientEventMonitor != nil) {
 			[self removeEventMonitor];
 		}
@@ -97,7 +97,7 @@ NSTimeInterval const RBLPopoverDefaultFadeoutDuration = 0.3;
                 return event;
 			
 			static NSUInteger escapeKey = 53;
-			BOOL shouldClose = (event.type == NSLeftMouseDown || event.type == NSRightMouseDown ? (!NSPointInRect([NSEvent mouseLocation], self.popoverWindow.frame) && self.behaviour == RBLPopoverViewControllerBehaviourTransient) : event.keyCode == escapeKey);
+			BOOL shouldClose = (event.type == NSLeftMouseDown || event.type == NSRightMouseDown ? (!NSPointInRect([NSEvent mouseLocation], self.popoverWindow.frame) && self.behaviour == RBLPopoverViewControllerBehaviorTransient) : event.keyCode == escapeKey);
             
             if (shouldClose) {
                 [self close];
