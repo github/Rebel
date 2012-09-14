@@ -32,6 +32,9 @@ typedef enum : NSUInteger {
 
 typedef void (^RBLPopoverDelegateBlock)(RBLPopover *popover);
 
+// A popover.
+// This aims to replicate the API of `NSPopover`, within reason, whilst offering
+// more flexibility when it comes to customising of it's appearance.
 @interface RBLPopover : NSResponder
 
 // The view controller providing the view displayed within the popover.
