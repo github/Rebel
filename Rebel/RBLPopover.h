@@ -24,6 +24,9 @@
 //                                                      popover is closed.
 // RBLPopoverViewControllerBehaviorSemiTransient      - Unsupported, here for
 //                                                      forwards compatibility.
+//                                                      Any use of this degrades
+//                                                      gracefully into
+//                                                      transient behavior.
 typedef enum : NSUInteger {
 	RBLPopoverViewControllerBehaviorApplicationDefined = 0,
     RBLPopoverViewControllerBehaviorTransient = 1,
