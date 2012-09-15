@@ -99,9 +99,7 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
     if (self.willShowBlock != nil) self.willShowBlock(self);
     
     if (self.behavior != RBLPopoverViewControllerBehaviorApplicationDefined) {
-		if (self.transientEventMonitor != nil) {
-			[self removeEventMonitor];
-		}
+		[self removeEventMonitor];
 		
         self.transientEventMonitor = [NSEvent addLocalMonitorForEventsMatchingMask:(NSLeftMouseDownMask | NSRightMouseDownMask | NSKeyUpMask) handler: ^(NSEvent *event) {
             if (self.popoverWindow == nil) return event;
@@ -260,9 +258,7 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 - (void)closeWithFadeoutDuration:(NSTimeInterval)duration {
     if (self.animating || !self.shown) return;
     
-    if (self.transientEventMonitor != nil) {
-		[self removeEventMonitor];
-	}
+    [self removeEventMonitor];
     
     if (self.willCloseBlock != nil) self.willCloseBlock(self);
 	
@@ -297,6 +293,7 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 #pragma mark Event Monitor
 
 - (void)removeEventMonitor {
+	if (self.transientEventMonitor == nil) return;
 	[NSEvent removeMonitor:self.transientEventMonitor];
 	self.transientEventMonitor = nil;
 }
