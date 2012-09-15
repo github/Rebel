@@ -451,7 +451,6 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 	
 }
 
-//originScreenRect is in the screen coordinate space
 - (instancetype)initWithFrame:(CGRect)frame popoverEdge:(CGRectEdge)popoverEdge originScreenRect:(CGRect)originScreenRect {
 	self = [super initWithFrame:frame];
 	if (self == nil) return nil;
