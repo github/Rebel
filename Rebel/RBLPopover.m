@@ -243,7 +243,7 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 		fadeInAnimation.duration = RBLPopoverDefaultFadeDuration;
 		fadeInAnimation.rbl_completionBlock = postDisplayBlock;
 		
-		self.popoverWindow.animations = @{@"alphaValue": fadeInAnimation};
+		self.popoverWindow.animations = @{ @"alphaValue": fadeInAnimation };
 		self.animating = YES;
 		[self.popoverWindow.animator setAlphaValue:1.0];
 	} else {
@@ -282,7 +282,7 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 		fadeOutAnimation.duration = duration;
 		fadeOutAnimation.rbl_completionBlock = windowTeardown;
 		
-		self.popoverWindow.animations = @{@"alphaValue": fadeOutAnimation};
+		self.popoverWindow.animations = @{ @"alphaValue": fadeOutAnimation };
 		self.animating = YES;
 		[self.popoverWindow.animator setAlphaValue:0.0];
 	} else {
