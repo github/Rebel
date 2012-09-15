@@ -72,8 +72,8 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 	if (self == nil)
 		return nil;
 	
-    _contentViewController = viewController;
-    _backgroundViewClass = RBLPopoverBackgroundView.class;
+	_contentViewController = viewController;
+	_backgroundViewClass = RBLPopoverBackgroundView.class;
 	_behavior = RBLPopoverViewControllerBehaviorApplicationDefined;
 	_animates = YES;
 	
