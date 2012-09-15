@@ -29,8 +29,8 @@
 //                                                      transient behavior.
 typedef enum : NSUInteger {
 	RBLPopoverViewControllerBehaviorApplicationDefined = 0,
-    RBLPopoverViewControllerBehaviorTransient = 1,
-    RBLPopoverViewControllerBehaviorSemiTransient = 2 //Currently not supported, here for forwards compatibility purposes
+	RBLPopoverViewControllerBehaviorTransient = 1,
+	RBLPopoverViewControllerBehaviorSemiTransient = 2 //Currently not supported, here for forwards compatibility purposes
 } RBLPopoverViewControllerBehavior;
 
 typedef void (^RBLPopoverDelegateBlock)(RBLPopover *popover);
