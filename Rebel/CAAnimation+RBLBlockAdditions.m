@@ -10,17 +10,17 @@
 
 #import <objc/runtime.h>
 
-static void const *RBLCAAnimationCompletionBlockAssociatedObjectKey = @"RBLCAAnimationCompletionBlockAssociatedObjectKey";
+static void const *RBLCAAnimationCompletionBlockAssociatedObjectKey = &"RBLCAAnimationCompletionBlockAssociatedObjectKey";
 
 @implementation CAAnimation (RBLBlockAdditions)
 
 - (void)setRbl_completionBlock:(void(^)(BOOL))block {
 	self.delegate = self;
-	objc_setAssociatedObject(self, &RBLCAAnimationCompletionBlockAssociatedObjectKey, block, OBJC_ASSOCIATION_COPY_NONATOMIC);
+	objc_setAssociatedObject(self, RBLCAAnimationCompletionBlockAssociatedObjectKey, block, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
 - (void(^)(BOOL))rbl_completionBlock {
-	return objc_getAssociatedObject(self, &RBLCAAnimationCompletionBlockAssociatedObjectKey);
+	return objc_getAssociatedObject(self, RBLCAAnimationCompletionBlockAssociatedObjectKey);
 }
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
