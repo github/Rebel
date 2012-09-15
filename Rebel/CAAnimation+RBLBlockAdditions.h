@@ -11,8 +11,9 @@
 @interface CAAnimation (RBLBlockAdditions)
 
 // A block called on successful completion of the animation.
+// This sets the delegate of the animation to be itself.
 //
-// This sets the delegate of the animation.
-@property (nonatomic, copy) void (^rbl_completionBlock)(void);
+// finished - Whether the animation had finished when it stopped.
+@property (nonatomic, copy) void (^rbl_completionBlock)(BOOL finished);
 
 @end

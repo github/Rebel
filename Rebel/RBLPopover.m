@@ -228,7 +228,7 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 	[self.popoverWindow makeKeyAndOrderFront:self];
 	[backgroundView updateMaskLayer];
     
-	void (^postDisplayBlock)() = ^{
+	void (^postDisplayBlock)(BOOL) = ^(BOOL finished) {
 		self.animating = NO;
         //[self.contentViewController viewDidAppear:YES];
         
@@ -244,7 +244,7 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 		self.animating = YES;
 		[self.popoverWindow.animator setAlphaValue:1.0];
 	} else {
-		postDisplayBlock();
+		postDisplayBlock(YES);
 	}
 }
 
@@ -262,7 +262,7 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
     
     if (self.willCloseBlock != nil) self.willCloseBlock(self);
 	
-	void (^windowTeardown)() = ^{
+	void (^windowTeardown)(BOOL) = ^(BOOL finished) {
 		[self.popoverWindow.parentWindow removeChildWindow:self.popoverWindow];
 		[self.popoverWindow close];
 		self.animating = NO;
@@ -281,7 +281,7 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 		self.animating = YES;
 		[self.popoverWindow.animator setAlphaValue:0.0];
 	} else {
-		windowTeardown();
+		windowTeardown(YES);
 	}
 }
 

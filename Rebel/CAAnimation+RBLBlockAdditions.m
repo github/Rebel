@@ -14,17 +14,17 @@ static void const *RBLCAAnimationCompletionBlockAssociatedObjectKey = @"RBLCAAni
 
 @implementation CAAnimation (RBLBlockAdditions)
 
-- (void)setRbl_completionBlock:(void(^)(void))block {
+- (void)setRbl_completionBlock:(void(^)(BOOL))block {
 	self.delegate = self;
 	objc_setAssociatedObject(self, &RBLCAAnimationCompletionBlockAssociatedObjectKey, block, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
-- (void(^)(void))rbl_completionBlock {
+- (void(^)(BOOL))rbl_completionBlock {
 	return objc_getAssociatedObject(self, &RBLCAAnimationCompletionBlockAssociatedObjectKey);
 }
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
-	if (flag && self.rbl_completionBlock != nil) self.rbl_completionBlock();
+	if (self.rbl_completionBlock != nil) self.rbl_completionBlock(flag);
 }
 
 @end
