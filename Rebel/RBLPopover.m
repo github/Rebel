@@ -156,22 +156,22 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
     //This is as ugly as sin… but it gets the job done. I couldn't think of a nice way to code this but still get the desired behavior
     __block CGRectEdge popoverEdge = preferredEdge;
     CGRect (^popoverRect)() = ^{
-		CGRectEdge (^nextEdgeForEdge)(CGRectEdge) = ^(CGRectEdge currentEdge)
+		CGRectEdge (^nextEdgeForEdge)(CGRectEdge) = ^CGRectEdge (CGRectEdge currentEdge)
         {
 			if (currentEdge == CGRectMaxXEdge) {
-				return (CGRectEdge)(preferredEdge == CGRectMinXEdge ? CGRectMaxYEdge : CGRectMinXEdge);
+				return (preferredEdge == CGRectMinXEdge ? CGRectMaxYEdge : CGRectMinXEdge);
 			} else if (currentEdge == CGRectMinXEdge) {
-				return (CGRectEdge)(preferredEdge == CGRectMaxXEdge ? CGRectMaxYEdge : CGRectMaxXEdge);
+				return (preferredEdge == CGRectMaxXEdge ? CGRectMaxYEdge : CGRectMaxXEdge);
 			} else if (currentEdge == CGRectMaxYEdge) {
-				return (CGRectEdge)(preferredEdge == CGRectMinYEdge ? CGRectMaxXEdge : CGRectMinYEdge);
+				return (preferredEdge == CGRectMinYEdge ? CGRectMaxXEdge : CGRectMinYEdge);
 			} else if (currentEdge == CGRectMinYEdge) {
-				return (CGRectEdge)(preferredEdge == CGRectMaxYEdge ? CGRectMaxXEdge : CGRectMaxYEdge);
+				return (preferredEdge == CGRectMaxYEdge ? CGRectMaxXEdge : CGRectMaxYEdge);
 			}
             
 			return currentEdge;
 		};
 		
-		CGRect (^fitRectToScreen)(CGRect) = ^(CGRect proposedRect) {
+		CGRect (^fitRectToScreen)(CGRect) = ^CGRect (CGRect proposedRect) {
 			NSRect screenRect = positioningView.window.screen.visibleFrame;
 			
 			if (proposedRect.origin.y < NSMinY(screenRect)) {
@@ -203,7 +203,7 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 			attemptCount ++;
 		}
 		
-		return (CGRect)popoverRectForEdge(popoverEdge);
+		return popoverRectForEdge(popoverEdge);
 	};
     
 	CGRect popoverScreenRect = popoverRect();
