@@ -12,6 +12,7 @@
 #import "NSColor+RBLCGColorAdditions.h"
 
 #import <QuartzCore/QuartzCore.h>
+#import "EXTKeyPathCoding.h"
 
 //***************************************************************************
 
@@ -236,11 +237,11 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 	};
 	
 	if (self.animates) {
-		CABasicAnimation *fadeInAnimation = [CABasicAnimation animationWithKeyPath:@"alphaValue"];
+		CABasicAnimation *fadeInAnimation = [CABasicAnimation animationWithKeyPath:@keypath(@"alphaValue")];
 		fadeInAnimation.duration = RBLPopoverDefaultFadeDuration;
 		fadeInAnimation.rbl_completionBlock = postDisplayBlock;
 		
-		self.popoverWindow.animations = @{ @"alphaValue": fadeInAnimation };
+		self.popoverWindow.animations = @{ @keypath(@"alphaValue"): fadeInAnimation };
 		self.animating = YES;
 		[self.popoverWindow.animator setAlphaValue:1.0];
 	} else {
@@ -273,11 +274,11 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 	};
 	
 	if (self.animates) {
-		CABasicAnimation *fadeOutAnimation = [CABasicAnimation animationWithKeyPath:@"alphaValue"];
+		CABasicAnimation *fadeOutAnimation = [CABasicAnimation animationWithKeyPath:@keypath(@"alphaValue")];
 		fadeOutAnimation.duration = duration;
 		fadeOutAnimation.rbl_completionBlock = windowTeardown;
 		
-		self.popoverWindow.animations = @{ @"alphaValue": fadeOutAnimation };
+		self.popoverWindow.animations = @{ @keypath(@"alphaValue"): fadeOutAnimation };
 		self.animating = YES;
 		[self.popoverWindow.animator setAlphaValue:0.0];
 	} else {
