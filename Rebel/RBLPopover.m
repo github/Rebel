@@ -95,9 +95,9 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 	
 	//TODO: Create RBLViewController with viewWillAppear
 	//[self.contentViewController viewWillAppear:YES]; //this will always be animated… in the current implementation
-    
+	
 	if (self.willShowBlock != nil) self.willShowBlock(self);
-    
+	
 	if (self.behavior != RBLPopoverViewControllerBehaviorApplicationDefined) {
 		[self removeEventMonitor];
 		
@@ -111,9 +111,9 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 			} else {
 				shouldClose = (event.keyCode == escapeKey);
 			}
-            
+			
 			if (shouldClose) [self close];
-            
+			
 			return event;
 		}];
 	}
@@ -121,12 +121,12 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 	if (CGRectEqualToRect(positioningRect, CGRectZero)) {
 		positioningRect = [positioningView bounds];
 	}
-    
+	
 	NSRect windowRelativeRect = [positioningView convertRect:positioningRect toView:nil];
 	CGRect screenPositioningRect = [positioningView.window convertRectToScreen:windowRelativeRect];
 	self.originalViewSize = self.contentViewController.view.frame.size;
 	CGSize contentViewSize = (CGSizeEqualToSize(self.contentSize, CGSizeZero) ? self.contentViewController.view.frame.size : self.contentSize);
-    
+	
 	CGRect (^popoverRectForEdge)(CGRectEdge) = ^(CGRectEdge popoverEdge) {
 		CGSize popoverSize = [self.backgroundViewClass sizeForBackgroundViewWithContentSize:contentViewSize popoverEdge:popoverEdge];
 		CGRect returnRect = NSMakeRect(0.0, 0.0, popoverSize.width, popoverSize.height);
@@ -154,13 +154,13 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 	BOOL (^checkPopoverSizeForScreenWithPopoverEdge)(CGRectEdge) = ^(CGRectEdge popoverEdge) {
 		CGRect popoverRect = popoverRectForEdge(popoverEdge);
 		return NSContainsRect(positioningView.window.screen.visibleFrame, popoverRect);
-    };
-    
-    //This is as ugly as sin… but it gets the job done. I couldn't think of a nice way to code this but still get the desired behavior
-    __block CGRectEdge popoverEdge = preferredEdge;
-    CGRect (^popoverRect)() = ^{
+	};
+	
+	//This is as ugly as sin… but it gets the job done. I couldn't think of a nice way to code this but still get the desired behavior
+	__block CGRectEdge popoverEdge = preferredEdge;
+	CGRect (^popoverRect)() = ^{
 		CGRectEdge (^nextEdgeForEdge)(CGRectEdge) = ^CGRectEdge (CGRectEdge currentEdge)
-        {
+		{
 			if (currentEdge == CGRectMaxXEdge) {
 				return (preferredEdge == CGRectMinXEdge ? CGRectMaxYEdge : CGRectMinXEdge);
 			} else if (currentEdge == CGRectMinXEdge) {
@@ -170,7 +170,7 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 			} else if (currentEdge == CGRectMinYEdge) {
 				return (preferredEdge == CGRectMaxYEdge ? CGRectMaxXEdge : CGRectMaxYEdge);
 			}
-            
+			
 			return currentEdge;
 		};
 		
@@ -201,17 +201,17 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 				return fitRectToScreen(popoverRectForEdge(popoverEdge));
 				break;
 			}
-            
+			
 			popoverEdge = nextEdgeForEdge(popoverEdge);
 			attemptCount ++;
 		}
 		
 		return popoverRectForEdge(popoverEdge);
 	};
-    
+	
 	CGRect popoverScreenRect = popoverRect();
 	RBLPopoverBackgroundView *backgroundView = [self.backgroundViewClass backgroundViewForContentSize:contentViewSize popoverEdge:popoverEdge originScreenRect:screenPositioningRect];
-    
+	
 	CGRect contentViewFrame = [self.backgroundViewClass contentViewFrameForBackgroundFrame:backgroundView.bounds popoverEdge:popoverEdge];
 	self.contentViewController.view.frame = contentViewFrame;
 	[backgroundView addSubview:self.contentViewController.view];
@@ -320,7 +320,7 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 	} else {
 		returnSize.height += RBLPopoverBackgroundViewArrowHeight;
 	}
-    
+	
 	returnSize.width ++;
 	returnSize.height ++;
 	
@@ -348,7 +348,7 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 			NSAssert(NO, @"Failed to pass in a valid CGRectEdge");
 			break;
 	}
-    
+	
 	return returnFrame;
 }
 
@@ -452,7 +452,7 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 - (instancetype)initWithFrame:(CGRect)frame popoverEdge:(CGRectEdge)popoverEdge originScreenRect:(CGRect)originScreenRect {
 	self = [super initWithFrame:frame];
 	if (self == nil) return nil;
-    
+	
 	_popoverEdge = popoverEdge;
 	_screenOriginRect = originScreenRect;
 	_strokeColor = NSColor.blackColor;
@@ -478,36 +478,36 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 
 - (void)updateMaskLayer {
 	CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
-    CGPathRef path = [self newPopoverPathForEdge:self.popoverEdge inFrame:self.bounds];
-    maskLayer.path = path;
-    maskLayer.fillColor = CGColorGetConstantColor(kCGColorBlack);
-    
-    CGPathRelease(path);
-    
-    self.layer.mask = maskLayer;
+	CGPathRef path = [self newPopoverPathForEdge:self.popoverEdge inFrame:self.bounds];
+	maskLayer.path = path;
+	maskLayer.fillColor = CGColorGetConstantColor(kCGColorBlack);
+	
+	CGPathRelease(path);
+	
+	self.layer.mask = maskLayer;
 	
 }
 
 - (CGRectEdge)arrowEdgeForPopoverEdge:(CGRectEdge)popoverEdge {
-    CGRectEdge arrowEdge = CGRectMinYEdge;
-    switch (popoverEdge) {
-        case CGRectMaxXEdge:
-            arrowEdge = CGRectMinXEdge;
-            break;
-        case CGRectMaxYEdge:
-            arrowEdge = CGRectMinYEdge;
-            break;
-        case CGRectMinXEdge:
-            arrowEdge = CGRectMaxXEdge;
-            break;
-        case CGRectMinYEdge:
-            arrowEdge = CGRectMaxYEdge;
-            break;
-        default:
-            break;
-    }
-    
-    return arrowEdge;
+	CGRectEdge arrowEdge = CGRectMinYEdge;
+	switch (popoverEdge) {
+		case CGRectMaxXEdge:
+			arrowEdge = CGRectMinXEdge;
+			break;
+		case CGRectMaxYEdge:
+			arrowEdge = CGRectMinYEdge;
+			break;
+		case CGRectMinXEdge:
+			arrowEdge = CGRectMaxXEdge;
+			break;
+		case CGRectMinYEdge:
+			arrowEdge = CGRectMaxYEdge;
+			break;
+		default:
+			break;
+	}
+	
+	return arrowEdge;
 }
 
 @end
@@ -518,21 +518,21 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 @implementation RBLPopoverWindowContentView
 
 - (id)initWithFrame:(NSRect)frameRect {
-    self = [super initWithFrame:frameRect];
-    if (self == nil) return nil;
-    
+	self = [super initWithFrame:frameRect];
+	if (self == nil) return nil;
+	
 	_arrowEdge = CGRectMinYEdge;
 	self.autoresizingMask = (NSViewWidthSizable | NSViewHeightSizable);
 	
-    return self;
+	return self;
 }
 
 - (BOOL)isOpaque {
-    return NO;
+	return NO;
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
-    [NSGraphicsContext saveGraphicsState];
+	[NSGraphicsContext saveGraphicsState];
 	
 	static CGFloat const targetRectOriginOffset = 1.0;
 	static CGFloat const targetRectWidthSquash = 2.0;
@@ -560,8 +560,8 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 	NSBezierPath *roundRectPath = [NSBezierPath bezierPathWithRoundedRect:targetRect xRadius:RBLPopoverBackgroundViewBorderRadius yRadius:RBLPopoverBackgroundViewBorderRadius];
 	[NSColor.whiteColor set];
 	[roundRectPath fill];
-    
-    [NSGraphicsContext restoreGraphicsState];
+	
+	[NSGraphicsContext restoreGraphicsState];
 }
 
 @end
