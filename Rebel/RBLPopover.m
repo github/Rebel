@@ -534,19 +534,23 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 - (void)drawRect:(NSRect)dirtyRect {
     [NSGraphicsContext saveGraphicsState];
 	
+	static CGFloat const targetRectOriginOffset = 1.0;
+	static CGFloat const targetRectWidthSquash = 2.0;
+	static CGFloat const targetRectHeightSquash = 2.0;
+	
 	CGRect targetRect = CGRectZero;
 	switch (self.arrowEdge) {
 		case CGRectMinYEdge:
-			targetRect = CGRectMake(1.0f, 1.0f + RBLPopoverBackgroundViewArrowHeight, CGRectGetWidth(self.bounds) - 2.0f, CGRectGetHeight(self.bounds) - RBLPopoverBackgroundViewArrowHeight - 2.0f);
+			targetRect = CGRectMake(targetRectOriginOffset, targetRectOriginOffset + RBLPopoverBackgroundViewArrowHeight, CGRectGetWidth(self.bounds) - targetRectWidthSquash, CGRectGetHeight(self.bounds) - RBLPopoverBackgroundViewArrowHeight - targetRectHeightSquash);
 			break;
 		case CGRectMaxXEdge:
-			targetRect = CGRectMake(1.0f, 1.0f, CGRectGetWidth(self.bounds) - 2.0f - RBLPopoverBackgroundViewArrowHeight, CGRectGetHeight(self.bounds) - 2.0f);
+			targetRect = CGRectMake(targetRectOriginOffset, targetRectOriginOffset, CGRectGetWidth(self.bounds) - targetRectWidthSquash - RBLPopoverBackgroundViewArrowHeight, CGRectGetHeight(self.bounds) - targetRectHeightSquash);
 			break;
 		case CGRectMaxYEdge:
-			targetRect = CGRectMake(1.0f, 1.0f, CGRectGetWidth(self.bounds) - 2.0f, CGRectGetHeight(self.bounds) - 2.0f - RBLPopoverBackgroundViewArrowHeight);
+			targetRect = CGRectMake(targetRectOriginOffset, targetRectOriginOffset, CGRectGetWidth(self.bounds) - targetRectWidthSquash, CGRectGetHeight(self.bounds) - targetRectHeightSquash - RBLPopoverBackgroundViewArrowHeight);
 			break;
 		case CGRectMinXEdge:
-			targetRect = CGRectMake(RBLPopoverBackgroundViewArrowHeight + 1.0f, 1.0f, CGRectGetWidth(self.bounds) - 2.0f - RBLPopoverBackgroundViewArrowHeight, CGRectGetHeight(self.bounds) - 2.0f);
+			targetRect = CGRectMake(RBLPopoverBackgroundViewArrowHeight + targetRectOriginOffset, targetRectOriginOffset, CGRectGetWidth(self.bounds) - targetRectWidthSquash - RBLPopoverBackgroundViewArrowHeight, CGRectGetHeight(self.bounds) - targetRectHeightSquash);
 			break;
 			
 		default:
