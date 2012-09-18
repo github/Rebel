@@ -105,11 +105,14 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 			if (self.popoverWindow == nil) return event;
 			
 			static NSUInteger escapeKey = 53;
-			BOOL shouldClose = (event.type == NSLeftMouseDown || event.type == NSRightMouseDown ? (!NSPointInRect([NSEvent mouseLocation], self.popoverWindow.frame) && self.behavior == RBLPopoverViewControllerBehaviorTransient) : event.keyCode == escapeKey);
-            
-			if (shouldClose) {
-				[self close];
+			BOOL shouldClose = NO;
+			if (event.type == NSLeftMouseDown || event.type == NSRightMouseDown) {
+				shouldClose = (!NSPointInRect(NSEvent.mouseLocation, self.popoverWindow.frame) && self.behavior == RBLPopoverViewControllerBehaviorTransient);
+			} else {
+				shouldClose = (event.keyCode == escapeKey);
 			}
+            
+			if (shouldClose) [self close];
             
 			return event;
 		}];
