@@ -366,9 +366,8 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 	CGFloat maxX = NSMaxX(contentRect);
 	CGFloat minY = NSMinY(contentRect);
 	CGFloat maxY = NSMaxY(contentRect);
-	
-	CGRect windowRect = self.screenOriginRect;
-	windowRect.origin = [self.window convertScreenToBase:self.screenOriginRect.origin];
+
+	CGRect windowRect = [self.window convertRectFromScreen:self.screenOriginRect];
 	CGRect originRect = [self convertRect:windowRect fromView:nil];
 	CGFloat midOriginY = floor(NSMidY(originRect));
 	CGFloat midOriginX = floor(NSMidX(originRect));
