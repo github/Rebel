@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		301569981602161400E3BE46 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 306A81EC1601F44200BF45F3 /* QuartzCore.framework */; };
+		304692F21607259A00B79746 /* EXTKeyPathCoding.h in Headers */ = {isa = PBXBuildFile; fileRef = 304692F11607259A00B79746 /* EXTKeyPathCoding.h */; };
+		306A81DB1601C7A300BF45F3 /* RBLPopover.h in Headers */ = {isa = PBXBuildFile; fileRef = 306A81D91601C7A300BF45F3 /* RBLPopover.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		306A81DC1601C7A300BF45F3 /* RBLPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = 306A81DA1601C7A300BF45F3 /* RBLPopover.m */; };
+		306A81E81601E92000BF45F3 /* CAAnimation+RBLBlockAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 306A81E61601E92000BF45F3 /* CAAnimation+RBLBlockAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		306A81E91601E92000BF45F3 /* CAAnimation+RBLBlockAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 306A81E71601E92000BF45F3 /* CAAnimation+RBLBlockAdditions.m */; };
+		306A81EB1601EAE700BF45F3 /* CAAnimation+RBLBlockAdditionsSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 306A81EA1601EAE700BF45F3 /* CAAnimation+RBLBlockAdditionsSpec.m */; };
+		306A81ED1601F44200BF45F3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 306A81EC1601F44200BF45F3 /* QuartzCore.framework */; };
 		883CD4CE1600CF7100F57354 /* RBLTestViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 883CD4CD1600CF7100F57354 /* RBLTestViewModel.m */; };
 		889E5E0F15FFDAE0007F2445 /* RBLViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 889E5E0D15FFDAE0007F2445 /* RBLViewModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		889E5E1015FFDAE0007F2445 /* RBLViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 889E5E0E15FFDAE0007F2445 /* RBLViewModel.m */; };
@@ -148,6 +156,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		304692F11607259A00B79746 /* EXTKeyPathCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EXTKeyPathCoding.h; path = ReactiveCocoa/ReactiveCocoaFramework/ReactiveCocoa/libextobjc/extobjc/EXTKeyPathCoding.h; sourceTree = "<group>"; };
+		306A81D91601C7A300BF45F3 /* RBLPopover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBLPopover.h; sourceTree = "<group>"; };
+		306A81DA1601C7A300BF45F3 /* RBLPopover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBLPopover.m; sourceTree = "<group>"; };
+		306A81E61601E92000BF45F3 /* CAAnimation+RBLBlockAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAAnimation+RBLBlockAdditions.h"; sourceTree = "<group>"; };
+		306A81E71601E92000BF45F3 /* CAAnimation+RBLBlockAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAAnimation+RBLBlockAdditions.m"; sourceTree = "<group>"; };
+		306A81EA1601EAE700BF45F3 /* CAAnimation+RBLBlockAdditionsSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAAnimation+RBLBlockAdditionsSpec.m"; sourceTree = "<group>"; };
+		306A81EC1601F44200BF45F3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		883CD4CC1600CF7100F57354 /* RBLTestViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBLTestViewModel.h; sourceTree = "<group>"; };
 		883CD4CD1600CF7100F57354 /* RBLTestViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBLTestViewModel.m; sourceTree = "<group>"; };
 		889E5E0D15FFDAE0007F2445 /* RBLViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBLViewModel.h; sourceTree = "<group>"; };
@@ -219,6 +234,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				301569981602161400E3BE46 /* QuartzCore.framework in Frameworks */,
 				D08BB31015CB30A000CC9868 /* libExpecta.a in Frameworks */,
 				D08BB31115CB30A000CC9868 /* libSpecta.a in Frameworks */,
 				D09AE4F915C5F45300ECAD10 /* SenTestingKit.framework in Frameworks */,
@@ -230,6 +246,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		304692E71607258E00B79746 /* libextobjc */ = {
+			isa = PBXGroup;
+			children = (
+				304692F11607259A00B79746 /* EXTKeyPathCoding.h */,
+			);
+			name = libextobjc;
+			sourceTree = "<group>";
+		};
 		D06AD2FD15C636EF00A73D8E /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -249,6 +273,8 @@
 				D0723FE215C616AF004DBDC7 /* RBLResizableImage.m */,
 				D0723FBE15C5F9D8004DBDC7 /* RBLView.h */,
 				D0723FBF15C5F9D8004DBDC7 /* RBLView.m */,
+				306A81D91601C7A300BF45F3 /* RBLPopover.h */,
+				306A81DA1601C7A300BF45F3 /* RBLPopover.m */,
 				889E5E0D15FFDAE0007F2445 /* RBLViewModel.h */,
 				889E5E0E15FFDAE0007F2445 /* RBLViewModel.m */,
 			);
@@ -264,6 +290,8 @@
 				D0410EAA15C61895003A3203 /* NSTextView+RBLAntialiasingAdditions.m */,
 				D04CBFC615F6D87B004A5BCC /* NSView+RBLAnimationAdditions.h */,
 				D04CBFC715F6D87B004A5BCC /* NSView+RBLAnimationAdditions.m */,
+				306A81E61601E92000BF45F3 /* CAAnimation+RBLBlockAdditions.h */,
+				306A81E71601E92000BF45F3 /* CAAnimation+RBLBlockAdditions.m */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -272,6 +300,7 @@
 			isa = PBXGroup;
 			children = (
 				D0723FDB15C60846004DBDC7 /* NSColor+RBLCGColorAdditionsSpec.m */,
+				306A81EA1601EAE700BF45F3 /* CAAnimation+RBLBlockAdditionsSpec.m */,
 				D078B7DD15F6DB420063DDD5 /* NSView+RBLAnimationAdditionsSpec.m */,
 				D0723FDF15C60E94004DBDC7 /* RBLViewSpec.m */,
 				889E5E1215FFE049007F2445 /* RBLViewModelSpec.m */,
@@ -389,9 +418,11 @@
 		D09AE4E115C5F45200ECAD10 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				304692E71607258E00B79746 /* libextobjc */,
 				D08BB2EE15CB307D00CC9868 /* Expecta.xcodeproj */,
 				D08BB2F115CB307D00CC9868 /* Specta.xcodeproj */,
 				D06AD2FC15C636EF00A73D8E /* ReactiveCocoa.xcodeproj */,
+				306A81EC1601F44200BF45F3 /* QuartzCore.framework */,
 				D09AE4E215C5F45200ECAD10 /* Cocoa.framework */,
 				D09AE4F815C5F45300ECAD10 /* SenTestingKit.framework */,
 				D0E91C5A1603CDC300D23E93 /* QuartzCore.framework */,
@@ -463,7 +494,10 @@
 				D0723FC615C5FB68004DBDC7 /* NSColor+RBLCGColorAdditions.h in Headers */,
 				D0723FE315C616AF004DBDC7 /* RBLResizableImage.h in Headers */,
 				D04CBFC815F6D87B004A5BCC /* NSView+RBLAnimationAdditions.h in Headers */,
+				306A81E81601E92000BF45F3 /* CAAnimation+RBLBlockAdditions.h in Headers */,
+				306A81DB1601C7A300BF45F3 /* RBLPopover.h in Headers */,
 				889E5E0F15FFDAE0007F2445 /* RBLViewModel.h in Headers */,
+				304692F21607259A00B79746 /* EXTKeyPathCoding.h in Headers */,
 				D0E91C581603CC7600D23E93 /* RBLClipView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -678,6 +712,8 @@
 				D0723FE415C616AF004DBDC7 /* RBLResizableImage.m in Sources */,
 				D0410EAC15C61895003A3203 /* NSTextView+RBLAntialiasingAdditions.m in Sources */,
 				D04CBFC915F6D87B004A5BCC /* NSView+RBLAnimationAdditions.m in Sources */,
+				306A81DC1601C7A300BF45F3 /* RBLPopover.m in Sources */,
+				306A81E91601E92000BF45F3 /* CAAnimation+RBLBlockAdditions.m in Sources */,
 				889E5E1015FFDAE0007F2445 /* RBLViewModel.m in Sources */,
 				D0E91C591603CC7600D23E93 /* RBLClipView.m in Sources */,
 			);
@@ -690,6 +726,7 @@
 				D0723FDC15C60846004DBDC7 /* NSColor+RBLCGColorAdditionsSpec.m in Sources */,
 				D0723FE015C60E94004DBDC7 /* RBLViewSpec.m in Sources */,
 				D078B7DE15F6DB420063DDD5 /* NSView+RBLAnimationAdditionsSpec.m in Sources */,
+				306A81EB1601EAE700BF45F3 /* CAAnimation+RBLBlockAdditionsSpec.m in Sources */,
 				889E5E1315FFE049007F2445 /* RBLViewModelSpec.m in Sources */,
 				883CD4CE1600CF7100F57354 /* RBLTestViewModel.m in Sources */,
 			);
