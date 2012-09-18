@@ -239,11 +239,11 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 	};
 	
 	if (self.animates) {
-		CABasicAnimation *fadeInAnimation = [CABasicAnimation animationWithKeyPath:@keypath(@"alphaValue")];
+		CABasicAnimation *fadeInAnimation = [CABasicAnimation animationWithKeyPath:@keypath(_popoverWindow.alphaValue)];
 		fadeInAnimation.duration = RBLPopoverDefaultFadeDuration;
 		fadeInAnimation.rbl_completionBlock = postDisplayBlock;
 		
-		self.popoverWindow.animations = @{ @keypath(@"alphaValue"): fadeInAnimation };
+		self.popoverWindow.animations = @{ @keypath(_popoverWindow.alphaValue): fadeInAnimation };
 		self.animating = YES;
 		[self.popoverWindow.animator setAlphaValue:1.0];
 	} else {
@@ -276,11 +276,11 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 	};
 	
 	if (self.animates) {
-		CABasicAnimation *fadeOutAnimation = [CABasicAnimation animationWithKeyPath:@keypath(@"alphaValue")];
+		CABasicAnimation *fadeOutAnimation = [CABasicAnimation animationWithKeyPath:@keypath(_popoverWindow.alphaValue)];
 		fadeOutAnimation.duration = duration;
 		fadeOutAnimation.rbl_completionBlock = windowTeardown;
 		
-		self.popoverWindow.animations = @{ @keypath(@"alphaValue"): fadeOutAnimation };
+		self.popoverWindow.animations = @{ @keypath(_popoverWindow.alphaValue): fadeOutAnimation };
 		self.animating = YES;
 		[self.popoverWindow.animator setAlphaValue:0.0];
 	} else {
