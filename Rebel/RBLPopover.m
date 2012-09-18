@@ -84,15 +84,15 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 #pragma mark Derived Properties
 
 - (BOOL)isShown {
-    return self.popoverWindow.isVisible;
+	return self.popoverWindow.isVisible;
 }
 
 #pragma mark -
 #pragma mark Showing
 
 - (void)showRelativeToRect:(CGRect)positioningRect ofView:(NSView *)positioningView preferredEdge:(CGRectEdge)preferredEdge {
-    if (self.shown) return;
-    
+	if (self.shown) return;
+	
 	//TODO: Create RBLViewController with viewWillAppear
 	//[self.contentViewController viewWillAppear:YES]; //this will always be animated… in the current implementation
     
