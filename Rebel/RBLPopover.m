@@ -19,7 +19,6 @@
 @interface RBLPopoverBackgroundView ()
 
 @property (nonatomic) CGRect screenOriginRect;
-@property (nonatomic) CGRectEdge popoverEdge;
 
 + (instancetype)backgroundViewForContentSize:(CGSize)contentSize popoverEdge:(CGRectEdge)popoverEdge originScreenRect:(CGRect)originScreenRect;
 

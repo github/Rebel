@@ -158,6 +158,9 @@ typedef void (^RBLPopoverDelegateBlock)(RBLPopover *popover);
 // Returns a `CGPathRef` of the outline of the background view.
 - (CGPathRef)newPopoverPathForEdge:(CGRectEdge)popoverEdge inFrame:(CGRect)frame;
 
+// The edge of the target view which the popover is appearing next to.
+@property (nonatomic) CGRectEdge popoverEdge;
+
 // The color used to stroke the outline of the background view.
 @property (nonatomic, strong) NSColor *strokeColor;
 
