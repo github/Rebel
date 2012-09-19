@@ -440,7 +440,7 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
     
 	_popoverEdge = popoverEdge;
 	_screenOriginRect = originScreenRect;
-	_strokeColor = NSColor.blackColor;
+	_strokeColor = NSColor.redColor;
 	_fillColor = NSColor.whiteColor;
 	
 	return self;
@@ -450,10 +450,6 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 	[super drawRect:rect];
 	CGContextRef context = NSGraphicsContext.currentContext.graphicsPort;
 	CGPathRef outerBorder = [self newPopoverPathForEdge:self.popoverEdge inFrame:self.bounds];
-	CGContextSetStrokeColorWithColor(context, self.strokeColor.rbl_CGColor);
-	CGContextAddPath(context, outerBorder);
-	CGContextStrokePath(context);
-	
 	CGContextSetFillColorWithColor(context, self.fillColor.rbl_CGColor);
 	CGContextAddPath(context, outerBorder);
 	CGContextFillPath(context);
