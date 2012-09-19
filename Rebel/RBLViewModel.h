@@ -20,6 +20,9 @@
 // nil parent.
 @property (nonatomic, readonly, weak) RBLViewModel *rootViewModel;
 
+// Calls -initWithModel:parentViewModel: with a nil model and parent view model.
+- (id)init;
+
 // Creates a new view model with the given model and parent view model. Both
 // arguments may be nil.
 - (id)initWithModel:(id)model parentViewModel:(RBLViewModel *)parentViewModel;
