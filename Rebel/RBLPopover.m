@@ -28,14 +28,6 @@
 
 //***************************************************************************
 
-@interface RBLPopoverWindowContentView : NSView
-
-@property (nonatomic) CGRectEdge arrowEdge;
-
-@end
-
-//***************************************************************************
-
 static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 
 //***************************************************************************
@@ -214,12 +206,9 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 	self.popoverWindow = [[NSWindow alloc] initWithContentRect:popoverScreenRect styleMask:NSBorderlessWindowMask backing:NSBackingStoreBuffered defer:NO];
 	self.popoverWindow.hasShadow = YES;
 	self.popoverWindow.releasedWhenClosed = NO;
-	RBLPopoverWindowContentView *contentView = [[RBLPopoverWindowContentView alloc] initWithFrame:backgroundView.bounds];
-	contentView.arrowEdge = [backgroundView arrowEdgeForPopoverEdge:popoverEdge];
-	[contentView addSubview:backgroundView];
 	self.popoverWindow.opaque = NO;
 	self.popoverWindow.backgroundColor = NSColor.clearColor;
-	self.popoverWindow.contentView = contentView;
+	self.popoverWindow.contentView = backgroundView;
 	if (self.animates) {
 		self.popoverWindow.alphaValue = 0.0;
 	}
@@ -492,56 +481,6 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
     }
     
     return arrowEdge;
-}
-
-@end
-
-// Hmm I'm not sure I like how this takes some of the drawing responsibility away from the background view breaking the extensibility.
-// But it works.
-
-@implementation RBLPopoverWindowContentView
-
-- (id)initWithFrame:(NSRect)frameRect {
-    self = [super initWithFrame:frameRect];
-    if (self == nil) return nil;
-    
-	_arrowEdge = CGRectMinYEdge;
-	self.autoresizingMask = (NSViewWidthSizable | NSViewHeightSizable);
-	
-    return self;
-}
-
-- (BOOL)isOpaque {
-    return NO;
-}
-
-- (void)drawRect:(NSRect)dirtyRect {
-    [NSGraphicsContext saveGraphicsState];
-	
-	CGRect targetRect = CGRectZero;
-	switch (self.arrowEdge) {
-		case CGRectMinYEdge:
-			targetRect = CGRectMake(1.0f, 1.0f + RBLPopoverBackgroundViewArrowHeight, CGRectGetWidth(self.bounds) - 2.0f, CGRectGetHeight(self.bounds) - RBLPopoverBackgroundViewArrowHeight - 2.0f);
-			break;
-		case CGRectMaxXEdge:
-			targetRect = CGRectMake(1.0f, 1.0f, CGRectGetWidth(self.bounds) - 2.0f - RBLPopoverBackgroundViewArrowHeight, CGRectGetHeight(self.bounds) - 2.0f);
-			break;
-		case CGRectMaxYEdge:
-			targetRect = CGRectMake(1.0f, 1.0f, CGRectGetWidth(self.bounds) - 2.0f, CGRectGetHeight(self.bounds) - 2.0f - RBLPopoverBackgroundViewArrowHeight);
-			break;
-		case CGRectMinXEdge:
-			targetRect = CGRectMake(RBLPopoverBackgroundViewArrowHeight + 1.0f, 1.0f, CGRectGetWidth(self.bounds) - 2.0f - RBLPopoverBackgroundViewArrowHeight, CGRectGetHeight(self.bounds) - 2.0f);
-			break;
-			
-		default:
-			break;
-	}
-	
-	NSBezierPath *roundRectPath = [NSBezierPath bezierPathWithRoundedRect:targetRect xRadius:RBLPopoverBackgroundViewBorderRadius yRadius:RBLPopoverBackgroundViewBorderRadius];
-	[NSColor.whiteColor set];
-	[roundRectPath fill];
-    
-    [NSGraphicsContext restoreGraphicsState];
 }
 
 @end
