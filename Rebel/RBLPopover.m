@@ -483,4 +483,8 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
     return arrowEdge;
 }
 
+- (BOOL)isOpaque {
+	return NO;
+}
+
 @end
