@@ -17,6 +17,15 @@
 
 #pragma mark RBLViewModel
 
+- (id)initWithModel:(id)model parentViewModel:(RBLViewModel *)parentViewModel {
+	self = [super initWithModel:model parentViewModel:parentViewModel];
+	if (self == nil) return nil;
+
+	_calledInitWithModelParentViewModel = YES;
+
+	return self;
+}
+
 - (BOOL)presentError:(NSError *)error {
 	self.gotPresentError = YES;
 	return [super presentError:error];
