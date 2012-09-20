@@ -77,7 +77,7 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
-	if (self.clippingPath == nil) return;
+	if (self.clippingPath == NULL) return;
 	
 	CGContextRef currentContext = NSGraphicsContext.currentContext.graphicsPort;
 	CGContextAddRect(currentContext, self.bounds);
