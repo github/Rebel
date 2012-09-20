@@ -117,7 +117,7 @@ typedef void (^RBLPopoverDelegateBlock)(RBLPopover *popover);
 
 @end
 
-@interface RBLPopoverBackgroundView : RBLView
+@interface RBLPopoverBackgroundView : NSView
 
 // Given a size of the content this should be overridden by subclasses to
 // describe how big the overall popover should be.
