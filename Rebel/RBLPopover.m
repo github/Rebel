@@ -48,10 +48,6 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 // The size the content view was before the popover was shown.
 @property (nonatomic) CGSize originalViewSize;
 
-// A view used to clip the appearance of the popover to the outline of it's
-// background view.
-@property (nonatomic, strong) NSView *clippingView;
-
 // Correctly removes our event monitor watching for mouse clicks external to the
 // popover.
 - (void)removeEventMonitor;
