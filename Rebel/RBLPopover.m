@@ -56,8 +56,12 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 
 //***************************************************************************
 
+// A class which forcably draws `NSClearColor.clearColor` around a given path,
+// effectively clipping any views to the path. You can think of it like a
+// `maskLayer` on a `CALayer`.
 @interface RBLPopoverClippingView : NSView
 
+// The path which the view will clip to.
 @property (nonatomic) CGPathRef clippingPath;
 
 @end
