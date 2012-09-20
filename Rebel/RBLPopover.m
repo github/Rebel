@@ -75,16 +75,12 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 - (void)drawRect:(NSRect)dirtyRect {
 	if (self.clippingPath == nil) return;
 	
-	CGMutablePathRef evenOddFillPath = CGPathCreateMutable();
-	CGPathAddRect(evenOddFillPath, NULL, self.bounds);
-	CGPathAddPath(evenOddFillPath, NULL, self.clippingPath);
-	
 	CGContextRef currentContext = NSGraphicsContext.currentContext.graphicsPort;
+	CGContextAddRect(currentContext, self.bounds);
+	CGContextAddPath(currentContext, self.clippingPath);
 	CGContextSetBlendMode(currentContext, kCGBlendModeCopy);
 	[NSColor.clearColor set];
-	CGContextAddPath(currentContext, evenOddFillPath);
 	CGContextEOFillPath(currentContext);
-	CGPathRelease(evenOddFillPath);
 }
 
 @end
