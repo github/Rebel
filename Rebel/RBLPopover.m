@@ -23,7 +23,6 @@
 + (instancetype)backgroundViewForContentSize:(CGSize)contentSize popoverEdge:(CGRectEdge)popoverEdge originScreenRect:(CGRect)originScreenRect;
 
 - (CGRectEdge)arrowEdgeForPopoverEdge:(CGRectEdge)popoverEdge;
-- (void)updateMaskLayer;
 
 @end
 
@@ -215,7 +214,6 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 	}
 	[positioningView.window addChildWindow:self.popoverWindow ordered:NSWindowAbove];
 	[self.popoverWindow makeKeyAndOrderFront:self];
-	[backgroundView updateMaskLayer];
 	
 	void (^postDisplayBlock)(BOOL) = ^(BOOL finished) {
 		self.animating = NO;
@@ -456,18 +454,6 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 	CGContextFillPath(context);
 	
 	CGPathRelease(outerBorder);
-}
-
-- (void)updateMaskLayer {
-	CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
-    CGPathRef path = [self newPopoverPathForEdge:self.popoverEdge inFrame:self.bounds];
-    maskLayer.path = path;
-    maskLayer.fillColor = CGColorGetConstantColor(kCGColorBlack);
-    
-    CGPathRelease(path);
-    
-    self.layer.mask = maskLayer;
-	
 }
 
 - (CGRectEdge)arrowEdgeForPopoverEdge:(CGRectEdge)popoverEdge {
