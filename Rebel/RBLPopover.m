@@ -60,6 +60,41 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 
 //***************************************************************************
 
+@interface RBLPopoverClippingView : NSView
+
+@property (nonatomic) CGPathRef clippingPath;
+
+@end
+
+@implementation RBLPopoverClippingView
+
+- (void)setClippingPath:(CGPathRef)clippingPath {
+	if (clippingPath == _clippingPath) return;
+	
+	CGPathRelease(_clippingPath);
+	_clippingPath = clippingPath;
+	CGPathRetain(_clippingPath);
+}
+
+- (void)drawRect:(NSRect)dirtyRect {
+	if (self.clippingPath == nil) return;
+	
+	CGMutablePathRef evenOddFillPath = CGPathCreateMutable();
+	CGPathAddRect(evenOddFillPath, NULL, self.bounds);
+	CGPathAddPath(evenOddFillPath, NULL, self.clippingPath);
+	
+	CGContextRef currentContext = NSGraphicsContext.currentContext.graphicsPort;
+	CGContextSetBlendMode(currentContext, kCGBlendModeCopy);
+	[NSColor.clearColor set];
+	CGContextAddPath(currentContext, evenOddFillPath);
+	CGContextEOFillPath(currentContext);
+	CGPathRelease(evenOddFillPath);
+}
+
+@end
+
+//***************************************************************************
+
 @implementation RBLPopover
 
 - (instancetype)initWithContentViewController:(NSViewController *)viewController {
