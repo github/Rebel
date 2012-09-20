@@ -251,6 +251,13 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 	if (self.animates) {
 		self.popoverWindow.alphaValue = 0.0;
 	}
+	
+	RBLPopoverClippingView *clippingView = [[RBLPopoverClippingView alloc] initWithFrame:backgroundView.bounds];
+	CGPathRef clippingPath = [backgroundView newPopoverPathForEdge:popoverEdge inFrame:clippingView.bounds];
+	clippingView.clippingPath = clippingPath;
+	CGPathRelease(clippingPath);
+	[backgroundView addSubview:clippingView]; //clipping path is calculated after being added to the window
+	
 	[positioningView.window addChildWindow:self.popoverWindow ordered:NSWindowAbove];
 	[self.popoverWindow makeKeyAndOrderFront:self];
 	
