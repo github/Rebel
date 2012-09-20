@@ -20,6 +20,13 @@ beforeEach(^{
 	childViewModel = [[RBLTestViewModel alloc] initWithModel:@"child" parentViewModel:parentViewModel];
 });
 
+describe(@"-init", ^{
+	it(@"should call -initWithModel:parentViewModel:", ^{
+		RBLTestViewModel *viewModel = [[RBLTestViewModel alloc] init];
+		expect(viewModel.calledInitWithModelParentViewModel).to.beTruthy();
+	});
+});
+
 describe(@"the view model chain", ^{
 	it(@"should know its parent view model", ^{
 		expect(childViewModel.parentViewModel).to.equal(parentViewModel);

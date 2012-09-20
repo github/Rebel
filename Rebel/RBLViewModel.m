@@ -10,6 +10,13 @@
 
 @implementation RBLViewModel
 
+- (id)init {
+	self = [self initWithModel:nil parentViewModel:nil];
+	if (self == nil) return nil;
+
+	return self;
+}
+
 #pragma mark API
 
 - (id)initWithModel:(id)model parentViewModel:(RBLViewModel *)parentViewModel {

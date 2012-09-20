@@ -10,7 +10,7 @@
 
 #import <objc/runtime.h>
 
-static void *RBLCAAnimationCompletionBlockAssociatedObjectKey = &"RBLCAAnimationCompletionBlockAssociatedObjectKey";
+static void *RBLCAAnimationCompletionBlockAssociatedObjectKey = &RBLCAAnimationCompletionBlockAssociatedObjectKey;
 
 @implementation CAAnimation (RBLBlockAdditions)
 

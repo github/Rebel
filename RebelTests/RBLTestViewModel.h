@@ -16,6 +16,9 @@
 // The argument passed in to `-someOtherThing:`.
 @property (nonatomic, readonly, strong) id argumentReceived;
 
+// Was -initWithModel:parentViewModel: called?
+@property (nonatomic, readonly, assign) BOOL calledInitWithModelParentViewModel;
+
 // Do some thing with the argument. Sets the `argumentReceived` property to `wat`.
 - (void)someOtherThing:(id)wat;
 

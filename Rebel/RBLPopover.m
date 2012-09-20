@@ -114,20 +114,20 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 #pragma mark Derived Properties
 
 - (BOOL)isShown {
-    return self.popoverWindow.isVisible;
+	return self.popoverWindow.isVisible;
 }
 
 #pragma mark -
 #pragma mark Showing
 
 - (void)showRelativeToRect:(CGRect)positioningRect ofView:(NSView *)positioningView preferredEdge:(CGRectEdge)preferredEdge {
-    if (self.shown) return;
-    
+	if (self.shown) return;
+	
 	//TODO: Create RBLViewController with viewWillAppear
 	//[self.contentViewController viewWillAppear:YES]; //this will always be animated… in the current implementation
-    
+	
 	if (self.willShowBlock != nil) self.willShowBlock(self);
-    
+	
 	if (self.behavior != RBLPopoverViewControllerBehaviorApplicationDefined) {
 		[self removeEventMonitor];
 		
@@ -135,12 +135,15 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 			if (self.popoverWindow == nil) return event;
 			
 			static NSUInteger escapeKey = 53;
-			BOOL shouldClose = (event.type == NSLeftMouseDown || event.type == NSRightMouseDown ? (!NSPointInRect([NSEvent mouseLocation], self.popoverWindow.frame) && self.behavior == RBLPopoverViewControllerBehaviorTransient) : event.keyCode == escapeKey);
-            
-			if (shouldClose) {
-				[self close];
+			BOOL shouldClose = NO;
+			if (event.type == NSLeftMouseDown || event.type == NSRightMouseDown) {
+				shouldClose = (!NSPointInRect(NSEvent.mouseLocation, self.popoverWindow.frame) && self.behavior == RBLPopoverViewControllerBehaviorTransient);
+			} else {
+				shouldClose = (event.keyCode == escapeKey);
 			}
-            
+			
+			if (shouldClose) [self close];
+			
 			return event;
 		}];
 	}
@@ -148,12 +151,12 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 	if (CGRectEqualToRect(positioningRect, CGRectZero)) {
 		positioningRect = [positioningView bounds];
 	}
-    
+	
 	NSRect windowRelativeRect = [positioningView convertRect:positioningRect toView:nil];
 	CGRect screenPositioningRect = [positioningView.window convertRectToScreen:windowRelativeRect];
 	self.originalViewSize = self.contentViewController.view.frame.size;
 	CGSize contentViewSize = (CGSizeEqualToSize(self.contentSize, CGSizeZero) ? self.contentViewController.view.frame.size : self.contentSize);
-    
+	
 	CGRect (^popoverRectForEdge)(CGRectEdge) = ^(CGRectEdge popoverEdge) {
 		CGSize popoverSize = [self.backgroundViewClass sizeForBackgroundViewWithContentSize:contentViewSize popoverEdge:popoverEdge];
 		CGRect returnRect = NSMakeRect(0.0, 0.0, popoverSize.width, popoverSize.height);
@@ -181,13 +184,13 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 	BOOL (^checkPopoverSizeForScreenWithPopoverEdge)(CGRectEdge) = ^(CGRectEdge popoverEdge) {
 		CGRect popoverRect = popoverRectForEdge(popoverEdge);
 		return NSContainsRect(positioningView.window.screen.visibleFrame, popoverRect);
-    };
-    
-    //This is as ugly as sin… but it gets the job done. I couldn't think of a nice way to code this but still get the desired behavior
-    __block CGRectEdge popoverEdge = preferredEdge;
-    CGRect (^popoverRect)() = ^{
+	};
+	
+	//This is as ugly as sin… but it gets the job done. I couldn't think of a nice way to code this but still get the desired behavior
+	__block CGRectEdge popoverEdge = preferredEdge;
+	CGRect (^popoverRect)() = ^{
 		CGRectEdge (^nextEdgeForEdge)(CGRectEdge) = ^CGRectEdge (CGRectEdge currentEdge)
-        {
+		{
 			if (currentEdge == CGRectMaxXEdge) {
 				return (preferredEdge == CGRectMinXEdge ? CGRectMaxYEdge : CGRectMinXEdge);
 			} else if (currentEdge == CGRectMinXEdge) {
@@ -197,7 +200,7 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 			} else if (currentEdge == CGRectMinYEdge) {
 				return (preferredEdge == CGRectMaxYEdge ? CGRectMaxXEdge : CGRectMaxYEdge);
 			}
-            
+			
 			return currentEdge;
 		};
 		
@@ -228,17 +231,17 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 				return fitRectToScreen(popoverRectForEdge(popoverEdge));
 				break;
 			}
-            
+			
 			popoverEdge = nextEdgeForEdge(popoverEdge);
 			attemptCount ++;
 		}
 		
 		return popoverRectForEdge(popoverEdge);
 	};
-    
+	
 	CGRect popoverScreenRect = popoverRect();
 	RBLPopoverBackgroundView *backgroundView = [self.backgroundViewClass backgroundViewForContentSize:contentViewSize popoverEdge:popoverEdge originScreenRect:screenPositioningRect];
-    
+	
 	CGRect contentViewFrame = [self.backgroundViewClass contentViewFrameForBackgroundFrame:backgroundView.bounds popoverEdge:popoverEdge];
 	self.contentViewController.view.frame = contentViewFrame;
 	[backgroundView addSubview:self.contentViewController.view];
@@ -269,11 +272,11 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 	};
 	
 	if (self.animates) {
-		CABasicAnimation *fadeInAnimation = [CABasicAnimation animationWithKeyPath:@keypath(@"alphaValue")];
+		CABasicAnimation *fadeInAnimation = [CABasicAnimation animationWithKeyPath:@keypath(_popoverWindow.alphaValue)];
 		fadeInAnimation.duration = RBLPopoverDefaultFadeDuration;
 		fadeInAnimation.rbl_completionBlock = postDisplayBlock;
 		
-		self.popoverWindow.animations = @{ @keypath(@"alphaValue"): fadeInAnimation };
+		self.popoverWindow.animations = @{ @keypath(_popoverWindow.alphaValue): fadeInAnimation };
 		self.animating = YES;
 		[self.popoverWindow.animator setAlphaValue:1.0];
 	} else {
@@ -306,11 +309,11 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 	};
 	
 	if (self.animates) {
-		CABasicAnimation *fadeOutAnimation = [CABasicAnimation animationWithKeyPath:@keypath(@"alphaValue")];
+		CABasicAnimation *fadeOutAnimation = [CABasicAnimation animationWithKeyPath:@keypath(_popoverWindow.alphaValue)];
 		fadeOutAnimation.duration = duration;
 		fadeOutAnimation.rbl_completionBlock = windowTeardown;
 		
-		self.popoverWindow.animations = @{ @keypath(@"alphaValue"): fadeOutAnimation };
+		self.popoverWindow.animations = @{ @keypath(_popoverWindow.alphaValue): fadeOutAnimation };
 		self.animating = YES;
 		[self.popoverWindow.animator setAlphaValue:0.0];
 	} else {
@@ -350,7 +353,7 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 	} else {
 		returnSize.height += RBLPopoverBackgroundViewArrowHeight;
 	}
-    
+	
 	returnSize.width ++;
 	returnSize.height ++;
 	
@@ -378,7 +381,7 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 			NSAssert(NO, @"Failed to pass in a valid CGRectEdge");
 			break;
 	}
-    
+	
 	return returnFrame;
 }
 
@@ -396,7 +399,7 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 	CGFloat maxX = NSMaxX(contentRect);
 	CGFloat minY = NSMinY(contentRect);
 	CGFloat maxY = NSMaxY(contentRect);
-	
+
 	CGRect windowRect = [self.window convertRectFromScreen:self.screenOriginRect];
 	CGRect originRect = [self convertRect:windowRect fromView:nil];
 	CGFloat midOriginY = floor(NSMidY(originRect));
@@ -481,7 +484,7 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 - (instancetype)initWithFrame:(CGRect)frame popoverEdge:(CGRectEdge)popoverEdge originScreenRect:(CGRect)originScreenRect {
 	self = [super initWithFrame:frame];
 	if (self == nil) return nil;
-    
+	
 	_popoverEdge = popoverEdge;
 	_screenOriginRect = originScreenRect;
 	_strokeColor = NSColor.redColor;
@@ -502,25 +505,25 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 }
 
 - (CGRectEdge)arrowEdgeForPopoverEdge:(CGRectEdge)popoverEdge {
-    CGRectEdge arrowEdge = CGRectMinYEdge;
-    switch (popoverEdge) {
-        case CGRectMaxXEdge:
-            arrowEdge = CGRectMinXEdge;
-            break;
-        case CGRectMaxYEdge:
-            arrowEdge = CGRectMinYEdge;
-            break;
-        case CGRectMinXEdge:
-            arrowEdge = CGRectMaxXEdge;
-            break;
-        case CGRectMinYEdge:
-            arrowEdge = CGRectMaxYEdge;
-            break;
-        default:
-            break;
-    }
-    
-    return arrowEdge;
+	CGRectEdge arrowEdge = CGRectMinYEdge;
+	switch (popoverEdge) {
+		case CGRectMaxXEdge:
+			arrowEdge = CGRectMinXEdge;
+			break;
+		case CGRectMaxYEdge:
+			arrowEdge = CGRectMinYEdge;
+			break;
+		case CGRectMinXEdge:
+			arrowEdge = CGRectMaxXEdge;
+			break;
+		case CGRectMinYEdge:
+			arrowEdge = CGRectMaxYEdge;
+			break;
+		default:
+			break;
+	}
+	
+	return arrowEdge;
 }
 
 - (BOOL)isOpaque {
