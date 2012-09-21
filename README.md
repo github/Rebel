@@ -8,7 +8,7 @@ This framework is very much a work in progress at the moment, and should be cons
 
 MVVM depends on having a powerful system for observation and bindings. In Rebel, this is accomplished using the [ReactiveCocoa](https://github.com/ReactiveCocoa) framework.
 
-Rebel will also provide tools to integrate RAC more tightly with AppKit UIs, similarly to the relationship between .NET's [ReactiveUI](https://github.com/reactiveui/ReactiveUI) and Reactive Extensions frameworks.
+Rebel will also provide tools to integrate RAC more tightly with AppKit UIs, similarly to the relationship between [ReactiveUI](https://github.com/reactiveui/ReactiveUI) and .NET's Reactive Extensions.
 
 ## AppKit Additions
 
