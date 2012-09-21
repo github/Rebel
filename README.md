@@ -14,6 +14,10 @@ Rebel will also provide tools to integrate RAC more tightly with AppKit UIs, sim
 
 This framework also contains more general (not MVVM-specific) additions to fix bugs in AppKit, or just generally make it easier to use. Check out the documentation in class and category headers for more information.
 
+## Getting Started
+
+To start building the framework, clone this repository and then run `git submodule update --init --recursive`. This will automatically pull down any dependencies.
+
 ## License
 
 Rebel is released under the MIT license. See [LICENSE.md](https://github.com/github/Rebel/blob/master/LICENSE.md).
