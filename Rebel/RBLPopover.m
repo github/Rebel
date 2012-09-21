@@ -378,6 +378,9 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 			break;
 	}
 	
+	returnFrame.origin.x ++;
+	returnFrame.size.width ++;
+	
 	return returnFrame;
 }
 
