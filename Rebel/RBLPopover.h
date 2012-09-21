@@ -38,6 +38,11 @@ typedef void (^RBLPopoverDelegateBlock)(RBLPopover *popover);
 // A popover.
 // This aims to replicate the API of `NSPopover`, within reason, whilst offering
 // more flexibility when it comes to customising of it's appearance.
+//
+// A note on layers: by default the clipping method which the popover uses to
+// clip it's subviews to it's outline does _not_ support any layer backed or
+// hosting views. This can be worked around by adding mask layers to any layers
+// you add to the popover or it's subviews.
 @interface RBLPopover : NSResponder
 
 // The view controller providing the view displayed within the popover.
@@ -117,7 +122,7 @@ typedef void (^RBLPopoverDelegateBlock)(RBLPopover *popover);
 
 @end
 
-@interface RBLPopoverBackgroundView : RBLView
+@interface RBLPopoverBackgroundView : NSView
 
 // Given a size of the content this should be overridden by subclasses to
 // describe how big the overall popover should be.
@@ -160,9 +165,6 @@ typedef void (^RBLPopoverDelegateBlock)(RBLPopover *popover);
 
 // The edge of the target view which the popover is appearing next to.
 @property (nonatomic) CGRectEdge popoverEdge;
-
-// The color used to stroke the outline of the background view.
-@property (nonatomic, strong) NSColor *strokeColor;
 
 // The color used to fill the shape of the background view.
 @property (nonatomic, strong) NSColor *fillColor;

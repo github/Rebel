@@ -23,15 +23,6 @@
 + (instancetype)backgroundViewForContentSize:(CGSize)contentSize popoverEdge:(CGRectEdge)popoverEdge originScreenRect:(CGRect)originScreenRect;
 
 - (CGRectEdge)arrowEdgeForPopoverEdge:(CGRectEdge)popoverEdge;
-- (void)updateMaskLayer;
-
-@end
-
-//***************************************************************************
-
-@interface RBLPopoverWindowContentView : NSView
-
-@property (nonatomic) CGRectEdge arrowEdge;
 
 @end
 
@@ -60,6 +51,41 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 // Correctly removes our event monitor watching for mouse clicks external to the
 // popover.
 - (void)removeEventMonitor;
+
+@end
+
+//***************************************************************************
+
+// A class which forcably draws `NSClearColor.clearColor` around a given path,
+// effectively clipping any views to the path. You can think of it like a
+// `maskLayer` on a `CALayer`.
+@interface RBLPopoverClippingView : NSView
+
+// The path which the view will clip to.
+@property (nonatomic) CGPathRef clippingPath;
+
+@end
+
+@implementation RBLPopoverClippingView
+
+- (void)setClippingPath:(CGPathRef)clippingPath {
+	if (clippingPath == _clippingPath) return;
+	
+	CGPathRelease(_clippingPath);
+	_clippingPath = clippingPath;
+	CGPathRetain(_clippingPath);
+}
+
+- (void)drawRect:(NSRect)dirtyRect {
+	if (self.clippingPath == NULL) return;
+	
+	CGContextRef currentContext = NSGraphicsContext.currentContext.graphicsPort;
+	CGContextAddRect(currentContext, self.bounds);
+	CGContextAddPath(currentContext, self.clippingPath);
+	CGContextSetBlendMode(currentContext, kCGBlendModeCopy);
+	[NSColor.clearColor set];
+	CGContextEOFillPath(currentContext);
+}
 
 @end
 
@@ -218,18 +244,21 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 	self.popoverWindow = [[NSWindow alloc] initWithContentRect:popoverScreenRect styleMask:NSBorderlessWindowMask backing:NSBackingStoreBuffered defer:NO];
 	self.popoverWindow.hasShadow = YES;
 	self.popoverWindow.releasedWhenClosed = NO;
-	RBLPopoverWindowContentView *contentView = [[RBLPopoverWindowContentView alloc] initWithFrame:backgroundView.bounds];
-	contentView.arrowEdge = [backgroundView arrowEdgeForPopoverEdge:popoverEdge];
-	[contentView addSubview:backgroundView];
 	self.popoverWindow.opaque = NO;
 	self.popoverWindow.backgroundColor = NSColor.clearColor;
-	self.popoverWindow.contentView = contentView;
+	self.popoverWindow.contentView = backgroundView;
 	if (self.animates) {
 		self.popoverWindow.alphaValue = 0.0;
 	}
+	
+	RBLPopoverClippingView *clippingView = [[RBLPopoverClippingView alloc] initWithFrame:backgroundView.bounds];
+	CGPathRef clippingPath = [backgroundView newPopoverPathForEdge:popoverEdge inFrame:clippingView.bounds];
+	clippingView.clippingPath = clippingPath;
+	CGPathRelease(clippingPath);
+	[backgroundView addSubview:clippingView];
+	
 	[positioningView.window addChildWindow:self.popoverWindow ordered:NSWindowAbove];
 	[self.popoverWindow makeKeyAndOrderFront:self];
-	[backgroundView updateMaskLayer];
 	
 	void (^postDisplayBlock)(BOOL) = ^(BOOL finished) {
 		self.animating = NO;
@@ -446,7 +475,6 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 	CGPathAddArc(path, NULL, floor(minX + RBLPopoverBackgroundViewBorderRadius), floor(minY + RBLPopoverBackgroundViewBorderRadius), RBLPopoverBackgroundViewBorderRadius, -M_PI / 2, M_PI, 1);
 	
 	return path;
-	
 }
 
 - (instancetype)initWithFrame:(CGRect)frame popoverEdge:(CGRectEdge)popoverEdge originScreenRect:(CGRect)originScreenRect {
@@ -455,7 +483,6 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 	
 	_popoverEdge = popoverEdge;
 	_screenOriginRect = originScreenRect;
-	_strokeColor = NSColor.blackColor;
 	_fillColor = NSColor.whiteColor;
 	
 	return self;
@@ -465,27 +492,11 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 	[super drawRect:rect];
 	CGContextRef context = NSGraphicsContext.currentContext.graphicsPort;
 	CGPathRef outerBorder = [self newPopoverPathForEdge:self.popoverEdge inFrame:self.bounds];
-	CGContextSetStrokeColorWithColor(context, self.strokeColor.rbl_CGColor);
-	CGContextAddPath(context, outerBorder);
-	CGContextStrokePath(context);
-	
 	CGContextSetFillColorWithColor(context, self.fillColor.rbl_CGColor);
 	CGContextAddPath(context, outerBorder);
 	CGContextFillPath(context);
 	
 	CGPathRelease(outerBorder);
-}
-
-- (void)updateMaskLayer {
-	CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
-	CGPathRef path = [self newPopoverPathForEdge:self.popoverEdge inFrame:self.bounds];
-	maskLayer.path = path;
-	maskLayer.fillColor = CGColorGetConstantColor(kCGColorBlack);
-	
-	CGPathRelease(path);
-	
-	self.layer.mask = maskLayer;
-	
 }
 
 - (CGRectEdge)arrowEdgeForPopoverEdge:(CGRectEdge)popoverEdge {
@@ -510,58 +521,8 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 	return arrowEdge;
 }
 
-@end
-
-// Hmm I'm not sure I like how this takes some of the drawing responsibility away from the background view breaking the extensibility.
-// But it works.
-
-@implementation RBLPopoverWindowContentView
-
-- (id)initWithFrame:(NSRect)frameRect {
-	self = [super initWithFrame:frameRect];
-	if (self == nil) return nil;
-	
-	_arrowEdge = CGRectMinYEdge;
-	self.autoresizingMask = (NSViewWidthSizable | NSViewHeightSizable);
-	
-	return self;
-}
-
 - (BOOL)isOpaque {
 	return NO;
-}
-
-- (void)drawRect:(NSRect)dirtyRect {
-	[NSGraphicsContext saveGraphicsState];
-	
-	static CGFloat const targetRectOriginOffset = 1.0;
-	static CGFloat const targetRectWidthSquash = 2.0;
-	static CGFloat const targetRectHeightSquash = 2.0;
-	
-	CGRect targetRect = CGRectZero;
-	switch (self.arrowEdge) {
-		case CGRectMinYEdge:
-			targetRect = CGRectMake(targetRectOriginOffset, targetRectOriginOffset + RBLPopoverBackgroundViewArrowHeight, CGRectGetWidth(self.bounds) - targetRectWidthSquash, CGRectGetHeight(self.bounds) - RBLPopoverBackgroundViewArrowHeight - targetRectHeightSquash);
-			break;
-		case CGRectMaxXEdge:
-			targetRect = CGRectMake(targetRectOriginOffset, targetRectOriginOffset, CGRectGetWidth(self.bounds) - targetRectWidthSquash - RBLPopoverBackgroundViewArrowHeight, CGRectGetHeight(self.bounds) - targetRectHeightSquash);
-			break;
-		case CGRectMaxYEdge:
-			targetRect = CGRectMake(targetRectOriginOffset, targetRectOriginOffset, CGRectGetWidth(self.bounds) - targetRectWidthSquash, CGRectGetHeight(self.bounds) - targetRectHeightSquash - RBLPopoverBackgroundViewArrowHeight);
-			break;
-		case CGRectMinXEdge:
-			targetRect = CGRectMake(RBLPopoverBackgroundViewArrowHeight + targetRectOriginOffset, targetRectOriginOffset, CGRectGetWidth(self.bounds) - targetRectWidthSquash - RBLPopoverBackgroundViewArrowHeight, CGRectGetHeight(self.bounds) - targetRectHeightSquash);
-			break;
-			
-		default:
-			break;
-	}
-	
-	NSBezierPath *roundRectPath = [NSBezierPath bezierPathWithRoundedRect:targetRect xRadius:RBLPopoverBackgroundViewBorderRadius yRadius:RBLPopoverBackgroundViewBorderRadius];
-	[NSColor.whiteColor set];
-	[roundRectPath fill];
-	
-	[NSGraphicsContext restoreGraphicsState];
 }
 
 @end
