@@ -16,4 +16,4 @@ This framework also contains more general (not MVVM-specific) additions to fix b
 
 ## License
 
-Rebel is released under the MIT license. See [https://github.com/github/Rebel/blob/master/LICENSE.md](LICENSE.md).
+Rebel is released under the MIT license. See [LICENSE.md](https://github.com/github/Rebel/blob/master/LICENSE.md).
