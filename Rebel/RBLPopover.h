@@ -166,9 +166,6 @@ typedef void (^RBLPopoverDelegateBlock)(RBLPopover *popover);
 // The edge of the target view which the popover is appearing next to.
 @property (nonatomic) CGRectEdge popoverEdge;
 
-// The color used to stroke the outline of the background view.
-@property (nonatomic, strong) NSColor *strokeColor;
-
 // The color used to fill the shape of the background view.
 @property (nonatomic, strong) NSColor *fillColor;
 
