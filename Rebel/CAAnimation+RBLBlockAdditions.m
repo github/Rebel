@@ -14,8 +14,6 @@ static void *RBLCAAnimationCompletionBlockAssociatedObjectKey = &RBLCAAnimationC
 
 @interface RBLCAAnimationDelegate : NSObject
 
-@property (nonatomic, weak) CAAnimation *animation;
-
 @end
 
 @implementation CAAnimation (RBLBlockAdditions)
@@ -34,8 +32,8 @@ static void *RBLCAAnimationCompletionBlockAssociatedObjectKey = &RBLCAAnimationC
 
 @implementation RBLCAAnimationDelegate
 
-- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
-	if (self.animation.rbl_completionBlock != nil) self.animation.rbl_completionBlock(flag);
+- (void)animationDidStop:(CAAnimation *)animation finished:(BOOL)flag {
+	if (animation.rbl_completionBlock != nil) animation.rbl_completionBlock(flag);
 }
 
 @end
