@@ -11,6 +11,7 @@
 #import "RBLView.h"
 
 @class RBLPopover;
+@class RBLPopoverBackgroundView;
 
 // Defines the different types of behavior of an `RBLPopover`
 //
@@ -53,6 +54,11 @@ typedef void (^RBLPopoverDelegateBlock)(RBLPopover *popover);
 // of the popover.
 // Note that this must be a subclass of `RBLPopoverBackgroundView`.
 @property (nonatomic, strong) Class backgroundViewClass;
+
+// The popover's background view.
+// This will be nil before the popover has been opened, after that point it will
+// be an instance of the popover's `backgroundViewClass`.
+@property (nonatomic, readonly, strong) RBLPopoverBackgroundView *backgroundView;
 
 // The size that, when displayed, the popover's content should be.
 // Passing `CGSizeZero` uses the size of the `contentViewController`'s view.

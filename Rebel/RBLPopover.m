@@ -48,6 +48,8 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 // The size the content view was before the popover was shown.
 @property (nonatomic) CGSize originalViewSize;
 
+@property (nonatomic, strong) RBLPopoverBackgroundView *backgroundView;
+
 // Correctly removes our event monitor watching for mouse clicks external to the
 // popover.
 - (void)removeEventMonitor;
@@ -236,26 +238,26 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 	};
 	
 	CGRect popoverScreenRect = popoverRect();
-	RBLPopoverBackgroundView *backgroundView = [self.backgroundViewClass backgroundViewForContentSize:contentViewSize popoverEdge:popoverEdge originScreenRect:screenPositioningRect];
+	self.backgroundView = [self.backgroundViewClass backgroundViewForContentSize:contentViewSize popoverEdge:popoverEdge originScreenRect:screenPositioningRect];
 	
-	CGRect contentViewFrame = [self.backgroundViewClass contentViewFrameForBackgroundFrame:backgroundView.bounds popoverEdge:popoverEdge];
+	CGRect contentViewFrame = [self.backgroundViewClass contentViewFrameForBackgroundFrame:self.backgroundView.bounds popoverEdge:popoverEdge];
 	self.contentViewController.view.frame = contentViewFrame;
-	[backgroundView addSubview:self.contentViewController.view];
+	[self.backgroundView addSubview:self.contentViewController.view];
 	self.popoverWindow = [[NSWindow alloc] initWithContentRect:popoverScreenRect styleMask:NSBorderlessWindowMask backing:NSBackingStoreBuffered defer:NO];
 	self.popoverWindow.hasShadow = YES;
 	self.popoverWindow.releasedWhenClosed = NO;
 	self.popoverWindow.opaque = NO;
 	self.popoverWindow.backgroundColor = NSColor.clearColor;
-	self.popoverWindow.contentView = backgroundView;
+	self.popoverWindow.contentView = self.backgroundView;
 	if (self.animates) {
 		self.popoverWindow.alphaValue = 0.0;
 	}
 	
-	RBLPopoverClippingView *clippingView = [[RBLPopoverClippingView alloc] initWithFrame:backgroundView.bounds];
-	CGPathRef clippingPath = [backgroundView newPopoverPathForEdge:popoverEdge inFrame:clippingView.bounds];
+	RBLPopoverClippingView *clippingView = [[RBLPopoverClippingView alloc] initWithFrame:self.backgroundView.bounds];
+	CGPathRef clippingPath = [self.backgroundView newPopoverPathForEdge:popoverEdge inFrame:clippingView.bounds];
 	clippingView.clippingPath = clippingPath;
 	CGPathRelease(clippingPath);
-	[backgroundView addSubview:clippingView];
+	[self.backgroundView addSubview:clippingView];
 	
 	[positioningView.window addChildWindow:self.popoverWindow ordered:NSWindowAbove];
 	[self.popoverWindow makeKeyAndOrderFront:self];
