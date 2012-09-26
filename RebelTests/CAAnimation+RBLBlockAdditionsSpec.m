@@ -28,8 +28,8 @@ it(@"Should have set a completion block", ^ {
 	expect(completionExecuted).to.beTruthy();
 });
 
-it(@"Should have set itself has a delegate", ^{
-	expect(animation.delegate).to.equal(animation);
+it(@"Should not have a nil delegate", ^{
+	expect(animation.delegate).toNot.beNil();
 });
 
 SpecEnd

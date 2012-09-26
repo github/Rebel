@@ -12,10 +12,15 @@
 
 static void *RBLCAAnimationCompletionBlockAssociatedObjectKey = &RBLCAAnimationCompletionBlockAssociatedObjectKey;
 
+@interface RBLCAAnimationDelegate : NSObject
+
+@end
+
 @implementation CAAnimation (RBLBlockAdditions)
 
 - (void)setRbl_completionBlock:(void (^)(BOOL))block {
-	self.delegate = self;
+	RBLCAAnimationDelegate *delegateStub = [[RBLCAAnimationDelegate alloc] init];
+	self.delegate = delegateStub;
 	objc_setAssociatedObject(self, RBLCAAnimationCompletionBlockAssociatedObjectKey, block, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
@@ -23,8 +28,12 @@ static void *RBLCAAnimationCompletionBlockAssociatedObjectKey = &RBLCAAnimationC
 	return objc_getAssociatedObject(self, RBLCAAnimationCompletionBlockAssociatedObjectKey);
 }
 
-- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
-	if (self.rbl_completionBlock != nil) self.rbl_completionBlock(flag);
+@end
+
+@implementation RBLCAAnimationDelegate
+
+- (void)animationDidStop:(CAAnimation *)animation finished:(BOOL)flag {
+	if (animation.rbl_completionBlock != nil) animation.rbl_completionBlock(flag);
 }
 
 @end
