@@ -241,6 +241,7 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 	self.backgroundView = [self.backgroundViewClass backgroundViewForContentSize:contentViewSize popoverEdge:popoverEdge originScreenRect:screenPositioningRect];
 	
 	CGRect contentViewFrame = [self.backgroundViewClass contentViewFrameForBackgroundFrame:self.backgroundView.bounds popoverEdge:popoverEdge];
+	self.contentViewController.view.autoresizingMask = (NSViewWidthSizable | NSViewHeightSizable);
 	self.contentViewController.view.frame = contentViewFrame;
 	[self.backgroundView addSubview:self.contentViewController.view];
 	self.popoverWindow = [[NSWindow alloc] initWithContentRect:popoverScreenRect styleMask:NSBorderlessWindowMask backing:NSBackingStoreBuffered defer:NO];
@@ -380,9 +381,6 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 			NSAssert(NO, @"Failed to pass in a valid CGRectEdge");
 			break;
 	}
-	
-	returnFrame.origin.x ++;
-	returnFrame.size.width ++;
 	
 	return returnFrame;
 }
