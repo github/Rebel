@@ -141,6 +141,8 @@ typedef void (^RBLPopoverDelegateBlock)(RBLPopover *popover);
 
 // Given a frame for the background this should be overridden by subclasses to
 // describe where the content should fit within the popover.
+// By default this sits the content in the frame of the background view whilst
+// nudging the content to make room for the arrow.
 //
 // frame            - The frame of the `backgroundView`.
 // popoverEdge      - The edge that is adjacent to the `positioningRect`.
