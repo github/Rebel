@@ -353,7 +353,6 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 		returnSize.height += RBLPopoverBackgroundViewArrowHeight;
 	}
 	
-	// MAGIC! This aligns the popover content view correctly.
 	returnSize.width ++;
 	returnSize.height ++;
 	
