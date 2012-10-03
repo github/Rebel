@@ -493,13 +493,8 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 
 - (void)drawRect:(NSRect)rect {
 	[super drawRect:rect];
-	CGContextRef context = NSGraphicsContext.currentContext.graphicsPort;
-	CGPathRef outerBorder = [self newPopoverPathForEdge:self.popoverEdge inFrame:self.bounds];
-	CGContextSetFillColorWithColor(context, self.fillColor.rbl_CGColor);
-	CGContextAddPath(context, outerBorder);
-	CGContextFillPath(context);
-	
-	CGPathRelease(outerBorder);
+	[self.fillColor set];
+	NSRectFill(rect);
 }
 
 - (CGRectEdge)arrowEdgeForPopoverEdge:(CGRectEdge)popoverEdge {
