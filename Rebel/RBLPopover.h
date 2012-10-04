@@ -102,6 +102,9 @@ typedef void (^RBLPopoverDelegateBlock)(RBLPopover *popover);
 
 // Displays the popover
 //
+// If the popover is already visible, this will move the popover to be
+// re-positioned with the given `positioningRect` and `prederredEdge`.
+//
 // positioningRect - The area which the popover should "cling" to. Given in
 //                   positioningView's coordinate space.
 // positioningView - The view which the positioningRect is relative to.
