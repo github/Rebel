@@ -213,7 +213,7 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 	CGRect popoverScreenRect = popoverRect();
 	
 	if (self.shown) {
-		[self.popoverWindow setFrame:popoverScreenRect display:NO];
+		[self.popoverWindow setFrame:popoverScreenRect display:YES];
 		return;
 	}
 	
