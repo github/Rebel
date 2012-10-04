@@ -119,33 +119,6 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 #pragma mark Showing
 
 - (void)showRelativeToRect:(CGRect)positioningRect ofView:(NSView *)positioningView preferredEdge:(CGRectEdge)preferredEdge {
-	if (self.shown) return;
-	
-	//TODO: Create RBLViewController with viewWillAppear
-	//[self.contentViewController viewWillAppear:YES]; //this will always be animated… in the current implementation
-	
-	if (self.willShowBlock != nil) self.willShowBlock(self);
-	
-	if (self.behavior != RBLPopoverViewControllerBehaviorApplicationDefined) {
-		[self removeEventMonitor];
-		
-		self.transientEventMonitor = [NSEvent addLocalMonitorForEventsMatchingMask:(NSLeftMouseDownMask | NSRightMouseDownMask | NSKeyUpMask) handler: ^(NSEvent *event) {
-			if (self.popoverWindow == nil) return event;
-			
-			static NSUInteger escapeKey = 53;
-			BOOL shouldClose = NO;
-			if (event.type == NSLeftMouseDown || event.type == NSRightMouseDown) {
-				shouldClose = (!NSPointInRect(NSEvent.mouseLocation, self.popoverWindow.frame) && self.behavior == RBLPopoverViewControllerBehaviorTransient);
-			} else {
-				shouldClose = (event.keyCode == escapeKey);
-			}
-			
-			if (shouldClose) [self close];
-			
-			return event;
-		}];
-	}
-	
 	if (CGRectEqualToRect(positioningRect, CGRectZero)) {
 		positioningRect = [positioningView bounds];
 	}
@@ -238,6 +211,37 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 	};
 	
 	CGRect popoverScreenRect = popoverRect();
+	
+	if (self.shown) {
+		[self.popoverWindow setFrame:popoverScreenRect display:YES];
+		return;
+	}
+	
+	//TODO: Create RBLViewController with viewWillAppear
+	//[self.contentViewController viewWillAppear:YES]; //this will always be animated… in the current implementation
+	
+	if (self.willShowBlock != nil) self.willShowBlock(self);
+	
+	if (self.behavior != RBLPopoverViewControllerBehaviorApplicationDefined) {
+		[self removeEventMonitor];
+		
+		self.transientEventMonitor = [NSEvent addLocalMonitorForEventsMatchingMask:(NSLeftMouseDownMask | NSRightMouseDownMask | NSKeyUpMask) handler: ^(NSEvent *event) {
+			if (self.popoverWindow == nil) return event;
+			
+			static NSUInteger escapeKey = 53;
+			BOOL shouldClose = NO;
+			if (event.type == NSLeftMouseDown || event.type == NSRightMouseDown) {
+				shouldClose = (!NSPointInRect(NSEvent.mouseLocation, self.popoverWindow.frame) && self.behavior == RBLPopoverViewControllerBehaviorTransient);
+			} else {
+				shouldClose = (event.keyCode == escapeKey);
+			}
+			
+			if (shouldClose) [self close];
+			
+			return event;
+		}];
+	}
+	
 	self.backgroundView = [self.backgroundViewClass backgroundViewForContentSize:contentViewSize popoverEdge:popoverEdge originScreenRect:screenPositioningRect];
 	
 	CGRect contentViewFrame = [self.backgroundViewClass contentViewFrameForBackgroundFrame:self.backgroundView.bounds popoverEdge:popoverEdge];
