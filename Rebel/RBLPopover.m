@@ -213,8 +213,13 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 	CGRect popoverScreenRect = popoverRect();
 	
 	if (self.shown) {
-		[self.popoverWindow setFrame:popoverScreenRect display:YES];
-		return;
+		if (self.backgroundView.popoverEdge == popoverEdge) {
+			[self.popoverWindow setFrame:popoverScreenRect display:YES];
+			return;
+		}
+		
+		[self.popoverWindow close];
+		self.popoverWindow = nil;
 	}
 	
 	//TODO: Create RBLViewController with viewWillAppear
