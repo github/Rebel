@@ -5,6 +5,9 @@
 //  Created by Justin Spahr-Summers on 2012-07-24.
 //  Copyright (c) 2012 GitHub. All rights reserved.
 //
+//  Portions copyright (c) 2011 Twitter. All rights reserved.
+//  See the LICENSE file for more information.
+//
 
 #import "RBLResizableImage.h"
 
@@ -120,7 +123,7 @@
 	}
 
 	if (topLeft != nil || bottomRight != nil) {
-		NSDrawNinePartImage(dstRect, topLeft, topEdge, topRight, leftEdge, center, rightEdge, bottomLeft, bottomEdge, bottomRight, op, alpha, flipped);
+		NSDrawNinePartImage(dstRect, bottomLeft, bottomEdge, bottomRight, leftEdge, center, rightEdge, topLeft, topEdge, topRight, op, alpha, flipped);
 	} else if (leftEdge != nil) {
 		// Horizontal three-part image.
 		NSDrawThreePartImage(dstRect, leftEdge, center, rightEdge, NO, op, alpha, flipped);

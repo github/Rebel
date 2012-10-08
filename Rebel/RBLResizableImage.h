@@ -5,6 +5,9 @@
 //  Created by Justin Spahr-Summers on 2012-07-24.
 //  Copyright (c) 2012 GitHub. All rights reserved.
 //
+//  Portions copyright (c) 2011 Twitter. All rights reserved.
+//  See the LICENSE file for more information.
+//
 
 #import <Cocoa/Cocoa.h>
 
