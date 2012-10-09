@@ -20,10 +20,14 @@
 }
 
 - (void)drawInRect:(NSRect)dstRect fromRect:(NSRect)srcRect operation:(NSCompositingOperation)op fraction:(CGFloat)alpha respectFlipped:(BOOL)respectFlipped hints:(NSDictionary *)hints {
-	CGImageRef image = [self CGImageForProposedRect:&dstRect context:[NSGraphicsContext currentContext] hints:hints];
+	CGImageRef image = [self CGImageForProposedRect:&dstRect context:NSGraphicsContext.currentContext hints:hints];
 	NSAssert(image != NULL, @"Could not get CGImage of %@ for resizing", self);
 
-	CGSize size = CGSizeMake(CGImageGetWidth(image), CGImageGetHeight(image));
+	// Calculate scale factors from the pixel-independent representation to the
+	// specific one we're using for this context.
+	CGFloat widthScale = CGImageGetWidth(image) / self.size.width;
+	CGFloat heightScale = CGImageGetHeight(image) / self.size.height;
+
 	NSEdgeInsets insets = self.capInsets;
 
 	// TODO: Cache the nine-part images for this common case of wanting to draw
@@ -32,17 +36,18 @@
 		// Match the image creation that occurs in the 'else' clause.
 		CGImageRetain(image);
 	} else {
-		image = CGImageCreateWithImageInRect(image, srcRect);
+		CGRect scaledRect = CGRectMake(srcRect.origin.x * widthScale, srcRect.origin.y * heightScale, srcRect.size.width * widthScale, srcRect.size.height * heightScale);
+		image = CGImageCreateWithImageInRect(image, scaledRect);
 		if (image == NULL) return;
 
 		// Reduce insets to account for taking only part of the original image.
 		insets.left = fmax(0, insets.left - CGRectGetMinX(srcRect));
 		insets.bottom = fmax(0, insets.bottom - CGRectGetMinY(srcRect));
 
-		CGFloat srcRightInset = size.width - CGRectGetMaxX(srcRect);
+		CGFloat srcRightInset = self.size.width - CGRectGetMaxX(srcRect);
 		insets.right = fmax(0, insets.right - srcRightInset);
 
-		CGFloat srcTopInset = size.height - CGRectGetMaxY(srcRect);
+		CGFloat srcTopInset = self.size.height - CGRectGetMaxY(srcRect);
 		insets.top = fmax(0, insets.top - srcTopInset);
 	}
 
@@ -51,13 +56,14 @@
 	NSImage *bottomLeft = nil, *bottomEdge = nil, *bottomRight = nil;
 
 	// Length of sides that run vertically.
-	CGFloat verticalEdgeLength = fmax(0, size.height - insets.top - insets.bottom);
+	CGFloat verticalEdgeLength = fmax(0, self.size.height - insets.top - insets.bottom);
 
 	// Length of sides that run horizontally.
-	CGFloat horizontalEdgeLength = fmax(0, size.width - insets.left - insets.right);
+	CGFloat horizontalEdgeLength = fmax(0, self.size.width - insets.left - insets.right);
 
 	NSImage *(^imageWithRect)(CGRect) = ^ id (CGRect rect){
-		CGImageRef part = CGImageCreateWithImageInRect(image, rect);
+		CGRect scaledRect = CGRectMake(rect.origin.x * widthScale, rect.origin.y * heightScale, rect.size.width * widthScale, rect.size.height * heightScale);
+		CGImageRef part = CGImageCreateWithImageInRect(image, scaledRect);
 		if (part == NULL) return nil;
 
 		NSImage *image = [[NSImage alloc] initWithCGImage:part size:rect.size];
@@ -73,7 +79,7 @@
 		}
 
 		if (insets.right > 0) {
-			CGRect partRect = CGRectMake(size.width - insets.right, insets.bottom, insets.right, verticalEdgeLength);
+			CGRect partRect = CGRectMake(self.size.width - insets.right, insets.bottom, insets.right, verticalEdgeLength);
 			rightEdge = imageWithRect(partRect);
 		}
 	}
@@ -85,13 +91,13 @@
 		}
 
 		if (insets.top > 0) {
-			CGRect partRect = CGRectMake(insets.left, size.height - insets.top, horizontalEdgeLength, insets.top);
+			CGRect partRect = CGRectMake(insets.left, self.size.height - insets.top, horizontalEdgeLength, insets.top);
 			topEdge = imageWithRect(partRect);
 		}
 	}
 
 	if (insets.left > 0 && insets.top > 0) {
-		CGRect partRect = CGRectMake(0, size.height - insets.top, insets.left, insets.top);
+		CGRect partRect = CGRectMake(0, self.size.height - insets.top, insets.left, insets.top);
 		topLeft = imageWithRect(partRect);
 	}
 
@@ -101,12 +107,12 @@
 	}
 
 	if (insets.right > 0 && insets.top > 0) {
-		CGRect partRect = CGRectMake(size.width - insets.right, size.height - insets.top, insets.right, insets.top);
+		CGRect partRect = CGRectMake(self.size.width - insets.right, self.size.height - insets.top, insets.right, insets.top);
 		topRight = imageWithRect(partRect);
 	}
 
 	if (insets.right > 0 && insets.bottom > 0) {
-		CGRect partRect = CGRectMake(size.width - insets.right, 0, insets.right, insets.bottom);
+		CGRect partRect = CGRectMake(self.size.width - insets.right, 0, insets.right, insets.bottom);
 		bottomRight = imageWithRect(partRect);
 	}
 
