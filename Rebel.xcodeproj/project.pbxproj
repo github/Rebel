@@ -557,7 +557,7 @@
 		D09AE4D515C5F45200ECAD10 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0440;
+				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = GitHub;
 			};
 			buildConfigurationList = D09AE4D815C5F45200ECAD10 /* Build configuration list for PBXProject "Rebel" */;
@@ -800,6 +800,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D08BB2EB15CB307200CC9868 /* Mac-Framework.xcconfig */;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
@@ -814,6 +815,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D08BB2E815CB307200CC9868 /* Mac-Application.xcconfig */;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
 				GCC_PREFIX_HEADER = "RebelTests/RebelTests-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -855,6 +857,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D08BB2EB15CB307200CC9868 /* Mac-Framework.xcconfig */;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
@@ -869,6 +872,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D08BB2EB15CB307200CC9868 /* Mac-Framework.xcconfig */;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
@@ -883,6 +887,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D08BB2E815CB307200CC9868 /* Mac-Application.xcconfig */;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
 				GCC_PREFIX_HEADER = "RebelTests/RebelTests-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -900,6 +905,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D08BB2E815CB307200CC9868 /* Mac-Application.xcconfig */;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
 				GCC_PREFIX_HEADER = "RebelTests/RebelTests-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
