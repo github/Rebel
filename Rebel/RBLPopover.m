@@ -294,7 +294,7 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 }
 
 - (void)closeWithFadeoutDuration:(NSTimeInterval)duration {
-	if (self.animating || !self.shown) return;
+	if (!self.shown) return;
 	
 	[self removeEventMonitor];
 	
