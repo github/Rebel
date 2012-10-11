@@ -8,11 +8,8 @@
 
 #import "RBLPopover.h"
 
-#import "CAAnimation+RBLBlockAdditions.h"
 #import "NSColor+RBLCGColorAdditions.h"
-
-#import <QuartzCore/QuartzCore.h>
-#import "EXTKeyPathCoding.h"
+#import "NSView+RBLAnimationAdditions.h"
 
 //***************************************************************************
 
@@ -272,23 +269,20 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 	[positioningView.window addChildWindow:self.popoverWindow ordered:NSWindowAbove];
 	[self.popoverWindow makeKeyAndOrderFront:self];
 	
-	void (^postDisplayBlock)(BOOL) = ^(BOOL finished) {
+	void (^postDisplayBlock)(void) = ^{
 		self.animating = NO;
-		//[self.contentViewController viewDidAppear:YES];
 		
 		if (self.didShowBlock) self.didShowBlock(self);
 	};
 	
 	if (self.animates) {
-		CABasicAnimation *fadeInAnimation = [CABasicAnimation animationWithKeyPath:@keypath(_popoverWindow.alphaValue)];
-		fadeInAnimation.duration = RBLPopoverDefaultFadeDuration;
-		fadeInAnimation.rbl_completionBlock = postDisplayBlock;
-		
-		self.popoverWindow.animations = @{ @keypath(_popoverWindow.alphaValue): fadeInAnimation };
 		self.animating = YES;
-		[self.popoverWindow.animator setAlphaValue:1.0];
+
+		[NSView rbl_animateWithDuration:RBLPopoverDefaultFadeDuration animations:^{
+			[self.popoverWindow.animator setAlphaValue:1.0];
+		} completion:postDisplayBlock];
 	} else {
-		postDisplayBlock(YES);
+		postDisplayBlock();
 	}
 }
 
@@ -306,7 +300,7 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 	
 	if (self.willCloseBlock != nil) self.willCloseBlock(self);
 	
-	void (^windowTeardown)(BOOL) = ^(BOOL finished) {
+	void (^windowTeardown)(void) = ^{
 		[self.popoverWindow.parentWindow removeChildWindow:self.popoverWindow];
 		[self.popoverWindow close];
 		self.animating = NO;
@@ -317,15 +311,13 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 	};
 	
 	if (self.animates) {
-		CABasicAnimation *fadeOutAnimation = [CABasicAnimation animationWithKeyPath:@keypath(_popoverWindow.alphaValue)];
-		fadeOutAnimation.duration = duration;
-		fadeOutAnimation.rbl_completionBlock = windowTeardown;
-		
-		self.popoverWindow.animations = @{ @keypath(_popoverWindow.alphaValue): fadeOutAnimation };
 		self.animating = YES;
-		[self.popoverWindow.animator setAlphaValue:0.0];
+
+		[NSView rbl_animateWithDuration:duration animations:^{
+			[self.popoverWindow.animator setAlphaValue:0.0];
+		} completion:windowTeardown];
 	} else {
-		windowTeardown(YES);
+		windowTeardown();
 	}
 }
 
