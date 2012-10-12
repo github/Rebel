@@ -39,9 +39,6 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 // We are not responsible for it's memory management.
 @property (nonatomic, weak) id transientEventMonitor;
 
-// Whether the popover is currently animating, either in or out.
-@property (nonatomic, getter = isAnimating) BOOL animating;
-
 // The size the content view was before the popover was shown.
 @property (nonatomic) CGSize originalViewSize;
 
@@ -269,15 +266,11 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 	[positioningView.window addChildWindow:self.popoverWindow ordered:NSWindowAbove];
 	[self.popoverWindow makeKeyAndOrderFront:self];
 	
-	void (^postDisplayBlock)(void) = ^{
-		self.animating = NO;
-		
-		if (self.didShowBlock) self.didShowBlock(self);
+	void (^postDisplayBlock)(void) = ^{		
+		if (self.didShowBlock != NULL) self.didShowBlock(self);
 	};
 	
 	if (self.animates) {
-		self.animating = YES;
-
 		[NSView rbl_animateWithDuration:RBLPopoverDefaultFadeDuration animations:^{
 			[self.popoverWindow.animator setAlphaValue:1.0];
 		} completion:postDisplayBlock];
@@ -303,7 +296,6 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 	void (^windowTeardown)(void) = ^{
 		[self.popoverWindow.parentWindow removeChildWindow:self.popoverWindow];
 		[self.popoverWindow close];
-		self.animating = NO;
 		
 		if (self.didCloseBlock != nil) self.didCloseBlock(self);
 		
@@ -311,8 +303,6 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 	};
 	
 	if (self.animates) {
-		self.animating = YES;
-
 		[NSView rbl_animateWithDuration:duration animations:^{
 			[self.popoverWindow.animator setAlphaValue:0.0];
 		} completion:windowTeardown];
