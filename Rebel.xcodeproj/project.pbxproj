@@ -14,10 +14,6 @@
 		306A81E81601E92000BF45F3 /* CAAnimation+RBLBlockAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 306A81E61601E92000BF45F3 /* CAAnimation+RBLBlockAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		306A81E91601E92000BF45F3 /* CAAnimation+RBLBlockAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 306A81E71601E92000BF45F3 /* CAAnimation+RBLBlockAdditions.m */; };
 		306A81EB1601EAE700BF45F3 /* CAAnimation+RBLBlockAdditionsSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 306A81EA1601EAE700BF45F3 /* CAAnimation+RBLBlockAdditionsSpec.m */; };
-		883CD4CE1600CF7100F57354 /* RBLTestViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 883CD4CD1600CF7100F57354 /* RBLTestViewModel.m */; };
-		889E5E0F15FFDAE0007F2445 /* RBLViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 889E5E0D15FFDAE0007F2445 /* RBLViewModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		889E5E1015FFDAE0007F2445 /* RBLViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 889E5E0E15FFDAE0007F2445 /* RBLViewModel.m */; };
-		889E5E1315FFE049007F2445 /* RBLViewModelSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 889E5E1215FFE049007F2445 /* RBLViewModelSpec.m */; };
 		D011FD5E16239A8600A27946 /* NSImage+RBLResizableImageAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D011FD5C16239A8600A27946 /* NSImage+RBLResizableImageAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D011FD5F16239A8600A27946 /* NSImage+RBLResizableImageAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D011FD5D16239A8600A27946 /* NSImage+RBLResizableImageAdditions.m */; };
 		D0410EAC15C61895003A3203 /* NSTextView+RBLAntialiasingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D0410EAA15C61895003A3203 /* NSTextView+RBLAntialiasingAdditions.m */; };
@@ -164,11 +160,6 @@
 		306A81E71601E92000BF45F3 /* CAAnimation+RBLBlockAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAAnimation+RBLBlockAdditions.m"; sourceTree = "<group>"; };
 		306A81EA1601EAE700BF45F3 /* CAAnimation+RBLBlockAdditionsSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAAnimation+RBLBlockAdditionsSpec.m"; sourceTree = "<group>"; };
 		306A81EC1601F44200BF45F3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		883CD4CC1600CF7100F57354 /* RBLTestViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBLTestViewModel.h; sourceTree = "<group>"; };
-		883CD4CD1600CF7100F57354 /* RBLTestViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBLTestViewModel.m; sourceTree = "<group>"; };
-		889E5E0D15FFDAE0007F2445 /* RBLViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBLViewModel.h; sourceTree = "<group>"; };
-		889E5E0E15FFDAE0007F2445 /* RBLViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBLViewModel.m; sourceTree = "<group>"; };
-		889E5E1215FFE049007F2445 /* RBLViewModelSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBLViewModelSpec.m; sourceTree = "<group>"; };
 		D011FD5C16239A8600A27946 /* NSImage+RBLResizableImageAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+RBLResizableImageAdditions.h"; sourceTree = "<group>"; };
 		D011FD5D16239A8600A27946 /* NSImage+RBLResizableImageAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+RBLResizableImageAdditions.m"; sourceTree = "<group>"; };
 		D0410EA915C61895003A3203 /* NSTextView+RBLAntialiasingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTextView+RBLAntialiasingAdditions.h"; sourceTree = "<group>"; };
@@ -278,8 +269,6 @@
 				D0723FBF15C5F9D8004DBDC7 /* RBLView.m */,
 				306A81D91601C7A300BF45F3 /* RBLPopover.h */,
 				306A81DA1601C7A300BF45F3 /* RBLPopover.m */,
-				889E5E0D15FFDAE0007F2445 /* RBLViewModel.h */,
-				889E5E0E15FFDAE0007F2445 /* RBLViewModel.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -308,9 +297,6 @@
 				306A81EA1601EAE700BF45F3 /* CAAnimation+RBLBlockAdditionsSpec.m */,
 				D078B7DD15F6DB420063DDD5 /* NSView+RBLAnimationAdditionsSpec.m */,
 				D0723FDF15C60E94004DBDC7 /* RBLViewSpec.m */,
-				889E5E1215FFE049007F2445 /* RBLViewModelSpec.m */,
-				883CD4CC1600CF7100F57354 /* RBLTestViewModel.h */,
-				883CD4CD1600CF7100F57354 /* RBLTestViewModel.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -501,7 +487,6 @@
 				D04CBFC815F6D87B004A5BCC /* NSView+RBLAnimationAdditions.h in Headers */,
 				306A81E81601E92000BF45F3 /* CAAnimation+RBLBlockAdditions.h in Headers */,
 				306A81DB1601C7A300BF45F3 /* RBLPopover.h in Headers */,
-				889E5E0F15FFDAE0007F2445 /* RBLViewModel.h in Headers */,
 				304692F21607259A00B79746 /* EXTKeyPathCoding.h in Headers */,
 				D0E91C581603CC7600D23E93 /* RBLClipView.h in Headers */,
 				D011FD5E16239A8600A27946 /* NSImage+RBLResizableImageAdditions.h in Headers */,
@@ -720,7 +705,6 @@
 				D04CBFC915F6D87B004A5BCC /* NSView+RBLAnimationAdditions.m in Sources */,
 				306A81DC1601C7A300BF45F3 /* RBLPopover.m in Sources */,
 				306A81E91601E92000BF45F3 /* CAAnimation+RBLBlockAdditions.m in Sources */,
-				889E5E1015FFDAE0007F2445 /* RBLViewModel.m in Sources */,
 				D0E91C591603CC7600D23E93 /* RBLClipView.m in Sources */,
 				D011FD5F16239A8600A27946 /* NSImage+RBLResizableImageAdditions.m in Sources */,
 			);
@@ -734,8 +718,6 @@
 				D0723FE015C60E94004DBDC7 /* RBLViewSpec.m in Sources */,
 				D078B7DE15F6DB420063DDD5 /* NSView+RBLAnimationAdditionsSpec.m in Sources */,
 				306A81EB1601EAE700BF45F3 /* CAAnimation+RBLBlockAdditionsSpec.m in Sources */,
-				889E5E1315FFE049007F2445 /* RBLViewModelSpec.m in Sources */,
-				883CD4CE1600CF7100F57354 /* RBLTestViewModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
