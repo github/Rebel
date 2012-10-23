@@ -10,4 +10,10 @@
 
 @interface RBLTableCellView : NSTableCellView
 
+// Cell will be added as a subview to a new table row view.
+- (void)cellViewWillReuse;
+
+// Cell has been added to a new table row view
+- (void)cellViewDidReuse;
+
 @end

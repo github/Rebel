@@ -10,19 +10,24 @@
 
 @implementation RBLTableCellView
 
-- (id)initWithFrame:(NSRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code here.
-    }
-    
-    return self;
+- (void)viewWillMoveToSuperview:(NSView *)newSuperview {
+	if (newSuperview) {
+		[self cellViewWillReuse];
+	}
 }
 
-- (void)drawRect:(NSRect)dirtyRect
-{
-    // Drawing code here.
+- (void)viewDidMoveToSuperview {
+	if (self.superview) {
+		[self cellViewDidReuse];
+	}
+}
+
+- (void)cellViewWillReuse {
+	
+}
+
+- (void)cellViewDidReuse {
+	
 }
 
 @end
