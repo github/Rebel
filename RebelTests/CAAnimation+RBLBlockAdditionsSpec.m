@@ -10,7 +10,7 @@ SpecBegin(CAAnimationRBLBlockAdditions)
 
 __block CAAnimation *animation = nil;
 __block BOOL completionExecuted = NO;
-__block void(^completionBlock)(BOOL) = ^ (BOOL finished) {
+__block void (^completionBlock)(BOOL) = ^(BOOL finished) {
 	completionExecuted = YES;
 };
 

@@ -61,7 +61,7 @@
 	// Length of sides that run horizontally.
 	CGFloat horizontalEdgeLength = fmax(0, self.size.width - insets.left - insets.right);
 
-	NSImage *(^imageWithRect)(CGRect) = ^ id (CGRect rect){
+	NSImage *(^imageWithRect)(CGRect) = ^ id (CGRect rect) {
 		CGRect scaledRect = CGRectMake(rect.origin.x * widthScale, rect.origin.y * heightScale, rect.size.width * widthScale, rect.size.height * heightScale);
 		CGImageRef part = CGImageCreateWithImageInRect(image, scaledRect);
 		if (part == NULL) return nil;
@@ -125,7 +125,7 @@
 
 	BOOL flipped = NO;
 	if (respectFlipped) {
-		flipped = [[NSGraphicsContext currentContext] isFlipped];
+		flipped = [NSGraphicsContext.currentContext isFlipped];
 	}
 
 	if (topLeft != nil || bottomRight != nil) {
@@ -176,7 +176,7 @@
 
 - (BOOL)isEqual:(RBLResizableImage *)image {
 	if (self == image) return YES;
-	if (![image isKindOfClass:[RBLResizableImage class]]) return NO;
+	if (![image isKindOfClass:RBLResizableImage.class]) return NO;
 	if (![super isEqual:image]) return NO;
 
 	NSEdgeInsets a = self.capInsets;

@@ -15,27 +15,27 @@
 static void (*originalDrawRectIMP)(id, SEL, NSRect);
 
 static void fixedDrawRect (NSTextView *self, SEL _cmd, NSRect rect) {
-    CGContextRef context = [NSGraphicsContext currentContext].graphicsPort;
+	CGContextRef context = NSGraphicsContext.currentContext.graphicsPort;
 
-    CGContextSetAllowsAntialiasing(context, YES);
-    CGContextSetAllowsFontSmoothing(context, YES);
-    CGContextSetAllowsFontSubpixelPositioning(context, YES);
-    CGContextSetAllowsFontSubpixelQuantization(context, YES);
+	CGContextSetAllowsAntialiasing(context, YES);
+	CGContextSetAllowsFontSmoothing(context, YES);
+	CGContextSetAllowsFontSubpixelPositioning(context, YES);
+	CGContextSetAllowsFontSubpixelQuantization(context, YES);
 
-    if (self.superview) {
-        // NSTextView likes to fall on non-integral points sometimes -- fix
+	if (self.superview) {
+		// NSTextView likes to fall on non-integral points sometimes -- fix
 		// that.
-        self.frame = [self.superview backingAlignedRect:self.frame options:NSAlignAllEdgesNearest];
-    }
+		self.frame = [self.superview backingAlignedRect:self.frame options:NSAlignAllEdgesNearest];
+	}
 
-    originalDrawRectIMP(self, _cmd, rect);
+	originalDrawRectIMP(self, _cmd, rect);
 }
 
 @implementation NSTextView (RBLAntialiasingAdditions)
 
 + (void)load {
-    Method drawRect = class_getInstanceMethod(self, @selector(drawRect:));
-    originalDrawRectIMP = (void (*)(id, SEL, NSRect))method_getImplementation(drawRect);
+	Method drawRect = class_getInstanceMethod(self, @selector(drawRect:));
+	originalDrawRectIMP = (void (*)(id, SEL, NSRect))method_getImplementation(drawRect);
 
 	method_setImplementation(drawRect, (IMP)&fixedDrawRect);
 }

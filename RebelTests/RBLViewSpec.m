@@ -37,11 +37,11 @@ it(@"should get the backgroundColor of its backing layer", ^{
 });
 
 it(@"should set the backgroundColor of its backing layer", ^{
-	view.backgroundColor = [NSColor redColor];
+	view.backgroundColor = NSColor.redColor;
 
 	CGColorRef layerColor = view.layer.backgroundColor;
 	expect(layerColor).notTo.beNil();
-	expect(CGColorEqualToColor(layerColor, [NSColor redColor].rbl_CGColor)).to.beTruthy();
+	expect(CGColorEqualToColor(layerColor, NSColor.redColor.rbl_CGColor)).to.beTruthy();
 });
 
 SpecEnd
