@@ -9,10 +9,8 @@
 #import "RBLView.h"
 #import "NSColor+RBLCGColorAdditions.h"
 
-/*
- * The implementation pointer for -[RBLView drawRect:], used to identify when
- * the method is overridden by subclasses.
- */
+// The implementation pointer for -[RBLView drawRect:], used to identify when
+// the method is overridden by subclasses.
 static IMP RBLViewDrawRectIMP;
 
 @interface RBLView () {
@@ -22,9 +20,7 @@ static IMP RBLViewDrawRectIMP;
 	} _flags;
 }
 
-/*
- * Whether this subclass of RBLView overrides -drawRect:.
- */
+// Whether this subclass of RBLView overrides -drawRect:.
 + (BOOL)doesCustomDrawing;
 
 @end

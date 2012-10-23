@@ -11,9 +11,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-/*
- * This private category fixes blurry text in layer-backed text views and text
- * fields.
- */
+// This private category fixes blurry text in layer-backed text views and text
+// fields.
 @interface NSTextView (RBLAntialiasingAdditions)
 @end
