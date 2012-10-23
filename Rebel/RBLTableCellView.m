@@ -13,7 +13,7 @@
 - (void)viewWillMoveToSuperview:(NSView *)newSuperview {
 	[super viewWillMoveToSuperview:newSuperview];
 
-	if (self.superview == nil && newSuperview) {
+	if (self.superview == nil && newSuperview != nil) {
 		[self prepareForReuse];
 	}
 }
