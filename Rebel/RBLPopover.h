@@ -13,7 +13,7 @@
 @class RBLPopover;
 @class RBLPopoverBackgroundView;
 
-// Defines the different types of behavior of an `RBLPopover`
+// Defines the different types of behavior of a RBLPopover.
 //
 // RBLPopoverViewControllerBehaviorApplicationDefined - The application decides
 //                                                      when the popover should

@@ -11,20 +11,15 @@
 
 #import <AppKit/AppKit.h>
 
-/*
- * Extensions to NSColor for interoperability with CGColor.
- */
+// Extensions to NSColor for interoperability with CGColor.
 @interface NSColor (RBLCGColorAdditions)
 
-/*
- * The CGColor corresponding to the receiver.
- */
+// The CGColor corresponding to the receiver.
 @property (nonatomic, readonly) CGColorRef rbl_CGColor;
 
-/*
- * Returns an NSColor corresponding to the given CGColor.
- *
- * This currently does not handle pattern colors.
- */
+// Returns an NSColor corresponding to the given CGColor.
+//
+// This currently does not handle pattern colors.
 + (NSColor *)rbl_colorWithCGColor:(CGColorRef)color;
+
 @end

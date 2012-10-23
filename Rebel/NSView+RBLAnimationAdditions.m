@@ -21,7 +21,7 @@ static NSUInteger RBLAnimationContextCount = 0;
 	// block.
 	if (completion == nil) completion = ^{};
 
-	[NSAnimationContext runAnimationGroup:^(NSAnimationContext *context){
+	[NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
 		RBLAnimationContextCount++;
 		animations();
 		RBLAnimationContextCount--;
@@ -30,7 +30,7 @@ static NSUInteger RBLAnimationContextCount = 0;
 
 + (void)rbl_animateWithDuration:(NSTimeInterval)duration animations:(void (^)(void))animations completion:(void (^)(void))completion {
 	[self rbl_animate:^{
-		[NSAnimationContext currentContext].duration = duration;
+		NSAnimationContext.currentContext.duration = duration;
 		animations();
 	} completion:completion];
 }
@@ -40,7 +40,7 @@ static NSUInteger RBLAnimationContextCount = 0;
 }
 
 - (instancetype)rbl_animator {
-	return [self.class rbl_isInAnimationContext] ? self.animator : self;
+	return self.class.rbl_isInAnimationContext ? self.animator : self;
 }
 
 @end

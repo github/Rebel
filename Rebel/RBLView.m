@@ -9,10 +9,8 @@
 #import "RBLView.h"
 #import "NSColor+RBLCGColorAdditions.h"
 
-/*
- * The implementation pointer for -[RBLView drawRect:], used to identify when
- * the method is overridden by subclasses.
- */
+// The implementation pointer for -[RBLView drawRect:], used to identify when
+// the method is overridden by subclasses.
 static IMP RBLViewDrawRectIMP;
 
 @interface RBLView () {
@@ -22,9 +20,7 @@ static IMP RBLViewDrawRectIMP;
 	} _flags;
 }
 
-/*
- * Whether this subclass of RBLView overrides -drawRect:.
- */
+// Whether this subclass of RBLView overrides -drawRect:.
 + (BOOL)doesCustomDrawing;
 
 @end
@@ -62,8 +58,8 @@ static IMP RBLViewDrawRectIMP;
 	_flags.flipped = (value ? 1 : 0);
 
 	// Not sure how necessary these are, but it's probably a good idea.
-	[self setNeedsLayout:YES];
-	[self setNeedsDisplay:YES];
+	self.needsLayout = YES;
+	self.needsDisplay = YES;
 }
 
 - (BOOL)clearsContextBeforeDrawing {
@@ -104,7 +100,7 @@ static IMP RBLViewDrawRectIMP;
 	self.layerContentsPlacement = NSViewLayerContentsPlacementScaleAxesIndependently;
 	self.clearsContextBeforeDrawing = YES;
 
-	if ([self.class doesCustomDrawing]) {
+	if (self.class.doesCustomDrawing) {
 		// Use more conservative defaults if -drawRect: is overridden, to ensure
 		// correct drawing. Callers or subclasses can override these defaults
 		// to optimize for performance instead.
@@ -123,7 +119,7 @@ static IMP RBLViewDrawRectIMP;
 }
 
 - (void)drawRect:(NSRect)rect {
-	CGContextRef context = [NSGraphicsContext currentContext].graphicsPort;
+	CGContextRef context = NSGraphicsContext.currentContext.graphicsPort;
 
 	if (self.clearsContextBeforeDrawing && !self.opaque) {
 		CGContextClearRect(context, rect);
