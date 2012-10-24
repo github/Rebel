@@ -12,7 +12,7 @@
 @interface NSApplication (RBLBlockAdditions)
 
 // Adds onto the standard `beginSheet:modalForWindow:modalDelegate:didEndSelector:contextInfo:`
-// with support for a block completion handler instead.
-- (void)beginSheet:(NSWindow *)sheet modalForWindow:(NSWindow *)modalWindow completionHandler:(void (^)(NSInteger returnCode))handler;
+// with support for a block completion handler.
+- (void)rbl_beginSheet:(NSWindow *)sheet modalForWindow:(NSWindow *)modalWindow completionHandler:(void (^)(NSInteger returnCode))handler;
 
 @end

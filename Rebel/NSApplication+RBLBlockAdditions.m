@@ -13,18 +13,18 @@ static void *RBLNSApplicationSheetBlockAssociatedObjectKey = &RBLNSApplicationSh
 
 @implementation NSApplication (RBLBlockAdditions)
 
-- (void)beginSheet:(NSWindow *)sheet modalForWindow:(NSWindow *)modalWindow completionHandler:(void (^)(NSInteger returnCode))handler {
+- (void)rbl_beginSheet:(NSWindow *)sheet modalForWindow:(NSWindow *)modalWindow completionHandler:(void (^)(NSInteger returnCode))handler {
 	
     [self beginSheet:sheet modalForWindow:modalWindow modalDelegate:self didEndSelector:@selector(rbl_sheetDidEnd:returnCode:contextInfo:) contextInfo:NULL];
-    objc_setAssociatedObject(self, RBLNSApplicationSheetBlockAssociatedObjectKey, handler, OBJC_ASSOCIATION_COPY_NONATOMIC);
+    objc_setAssociatedObject(sheet, RBLNSApplicationSheetBlockAssociatedObjectKey, handler, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
 - (void)rbl_sheetDidEnd:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo {
     
-    void (^handler)(NSInteger returnCode) = objc_getAssociatedObject(self, &RBLNSApplicationSheetBlockAssociatedObjectKey);
-    [sheet orderOut:nil];
+    void (^handler)(NSInteger returnCode) = objc_getAssociatedObject(self, RBLNSApplicationSheetBlockAssociatedObjectKey);
+    [sheet orderOut:self];
     handler(returnCode);
-    objc_setAssociatedObject(self, &RBLNSApplicationSheetBlockAssociatedObjectKey, nil, OBJC_ASSOCIATION_COPY_NONATOMIC);
+    objc_setAssociatedObject(sheet, RBLNSApplicationSheetBlockAssociatedObjectKey, nil, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
 @end
