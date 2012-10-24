@@ -13,9 +13,7 @@ static void *RBLNSApplicationSheetBlockAssociatedObjectKey = &RBLNSApplicationSh
 
 @implementation NSApplication (RBLBlockAdditions)
 
-- (void)beginSheet:(NSWindow *)sheet
-    modalForWindow:(NSWindow *)modalWindow
- completionHandler:(void (^)(NSInteger returnCode))handler {
+- (void)beginSheet:(NSWindow *)sheet modalForWindow:(NSWindow *)modalWindow completionHandler:(void (^)(NSInteger returnCode))handler {
 	
     [self beginSheet:sheet modalForWindow:modalWindow modalDelegate:self didEndSelector:@selector(rbl_sheetDidEnd:returnCode:contextInfo:) contextInfo:NULL];
     objc_setAssociatedObject(self, RBLNSApplicationSheetBlockAssociatedObjectKey, handler, OBJC_ASSOCIATION_COPY_NONATOMIC);

@@ -13,8 +13,6 @@
 
 // Adds onto the standard `beginSheet:modalForWindow:modalDelegate:didEndSelector:contextInfo:`
 // with support for a block completion handler instead.
-- (void)beginSheet:(NSWindow *)sheet
-    modalForWindow:(NSWindow *)modalWindow
- completionHandler:(void (^)(NSInteger returnCode))handler;
+- (void)beginSheet:(NSWindow *)sheet modalForWindow:(NSWindow *)modalWindow completionHandler:(void (^)(NSInteger returnCode))handler;
 
 @end
