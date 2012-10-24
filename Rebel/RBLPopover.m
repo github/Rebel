@@ -13,6 +13,22 @@
 
 //***************************************************************************
 
+// We'll use this as RBLPopover's backing window. Since it's borderless, we
+// just override the `isKeyWindow` method to make it act like a key window.
+@interface RBLPopoverWindow : NSWindow
+
+@end
+
+@implementation RBLPopoverWindow
+
+- (BOOL)isKeyWindow {
+	return YES;
+}
+
+@end
+
+//***************************************************************************
+
 @interface RBLPopoverBackgroundView ()
 
 @property (nonatomic) CGRect screenOriginRect;
@@ -32,7 +48,7 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 @interface RBLPopover ()
 
 // The window we are using to display the popover.
-@property (nonatomic, strong) NSWindow *popoverWindow;
+@property (nonatomic, strong) RBLPopoverWindow *popoverWindow;
 
 // The identifier for the event monitor we are using to watch for mouse clicks
 // outisde of the popover.
@@ -247,7 +263,7 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 	self.contentViewController.view.autoresizingMask = (NSViewWidthSizable | NSViewHeightSizable);
 	self.contentViewController.view.frame = contentViewFrame;
 	[self.backgroundView addSubview:self.contentViewController.view];
-	self.popoverWindow = [[NSWindow alloc] initWithContentRect:popoverScreenRect styleMask:NSBorderlessWindowMask backing:NSBackingStoreBuffered defer:NO];
+	self.popoverWindow = [[RBLPopoverWindow alloc] initWithContentRect:popoverScreenRect styleMask:NSBorderlessWindowMask backing:NSBackingStoreBuffered defer:NO];
 	self.popoverWindow.hasShadow = YES;
 	self.popoverWindow.releasedWhenClosed = NO;
 	self.popoverWindow.opaque = NO;
