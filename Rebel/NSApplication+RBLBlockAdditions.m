@@ -18,7 +18,7 @@ static void *RBLNSApplicationSheetBlockAssociatedObjectKey = &RBLNSApplicationSh
     objc_setAssociatedObject(sheet, RBLNSApplicationSheetBlockAssociatedObjectKey, handler, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
-- (void)rbl_sheetDidEnd:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo {
+- (void)rbl_sheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo {
     void (^handler)(NSInteger returnCode) = objc_getAssociatedObject(sheet, RBLNSApplicationSheetBlockAssociatedObjectKey);
     [sheet orderOut:self];
     handler(returnCode);
