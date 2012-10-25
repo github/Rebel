@@ -19,14 +19,6 @@
 
 @end
 
-@implementation RBLPopoverWindow
-
-- (BOOL)isKeyWindow {
-	return YES;
-}
-
-@end
-
 //***************************************************************************
 
 @interface RBLPopoverBackgroundView ()
@@ -97,6 +89,16 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 	CGContextSetBlendMode(currentContext, kCGBlendModeCopy);
 	[NSColor.clearColor set];
 	CGContextEOFillPath(currentContext);
+}
+
+@end
+
+//***************************************************************************
+
+@implementation RBLPopoverWindow
+
+- (BOOL)isKeyWindow {
+	return YES;
 }
 
 @end
