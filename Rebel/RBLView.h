@@ -23,13 +23,13 @@
 // Whether the view's drawing completely fills its bounds with opaque content.
 //
 // Defaults to NO.
-@property (nonatomic, getter = isOpaque) BOOL opaque;
+@property (nonatomic, assign, getter = isOpaque) BOOL opaque;
 
 // Whether the view's drawing and layout uses a flipped (top-left origin)
 // coordinate system.
 //
 // Defaults to NO.
-@property (nonatomic, getter = isFlipped) BOOL flipped;
+@property (nonatomic, assign, getter = isFlipped) BOOL flipped;
 
 // Whether the graphics context for the view's drawing should be cleared to
 // transparent black in RBLView's implementation of -drawRect:.
