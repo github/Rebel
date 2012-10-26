@@ -10,12 +10,12 @@
 
 @implementation RBLTableCellView
 
-- (void)viewWillMoveToSuperview:(NSView *)newSuperview {
-	[super viewWillMoveToSuperview:newSuperview];
-
-	if (self.superview == nil && newSuperview != nil) {
+- (void)viewDidMoveToSuperview {
+	if (self.superview == nil) {
 		[self prepareForReuse];
 	}
+	
+	[super viewDidMoveToSuperview];
 }
 
 - (void)prepareForReuse {
