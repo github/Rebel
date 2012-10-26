@@ -17,6 +17,9 @@
 
 // Whether the view's content and subviews clip to its bounds.
 //
+// Setting this property is equivalent to setting maskToBounds on the backing
+// layer.
+//
 // Defaults to NO.
 @property (nonatomic, assign) BOOL clipsToBounds;
 
