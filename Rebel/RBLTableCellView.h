@@ -14,9 +14,8 @@
 @interface RBLTableCellView : NSTableCellView
 
 
-// Called when the cell view has either been removed
-// from its superview (the row view), or has just been
-// created.
+// Called when the cell view has either been removed from
+// its superview (the row view), or has just been created.
 
 // Either way, the cell will not have a superview during this
 // time and will be in an enqueued state.
