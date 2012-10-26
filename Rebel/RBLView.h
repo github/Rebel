@@ -15,6 +15,11 @@
 // The backing layer's background color, or nil if none has been set.
 @property (nonatomic, strong) NSColor *backgroundColor;
 
+// Whether the view's content and subviews clip to its bounds.
+//
+// Defaults to NO.
+@property (nonatomic, assign) BOOL clipsToBounds;
+
 // Whether the view's drawing completely fills its bounds with opaque content.
 //
 // Defaults to NO.

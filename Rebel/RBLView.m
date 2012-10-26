@@ -40,6 +40,14 @@ static IMP RBLViewDrawRectIMP;
 	self.layer.backgroundColor = color.rbl_CGColor;
 }
 
+- (BOOL)clipsToBounds {
+	return self.layer.masksToBounds;
+}
+
+- (void)setClipsToBounds:(BOOL)value {
+	self.layer.masksToBounds = value;
+}
+
 - (BOOL)isOpaque {
 	return self.layer.opaque;
 }
