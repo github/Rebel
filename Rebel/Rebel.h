@@ -14,3 +14,4 @@
 #import <Rebel/RBLView.h>
 #import <Rebel/CAAnimation+RBLBlockAdditions.h>
 #import <Rebel/RBLPopover.h>
+#import <Rebel/RBLViewController.h>

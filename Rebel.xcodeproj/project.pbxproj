@@ -16,7 +16,7 @@
 		306A81EB1601EAE700BF45F3 /* CAAnimation+RBLBlockAdditionsSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 306A81EA1601EAE700BF45F3 /* CAAnimation+RBLBlockAdditionsSpec.m */; };
 		AB61F63616373FE000DD5D2C /* RBLTableCellView.h in Headers */ = {isa = PBXBuildFile; fileRef = AB61F63416373FE000DD5D2C /* RBLTableCellView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AB61F63716373FE000DD5D2C /* RBLTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB61F63516373FE000DD5D2C /* RBLTableCellView.m */; };
-		B85EE8DE163ECA8C00265870 /* RBLViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B85EE8DC163ECA8C00265870 /* RBLViewController.h */; };
+		B85EE8DE163ECA8C00265870 /* RBLViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B85EE8DC163ECA8C00265870 /* RBLViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B85EE8DF163ECA8C00265870 /* RBLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B85EE8DD163ECA8C00265870 /* RBLViewController.m */; };
 		B85EE8E9163ECF4C00265870 /* NSView+RBLViewControllerAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B85EE8E7163ECF4B00265870 /* NSView+RBLViewControllerAdditions.h */; };
 		B85EE8EA163ECF4C00265870 /* NSView+RBLViewControllerAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B85EE8E8163ECF4C00265870 /* NSView+RBLViewControllerAdditions.m */; };
