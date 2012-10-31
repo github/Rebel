@@ -12,18 +12,23 @@
 #import <objc/runtime.h>
 
 void *kRBLViewControllerKey = &kRBLViewControllerKey;
+void *KRBLViewNeedsLayoutKey = &KRBLViewNeedsLayoutKey;
 
 @implementation NSView (NSView_RBLViewControllerAdditions)
 
++ (void)initialize {
+    if(self == [NSView class]) {
+        [self loadSupportForLayoutSubviews];
+    }
+}
+
 #pragma mark - ViewController
 
--(id)viewController
-{
+-(id)viewController {
 	return objc_getAssociatedObject(self, kRBLViewControllerKey);
 }
 
--(void)setViewController:(id)newViewController
-{
+-(void)setViewController:(id)newViewController {
 	if (self.viewController) {
 		NSResponder *controllerNextResponder = [self.viewController nextResponder];
 		[self setNextResponder:controllerNextResponder];
@@ -39,10 +44,55 @@ void *kRBLViewControllerKey = &kRBLViewControllerKey;
 	}
 }
 
-#pragma mark - Custom Methods
+#pragma mark - Layout Subviews
 
-+(void)loadSupportForRBLViewControllers
-{
++ (void)loadSupportForLayoutSubviews {
+    [self swapMethod:@selector(setBounds:) with:@selector(custom_setBounds:)];
+    [self swapMethod:@selector(setFrame:) with:@selector(custom_setFrame:)];
+    [self swapMethod:@selector(viewWillDraw) with:@selector(custom_viewWillDraw)];
+}
+
+- (void)custom_setBounds:(NSRect)newBounds {
+    [self custom_setBounds:newBounds];
+    
+    [self setNeedsLayout];
+}
+
+- (void)custom_setFrame:(NSRect)newFrame {
+    [self custom_setFrame:newFrame];
+    
+    [self setNeedsLayout];
+}
+
+- (void)custom_viewWillDraw {
+    [self layoutIfNeeded];
+    
+    [self custom_viewWillDraw];
+}
+
+- (void)layoutIfNeeded {
+    if([self needsLayout]) {
+        [self layoutSubviews];
+    }
+}
+
+- (void)layoutSubviews {
+    objc_setAssociatedObject(self, KRBLViewNeedsLayoutKey, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (void)setNeedsLayout {
+    objc_setAssociatedObject(self, KRBLViewNeedsLayoutKey, [NSNull null], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    
+    [self setNeedsDisplay:YES];
+}
+
+- (BOOL)needsLayout {
+    return objc_getAssociatedObject(self, KRBLViewNeedsLayoutKey) != nil;
+}
+
+#pragma mark - View Methods
+
++(void)loadSupportForRBLViewControllers {
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{
 		//swizzle swizzle...
@@ -56,8 +106,7 @@ void *kRBLViewControllerKey = &kRBLViewControllerKey;
 	});
 }
 
-- (void)custom_viewWillMoveToSuperview:(NSView *)newSuperview
-{
+- (void)custom_viewWillMoveToSuperview:(NSView *)newSuperview {
 	[self custom_viewWillMoveToSuperview:newSuperview];
 	
 	if ([self.viewController isKindOfClass:[RBLViewController class]]) {
@@ -77,8 +126,7 @@ void *kRBLViewControllerKey = &kRBLViewControllerKey;
 	}
 }
 
-- (void)custom_viewDidMoveToSuperview
-{
+- (void)custom_viewDidMoveToSuperview {
 	[self custom_viewDidMoveToSuperview];
 	
 	if ([self.viewController isKindOfClass:[RBLViewController class]]) {
@@ -98,8 +146,7 @@ void *kRBLViewControllerKey = &kRBLViewControllerKey;
 	}
 }
 
-- (void)custom_viewWillMoveToWindow:(NSWindow *)newWindow
-{
+- (void)custom_viewWillMoveToWindow:(NSWindow *)newWindow {
 	[self custom_viewWillMoveToWindow:newWindow];
 	
 	if ([self.viewController isKindOfClass:[RBLViewController class]]) {
@@ -119,8 +166,7 @@ void *kRBLViewControllerKey = &kRBLViewControllerKey;
 	}
 }
 
-- (void)custom_viewDidMoveToWindow
-{
+- (void)custom_viewDidMoveToWindow {
 	[self custom_viewDidMoveToWindow];
 	
 	if ([self.viewController isKindOfClass:[RBLViewController class]]) {
@@ -140,8 +186,7 @@ void *kRBLViewControllerKey = &kRBLViewControllerKey;
 	}
 }
 
-- (void)custom_setNextResponder:(NSResponder *)newNextResponder
-{
+- (void)custom_setNextResponder:(NSResponder *)newNextResponder {
 	if (self.viewController != nil) {
 		[self.viewController setNextResponder:newNextResponder];
 		return;
