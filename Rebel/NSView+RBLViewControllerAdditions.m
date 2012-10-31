@@ -81,28 +81,73 @@ void *kRBLViewControllerKey = &kRBLViewControllerKey;
 {
 	[self custom_viewDidMoveToSuperview];
 	
-	
+	if ([self.viewController isKindOfClass:[RBLViewController class]]) {
+		if (self.superview == nil) {
+			[(RBLViewController *)self.viewController viewWasRemovedFromSuperview];
+			
+			if (self.window == nil) {
+				[(RBLViewController *)self.viewController viewDidDisappear];
+			}
+		} else {
+			[(RBLViewController *)self.viewController viewDidMoveToSuperview];
+			
+			if (self.window != nil) {
+				[(RBLViewController *)self.viewController viewDidAppear];
+			}
+		}
+	}
 }
 
 - (void)custom_viewWillMoveToWindow:(NSWindow *)newWindow
 {
 	[self custom_viewWillMoveToWindow:newWindow];
 	
-	
+	if ([self.viewController isKindOfClass:[RBLViewController class]]) {
+		if (newWindow == nil) {
+			[(RBLViewController *)self.viewController viewWillBeRemovedFromWindow];
+			
+			if ((self.superview != nil) && (self.window != nil)) {
+				[(RBLViewController *)self.viewController viewWillDisappear];
+			}
+		} else {
+			[(RBLViewController *)self.viewController viewWillMoveToWindow:newWindow];
+			
+			if (self.superview != nil) {
+				[(RBLViewController *)self.viewController viewWillAppear];
+			}
+		}
+	}
 }
 
 - (void)custom_viewDidMoveToWindow
 {
 	[self custom_viewDidMoveToWindow];
 	
-	
+	if ([self.viewController isKindOfClass:[RBLViewController class]]) {
+		if (self.window == nil) {
+			[(RBLViewController *)self.viewController viewWasRemovedFromWindow];
+			
+			if (self.superview == nil) {
+				[(RBLViewController *)self.viewController viewDidDisappear];
+			}
+		} else {
+			[(RBLViewController *)self.viewController viewDidMoveToWindow];
+			
+			if (self.superview != nil) {
+				[(RBLViewController *)self.viewController viewDidAppear];
+			}
+		}
+	}
 }
 
 - (void)custom_setNextResponder:(NSResponder *)newNextResponder
 {
+	if (self.viewController != nil) {
+		[self.viewController setNextResponder:newNextResponder];
+		return;
+	}
+	
 	[self custom_setNextResponder:newNextResponder];
-	
-	
 }
 
 @end
