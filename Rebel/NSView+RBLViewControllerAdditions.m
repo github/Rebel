@@ -29,6 +29,8 @@ void *KRBLViewNeedsLayoutKey = &KRBLViewNeedsLayoutKey;
 }
 
 -(void)setViewController:(id)newViewController {
+	[[self class] loadSupportForRBLViewControllers];
+	
 	if (self.viewController) {
 		NSResponder *controllerNextResponder = [self.viewController nextResponder];
 		[self setNextResponder:controllerNextResponder];
@@ -44,7 +46,7 @@ void *KRBLViewNeedsLayoutKey = &KRBLViewNeedsLayoutKey;
 	}
 }
 
-#pragma mark - Layout Subviews
+#pragma mark - Layout
 
 + (void)loadSupportForLayoutSubviews {
     [self swapMethod:@selector(setBounds:) with:@selector(custom_setBounds:)];
@@ -90,7 +92,7 @@ void *KRBLViewNeedsLayoutKey = &KRBLViewNeedsLayoutKey;
     return objc_getAssociatedObject(self, KRBLViewNeedsLayoutKey) != nil;
 }
 
-#pragma mark - View Methods
+#pragma mark - View Controller Methods
 
 +(void)loadSupportForRBLViewControllers {
 	static dispatch_once_t onceToken;
