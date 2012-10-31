@@ -60,7 +60,7 @@ void *KRBLViewNeedsLayoutKey = &KRBLViewNeedsLayoutKey;
 
 - (void)custom_setFrame:(NSRect)newFrame {
     [self custom_setFrame:newFrame];
-    
+
     [self setNeedsLayout];
 }
 

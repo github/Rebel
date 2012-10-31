@@ -10,7 +10,10 @@
 
 @interface NSView (NSView_RBLViewControllerAdditions)
 
--(id)viewController;
--(void)setViewController:(id)newViewController;
+- (void)layoutSubviews;
+- (void)layoutIfNeeded;
+- (void)setNeedsLayout;
+
+@property (nonatomic, assign) IBOutlet NSViewController *viewController;
 
 @end
