@@ -13,9 +13,12 @@
 // Useful to clear properties and bindings before reuse.
 @interface RBLTableCellView : NSTableCellView
 
-// Called immediately before the cell view is going to be added
-// to a new table row view. At the time this is called, the cell
-// view will not have a superview.
+
+// Called when the cell view has either been removed from
+// its superview (the row view), or has just been created.
+//
+// Either way, the cell will not have a superview during this
+// time and will be in an enqueued state.
 - (void)prepareForReuse;
 
 @end
