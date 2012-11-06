@@ -96,7 +96,6 @@ typedef void (^RBLPopoverDelegateBlock)(RBLPopover *popover);
 @property (nonatomic, copy) RBLPopoverDelegateBlock didShowBlock;
 
 // Use for animation when showing and closing the popover.
-// Note `closeWithFadeoutDuration:` ignores this value.
 @property (nonatomic, assign) NSTimeInterval fadeDuration;
 
 // Designated initialiser.
@@ -120,15 +119,8 @@ typedef void (^RBLPopoverDelegateBlock)(RBLPopover *popover);
 //                   popover to fit on the screen, preferredEdge is used.
 - (void)showRelativeToRect:(CGRect)positioningRect ofView:(NSView *)positioningView preferredEdge:(CGRectEdge)preferredEdge;
 
-// Closes the popover with the default fadeout duration (if the popover
-// animates).
+// Closes the popover with the `fadeDuration` (if the popover animates).
 - (void)close;
-
-// Closes the popover with the given duration. If animates is set to NO the
-// popover closes immediately.
-//
-// duration - The duration of the fade animation.
-- (void)closeWithFadeoutDuration:(NSTimeInterval)duration;
 
 // Convenience method exposed for nib files.
 - (IBAction)performClose:(id)sender;

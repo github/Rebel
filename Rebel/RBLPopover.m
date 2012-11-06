@@ -298,10 +298,6 @@
 #pragma mark Closing
 
 - (void)close {
-	[self closeWithFadeoutDuration:self.fadeDuration];
-}
-
-- (void)closeWithFadeoutDuration:(NSTimeInterval)duration {
 	if (!self.shown) return;
 	
 	[self removeEventMonitor];
@@ -318,7 +314,7 @@
 	};
 	
 	if (self.animates) {
-		[NSView rbl_animateWithDuration:duration animations:^{
+		[NSView rbl_animateWithDuration:self.fadeDuration animations:^{
 			[self.popoverWindow.animator setAlphaValue:0.0];
 		} completion:windowTeardown];
 	} else {
