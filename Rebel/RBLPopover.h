@@ -96,7 +96,7 @@ typedef void (^RBLPopoverDelegateBlock)(RBLPopover *popover);
 @property (nonatomic, copy) RBLPopoverDelegateBlock didShowBlock;
 
 // Use for animation when showing and closing the popover.
-// Note closeWithFadeoutDuration: ignores this value.
+// Note `closeWithFadeoutDuration:` ignores this value.
 @property (nonatomic, assign) NSTimeInterval fadeDuration;
 
 // Designated initialiser.
