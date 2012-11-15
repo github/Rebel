@@ -33,10 +33,6 @@
 
 //***************************************************************************
 
-static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
-
-//***************************************************************************
-
 @interface RBLPopover ()
 
 // The window we are using to display the popover.
@@ -116,6 +112,7 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 	_backgroundViewClass = RBLPopoverBackgroundView.class;
 	_behavior = RBLPopoverViewControllerBehaviorApplicationDefined;
 	_animates = YES;
+	_fadeDuration = 0.3;
 	
 	return self;
 }
@@ -289,7 +286,7 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 	};
 	
 	if (self.animates) {
-		[NSView rbl_animateWithDuration:RBLPopoverDefaultFadeDuration animations:^{
+		[NSView rbl_animateWithDuration:self.fadeDuration animations:^{
 			[self.popoverWindow.animator setAlphaValue:1.0];
 		} completion:postDisplayBlock];
 	} else {
@@ -301,10 +298,6 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 #pragma mark Closing
 
 - (void)close {
-	[self closeWithFadeoutDuration:RBLPopoverDefaultFadeDuration];
-}
-
-- (void)closeWithFadeoutDuration:(NSTimeInterval)duration {
 	if (!self.shown) return;
 	
 	[self removeEventMonitor];
@@ -321,7 +314,7 @@ static NSTimeInterval const RBLPopoverDefaultFadeDuration = 0.3;
 	};
 	
 	if (self.animates) {
-		[NSView rbl_animateWithDuration:duration animations:^{
+		[NSView rbl_animateWithDuration:self.fadeDuration animations:^{
 			[self.popoverWindow.animator setAlphaValue:0.0];
 		} completion:windowTeardown];
 	} else {
