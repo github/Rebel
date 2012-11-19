@@ -10,10 +10,6 @@
 
 @interface NSView (NSView_RBLViewControllerAdditions)
 
-- (void)layoutSubviews;
-- (void)layoutIfNeeded;
-- (void)setNeedsLayout;
-
-@property (nonatomic, assign) IBOutlet NSViewController *viewController;
+@property (nonatomic, assign) IBOutlet NSViewController *rbl_viewController;
 
 @end

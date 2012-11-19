@@ -29,7 +29,7 @@
 -(void)setView:(NSView *)view
 {
 	super.view = view;
-	self.view.viewController = self;
+	self.view.rbl_viewController = self;
 }
 
 - (void)viewDidLoad
@@ -39,7 +39,7 @@
 
 - (void)viewWillAppear
 {
-	self.view.needsLayout = YES;
+	
 }
 
 - (void)viewDidAppear

@@ -10,6 +10,6 @@
 
 @interface NSObject (NSObjectSizzlingAdditions)
 
-+ (void)swapMethod:(SEL)originalSelector with:(SEL)newSelector;
++ (void)rbl_swapMethod:(SEL)originalSelector with:(SEL)newSelector;
 
 @end

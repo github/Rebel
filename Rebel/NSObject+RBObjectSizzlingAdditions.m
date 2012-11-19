@@ -12,7 +12,7 @@
 @implementation NSObject (NSObjectSizzlingAdditions)
 
 // Shamelessly taken from JAViewController since mine is a bit longer & ties into my other framework methods
-+ (void)swapMethod:(SEL)originalSelector with:(SEL)newSelector
++ (void)rbl_swapMethod:(SEL)originalSelector with:(SEL)newSelector
 {
     Method originalMethod = class_getInstanceMethod(self, originalSelector);
     Method newMethod = class_getInstanceMethod(self, newSelector);
