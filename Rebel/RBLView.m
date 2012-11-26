@@ -180,6 +180,11 @@ static IMP RBLViewDrawRectIMP;
 	self.layer.opaque = self.opaque;
 }
 
+- (void)setLayer:(CALayer *)layer {
+	[super setLayer:layer];
+	[self applyLayerProperties];
+}
+
 // 10.8+ only.
 - (void)updateLayer {
 	NSAssert(self.contents != nil, @"%@ does not have contents, %s should not be invoked", self, __func__);
