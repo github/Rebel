@@ -9,10 +9,32 @@
 SpecBegin(RBLView)
 
 __block RBLView *view;
+__block void (^moveAroundAndVerify)(dispatch_block_t);
 
 before(^{
 	view = [[RBLView alloc] initWithFrame:NSZeroRect];
 	expect(view).notTo.beNil();
+
+	moveAroundAndVerify = [^(dispatch_block_t block) {
+		block();
+
+		NSView *otherView = [[NSView alloc] initWithFrame:NSZeroRect];
+		[otherView addSubview:view];
+		block();
+
+		[view removeFromSuperview];
+		block();
+
+		[view addSubview:otherView];
+		block();
+
+		NSWindow *window = [[NSWindow alloc] initWithContentRect:NSMakeRect(0, 0, 500, 500) styleMask:NSBorderlessWindowMask backing:NSBackingStoreBuffered defer:NO];
+		[window.contentView addSubview:view];
+		block();
+
+		[view removeFromSuperview];
+		block();
+	} copy];
 });
 
 it(@"should be layer-backed", ^{
@@ -23,16 +45,40 @@ it(@"should be layer-backed", ^{
 it(@"should match documented defaults", ^{
 	expect(view.backgroundColor).to.beNil();
 	expect(view.opaque).to.beFalsy();
+	expect(view.clipsToBounds).to.beFalsy();
+	expect(view.cornerRadius).to.equal(0);
 	expect(view.clearsContextBeforeDrawing).to.beTruthy();
 	expect(view.layerContentsRedrawPolicy).to.equal(NSViewLayerContentsRedrawNever);
 });
 
-it(@"should set the backgroundColor of its backing layer", ^{
+it(@"should set backgroundColor on its backing layer", ^{
 	view.backgroundColor = NSColor.redColor;
 
-	CGColorRef layerColor = view.layer.backgroundColor;
-	expect(layerColor).notTo.beNil();
-	expect(CGColorEqualToColor(layerColor, NSColor.redColor.rbl_CGColor)).to.beTruthy();
+	moveAroundAndVerify(^{
+		expect(view.backgroundColor).to.equal(NSColor.redColor);
+
+		CGColorRef layerColor = view.layer.backgroundColor;
+		expect(layerColor).notTo.beNil();
+		expect(CGColorEqualToColor(layerColor, NSColor.redColor.rbl_CGColor)).to.beTruthy();
+	});
+});
+
+it(@"should set masksToBounds on its backing layer", ^{
+	view.clipsToBounds = YES;
+
+	moveAroundAndVerify(^{
+		expect(view.clipsToBounds).to.beTruthy();
+		expect(view.layer.masksToBounds).to.beTruthy();
+	});
+});
+
+it(@"should set cornerRadius on its backing layer", ^{
+	view.cornerRadius = 3;
+
+	moveAroundAndVerify(^{
+		expect(view.cornerRadius).to.beCloseTo(3);
+		expect(view.layer.cornerRadius).to.beCloseTo(3);
+	});
 });
 
 SpecEnd
