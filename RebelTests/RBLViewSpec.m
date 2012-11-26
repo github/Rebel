@@ -16,12 +16,6 @@ before(^{
 	expect(view).notTo.beNil();
 
 	moveAroundAndVerify = [^(dispatch_block_t block) {
-		dispatch_block_t originalBlock = block;
-		block = ^{
-			expect(view.layer).notTo.beNil();
-			originalBlock();
-		};
-
 		NSLog(@"Verifying normally…");
 		block();
 
@@ -41,10 +35,6 @@ before(^{
 		NSLog(@"Verifying after moving to a new window…");
 		NSWindow *window = [[NSWindow alloc] initWithContentRect:NSMakeRect(0, 0, 500, 500) styleMask:NSBorderlessWindowMask backing:NSBackingStoreBuffered defer:NO];
 		[window.contentView addSubview:view];
-		block();
-
-		NSLog(@"Verifying after being removed from a window…");
-		[view removeFromSuperview];
 		block();
 	} copy];
 });
