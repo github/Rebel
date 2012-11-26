@@ -42,6 +42,11 @@ static IMP RBLViewDrawRectIMP;
 	[self applyLayerProperties];
 }
 
+- (void)setCornerRadius:(CGFloat)radius {
+	_cornerRadius = radius;
+	[self applyLayerProperties];
+}
+
 - (BOOL)clipsToBounds {
 	return _flags.clipsToBounds;
 }
@@ -170,6 +175,7 @@ static IMP RBLViewDrawRectIMP;
 
 - (void)applyLayerProperties {
 	self.layer.backgroundColor = self.backgroundColor.rbl_CGColor;
+	self.layer.cornerRadius = self.cornerRadius;
 	self.layer.masksToBounds = self.clipsToBounds;
 	self.layer.opaque = self.opaque;
 }

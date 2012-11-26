@@ -22,6 +22,15 @@
 // Defaults to NO.
 @property (nonatomic, assign) BOOL clipsToBounds;
 
+// A radius used to draw rounded corners for the view's background. This property
+// is not the same as CALayer.cornerRadius, but does manipulate it.
+//
+// Typically, you will want to enable clipsToBounds when setting this property
+// to a non-zero value.
+//
+// Defaults to 0.
+@property (nonatomic, assign) CGFloat cornerRadius;
+
 // Whether the view's drawing completely fills its bounds with opaque content.
 //
 // Defaults to NO.
