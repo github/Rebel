@@ -16,22 +16,28 @@ before(^{
 	expect(view).notTo.beNil();
 
 	moveAroundAndVerify = [^(dispatch_block_t block) {
+		NSLog(@"Verifying normally…");
 		block();
 
+		NSLog(@"Verifying after moving to a new view…");
 		NSView *otherView = [[NSView alloc] initWithFrame:NSZeroRect];
 		[otherView addSubview:view];
 		block();
 
+		NSLog(@"Verifying after being removed from superview…");
 		[view removeFromSuperview];
 		block();
 
+		NSLog(@"Verifying after adding a subview…");
 		[view addSubview:otherView];
 		block();
 
+		NSLog(@"Verifying after moving to a new window…");
 		NSWindow *window = [[NSWindow alloc] initWithContentRect:NSMakeRect(0, 0, 500, 500) styleMask:NSBorderlessWindowMask backing:NSBackingStoreBuffered defer:NO];
 		[window.contentView addSubview:view];
 		block();
 
+		NSLog(@"Verifying after being removed from a window…");
 		[view removeFromSuperview];
 		block();
 	} copy];
