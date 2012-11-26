@@ -174,7 +174,6 @@ static IMP RBLViewDrawRectIMP;
 #pragma mark Layer Management
 
 - (void)applyLayerProperties {
-	[self setWantsLayer:YES];
 	self.layer.backgroundColor = self.backgroundColor.rbl_CGColor;
 	self.layer.cornerRadius = self.cornerRadius;
 	self.layer.masksToBounds = self.clipsToBounds;
