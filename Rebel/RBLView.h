@@ -12,13 +12,12 @@
 // for MVVM.
 @interface RBLView : NSView
 
-// The backing layer's background color, or nil if none has been set.
+// A background color for the view, or nil if none has been set. This property
+// is not the same as CALayer.backgroundColor, but does manipulate it.
 @property (nonatomic, strong) NSColor *backgroundColor;
 
-// Whether the view's content and subviews clip to its bounds.
-//
-// Setting this property is equivalent to setting maskToBounds on the backing
-// layer.
+// Whether the view's content and subviews clip to its bounds. This property
+// is not the same as CALayer.masksToBounds, but does manipulate it.
 //
 // Defaults to NO.
 @property (nonatomic, assign) BOOL clipsToBounds;

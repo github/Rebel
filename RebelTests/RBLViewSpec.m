@@ -27,15 +27,6 @@ it(@"should match documented defaults", ^{
 	expect(view.layerContentsRedrawPolicy).to.equal(NSViewLayerContentsRedrawNever);
 });
 
-it(@"should get the backgroundColor of its backing layer", ^{
-	view.layer.backgroundColor = CGColorGetConstantColor(kCGColorWhite);
-
-	NSColor *color = view.backgroundColor;
-	expect(color).notTo.beNil();
-	expect(color.whiteComponent).to.beCloseTo(1.0);
-	expect(color.alphaComponent).to.beCloseTo(1.0);
-});
-
 it(@"should set the backgroundColor of its backing layer", ^{
 	view.backgroundColor = NSColor.redColor;
 
