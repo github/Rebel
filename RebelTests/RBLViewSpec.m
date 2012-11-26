@@ -16,6 +16,12 @@ before(^{
 	expect(view).notTo.beNil();
 
 	moveAroundAndVerify = [^(dispatch_block_t block) {
+		dispatch_block_t originalBlock = block;
+		block = ^{
+			expect(view.layer).notTo.beNil();
+			originalBlock();
+		};
+
 		NSLog(@"Verifying normally…");
 		block();
 
