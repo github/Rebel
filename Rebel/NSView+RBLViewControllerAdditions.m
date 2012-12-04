@@ -46,12 +46,12 @@ void *kRBLViewControllerKey = &kRBLViewControllerKey;
 	dispatch_once(&onceToken, ^{
 		//swizzle swizzle...
 		[self rbl_swapMethod:@selector(viewWillMoveToSuperview:) with:@selector(custom_viewWillMoveToSuperview:)];
-        [self rbl_swapMethod:@selector(viewDidMoveToSuperview) with:@selector(custom_viewDidMoveToSuperview)];
-        
-        [self rbl_swapMethod:@selector(viewWillMoveToWindow:) with:@selector(custom_viewWillMoveToWindow:)];
-        [self rbl_swapMethod:@selector(viewDidMoveToWindow) with:@selector(custom_viewDidMoveToWindow)];
-        
-        [self rbl_swapMethod:@selector(setNextResponder:) with:@selector(custom_setNextResponder:)];
+		[self rbl_swapMethod:@selector(viewDidMoveToSuperview) with:@selector(custom_viewDidMoveToSuperview)];
+		
+		[self rbl_swapMethod:@selector(viewWillMoveToWindow:) with:@selector(custom_viewWillMoveToWindow:)];
+		[self rbl_swapMethod:@selector(viewDidMoveToWindow) with:@selector(custom_viewDidMoveToWindow)];
+		
+		[self rbl_swapMethod:@selector(setNextResponder:) with:@selector(custom_setNextResponder:)];
 	});
 }
 
