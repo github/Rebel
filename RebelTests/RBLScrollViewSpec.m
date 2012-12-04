@@ -5,7 +5,8 @@
 //  Created by Jonathan Willing on 12/4/12.
 //  Copyright (c) 2012 GitHub. All rights reserved.
 //
-
+#import "RBLClipView.h"
+#import "RBLScrollView.h"
 SpecBegin(RBLScrollView)
 
 __block RBLScrollView *scrollView;
@@ -24,7 +25,7 @@ describe(@"clip view", ^{
 	});
 
 	it(@"should be a RBLClipView", ^{
-		expect(scrollView.contentView.class).to.beKindOf(RBLClipView.class);
+		expect(scrollView.contentView).to.beKindOf(RBLClipView.class);
 	});
 });
 
