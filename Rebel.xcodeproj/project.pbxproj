@@ -14,6 +14,9 @@
 		306A81E81601E92000BF45F3 /* CAAnimation+RBLBlockAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 306A81E61601E92000BF45F3 /* CAAnimation+RBLBlockAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		306A81E91601E92000BF45F3 /* CAAnimation+RBLBlockAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 306A81E71601E92000BF45F3 /* CAAnimation+RBLBlockAdditions.m */; };
 		306A81EB1601EAE700BF45F3 /* CAAnimation+RBLBlockAdditionsSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 306A81EA1601EAE700BF45F3 /* CAAnimation+RBLBlockAdditionsSpec.m */; };
+		AB10DB4D166EA9CA00AB7AB1 /* RBLScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = AB10DB4B166EA9CA00AB7AB1 /* RBLScrollView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AB10DB4E166EA9CA00AB7AB1 /* RBLScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB10DB4C166EA9CA00AB7AB1 /* RBLScrollView.m */; };
+		AB10DB53166EADD000AB7AB1 /* RBLScrollViewSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = AB10DB52166EADD000AB7AB1 /* RBLScrollViewSpec.m */; };
 		AB61F63616373FE000DD5D2C /* RBLTableCellView.h in Headers */ = {isa = PBXBuildFile; fileRef = AB61F63416373FE000DD5D2C /* RBLTableCellView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AB61F63716373FE000DD5D2C /* RBLTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB61F63516373FE000DD5D2C /* RBLTableCellView.m */; };
 		AB61F6D41638370900DD5D2C /* NSApplication+RBLBlockAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = AB61F6D21638370900DD5D2C /* NSApplication+RBLBlockAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -135,6 +138,9 @@
 		306A81E71601E92000BF45F3 /* CAAnimation+RBLBlockAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAAnimation+RBLBlockAdditions.m"; sourceTree = "<group>"; };
 		306A81EA1601EAE700BF45F3 /* CAAnimation+RBLBlockAdditionsSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAAnimation+RBLBlockAdditionsSpec.m"; sourceTree = "<group>"; };
 		306A81EC1601F44200BF45F3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		AB10DB4B166EA9CA00AB7AB1 /* RBLScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBLScrollView.h; sourceTree = "<group>"; };
+		AB10DB4C166EA9CA00AB7AB1 /* RBLScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBLScrollView.m; sourceTree = "<group>"; };
+		AB10DB52166EADD000AB7AB1 /* RBLScrollViewSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBLScrollViewSpec.m; sourceTree = "<group>"; };
 		AB61F63416373FE000DD5D2C /* RBLTableCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBLTableCellView.h; sourceTree = "<group>"; };
 		AB61F63516373FE000DD5D2C /* RBLTableCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBLTableCellView.m; sourceTree = "<group>"; };
 		AB61F6D21638370900DD5D2C /* NSApplication+RBLBlockAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSApplication+RBLBlockAdditions.h"; sourceTree = "<group>"; };
@@ -261,6 +267,8 @@
 				306A81DA1601C7A300BF45F3 /* RBLPopover.m */,
 				AB61F63416373FE000DD5D2C /* RBLTableCellView.h */,
 				AB61F63516373FE000DD5D2C /* RBLTableCellView.m */,
+				AB10DB4B166EA9CA00AB7AB1 /* RBLScrollView.h */,
+				AB10DB4C166EA9CA00AB7AB1 /* RBLScrollView.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -291,6 +299,7 @@
 				306A81EA1601EAE700BF45F3 /* CAAnimation+RBLBlockAdditionsSpec.m */,
 				D078B7DD15F6DB420063DDD5 /* NSView+RBLAnimationAdditionsSpec.m */,
 				D0723FDF15C60E94004DBDC7 /* RBLViewSpec.m */,
+				AB10DB52166EADD000AB7AB1 /* RBLScrollViewSpec.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -463,6 +472,7 @@
 				D011FD5E16239A8600A27946 /* NSImage+RBLResizableImageAdditions.h in Headers */,
 				AB61F63616373FE000DD5D2C /* RBLTableCellView.h in Headers */,
 				AB61F6D41638370900DD5D2C /* NSApplication+RBLBlockAdditions.h in Headers */,
+				AB10DB4D166EA9CA00AB7AB1 /* RBLScrollView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -656,6 +666,7 @@
 				D011FD5F16239A8600A27946 /* NSImage+RBLResizableImageAdditions.m in Sources */,
 				AB61F63716373FE000DD5D2C /* RBLTableCellView.m in Sources */,
 				AB61F6D51638370900DD5D2C /* NSApplication+RBLBlockAdditions.m in Sources */,
+				AB10DB4E166EA9CA00AB7AB1 /* RBLScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -667,6 +678,7 @@
 				D0723FE015C60E94004DBDC7 /* RBLViewSpec.m in Sources */,
 				D078B7DE15F6DB420063DDD5 /* NSView+RBLAnimationAdditionsSpec.m in Sources */,
 				306A81EB1601EAE700BF45F3 /* CAAnimation+RBLBlockAdditionsSpec.m in Sources */,
+				AB10DB53166EADD000AB7AB1 /* RBLScrollViewSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
