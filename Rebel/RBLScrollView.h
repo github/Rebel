@@ -1,5 +1,5 @@
 //
-//  RBLTableView.h
+//  RBLScrollView.h
 //  Rebel
 //
 //  Created by Jonathan Willing on 12/4/12.
