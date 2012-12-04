@@ -13,10 +13,19 @@
 
 #pragma mark Clip view swapping
 
-- (void)viewDidMoveToSuperview {
-	[super viewDidMoveToSuperview];
+- (id)initWithFrame:(NSRect)frameRect {
+	self = [super initWithFrame:frameRect];
+	if (self == nil) return nil;
 	
-	if (self.contentView != nil && ![self.contentView isKindOfClass:RBLClipView.class] ) {
+	[self swapClipView];
+	
+	return self;
+}
+
+- (void)awakeFromNib {
+	[super awakeFromNib];
+	
+	if (![self.contentView isKindOfClass:RBLClipView.class] ) {
 		[self swapClipView];
 	}
 }
