@@ -11,7 +11,7 @@
 
 @implementation RBLScrollView
 
-#pragma mark Clip view swapping
+#pragma mark Lifecycle
 
 - (id)initWithFrame:(NSRect)frameRect {
 	self = [super initWithFrame:frameRect];
@@ -30,8 +30,10 @@
 	}
 }
 
+#pragma mark Clip view swapping
+
 - (void)swapClipView {
-	id documentView = self.contentView;
+	id documentView = self.documentView;
 	RBLClipView *clipView = [[RBLClipView alloc] initWithFrame:self.contentView.frame];
 	self.contentView = clipView;
 	self.documentView = documentView;
