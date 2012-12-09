@@ -11,6 +11,8 @@
 @implementation NSFont (RBLFallbackAdditions)
 
 + (NSFont *)rbl_fontWithName:(NSString *)fontName size:(CGFloat)fontSize fallbackNames:(NSArray *)fallbackNames {
+	NSParameterAssert(fontName != nil);
+
 	NSMutableArray *fallbackDescriptors = [NSMutableArray arrayWithCapacity:fallbackNames.count];
 	for (NSString *fallbackName in fallbackNames) {
 		[fallbackDescriptors addObject:[NSFontDescriptor fontDescriptorWithName:fallbackName size:fontSize]];
