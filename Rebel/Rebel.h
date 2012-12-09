@@ -8,6 +8,7 @@
 
 #import <Rebel/NSApplication+RBLBlockAdditions.h>
 #import <Rebel/NSColor+RBLCGColorAdditions.h>
+#import <Rebel/NSFont+RBLFallbackAdditions.h>
 #import <Rebel/NSImage+RBLResizableImageAdditions.h>
 #import <Rebel/NSView+RBLAnimationAdditions.h>
 #import <Rebel/RBLClipView.h>
