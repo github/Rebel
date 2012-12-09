@@ -33,6 +33,7 @@
 #pragma mark Clip view swapping
 
 - (void)swapClipView {
+	self.wantsLayer = YES;
 	id documentView = self.documentView;
 	RBLClipView *clipView = [[RBLClipView alloc] initWithFrame:self.contentView.frame];
 	self.contentView = clipView;
