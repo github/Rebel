@@ -17,7 +17,7 @@
 	}
 
 	NSMutableArray *remainingFontNames = [fallbackNames mutableCopy];
-	NSAssert(fallbackDescriptors.count == remainingFontNames.count, @"Should have the same number of fallback font descriptors (%lu) as names to try (%lu)", (unsigned long)fallbackDescriptors.count, remainingFontNames.count);
+	NSAssert(fallbackDescriptors.count == remainingFontNames.count, @"Should have the same number of fallback font descriptors (%lu) as names to try (%lu)", (unsigned long)fallbackDescriptors.count, (unsigned long)remainingFontNames.count);
 
 	while (YES) {
 		NSDictionary *attributes = @{ NSFontNameAttribute: fontName, NSFontCascadeListAttribute: fallbackDescriptors };
