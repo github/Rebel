@@ -38,12 +38,12 @@ typedef void (^RBLPopoverDelegateBlock)(RBLPopover *popover);
 
 // A popover.
 // This aims to replicate the API of `NSPopover`, within reason, whilst offering
-// more flexibility when it comes to customising of it's appearance.
+// more flexibility when it comes to customising of its appearance.
 //
 // A note on layers: by default the clipping method which the popover uses to
-// clip it's subviews to it's outline does _not_ support any layer backed or
+// clip its subviews to its outline does _not_ support any layer backed or
 // hosting views. This can be worked around by adding mask layers to any layers
-// you add to the popover or it's subviews.
+// you add to the popover or its subviews.
 @interface RBLPopover : NSResponder
 
 // The view controller providing the view displayed within the popover.
