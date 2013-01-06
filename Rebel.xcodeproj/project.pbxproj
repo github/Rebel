@@ -762,7 +762,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D08BB2EB15CB307200CC9868 /* Mac-Framework.xcconfig */;
 			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
@@ -777,7 +776,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D08BB2E815CB307200CC9868 /* Mac-Application.xcconfig */;
 			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
 				GCC_PREFIX_HEADER = "RebelTests/RebelTests-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -819,7 +817,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D08BB2EB15CB307200CC9868 /* Mac-Framework.xcconfig */;
 			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
@@ -834,7 +831,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D08BB2EB15CB307200CC9868 /* Mac-Framework.xcconfig */;
 			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
@@ -849,7 +845,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D08BB2E815CB307200CC9868 /* Mac-Application.xcconfig */;
 			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
 				GCC_PREFIX_HEADER = "RebelTests/RebelTests-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -867,7 +862,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D08BB2E815CB307200CC9868 /* Mac-Application.xcconfig */;
 			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
 				GCC_PREFIX_HEADER = "RebelTests/RebelTests-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
