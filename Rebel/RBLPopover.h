@@ -7,8 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
-#import "RBLView.h"
+#import <Rebel/RBLView.h>
 
 @class RBLPopover;
 @class RBLPopoverBackgroundView;
