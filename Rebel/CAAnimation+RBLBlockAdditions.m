@@ -14,13 +14,15 @@
 
 @implementation CAAnimation (RBLBlockAdditions)
 
-- (void)setRbl_completionBlock:(void (^)(BOOL))rbl_completionBlock {
+- (void)setRbl_completionBlock:(void (^)(BOOL))block {
 	RBLCAAnimationDelegate *stub = [RBLCAAnimationDelegate new];
-	stub.completion = rbl_completionBlock;
+	stub.completion = block;
 	self.delegate = stub;
 }
 
 - (void (^)(BOOL))rbl_completionBlock {
+	NSAssert([self.delegate isKindOfClass:[RBLCAAnimationDelegate class]],
+			 @"Wrong delegate for the animation. Expected %@, but instead got %@.", [RBLCAAnimationDelegate class], [self.delegate class]);
 	return [(RBLCAAnimationDelegate *)self.delegate completion];
 }
 
@@ -29,8 +31,9 @@
 @implementation RBLCAAnimationDelegate
 
 - (void)animationDidStop:(CAAnimation *)animation finished:(BOOL)flag {
-	if (self.completion != nil)
+	if (self.completion != nil) {
 		self.completion(flag);
+	}
 }
 
 @end
