@@ -8,24 +8,20 @@
 
 #import "CAAnimation+RBLBlockAdditions.h"
 
-#import <objc/runtime.h>
-
-static void *RBLCAAnimationCompletionBlockAssociatedObjectKey = &RBLCAAnimationCompletionBlockAssociatedObjectKey;
-
 @interface RBLCAAnimationDelegate : NSObject
-
+@property (nonatomic, copy) void (^completion)(BOOL finished);
 @end
 
 @implementation CAAnimation (RBLBlockAdditions)
 
-- (void)setRbl_completionBlock:(void (^)(BOOL))block {
-	RBLCAAnimationDelegate *delegateStub = [[RBLCAAnimationDelegate alloc] init];
-	self.delegate = delegateStub;
-	objc_setAssociatedObject(self, RBLCAAnimationCompletionBlockAssociatedObjectKey, block, OBJC_ASSOCIATION_COPY_NONATOMIC);
+- (void)setRbl_completionBlock:(void (^)(BOOL))rbl_completionBlock {
+	RBLCAAnimationDelegate *stub = [RBLCAAnimationDelegate new];
+	stub.completion = rbl_completionBlock;
+	self.delegate = stub;
 }
 
 - (void (^)(BOOL))rbl_completionBlock {
-	return objc_getAssociatedObject(self, RBLCAAnimationCompletionBlockAssociatedObjectKey);
+	return [(RBLCAAnimationDelegate *)self.delegate completion];
 }
 
 @end
@@ -33,7 +29,8 @@ static void *RBLCAAnimationCompletionBlockAssociatedObjectKey = &RBLCAAnimationC
 @implementation RBLCAAnimationDelegate
 
 - (void)animationDidStop:(CAAnimation *)animation finished:(BOOL)flag {
-	if (animation.rbl_completionBlock != nil) animation.rbl_completionBlock(flag);
+	if (self.completion != nil)
+		self.completion(flag);
 }
 
 @end
