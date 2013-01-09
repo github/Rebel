@@ -21,8 +21,7 @@
 }
 
 - (void (^)(BOOL))rbl_completionBlock {
-	NSAssert([self.delegate isKindOfClass:[RBLCAAnimationDelegate class]],
-			 @"Wrong delegate for the animation. Expected %@, but instead got %@.", [RBLCAAnimationDelegate class], [self.delegate class]);
+	NSAssert([self.delegate isKindOfClass:RBLCAAnimationDelegate.class], @"Wrong delegate for animation %@. Expected %@, but instead got %@.", self, RBLCAAnimationDelegate.class, [self.delegate class]);
 	return [(RBLCAAnimationDelegate *)self.delegate completion];
 }
 

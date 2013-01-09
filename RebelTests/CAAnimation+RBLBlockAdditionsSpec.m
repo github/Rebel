@@ -36,18 +36,14 @@ it(@"should should fire once animation is completed", ^{
 	CALayer *layer = [CALayer layer];
 	CABasicAnimation *sampleAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
 	__block BOOL fired = NO;
-	[sampleAnimation setRbl_completionBlock:^(BOOL complete) {
+	sampleAnimation.rbl_completionBlock = ^(BOOL complete) {
 		fired = YES;
-	}];
+
+	};
 	sampleAnimation.duration = 0.0;
 	[layer addAnimation:sampleAnimation forKey:@"opacity"];
 	layer.opacity = 1.f;
-	
-	NSDate *runUntil = [NSDate dateWithTimeIntervalSinceNow:0.1];
-    while (!fired && [runUntil timeIntervalSinceNow] > 0) {
-        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:runUntil];
-    }
-	expect(fired).to.beTruthy();
+	expect(fired).will.beTruthy();
 });
 
 SpecEnd
