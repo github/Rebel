@@ -7,7 +7,9 @@
 //
 
 #import <Rebel/NSApplication+RBLBlockAdditions.h>
+#import <Rebel/NSAttributedString+RBLHTMLAdditions.h>
 #import <Rebel/NSColor+RBLCGColorAdditions.h>
+#import <Rebel/NSFont+RBLFallbackAdditions.h>
 #import <Rebel/NSImage+RBLResizableImageAdditions.h>
 #import <Rebel/NSView+RBLAnimationAdditions.h>
 #import <Rebel/RBLClipView.h>
@@ -17,4 +19,4 @@
 #import <Rebel/RBLPopover.h>
 #import <Rebel/RBLViewController.h>
 #import <Rebel/RBLTableCellView.h>
-
+#import <Rebel/RBLScrollView.h>

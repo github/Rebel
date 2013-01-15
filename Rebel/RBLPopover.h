@@ -7,8 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
-#import "RBLView.h"
+#import <Rebel/RBLView.h>
 
 @class RBLPopover;
 @class RBLPopoverBackgroundView;
@@ -38,12 +37,12 @@ typedef void (^RBLPopoverDelegateBlock)(RBLPopover *popover);
 
 // A popover.
 // This aims to replicate the API of `NSPopover`, within reason, whilst offering
-// more flexibility when it comes to customising of it's appearance.
+// more flexibility when it comes to customising of its appearance.
 //
 // A note on layers: by default the clipping method which the popover uses to
-// clip it's subviews to it's outline does _not_ support any layer backed or
+// clip its subviews to its outline does _not_ support any layer backed or
 // hosting views. This can be worked around by adding mask layers to any layers
-// you add to the popover or it's subviews.
+// you add to the popover or its subviews.
 @interface RBLPopover : NSResponder
 
 // The view controller providing the view displayed within the popover.
@@ -95,6 +94,9 @@ typedef void (^RBLPopoverDelegateBlock)(RBLPopover *popover);
 // animation has successfully completed.
 @property (nonatomic, copy) RBLPopoverDelegateBlock didShowBlock;
 
+// Use for animation when showing and closing the popover.
+@property (nonatomic, assign) NSTimeInterval fadeDuration;
+
 // Designated initialiser.
 //
 // Returns a newly initialised `RBLPopover`.
@@ -116,15 +118,8 @@ typedef void (^RBLPopoverDelegateBlock)(RBLPopover *popover);
 //                   popover to fit on the screen, preferredEdge is used.
 - (void)showRelativeToRect:(CGRect)positioningRect ofView:(NSView *)positioningView preferredEdge:(CGRectEdge)preferredEdge;
 
-// Closes the popover with the default fadeout duration (if the popover
-// animates).
+// Closes the popover with the `fadeDuration` (if the popover animates).
 - (void)close;
-
-// Closes the popover with the given duration. If animates is set to NO the
-// popover closes immediately.
-//
-// duration - The duration of the fade animation.
-- (void)closeWithFadeoutDuration:(NSTimeInterval)duration;
 
 // Convenience method exposed for nib files.
 - (IBAction)performClose:(id)sender;
