@@ -17,5 +17,6 @@
 #import <Rebel/RBLView.h>
 #import <Rebel/CAAnimation+RBLBlockAdditions.h>
 #import <Rebel/RBLPopover.h>
+#import <Rebel/RBLViewController.h>
 #import <Rebel/RBLTableCellView.h>
 #import <Rebel/RBLScrollView.h>
