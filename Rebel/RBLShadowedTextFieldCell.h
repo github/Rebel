@@ -11,7 +11,7 @@
 // Use this value to set a shadow to be used as a fallback for all background
 // styles.
 //
-// If a shadow is explicitely set for a particular background style, it will be
+// If a shadow is explicitly set for a particular background style, it will be
 // preferred to any shadows set to affect all background styles.
 extern NSBackgroundStyle const RBLShadowedTextFieldAllBackgroundStyles;
 
