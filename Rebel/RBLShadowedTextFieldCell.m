@@ -14,6 +14,7 @@ NSInteger const RBLShadowedTextFieldAllBackgroundStyles = 0xFFFFFFFF;
 
 @interface RBLShadowedTextFieldCell ()
 
+// Maps keys of backgroundStyles to values of shadows.
 @property (nonatomic, readonly, strong) NSMutableDictionary *backgroundStylesToShadows;
 
 @end
