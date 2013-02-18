@@ -19,3 +19,4 @@
 #import <Rebel/RBLPopover.h>
 #import <Rebel/RBLTableCellView.h>
 #import <Rebel/RBLScrollView.h>
+#import <Rebel/RBLShadowedTextFieldCell.h>
