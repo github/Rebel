@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		301569981602161400E3BE46 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 306A81EC1601F44200BF45F3 /* QuartzCore.framework */; };
+		303DEF4416D2B88700BD65C4 /* RBLShadowedTextFieldCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 303DEF4216D2B88700BD65C4 /* RBLShadowedTextFieldCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		303DEF4516D2B88700BD65C4 /* RBLShadowedTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 303DEF4316D2B88700BD65C4 /* RBLShadowedTextFieldCell.m */; };
 		304692F21607259A00B79746 /* EXTKeyPathCoding.h in Headers */ = {isa = PBXBuildFile; fileRef = 304692F11607259A00B79746 /* EXTKeyPathCoding.h */; };
 		306A81DB1601C7A300BF45F3 /* RBLPopover.h in Headers */ = {isa = PBXBuildFile; fileRef = 306A81D91601C7A300BF45F3 /* RBLPopover.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		306A81DC1601C7A300BF45F3 /* RBLPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = 306A81DA1601C7A300BF45F3 /* RBLPopover.m */; };
@@ -137,6 +139,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		303DEF4216D2B88700BD65C4 /* RBLShadowedTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBLShadowedTextFieldCell.h; sourceTree = "<group>"; };
+		303DEF4316D2B88700BD65C4 /* RBLShadowedTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBLShadowedTextFieldCell.m; sourceTree = "<group>"; };
 		304692F11607259A00B79746 /* EXTKeyPathCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EXTKeyPathCoding.h; path = extobjc/EXTKeyPathCoding.h; sourceTree = "<group>"; };
 		306A81D91601C7A300BF45F3 /* RBLPopover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBLPopover.h; sourceTree = "<group>"; };
 		306A81DA1601C7A300BF45F3 /* RBLPopover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBLPopover.m; sourceTree = "<group>"; };
@@ -281,6 +285,8 @@
 				AB61F63516373FE000DD5D2C /* RBLTableCellView.m */,
 				AB10DB4B166EA9CA00AB7AB1 /* RBLScrollView.h */,
 				AB10DB4C166EA9CA00AB7AB1 /* RBLScrollView.m */,
+				303DEF4216D2B88700BD65C4 /* RBLShadowedTextFieldCell.h */,
+				303DEF4316D2B88700BD65C4 /* RBLShadowedTextFieldCell.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -491,6 +497,7 @@
 				AB61F63616373FE000DD5D2C /* RBLTableCellView.h in Headers */,
 				AB61F6D41638370900DD5D2C /* NSApplication+RBLBlockAdditions.h in Headers */,
 				AB10DB4D166EA9CA00AB7AB1 /* RBLScrollView.h in Headers */,
+				303DEF4416D2B88700BD65C4 /* RBLShadowedTextFieldCell.h in Headers */,
 				D088BEF916747D8F004B2665 /* NSFont+RBLFallbackAdditions.h in Headers */,
 				D03D67181677E13F0041DDF2 /* NSAttributedString+RBLHTMLAdditions.h in Headers */,
 			);
@@ -689,6 +696,7 @@
 				AB10DB4E166EA9CA00AB7AB1 /* RBLScrollView.m in Sources */,
 				D088BEFA16747D8F004B2665 /* NSFont+RBLFallbackAdditions.m in Sources */,
 				D03D67191677E13F0041DDF2 /* NSAttributedString+RBLHTMLAdditions.m in Sources */,
+				303DEF4516D2B88700BD65C4 /* RBLShadowedTextFieldCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
