@@ -15,7 +15,7 @@ NSBackgroundStyle const RBLShadowedTextFieldAllBackgroundStyles = 0xFFFFFFFF;
 @interface RBLShadowedTextFieldCell ()
 
 // Maps keys of backgroundStyles to values of shadows.
-@property (nonatomic, readonly, strong) NSMutableDictionary *backgroundStylesToShadows;
+@property (nonatomic, strong) NSMutableDictionary *backgroundStylesToShadows;
 
 @end
 
@@ -23,15 +23,15 @@ NSBackgroundStyle const RBLShadowedTextFieldAllBackgroundStyles = 0xFFFFFFFF;
 
 #pragma mark - Lifecycle
 
-- (void)commonInit {
-	_backgroundStylesToShadows = [NSMutableDictionary dictionary];
+static void CommonInit(RBLShadowedTextFieldCell *textFieldCell) {
+	textFieldCell.backgroundStylesToShadows = [NSMutableDictionary dictionary];
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
 	self = [super initWithCoder:aDecoder];
 	if (self == nil) return nil;
 	
-	[self commonInit];
+	CommonInit(self);
 	
 	return self;
 }
@@ -40,7 +40,7 @@ NSBackgroundStyle const RBLShadowedTextFieldAllBackgroundStyles = 0xFFFFFFFF;
 	self = [super initTextCell:aString];
 	if (self == nil) return nil;
 	
-	[self commonInit];
+	CommonInit(self);
 	
 	return self;
 }
