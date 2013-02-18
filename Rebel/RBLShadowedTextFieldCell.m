@@ -21,7 +21,7 @@ NSBackgroundStyle const RBLShadowedTextFieldAllBackgroundStyles = 0xFFFFFFFF;
 
 @implementation RBLShadowedTextFieldCell
 
-#pragma mark - Lifecycle
+#pragma mark Lifecycle
 
 static void CommonInit(RBLShadowedTextFieldCell *textFieldCell) {
 	textFieldCell.backgroundStylesToShadows = [NSMutableDictionary dictionary];
@@ -45,7 +45,7 @@ static void CommonInit(RBLShadowedTextFieldCell *textFieldCell) {
 	return self;
 }
 
-#pragma mark - Drawing
+#pragma mark Drawing
 
 - (void)drawWithFrame:(NSRect)cellFrame inView:(NSView *)controlView {
 	[NSGraphicsContext saveGraphicsState];
@@ -63,7 +63,7 @@ static void CommonInit(RBLShadowedTextFieldCell *textFieldCell) {
 	[NSGraphicsContext restoreGraphicsState];
 }
 
-#pragma mark - API
+#pragma mark API
 
 - (void)setShadow:(NSShadow *)shadow forBackgroundStyle:(NSBackgroundStyle)backgroundStyle {
 	if (shadow == nil) {
