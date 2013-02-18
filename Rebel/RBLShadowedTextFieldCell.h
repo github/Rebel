@@ -13,7 +13,7 @@
 //
 // If a shadow is explicitely set for a particular background style, it will be
 // preferred to any shadows set to affect all background styles.
-extern NSInteger const RBLShadowedTextFieldAllBackgroundStyles;
+extern NSBackgroundStyle const RBLShadowedTextFieldAllBackgroundStyles;
 
 // A text field cell subclass that allows easy drawing of shadows on text. A
 // different shadow can be set for each background style of the cell.

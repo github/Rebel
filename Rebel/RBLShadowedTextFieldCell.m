@@ -10,7 +10,7 @@
 
 #import "NSColor+RBLCGColorAdditions.h"
 
-NSInteger const RBLShadowedTextFieldAllBackgroundStyles = 0xFFFFFFFF;
+NSBackgroundStyle const RBLShadowedTextFieldAllBackgroundStyles = 0xFFFFFFFF;
 
 @interface RBLShadowedTextFieldCell ()
 
