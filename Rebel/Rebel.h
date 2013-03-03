@@ -12,6 +12,7 @@
 #import <Rebel/NSFont+RBLFallbackAdditions.h>
 #import <Rebel/NSImage+RBLResizableImageAdditions.h>
 #import <Rebel/NSView+RBLAnimationAdditions.h>
+#import <Rebel/NSView+RBLAlignmentAdditions.h>
 #import <Rebel/RBLClipView.h>
 #import <Rebel/RBLResizableImage.h>
 #import <Rebel/RBLView.h>
