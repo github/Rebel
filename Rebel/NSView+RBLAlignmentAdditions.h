@@ -12,8 +12,8 @@
 
 // Returns a backing store pixel aligned rectangle in view coordinates
 //
-// Uses -backingAlignedRect:options: internally and converts between window coordinates
+// Uses `-backingAlignedRect:options:` internally and converts between window coordinates
 // and view coordinates.
-- (NSRect)rbl_viewBackingAlignedRect:(NSRect)rect options:(NSAlignmentOptions)options;
+- (NSRect)rbl_viewBackingAlignedRect:(NSRect)rect alignmentOptions:(NSAlignmentOptions)options;
 
 @end
