@@ -53,7 +53,7 @@ static void CommonInit(RBLHTMLView *self) {
 #pragma mark HTML
 
 - (void)setHTML:(NSString *)HTML {
-	if (_HTML == HTML) return;
+	if ([_HTML isEqual:HTML]) return;
 
 	_HTML = [HTML copy];
 
@@ -61,7 +61,7 @@ static void CommonInit(RBLHTMLView *self) {
 }
 
 - (void)setCSS:(NSString *)CSS {
-	if (_CSS == CSS) return;
+	if ([_CSS isEqual:CSS]) return;
 
 	_CSS = [CSS copy];
 
@@ -99,7 +99,7 @@ static void CommonInit(RBLHTMLView *self) {
 	NSString *constructedHTML = [NSString stringWithFormat:template, self.CSS, self.HTML];
 	[self.mainFrame loadHTMLString:constructedHTML baseURL:nil];
 	while (self.isLoading) {
-		[NSRunLoop.currentRunLoop runUntilDate:[NSDate date]];
+		[NSRunLoop.currentRunLoop runMode:NSDefaultRunLoopMode beforeDate:[NSDate date]];
 	}
 }
 
