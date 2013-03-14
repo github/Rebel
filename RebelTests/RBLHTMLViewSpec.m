@@ -8,11 +8,21 @@
 
 SpecBegin(RBLHTMLView)
 
-it(@"should contain the set HTML", ^{
-	static NSString * const HTML = @"<span>hey buddy</span>";
-	RBLHTMLView *view = [[RBLHTMLView alloc] initWithFrame:NSZeroRect];
+static NSString * const HTML = @"<span>hey brother</span>";
+
+__block RBLHTMLView *view;
+
+beforeEach(^{
+	view = [[RBLHTMLView alloc] initWithFrame:NSZeroRect];
 	view.HTML = HTML;
+});
+
+it(@"should contain the set HTML", ^{
 	expect([view.mainFrame.DOMDocument.body.innerHTML rangeOfString:HTML].length > 0).to.beTruthy();
+});
+
+it(@"shouldn't be loading after setting the HTML", ^{
+	expect(view.isLoading).to.beFalsy();
 });
 
 SpecEnd
