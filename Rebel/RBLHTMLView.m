@@ -72,7 +72,8 @@ static void CommonInit(RBLHTMLView *self) {
 	if (self.HTML == nil) return;
 
 	static NSString * const template = @""
-	"<style type='text/css'> "
+	"<!DOCTYPE html>"
+	"<style> "
 	"    body { "
 	"        font: 11px Lucida Grande, sans-serif; "
 	"        color: #262626; "
