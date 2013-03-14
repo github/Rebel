@@ -21,3 +21,4 @@
 #import <Rebel/RBLTableCellView.h>
 #import <Rebel/RBLScrollView.h>
 #import <Rebel/RBLShadowedTextFieldCell.h>
+#import <Rebel/RBLHTMLView.h>
