@@ -25,4 +25,9 @@ it(@"shouldn't be loading after setting the HTML", ^{
 	expect(view.isLoading).to.beFalsy();
 });
 
+it(@"shouldn't be loading after setting the CSS", ^{
+	view.CSS = @"body { color: red; }";
+	expect(view.isLoading).to.beFalsy();
+});
+
 SpecEnd
