@@ -16,6 +16,10 @@
 		306A81E81601E92000BF45F3 /* CAAnimation+RBLBlockAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 306A81E61601E92000BF45F3 /* CAAnimation+RBLBlockAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		306A81E91601E92000BF45F3 /* CAAnimation+RBLBlockAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 306A81E71601E92000BF45F3 /* CAAnimation+RBLBlockAdditions.m */; };
 		306A81EB1601EAE700BF45F3 /* CAAnimation+RBLBlockAdditionsSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 306A81EA1601EAE700BF45F3 /* CAAnimation+RBLBlockAdditionsSpec.m */; };
+		88347E6A16F213C500872A0A /* RBLHTMLView.h in Headers */ = {isa = PBXBuildFile; fileRef = 88347E6816F213C500872A0A /* RBLHTMLView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		88347E6B16F213C500872A0A /* RBLHTMLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88347E6916F213C500872A0A /* RBLHTMLView.m */; };
+		88347E7316F2145900872A0A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88347E7216F2145900872A0A /* WebKit.framework */; };
+		884675FF16F2574200016B56 /* RBLHTMLViewSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 884675FE16F2574200016B56 /* RBLHTMLViewSpec.m */; };
 		AB10DB4D166EA9CA00AB7AB1 /* RBLScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = AB10DB4B166EA9CA00AB7AB1 /* RBLScrollView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AB10DB4E166EA9CA00AB7AB1 /* RBLScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB10DB4C166EA9CA00AB7AB1 /* RBLScrollView.m */; };
 		AB10DB53166EADD000AB7AB1 /* RBLScrollViewSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = AB10DB52166EADD000AB7AB1 /* RBLScrollViewSpec.m */; };
@@ -154,6 +158,10 @@
 		306A81E71601E92000BF45F3 /* CAAnimation+RBLBlockAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAAnimation+RBLBlockAdditions.m"; sourceTree = "<group>"; };
 		306A81EA1601EAE700BF45F3 /* CAAnimation+RBLBlockAdditionsSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAAnimation+RBLBlockAdditionsSpec.m"; sourceTree = "<group>"; };
 		306A81EC1601F44200BF45F3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		88347E6816F213C500872A0A /* RBLHTMLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBLHTMLView.h; sourceTree = "<group>"; };
+		88347E6916F213C500872A0A /* RBLHTMLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBLHTMLView.m; sourceTree = "<group>"; };
+		88347E7216F2145900872A0A /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		884675FE16F2574200016B56 /* RBLHTMLViewSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBLHTMLViewSpec.m; sourceTree = "<group>"; };
 		AB10DB4B166EA9CA00AB7AB1 /* RBLScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBLScrollView.h; sourceTree = "<group>"; };
 		AB10DB4C166EA9CA00AB7AB1 /* RBLScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBLScrollView.m; sourceTree = "<group>"; };
 		AB10DB52166EADD000AB7AB1 /* RBLScrollViewSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBLScrollViewSpec.m; sourceTree = "<group>"; };
@@ -232,6 +240,7 @@
 			files = (
 				D0E91C5B1603CDC300D23E93 /* QuartzCore.framework in Frameworks */,
 				D09AE4E315C5F45200ECAD10 /* Cocoa.framework in Frameworks */,
+				88347E7316F2145900872A0A /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,6 +310,8 @@
 				AB10DB4C166EA9CA00AB7AB1 /* RBLScrollView.m */,
 				303DEF4216D2B88700BD65C4 /* RBLShadowedTextFieldCell.h */,
 				303DEF4316D2B88700BD65C4 /* RBLShadowedTextFieldCell.m */,
+				88347E6816F213C500872A0A /* RBLHTMLView.h */,
+				88347E6916F213C500872A0A /* RBLHTMLView.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -342,6 +353,7 @@
 				D078B7DD15F6DB420063DDD5 /* NSView+RBLAnimationAdditionsSpec.m */,
 				AB10DB52166EADD000AB7AB1 /* RBLScrollViewSpec.m */,
 				D0723FDF15C60E94004DBDC7 /* RBLViewSpec.m */,
+				884675FE16F2574200016B56 /* RBLHTMLViewSpec.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -439,6 +451,7 @@
 				D09AE4E215C5F45200ECAD10 /* Cocoa.framework */,
 				D09AE4F815C5F45300ECAD10 /* SenTestingKit.framework */,
 				D0E91C5A1603CDC300D23E93 /* QuartzCore.framework */,
+				88347E7216F2145900872A0A /* WebKit.framework */,
 				D09AE4E415C5F45200ECAD10 /* Other Frameworks */,
 			);
 			name = Frameworks;
@@ -517,6 +530,7 @@
 				B85EE8E9163ECF4C00265870 /* NSView+RBLViewControllerAdditions.h in Headers */,
 				B85EE8ED163EE15800265870 /* NSObject+RBObjectSizzlingAdditions.h in Headers */,
 				AB61F6D41638370900DD5D2C /* NSApplication+RBLBlockAdditions.h in Headers */,
+				88347E6A16F213C500872A0A /* RBLHTMLView.h in Headers */,
 				AB10DB4D166EA9CA00AB7AB1 /* RBLScrollView.h in Headers */,
 				303DEF4416D2B88700BD65C4 /* RBLShadowedTextFieldCell.h in Headers */,
 				D088BEF916747D8F004B2665 /* NSFont+RBLFallbackAdditions.h in Headers */,
@@ -721,6 +735,7 @@
 				D088BEFA16747D8F004B2665 /* NSFont+RBLFallbackAdditions.m in Sources */,
 				D03D67191677E13F0041DDF2 /* NSAttributedString+RBLHTMLAdditions.m in Sources */,
 				303DEF4516D2B88700BD65C4 /* RBLShadowedTextFieldCell.m in Sources */,
+				88347E6B16F213C500872A0A /* RBLHTMLView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -735,6 +750,7 @@
 				AB10DB53166EADD000AB7AB1 /* RBLScrollViewSpec.m in Sources */,
 				D088BEFC16747EE1004B2665 /* NSFont+RBLFallbackAdditionsSpec.m in Sources */,
 				D03D671B1677E2950041DDF2 /* NSAttributedString+RBLHTMLAdditionsSpec.m in Sources */,
+				884675FF16F2574200016B56 /* RBLHTMLViewSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
