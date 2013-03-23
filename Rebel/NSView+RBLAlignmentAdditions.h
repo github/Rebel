@@ -14,6 +14,6 @@
 //
 // Uses `-backingAlignedRect:options:` internally and converts between window coordinates
 // and view coordinates.
-- (NSRect)rbl_viewBackingAlignedRect:(NSRect)rect alignmentOptions:(NSAlignmentOptions)options;
+- (NSRect)rbl_viewBackingAlignedRect:(NSRect)rect options:(NSAlignmentOptions)options;
 
 @end
