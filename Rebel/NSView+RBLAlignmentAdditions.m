@@ -11,7 +11,8 @@
 @implementation NSView (RBLAlignmentAdditions)
 
 - (NSRect)rbl_viewBackingAlignedRect:(NSRect)rect options:(NSAlignmentOptions)options {
-	NSRect windowBackingRect = [self backingAlignedRect:rect options:options];
+	NSRect windowRect = [self convertRect:rect toView:nil];
+	NSRect windowBackingRect = [self backingAlignedRect:windowRect options:options];
 	return [self convertRect:windowBackingRect fromView:nil];
 }
 
