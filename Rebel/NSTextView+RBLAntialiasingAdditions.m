@@ -26,7 +26,7 @@ static void fixedDrawRect (NSTextView *self, SEL _cmd, NSRect rect) {
 	if (self.superview) {
 		// NSTextView likes to fall on non-integral points sometimes -- fix
 		// that.
-		self.frame = [self.superview rbl_viewBackingAlignedRect:self.frame alignmentOptions:NSAlignAllEdgesNearest];
+		self.frame = [self.superview rbl_viewBackingAlignedRect:self.frame options:NSAlignAllEdgesNearest];
 	}
 
 	originalDrawRectIMP(self, _cmd, rect);
