@@ -11,10 +11,17 @@
 @implementation NSView (RBLAlignmentAdditions)
 
 - (NSRect)rbl_viewBackingAlignedRect:(NSRect)rect options:(NSAlignmentOptions)options {
-	NSAssert(self.window != nil, @"View must have a window in order to obtain a rectangle aligned to the backing.");
-	NSRect windowRect = [self convertRect:rect toView:nil];
-	NSRect windowBackingRect = [self backingAlignedRect:windowRect options:options];
-	return [self convertRect:windowBackingRect fromView:nil];
+	if (self.window) {
+		NSRect windowRect = [self convertRect:rect toView:nil];
+		NSRect windowBackingRect = [self backingAlignedRect:windowRect options:options];
+		return [self convertRect:windowBackingRect fromView:nil];
+	} else {
+		CGFloat scaleFactor = [[NSScreen mainScreen] backingScaleFactor];
+		CGAffineTransform transformToBacking = CGAffineTransformMakeScale(scaleFactor, scaleFactor);
+        CGRect backingRect = CGRectApplyAffineTransform(rect, transformToBacking);
+		backingRect = NSIntegralRectWithOptions(backingRect, options);
+		return CGRectApplyAffineTransform(backingRect, CGAffineTransformInvert(transformToBacking));
+	}
 }
 
 @end
