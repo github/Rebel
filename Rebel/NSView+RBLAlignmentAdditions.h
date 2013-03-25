@@ -10,10 +10,10 @@
 
 @interface NSView (RBLAlignmentAdditions)
 
-// Returns a backing store pixel aligned rectangle in view coordinates
-//
 // Uses `-backingAlignedRect:options:` internally and converts between window coordinates
 // and view coordinates.
+//
+// Returns a backing store pixel aligned rectangle in view coordinates
 - (NSRect)rbl_viewBackingAlignedRect:(NSRect)rect options:(NSAlignmentOptions)options;
 
 @end
