@@ -10,6 +10,7 @@
 //
 
 #import "NSTextView+RBLAntialiasingAdditions.h"
+#import "NSView+RBLAlignmentAdditions.h"
 #import <objc/runtime.h>
 
 static void (*originalDrawRectIMP)(id, SEL, NSRect);
@@ -25,7 +26,7 @@ static void fixedDrawRect (NSTextView *self, SEL _cmd, NSRect rect) {
 	if (self.superview) {
 		// NSTextView likes to fall on non-integral points sometimes -- fix
 		// that.
-		self.frame = [self.superview backingAlignedRect:self.frame options:NSAlignAllEdgesNearest];
+		self.frame = [self.superview rbl_viewBackingAlignedRect:self.frame options:NSAlignAllEdgesNearest];
 	}
 
 	originalDrawRectIMP(self, _cmd, rect);

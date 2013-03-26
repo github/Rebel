@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0396050A16E2DBA7007A5542 /* NSView+RBLAlignmentAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0396050816E2DBA7007A5542 /* NSView+RBLAlignmentAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0396050B16E2DBA7007A5542 /* NSView+RBLAlignmentAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0396050916E2DBA7007A5542 /* NSView+RBLAlignmentAdditions.m */; };
+		03ECBD9816FD2E6800DA27D0 /* NSView+RBLAlignmentAdditionsSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 03ECBD9716FD2E6800DA27D0 /* NSView+RBLAlignmentAdditionsSpec.m */; };
 		301569981602161400E3BE46 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 306A81EC1601F44200BF45F3 /* QuartzCore.framework */; };
 		303DEF4416D2B88700BD65C4 /* RBLShadowedTextFieldCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 303DEF4216D2B88700BD65C4 /* RBLShadowedTextFieldCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		303DEF4516D2B88700BD65C4 /* RBLShadowedTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 303DEF4316D2B88700BD65C4 /* RBLShadowedTextFieldCell.m */; };
@@ -149,6 +152,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0396050816E2DBA7007A5542 /* NSView+RBLAlignmentAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+RBLAlignmentAdditions.h"; sourceTree = "<group>"; };
+		0396050916E2DBA7007A5542 /* NSView+RBLAlignmentAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+RBLAlignmentAdditions.m"; sourceTree = "<group>"; };
+		03ECBD9716FD2E6800DA27D0 /* NSView+RBLAlignmentAdditionsSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+RBLAlignmentAdditionsSpec.m"; sourceTree = "<group>"; };
 		303DEF4216D2B88700BD65C4 /* RBLShadowedTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBLShadowedTextFieldCell.h; sourceTree = "<group>"; };
 		303DEF4316D2B88700BD65C4 /* RBLShadowedTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBLShadowedTextFieldCell.m; sourceTree = "<group>"; };
 		304692F11607259A00B79746 /* EXTKeyPathCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EXTKeyPathCoding.h; path = extobjc/EXTKeyPathCoding.h; sourceTree = "<group>"; };
@@ -339,6 +345,8 @@
 				B85EE8E8163ECF4C00265870 /* NSView+RBLViewControllerAdditions.m */,
 				B85EE8EB163EE15800265870 /* NSObject+RBObjectSizzlingAdditions.h */,
 				B85EE8EC163EE15800265870 /* NSObject+RBObjectSizzlingAdditions.m */,
+				0396050816E2DBA7007A5542 /* NSView+RBLAlignmentAdditions.h */,
+				0396050916E2DBA7007A5542 /* NSView+RBLAlignmentAdditions.m */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -353,6 +361,7 @@
 				D078B7DD15F6DB420063DDD5 /* NSView+RBLAnimationAdditionsSpec.m */,
 				AB10DB52166EADD000AB7AB1 /* RBLScrollViewSpec.m */,
 				D0723FDF15C60E94004DBDC7 /* RBLViewSpec.m */,
+				03ECBD9716FD2E6800DA27D0 /* NSView+RBLAlignmentAdditionsSpec.m */,
 				884675FE16F2574200016B56 /* RBLHTMLViewSpec.m */,
 			);
 			name = Classes;
@@ -535,6 +544,7 @@
 				303DEF4416D2B88700BD65C4 /* RBLShadowedTextFieldCell.h in Headers */,
 				D088BEF916747D8F004B2665 /* NSFont+RBLFallbackAdditions.h in Headers */,
 				D03D67181677E13F0041DDF2 /* NSAttributedString+RBLHTMLAdditions.h in Headers */,
+				0396050A16E2DBA7007A5542 /* NSView+RBLAlignmentAdditions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -735,6 +745,7 @@
 				D088BEFA16747D8F004B2665 /* NSFont+RBLFallbackAdditions.m in Sources */,
 				D03D67191677E13F0041DDF2 /* NSAttributedString+RBLHTMLAdditions.m in Sources */,
 				303DEF4516D2B88700BD65C4 /* RBLShadowedTextFieldCell.m in Sources */,
+				0396050B16E2DBA7007A5542 /* NSView+RBLAlignmentAdditions.m in Sources */,
 				88347E6B16F213C500872A0A /* RBLHTMLView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -750,6 +761,7 @@
 				AB10DB53166EADD000AB7AB1 /* RBLScrollViewSpec.m in Sources */,
 				D088BEFC16747EE1004B2665 /* NSFont+RBLFallbackAdditionsSpec.m in Sources */,
 				D03D671B1677E2950041DDF2 /* NSAttributedString+RBLHTMLAdditionsSpec.m in Sources */,
+				03ECBD9816FD2E6800DA27D0 /* NSView+RBLAlignmentAdditionsSpec.m in Sources */,
 				884675FF16F2574200016B56 /* RBLHTMLViewSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
