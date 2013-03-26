@@ -11,14 +11,16 @@
 @implementation NSView (RBLAlignmentAdditions)
 
 - (NSRect)rbl_viewBackingAlignedRect:(NSRect)rect options:(NSAlignmentOptions)options {
-	if (self.window) {
+	if (self.window != nil) {
 		NSRect windowRect = [self convertRect:rect toView:nil];
 		NSRect windowBackingRect = [self backingAlignedRect:windowRect options:options];
 		return [self convertRect:windowBackingRect fromView:nil];
 	} else {
-		CGFloat scaleFactor = [[NSScreen mainScreen] backingScaleFactor];
+		// Use a best guess for how to align to the backing store.
+		CGFloat scaleFactor = NSScreen.mainScreen.backingScaleFactor;
 		CGAffineTransform transformToBacking = CGAffineTransformMakeScale(scaleFactor, scaleFactor);
-        CGRect backingRect = CGRectApplyAffineTransform(rect, transformToBacking);
+
+		CGRect backingRect = CGRectApplyAffineTransform(rect, transformToBacking);
 		backingRect = NSIntegralRectWithOptions(backingRect, options);
 		return CGRectApplyAffineTransform(backingRect, CGAffineTransformInvert(transformToBacking));
 	}
