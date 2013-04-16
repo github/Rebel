@@ -73,7 +73,7 @@ describe(@"NSColor from CGColor", ^{
 });
 
 it(@"should return a pattern CGColor", ^{
-	NSURL *imageURL = [[NSBundle bundleForClass:self.class] URLForResource:@"testimage" withExtension:@"jpg"];
+	NSURL *imageURL = [[NSBundle bundleForClass:self.class] URLForResource:@"fixtures/<RBLCGColorAdditionsSpec>_testimage" withExtension:@"jpg"];
 	expect(imageURL).notTo.beNil();
 
 	NSImage *image = [[NSImage alloc] initByReferencingURL:imageURL];
