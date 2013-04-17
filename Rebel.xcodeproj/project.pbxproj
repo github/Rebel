@@ -528,8 +528,8 @@
 		F63D7C6D171D2F840006515F /* Test Images */ = {
 			isa = PBXGroup;
 			children = (
-				F63D7C79171D3CCB0006515F /* <RBLResizableImageSpec>_testimage@2x.png */,
 				F63D7C7A171D3CCB0006515F /* <RBLResizableImageSpec>_testimage.png */,
+				F63D7C79171D3CCB0006515F /* <RBLResizableImageSpec>_testimage@2x.png */,
 				F63D7C7B171D3CCB0006515F /* <RBLCGColorAdditionsSpec>_testimage.jpg */,
 			);
 			name = "Test Images";
