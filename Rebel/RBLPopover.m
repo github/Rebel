@@ -93,7 +93,7 @@
 
 @implementation RBLPopoverWindow
 
-- (BOOL)isKeyWindow {
+- (BOOL)canBecomeKeyWindow {
 	return YES;
 }
 
