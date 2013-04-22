@@ -37,8 +37,6 @@ it(@"should use @1x asset in @1x context", ^{
 	
 	NSUInteger testPixel[4];
 	
-	[[bitmapImageRep TIFFRepresentation] writeToFile:[@"~/Desktop/test.tiff" stringByExpandingTildeInPath] atomically:YES];
-
 	[bitmapImageRep getPixel:&testPixel[0] atX:24 y:10];
 	
 	NSUInteger red = testPixel[0];
@@ -67,9 +65,7 @@ it(@"should use @2x asset in @2x context", ^{
 	[context flushGraphics];
 	
 	NSUInteger testPixel[4];
-	
-	[[bitmapImageRep TIFFRepresentation] writeToFile:[@"~/Desktop/test1.tiff" stringByExpandingTildeInPath] atomically:YES];
-	
+		
 	[bitmapImageRep getPixel:&testPixel[0] atX:24 y:10];
 	
 	NSUInteger red = testPixel[0];
