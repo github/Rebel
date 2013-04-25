@@ -11,7 +11,7 @@
 		0396050B16E2DBA7007A5542 /* NSView+RBLAlignmentAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0396050916E2DBA7007A5542 /* NSView+RBLAlignmentAdditions.m */; };
 		03ECBD9816FD2E6800DA27D0 /* NSView+RBLAlignmentAdditionsSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 03ECBD9716FD2E6800DA27D0 /* NSView+RBLAlignmentAdditionsSpec.m */; };
 		301569981602161400E3BE46 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 306A81EC1601F44200BF45F3 /* QuartzCore.framework */; };
-		30309E8D17228C1700BC2923 /* RBLTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 30309E8B17228C1700BC2923 /* RBLTableView.h */; };
+		30309E8D17228C1700BC2923 /* RBLTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 30309E8B17228C1700BC2923 /* RBLTableView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		30309E8E17228C1700BC2923 /* RBLTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30309E8C17228C1700BC2923 /* RBLTableView.m */; };
 		303DEF4416D2B88700BD65C4 /* RBLShadowedTextFieldCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 303DEF4216D2B88700BD65C4 /* RBLShadowedTextFieldCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		303DEF4516D2B88700BD65C4 /* RBLShadowedTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 303DEF4316D2B88700BD65C4 /* RBLShadowedTextFieldCell.m */; };
@@ -154,11 +154,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		30309E8B17228C1700BC2923 /* RBLTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBLTableView.h; sourceTree = "<group>"; };
-		30309E8C17228C1700BC2923 /* RBLTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBLTableView.m; sourceTree = "<group>"; };
 		0396050816E2DBA7007A5542 /* NSView+RBLAlignmentAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+RBLAlignmentAdditions.h"; sourceTree = "<group>"; };
 		0396050916E2DBA7007A5542 /* NSView+RBLAlignmentAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+RBLAlignmentAdditions.m"; sourceTree = "<group>"; };
 		03ECBD9716FD2E6800DA27D0 /* NSView+RBLAlignmentAdditionsSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+RBLAlignmentAdditionsSpec.m"; sourceTree = "<group>"; };
+		30309E8B17228C1700BC2923 /* RBLTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBLTableView.h; sourceTree = "<group>"; };
+		30309E8C17228C1700BC2923 /* RBLTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBLTableView.m; sourceTree = "<group>"; };
 		303DEF4216D2B88700BD65C4 /* RBLShadowedTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBLShadowedTextFieldCell.h; sourceTree = "<group>"; };
 		303DEF4316D2B88700BD65C4 /* RBLShadowedTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBLShadowedTextFieldCell.m; sourceTree = "<group>"; };
 		304692F11607259A00B79746 /* EXTKeyPathCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EXTKeyPathCoding.h; path = extobjc/EXTKeyPathCoding.h; sourceTree = "<group>"; };
@@ -547,10 +547,10 @@
 				AB61F6D41638370900DD5D2C /* NSApplication+RBLBlockAdditions.h in Headers */,
 				88347E6A16F213C500872A0A /* RBLHTMLView.h in Headers */,
 				AB10DB4D166EA9CA00AB7AB1 /* RBLScrollView.h in Headers */,
+				30309E8D17228C1700BC2923 /* RBLTableView.h in Headers */,
 				303DEF4416D2B88700BD65C4 /* RBLShadowedTextFieldCell.h in Headers */,
 				D088BEF916747D8F004B2665 /* NSFont+RBLFallbackAdditions.h in Headers */,
 				D03D67181677E13F0041DDF2 /* NSAttributedString+RBLHTMLAdditions.h in Headers */,
-				30309E8D17228C1700BC2923 /* RBLTableView.h in Headers */,
 				0396050A16E2DBA7007A5542 /* NSView+RBLAlignmentAdditions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
