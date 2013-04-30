@@ -26,7 +26,7 @@ void *kRBLViewControllerKey = &kRBLViewControllerKey;
 	
 	if (self.rbl_viewController) {
 		NSResponder *controllerNextResponder = [self.rbl_viewController nextResponder];
-		[self setNextResponder:controllerNextResponder];
+		[self custom_setNextResponder:controllerNextResponder];
 		[self.rbl_viewController setNextResponder:nil];
 	}
 	
@@ -34,7 +34,7 @@ void *kRBLViewControllerKey = &kRBLViewControllerKey;
 	
 	if (newViewController) {
 		NSResponder *ownResponder = [self nextResponder];
-		[self setNextResponder:self.rbl_viewController];
+		[self custom_setNextResponder:self.rbl_viewController];
 		[self.rbl_viewController setNextResponder:ownResponder];
 	}
 }
