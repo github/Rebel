@@ -14,8 +14,11 @@
 //***************************************************************************
 
 // We'll use this as RBLPopover's backing window. Since it's borderless, we
-// just override the `isKeyWindow` method to make it act like a key window.
+// just override the `isKeyWindow` method to make it behave in the way that
+// `canBecomeKey` demands.
 @interface RBLPopoverWindow : NSWindow
+
+@property (nonatomic) BOOL canBeKey;
 
 @end
 
@@ -94,7 +97,7 @@
 @implementation RBLPopoverWindow
 
 - (BOOL)canBecomeKeyWindow {
-	return YES;
+	return self.canBeKey;
 }
 
 @end
@@ -232,7 +235,7 @@
 	}
 	
 	//TODO: Create RBLViewController with viewWillAppear
-	//[self.contentViewController viewWillAppear:YES]; //this will always be animated… in the current implementation
+	//[self.contentViewController viewWillAppear:YES]; //this will always be animated… in the current implementation
 	
 	if (self.willShowBlock != nil) self.willShowBlock(self);
 	
@@ -268,6 +271,7 @@
 	self.popoverWindow.opaque = NO;
 	self.popoverWindow.backgroundColor = NSColor.clearColor;
 	self.popoverWindow.contentView = self.backgroundView;
+	self.popoverWindow.canBeKey = self.canBecomeKey;
 	if (self.animates) {
 		self.popoverWindow.alphaValue = 0.0;
 	}
