@@ -97,6 +97,11 @@ typedef void (^RBLPopoverDelegateBlock)(RBLPopover *popover);
 // Use for animation when showing and closing the popover.
 @property (nonatomic, assign) NSTimeInterval fadeDuration;
 
+// Whether the popover can become the key window.
+//
+// Defaults to `NO`.
+@property (nonatomic, assign) BOOL canBecomeKey;
+
 // Designated initialiser.
 //
 // Returns a newly initialised `RBLPopover`.
