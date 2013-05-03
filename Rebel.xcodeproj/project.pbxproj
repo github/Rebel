@@ -54,7 +54,6 @@
 		D0723FC615C5FB68004DBDC7 /* NSColor+RBLCGColorAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D0723FC415C5FB68004DBDC7 /* NSColor+RBLCGColorAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0723FC715C5FB68004DBDC7 /* NSColor+RBLCGColorAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D0723FC515C5FB68004DBDC7 /* NSColor+RBLCGColorAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D0723FDC15C60846004DBDC7 /* NSColor+RBLCGColorAdditionsSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = D0723FDB15C60846004DBDC7 /* NSColor+RBLCGColorAdditionsSpec.m */; };
-		D0723FDE15C60D61004DBDC7 /* testimage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D0723FDD15C60D61004DBDC7 /* testimage.jpg */; };
 		D0723FE015C60E94004DBDC7 /* RBLViewSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = D0723FDF15C60E94004DBDC7 /* RBLViewSpec.m */; };
 		D0723FE315C616AF004DBDC7 /* RBLResizableImage.h in Headers */ = {isa = PBXBuildFile; fileRef = D0723FE115C616AF004DBDC7 /* RBLResizableImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0723FE415C616AF004DBDC7 /* RBLResizableImage.m in Sources */ = {isa = PBXBuildFile; fileRef = D0723FE215C616AF004DBDC7 /* RBLResizableImage.m */; };
@@ -71,6 +70,10 @@
 		D0E91C581603CC7600D23E93 /* RBLClipView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E91C561603CC7600D23E93 /* RBLClipView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0E91C591603CC7600D23E93 /* RBLClipView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E91C571603CC7600D23E93 /* RBLClipView.m */; };
 		D0E91C5B1603CDC300D23E93 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E91C5A1603CDC300D23E93 /* QuartzCore.framework */; };
+		F63D7C78171D31010006515F /* RBLResizableImageSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = F63D7C77171D31010006515F /* RBLResizableImageSpec.m */; };
+		F63D7C7C171D3CCB0006515F /* <RBLResizableImageSpec>_testimage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F63D7C79171D3CCB0006515F /* <RBLResizableImageSpec>_testimage@2x.png */; };
+		F63D7C7D171D3CCB0006515F /* <RBLResizableImageSpec>_testimage.png in Resources */ = {isa = PBXBuildFile; fileRef = F63D7C7A171D3CCB0006515F /* <RBLResizableImageSpec>_testimage.png */; };
+		F63D7C7E171D3CCB0006515F /* <RBLCGColorAdditionsSpec>_testimage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F63D7C7B171D3CCB0006515F /* <RBLCGColorAdditionsSpec>_testimage.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -200,7 +203,6 @@
 		D0723FC415C5FB68004DBDC7 /* NSColor+RBLCGColorAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSColor+RBLCGColorAdditions.h"; sourceTree = "<group>"; };
 		D0723FC515C5FB68004DBDC7 /* NSColor+RBLCGColorAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor+RBLCGColorAdditions.m"; sourceTree = "<group>"; };
 		D0723FDB15C60846004DBDC7 /* NSColor+RBLCGColorAdditionsSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor+RBLCGColorAdditionsSpec.m"; sourceTree = "<group>"; };
-		D0723FDD15C60D61004DBDC7 /* testimage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = testimage.jpg; sourceTree = "<group>"; };
 		D0723FDF15C60E94004DBDC7 /* RBLViewSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBLViewSpec.m; sourceTree = "<group>"; };
 		D0723FE115C616AF004DBDC7 /* RBLResizableImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBLResizableImage.h; sourceTree = "<group>"; };
 		D0723FE215C616AF004DBDC7 /* RBLResizableImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBLResizableImage.m; sourceTree = "<group>"; };
@@ -241,6 +243,10 @@
 		D0E91C561603CC7600D23E93 /* RBLClipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBLClipView.h; sourceTree = "<group>"; };
 		D0E91C571603CC7600D23E93 /* RBLClipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBLClipView.m; sourceTree = "<group>"; };
 		D0E91C5A1603CDC300D23E93 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		F63D7C77171D31010006515F /* RBLResizableImageSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBLResizableImageSpec.m; sourceTree = "<group>"; };
+		F63D7C79171D3CCB0006515F /* <RBLResizableImageSpec>_testimage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "<RBLResizableImageSpec>_testimage@2x.png"; sourceTree = "<group>"; };
+		F63D7C7A171D3CCB0006515F /* <RBLResizableImageSpec>_testimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "<RBLResizableImageSpec>_testimage.png"; sourceTree = "<group>"; };
+		F63D7C7B171D3CCB0006515F /* <RBLCGColorAdditionsSpec>_testimage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "<RBLCGColorAdditionsSpec>_testimage.jpg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -369,6 +375,7 @@
 				D0723FDF15C60E94004DBDC7 /* RBLViewSpec.m */,
 				03ECBD9716FD2E6800DA27D0 /* NSView+RBLAlignmentAdditionsSpec.m */,
 				884675FE16F2574200016B56 /* RBLHTMLViewSpec.m */,
+				F63D7C77171D31010006515F /* RBLResizableImageSpec.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -446,6 +453,7 @@
 				D09AE4E015C5F45200ECAD10 /* Products */,
 			);
 			sourceTree = "<group>";
+			usesTabs = 1;
 		};
 		D09AE4E015C5F45200ECAD10 /* Products */ = {
 			isa = PBXGroup;
@@ -506,6 +514,7 @@
 		D09AE4FE15C5F45300ECAD10 /* RebelTests */ = {
 			isa = PBXGroup;
 			children = (
+				F63D7C6D171D2F840006515F /* Test Images */,
 				D0723FDA15C60815004DBDC7 /* Classes */,
 				D09AE4FF15C5F45300ECAD10 /* Supporting Files */,
 			);
@@ -515,12 +524,21 @@
 		D09AE4FF15C5F45300ECAD10 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				D0723FDD15C60D61004DBDC7 /* testimage.jpg */,
 				D09AE50015C5F45300ECAD10 /* RebelTests-Info.plist */,
 				D09AE50115C5F45300ECAD10 /* InfoPlist.strings */,
 				D04844EC15C5F8DA00834EDE /* RebelTests-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F63D7C6D171D2F840006515F /* Test Images */ = {
+			isa = PBXGroup;
+			children = (
+				F63D7C7A171D3CCB0006515F /* <RBLResizableImageSpec>_testimage.png */,
+				F63D7C79171D3CCB0006515F /* <RBLResizableImageSpec>_testimage@2x.png */,
+				F63D7C7B171D3CCB0006515F /* <RBLCGColorAdditionsSpec>_testimage.jpg */,
+			);
+			name = "Test Images";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -707,7 +725,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D09AE50315C5F45300ECAD10 /* InfoPlist.strings in Resources */,
-				D0723FDE15C60D61004DBDC7 /* testimage.jpg in Resources */,
+				F63D7C7C171D3CCB0006515F /* <RBLResizableImageSpec>_testimage@2x.png in Resources */,
+				F63D7C7D171D3CCB0006515F /* <RBLResizableImageSpec>_testimage.png in Resources */,
+				F63D7C7E171D3CCB0006515F /* <RBLCGColorAdditionsSpec>_testimage.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -771,6 +791,7 @@
 				D03D671B1677E2950041DDF2 /* NSAttributedString+RBLHTMLAdditionsSpec.m in Sources */,
 				03ECBD9816FD2E6800DA27D0 /* NSView+RBLAlignmentAdditionsSpec.m in Sources */,
 				884675FF16F2574200016B56 /* RBLHTMLViewSpec.m in Sources */,
+				F63D7C78171D31010006515F /* RBLResizableImageSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
