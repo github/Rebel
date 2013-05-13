@@ -11,11 +11,11 @@
 
 @interface RBLViewController ()
 
+@property (nonatomic, strong) NSView *currentView;
+
 @end
 
-@implementation RBLViewController {
-	__weak NSView *_currentView;
-}
+@implementation RBLViewController
 
 +(id)viewController
 {
