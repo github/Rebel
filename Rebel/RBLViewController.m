@@ -24,7 +24,7 @@
 
 -(void)dealloc
 {
-    if(self.view.rbl_viewController == self) {
+    if (self.view.rbl_viewController == self) {
         self.view.rbl_viewController = nil;
     }
 }
@@ -40,7 +40,7 @@
 	super.view = view;
 	self.view.rbl_viewController = self;
 
-    if(_currentView.rbl_viewController == self) {
+    if (_currentView.rbl_viewController == self) {
         _currentView.rbl_viewController = nil;
     }
     _currentView = view;
