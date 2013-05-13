@@ -13,11 +13,20 @@
 
 @end
 
-@implementation RBLViewController
+@implementation RBLViewController {
+    __weak NSView *_currentView;
+}
 
 +(id)viewController
 {
 	return [[self alloc] initWithNibName:NSStringFromClass([self class]) bundle:nil];
+}
+
+-(void)dealloc
+{
+    if(self.view.rbl_viewController == self) {
+        self.view.rbl_viewController = nil;
+    }
 }
 
 -(void)loadView
@@ -30,6 +39,11 @@
 {
 	super.view = view;
 	self.view.rbl_viewController = self;
+
+    if(_currentView.rbl_viewController == self) {
+        _currentView.rbl_viewController = nil;
+    }
+    _currentView = view;
 }
 
 - (void)viewDidLoad
