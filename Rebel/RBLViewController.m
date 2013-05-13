@@ -14,7 +14,7 @@
 @end
 
 @implementation RBLViewController {
-    __weak NSView *_currentView;
+	__weak NSView *_currentView;
 }
 
 +(id)viewController
