@@ -22,7 +22,7 @@ void *kRBLViewControllerKey = &kRBLViewControllerKey;
 }
 
 -(void)setRbl_viewController:(id)newViewController {
-	[[self class] loadSupportForRBLViewControllers];
+	[NSView loadSupportForRBLViewControllers];
 	
 	if (self.rbl_viewController) {
 		NSResponder *controllerNextResponder = [self.rbl_viewController nextResponder];
