@@ -23,9 +23,10 @@
 }
 
 -(void)dealloc {
-	if (self.view.rbl_viewController == self) {
-		self.view.rbl_viewController = nil;
+	if (_currentView.rbl_viewController == self) {
+		_currentView.rbl_viewController = nil;
 	}
+	_currentView = nil;
 }
 
 -(void)loadView
