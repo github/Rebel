@@ -148,17 +148,6 @@ static IMP RBLViewDrawRectIMP;
 	}
 }
 
-#pragma mark Layout
-
-+ (BOOL)requiresConstraintBasedLayout {
-	// Necessary for -layout to be consistently invoked.
-	return YES;
-}
-
-- (void)layout {
-	[super layout];
-}
-
 #pragma mark View Hierarchy
 
 // Before 10.8, AppKit may destroy the view's layer when changing superviews
