@@ -70,8 +70,4 @@
 // override of this method should invoke super.
 - (void)drawRect:(NSRect)rect;
 
-// Subclasses may override this method to manually lay out subviews. Any
-// override of this method should invoke super.
-- (void)layout;
-
 @end
