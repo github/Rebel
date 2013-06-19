@@ -334,8 +334,9 @@
 #pragma mark Event Monitor
 
 - (void)removeEventMonitor {
-	if (self.transientEventMonitor == nil) return;
-	[NSEvent removeMonitor:self.transientEventMonitor];
+	id strongEventMonitor = self.transientEventMonitor;
+	if (strongEventMonitor == nil) return;
+	[NSEvent removeMonitor:strongEventMonitor];
 	self.transientEventMonitor = nil;
 }
 
