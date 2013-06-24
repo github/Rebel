@@ -4,3 +4,6 @@
 [submodule "External/expecta"]
 	path = External/expecta
 	url = https://github.com/github/expecta.git
+[submodule "External/xcconfigs"]
+	path = External/xcconfigs
+	url = https://github.com/jspahrsummers/xcconfigs.git
