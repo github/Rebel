@@ -1,9 +1,9 @@
-[submodule "External/libextobjc"]
-	path = External/libextobjc
-	url = https://github.com/jspahrsummers/libextobjc.git
 [submodule "External/specta"]
 	path = External/specta
 	url = https://github.com/github/specta.git
 [submodule "External/expecta"]
 	path = External/expecta
 	url = https://github.com/github/expecta.git
+[submodule "External/xcconfigs"]
+	path = External/xcconfigs
+	url = https://github.com/jspahrsummers/xcconfigs.git

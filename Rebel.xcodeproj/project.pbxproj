@@ -15,7 +15,6 @@
 		30309E8E17228C1700BC2923 /* RBLTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30309E8C17228C1700BC2923 /* RBLTableView.m */; };
 		303DEF4416D2B88700BD65C4 /* RBLShadowedTextFieldCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 303DEF4216D2B88700BD65C4 /* RBLShadowedTextFieldCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		303DEF4516D2B88700BD65C4 /* RBLShadowedTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 303DEF4316D2B88700BD65C4 /* RBLShadowedTextFieldCell.m */; };
-		304692F21607259A00B79746 /* EXTKeyPathCoding.h in Headers */ = {isa = PBXBuildFile; fileRef = 304692F11607259A00B79746 /* EXTKeyPathCoding.h */; };
 		306A81DB1601C7A300BF45F3 /* RBLPopover.h in Headers */ = {isa = PBXBuildFile; fileRef = 306A81D91601C7A300BF45F3 /* RBLPopover.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		306A81DC1601C7A300BF45F3 /* RBLPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = 306A81DA1601C7A300BF45F3 /* RBLPopover.m */; };
 		306A81E81601E92000BF45F3 /* CAAnimation+RBLBlockAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 306A81E61601E92000BF45F3 /* CAAnimation+RBLBlockAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -164,7 +163,6 @@
 		30309E8C17228C1700BC2923 /* RBLTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBLTableView.m; sourceTree = "<group>"; };
 		303DEF4216D2B88700BD65C4 /* RBLShadowedTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBLShadowedTextFieldCell.h; sourceTree = "<group>"; };
 		303DEF4316D2B88700BD65C4 /* RBLShadowedTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBLShadowedTextFieldCell.m; sourceTree = "<group>"; };
-		304692F11607259A00B79746 /* EXTKeyPathCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EXTKeyPathCoding.h; path = extobjc/EXTKeyPathCoding.h; sourceTree = "<group>"; };
 		306A81D91601C7A300BF45F3 /* RBLPopover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBLPopover.h; sourceTree = "<group>"; };
 		306A81DA1601C7A300BF45F3 /* RBLPopover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBLPopover.m; sourceTree = "<group>"; };
 		306A81E61601E92000BF45F3 /* CAAnimation+RBLBlockAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAAnimation+RBLBlockAdditions.h"; sourceTree = "<group>"; };
@@ -276,15 +274,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		304692E71607258E00B79746 /* libextobjc */ = {
-			isa = PBXGroup;
-			children = (
-				304692F11607259A00B79746 /* EXTKeyPathCoding.h */,
-			);
-			name = libextobjc;
-			path = External/libextobjc;
-			sourceTree = "<group>";
-		};
 		D01A4A05162C81CC0092D61F /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -389,7 +378,7 @@
 				D08BB2ED15CB307200CC9868 /* README.md */,
 			);
 			name = Configuration;
-			path = External/libextobjc/Configuration;
+			path = External/xcconfigs;
 			sourceTree = "<group>";
 		};
 		D08BB2DA15CB307200CC9868 /* Base */ = {
@@ -467,7 +456,6 @@
 		D09AE4E115C5F45200ECAD10 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				304692E71607258E00B79746 /* libextobjc */,
 				D08BB2EE15CB307D00CC9868 /* Expecta.xcodeproj */,
 				D08BB2F115CB307D00CC9868 /* Specta.xcodeproj */,
 				306A81EC1601F44200BF45F3 /* QuartzCore.framework */,
@@ -555,7 +543,6 @@
 				D04CBFC815F6D87B004A5BCC /* NSView+RBLAnimationAdditions.h in Headers */,
 				306A81E81601E92000BF45F3 /* CAAnimation+RBLBlockAdditions.h in Headers */,
 				306A81DB1601C7A300BF45F3 /* RBLPopover.h in Headers */,
-				304692F21607259A00B79746 /* EXTKeyPathCoding.h in Headers */,
 				D0E91C581603CC7600D23E93 /* RBLClipView.h in Headers */,
 				D011FD5E16239A8600A27946 /* NSImage+RBLResizableImageAdditions.h in Headers */,
 				AB61F63616373FE000DD5D2C /* RBLTableCellView.h in Headers */,
