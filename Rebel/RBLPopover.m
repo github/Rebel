@@ -242,6 +242,7 @@
 	if (self.behavior != NSPopoverBehaviorApplicationDefined) {
 		[self removeEventMonitors];
 		
+		[NSNotificationCenter.defaultCenter addObserver:self selector:@selector(appResignedActive:) name:NSApplicationDidResignActiveNotification object:NSApp];
 		void (^monitor)(NSEvent *event) = ^(NSEvent *event) {
 			if (self.popoverWindow == nil) return;
 			
@@ -332,6 +333,10 @@
 	}
 }
 
+- (void)appResignedActive:(NSNotification *)notification {
+	[self close];
+}
+
 - (IBAction)performClose:(id)sender {
 	[self close];
 }
@@ -344,6 +349,7 @@
 		[NSEvent removeMonitor:eventMonitor];
 	}
 	self.transientEventMonitors = nil;
+	[NSNotificationCenter.defaultCenter removeObserver:self];
 }
 
 @end
