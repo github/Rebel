@@ -244,9 +244,15 @@
 				
 		void (^monitor)(NSEvent *event) = ^(NSEvent *event) {
 			if (self.popoverWindow == nil) return;
-			if ((!NSPointInRect(NSEvent.mouseLocation, self.popoverWindow.frame))) {
-				[self close];
+			BOOL shouldClose = NO;
+			BOOL mouseInPopoverWindow = NSPointInRect(NSEvent.mouseLocation, self.popoverWindow.frame);
+			if (self.behavior == RBLPopoverBehaviorTransient) {
+				shouldClose = !mouseInPopoverWindow;
+			} else {
+				shouldClose = self.popoverWindow.parentWindow.isKeyWindow && NSPointInRect(NSEvent.mouseLocation, self.popoverWindow.parentWindow.frame) && !mouseInPopoverWindow;
 			}
+			
+			if (shouldClose) [self close];
 		};
 		
 		NSInteger mask = (self.behavior == RBLPopoverBehaviorTransient ? (NSLeftMouseDownMask | NSRightMouseDownMask) : (NSLeftMouseUpMask | NSRightMouseUpMask));
