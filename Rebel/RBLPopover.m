@@ -243,23 +243,26 @@
 		[self removeEventMonitors];
 		
 		[NSNotificationCenter.defaultCenter addObserver:self selector:@selector(appResignedActive:) name:NSApplicationDidResignActiveNotification object:NSApp];
+		
+		__weak RBLPopover *weakSelf = self;
 		void (^monitor)(NSEvent *event) = ^(NSEvent *event) {
-			if (self.popoverWindow == nil) return;
-			
-			static NSUInteger escapeKey = 53;
-			BOOL shouldClose = NO;
-			if (event.type == NSLeftMouseDown || event.type == NSRightMouseDown) {
-				shouldClose = (!NSPointInRect(NSEvent.mouseLocation, self.popoverWindow.frame) && self.behavior == RBLPopoverBehaviorTransient);
-			} else {
-				shouldClose = (event.keyCode == escapeKey);
+			RBLPopover *strongSelf = weakSelf;
+			if (strongSelf.popoverWindow == nil) return;
+			if ((!NSPointInRect(NSEvent.mouseLocation, self.popoverWindow.frame) && self.behavior == RBLPopoverBehaviorTransient)) {
+				[self close];	
 			}
-			
-			if (shouldClose) [self close];
 		};
 		
-		NSInteger mask = NSLeftMouseDownMask | NSRightMouseDownMask | NSKeyUpMask;
+		NSInteger mask = NSLeftMouseDownMask | NSRightMouseDownMask;
 		id globalMonitor = [NSEvent addGlobalMonitorForEventsMatchingMask:mask handler:monitor];
-		id localMonitor = [NSEvent addLocalMonitorForEventsMatchingMask:mask handler:^(NSEvent *event) {
+		id localMonitor = [NSEvent addLocalMonitorForEventsMatchingMask:mask | NSKeyUpMask handler:^NSEvent * (NSEvent *event) {
+			RBLPopover *strongSelf = weakSelf;
+			static NSUInteger escapeKey = 53;
+			if (event.type == NSKeyUp && event.keyCode == escapeKey) {
+				[strongSelf close];
+				return nil;
+			}
+			
 			monitor(event);
 			return event;
 		}];
