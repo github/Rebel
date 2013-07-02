@@ -17,13 +17,14 @@
 // RBLPopoverBehaviorApplicationDefined - The application decides when the
 //                                        popover should open and close, by
 //                                        doing so manually.
-// RBLPopoverBehaviorTransient          - If there is a mouse click anywhere
+// RBLPopoverBehaviorTransient          - If there is a mouse down anywhere
 //                                        other than in the popover the popover
-//                                        is closed.
-// RBLPopoverBehaviorSemiTransient      - Unsupported, here for forwards
-//                                        compatibility. Any use of this
-//                                        degrades gracefully into transient
-//                                        behavior.
+//                                        is closed. It is also closed if the
+//                                        app or parent window lose focus or
+//                                        `esc` is pressed.
+// RBLPopoverBehaviorSemiTransient      - Closes the popover only if there is a
+//                                        mouse up within the popover's parent
+//                                        window or `esc` is pressed.
 typedef enum : NSUInteger {
 	RBLPopoverRBLPopoverBehaviorApplicationDefined = 0,
 	RBLPopoverBehaviorTransient = 1,
