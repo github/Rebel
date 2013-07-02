@@ -241,32 +241,34 @@
 	
 	if (self.behavior != NSPopoverBehaviorApplicationDefined) {
 		[self removeEventMonitors];
-		
-		[NSNotificationCenter.defaultCenter addObserver:self selector:@selector(appResignedActive:) name:NSApplicationDidResignActiveNotification object:NSApp];
-		
-		__weak RBLPopover *weakSelf = self;
+				
 		void (^monitor)(NSEvent *event) = ^(NSEvent *event) {
-			RBLPopover *strongSelf = weakSelf;
-			if (strongSelf.popoverWindow == nil) return;
-			if ((!NSPointInRect(NSEvent.mouseLocation, self.popoverWindow.frame) && self.behavior == RBLPopoverBehaviorTransient)) {
-				[self close];	
+			if (self.popoverWindow == nil) return;
+			if ((!NSPointInRect(NSEvent.mouseLocation, self.popoverWindow.frame))) {
+				[self close];
 			}
 		};
 		
-		NSInteger mask = NSLeftMouseDownMask | NSRightMouseDownMask;
-		id globalMonitor = [NSEvent addGlobalMonitorForEventsMatchingMask:mask handler:monitor];
+		NSInteger mask = (self.behavior == RBLPopoverBehaviorTransient ? (NSLeftMouseDownMask | NSRightMouseDownMask) : (NSLeftMouseUpMask | NSRightMouseUpMask));
+		NSMutableSet *newMonitors = [[NSMutableSet alloc] init];
+		if (self.behavior == RBLPopoverBehaviorTransient) {
+			[NSNotificationCenter.defaultCenter addObserver:self selector:@selector(appResignedActive:) name:NSApplicationDidResignActiveNotification object:NSApp];
+			id globalMonitor = [NSEvent addGlobalMonitorForEventsMatchingMask:mask handler:monitor];
+			[newMonitors addObject:globalMonitor];
+		}
+		
 		id localMonitor = [NSEvent addLocalMonitorForEventsMatchingMask:mask | NSKeyUpMask handler:^NSEvent * (NSEvent *event) {
-			RBLPopover *strongSelf = weakSelf;
 			static NSUInteger escapeKey = 53;
 			if (event.type == NSKeyUp && event.keyCode == escapeKey) {
-				[strongSelf close];
+				[self close];
 				return nil;
 			}
 			
 			monitor(event);
 			return event;
 		}];
-		self.transientEventMonitors = [NSSet setWithObjects:globalMonitor, localMonitor, nil];
+		[newMonitors addObject:localMonitor];
+		self.transientEventMonitors = newMonitors;
 	}
 	
 	self.backgroundView = [self.backgroundViewClass backgroundViewForContentSize:contentViewSize popoverEdge:popoverEdge originScreenRect:screenPositioningRect];
