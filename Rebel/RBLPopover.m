@@ -44,7 +44,7 @@
 // The identifier for the event monitor we are using to watch for mouse clicks
 // outisde of the popover.
 // We are not responsible for its memory management.
-@property (nonatomic, weak) id transientEventMonitor;
+@property (nonatomic, weak) NSSet *transientEventMonitors;
 
 // The size the content view was before the popover was shown.
 @property (nonatomic) CGSize originalViewSize;
@@ -53,7 +53,7 @@
 
 // Correctly removes our event monitor watching for mouse clicks external to the
 // popover.
-- (void)removeEventMonitor;
+- (void)removeEventMonitors;
 
 @end
 
@@ -239,11 +239,11 @@
 	
 	if (self.willShowBlock != nil) self.willShowBlock(self);
 	
-		[self removeEventMonitor];
 	if (self.behavior != NSPopoverBehaviorApplicationDefined) {
+		[self removeEventMonitors];
 		
-		self.transientEventMonitor = [NSEvent addLocalMonitorForEventsMatchingMask:(NSLeftMouseDownMask | NSRightMouseDownMask | NSKeyUpMask) handler: ^(NSEvent *event) {
-			if (self.popoverWindow == nil) return event;
+		void (^monitor)(NSEvent *event) = ^(NSEvent *event) {
+			if (self.popoverWindow == nil) return;
 			
 			static NSUInteger escapeKey = 53;
 			BOOL shouldClose = NO;
@@ -254,9 +254,15 @@
 			}
 			
 			if (shouldClose) [self close];
-			
+		};
+		
+		NSInteger mask = NSLeftMouseDownMask | NSRightMouseDownMask | NSKeyUpMask;
+		id globalMonitor = [NSEvent addGlobalMonitorForEventsMatchingMask:mask handler:monitor];
+		id localMonitor = [NSEvent addLocalMonitorForEventsMatchingMask:mask handler:^(NSEvent *event) {
+			monitor(event);
 			return event;
 		}];
+		self.transientEventMonitors = [NSSet setWithObjects:globalMonitor, localMonitor, nil];
 	}
 	
 	self.backgroundView = [self.backgroundViewClass backgroundViewForContentSize:contentViewSize popoverEdge:popoverEdge originScreenRect:screenPositioningRect];
@@ -304,7 +310,7 @@
 - (void)close {
 	if (!self.shown) return;
 	
-	[self removeEventMonitor];
+	[self removeEventMonitors];
 	
 	if (self.willCloseBlock != nil) self.willCloseBlock(self);
 	
@@ -333,11 +339,11 @@
 #pragma mark -
 #pragma mark Event Monitor
 
-- (void)removeEventMonitor {
-	id strongEventMonitor = self.transientEventMonitor;
-	if (strongEventMonitor == nil) return;
-	[NSEvent removeMonitor:strongEventMonitor];
-	self.transientEventMonitor = nil;
+- (void)removeEventMonitors {
+	for (id eventMonitor in self.transientEventMonitors) {
+		[NSEvent removeMonitor:eventMonitor];
+	}
+	self.transientEventMonitors = nil;
 }
 
 @end
