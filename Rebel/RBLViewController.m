@@ -11,6 +11,8 @@
 
 @interface RBLViewController ()
 
+@property (nonatomic, strong) NSView *currentView;
+
 @end
 
 @implementation RBLViewController
@@ -18,6 +20,13 @@
 +(id)viewController
 {
 	return [[self alloc] initWithNibName:NSStringFromClass([self class]) bundle:nil];
+}
+
+-(void)dealloc {
+	if (_currentView.rbl_viewController == self) {
+		_currentView.rbl_viewController = nil;
+	}
+	_currentView = nil;
 }
 
 -(void)loadView
@@ -30,6 +39,11 @@
 {
 	super.view = view;
 	self.view.rbl_viewController = self;
+
+	if (_currentView.rbl_viewController == self) {
+		_currentView.rbl_viewController = nil;
+	}
+	_currentView = view;
 }
 
 - (void)viewDidLoad
