@@ -26,7 +26,7 @@
 //                                        mouse up within the popover's parent
 //                                        window or `esc` is pressed.
 typedef enum : NSUInteger {
-	RBLPopoverRBLPopoverBehaviorApplicationDefined = 0,
+	RBLPopoverBehaviorApplicationDefined = 0,
 	RBLPopoverBehaviorTransient = 1,
 	RBLPopoverBehaviorSemiTransient = 2
 } RBLPopoverBehavior;
