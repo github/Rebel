@@ -263,10 +263,12 @@
 			[newMonitors addObject:globalMonitor];
 		}
 		
+		__weak RBLPopover *weakSelf = self;
 		id localMonitor = [NSEvent addLocalMonitorForEventsMatchingMask:mask | NSKeyUpMask handler:^NSEvent * (NSEvent *event) {
+			RBLPopover *strongSelf = weakSelf;
 			static NSUInteger escapeKey = 53;
 			if (event.type == NSKeyUp && event.keyCode == escapeKey) {
-				[self close];
+				[strongSelf close];
 				return nil;
 			}
 			
