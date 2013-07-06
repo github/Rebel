@@ -44,7 +44,7 @@
 // The identifier for the event monitor we are using to watch for mouse clicks
 // outisde of the popover.
 // We are not responsible for its memory management.
-@property (nonatomic, weak) NSSet *transientEventMonitors;
+@property (nonatomic, strong) NSSet *transientEventMonitors;
 
 // The size the content view was before the popover was shown.
 @property (nonatomic) CGSize originalViewSize;
