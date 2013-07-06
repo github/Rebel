@@ -113,7 +113,7 @@
 	
 	_contentViewController = viewController;
 	_backgroundViewClass = RBLPopoverBackgroundView.class;
-	_behavior = NSPopoverBehaviorApplicationDefined;
+	_behavior = RBLPopoverBehaviorApplicationDefined;
 	_animates = YES;
 	_fadeDuration = 0.3;
 	
