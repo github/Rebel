@@ -368,7 +368,7 @@
 		[NSEvent removeMonitor:eventMonitor];
 	}
 	self.transientEventMonitors = nil;
-	[NSNotificationCenter.defaultCenter removeObserver:self];
+	[NSNotificationCenter.defaultCenter removeObserver:self name:NSApplicationDidResignActiveNotification object:NSApp];
 }
 
 @end
