@@ -353,7 +353,7 @@
 }
 
 - (void)appResignedActive:(NSNotification *)notification {
-	[self close];
+	if (self.behavior == RBLPopoverBehaviorTransient) [self close];
 }
 
 - (IBAction)performClose:(id)sender {
