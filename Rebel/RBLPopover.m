@@ -255,7 +255,13 @@
 			if (shouldClose) [self close];
 		};
 		
-		NSInteger mask = (self.behavior == RBLPopoverBehaviorTransient ? (NSLeftMouseDownMask | NSRightMouseDownMask) : (NSLeftMouseUpMask | NSRightMouseUpMask));
+		NSInteger mask = 0;
+		if (self.behavior == RBLPopoverBehaviorTransient) {
+			mask = NSLeftMouseDownMask | NSRightMouseDownMask;
+		} else {
+			mask = NSLeftMouseUpMask | NSRightMouseUpMask;
+		}
+		
 		NSMutableSet *newMonitors = [[NSMutableSet alloc] init];
 		if (self.behavior == RBLPopoverBehaviorTransient) {
 			[NSNotificationCenter.defaultCenter addObserver:self selector:@selector(appResignedActive:) name:NSApplicationDidResignActiveNotification object:NSApp];
