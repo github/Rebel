@@ -242,17 +242,19 @@
 	if (self.behavior != NSPopoverBehaviorApplicationDefined) {
 		[self removeEventMonitors];
 				
+		__weak RBLPopover *weakSelf = self;
 		void (^monitor)(NSEvent *event) = ^(NSEvent *event) {
-			if (self.popoverWindow == nil) return;
+			RBLPopover *strongSelf = weakSelf;
+			if (strongSelf.popoverWindow == nil) return;
 			BOOL shouldClose = NO;
-			BOOL mouseInPopoverWindow = NSPointInRect(NSEvent.mouseLocation, self.popoverWindow.frame);
-			if (self.behavior == RBLPopoverBehaviorTransient) {
+			BOOL mouseInPopoverWindow = NSPointInRect(NSEvent.mouseLocation, strongSelf.popoverWindow.frame);
+			if (strongSelf.behavior == RBLPopoverBehaviorTransient) {
 				shouldClose = !mouseInPopoverWindow;
 			} else {
-				shouldClose = self.popoverWindow.parentWindow.isKeyWindow && NSPointInRect(NSEvent.mouseLocation, self.popoverWindow.parentWindow.frame) && !mouseInPopoverWindow;
+				shouldClose = strongSelf.popoverWindow.parentWindow.isKeyWindow && NSPointInRect(NSEvent.mouseLocation, strongSelf.popoverWindow.parentWindow.frame) && !mouseInPopoverWindow;
 			}
 			
-			if (shouldClose) [self close];
+			if (shouldClose) [strongSelf close];
 		};
 		
 		NSInteger mask = 0;
@@ -269,7 +271,6 @@
 			[newMonitors addObject:globalMonitor];
 		}
 		
-		__weak RBLPopover *weakSelf = self;
 		id localMonitor = [NSEvent addLocalMonitorForEventsMatchingMask:mask | NSKeyUpMask handler:^ NSEvent * (NSEvent *event) {
 			RBLPopover *strongSelf = weakSelf;
 			static NSUInteger escapeKey = 53;
