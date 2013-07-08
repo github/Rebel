@@ -51,6 +51,10 @@
 
 @property (nonatomic, strong, readwrite) RBLPopoverBackgroundView *backgroundView;
 
+// Used in semi-transient popovers to make sure we allow a click into the parent
+// window to make it key as opposed to closing the popover immediately.
+@property (nonatomic) BOOL parentWindowResignedKey;
+
 // Correctly removes our event monitor watching for mouse clicks external to the
 // popover.
 - (void)removeEventMonitors;
@@ -255,7 +259,9 @@
 			if (strongSelf.behavior == RBLPopoverBehaviorTransient) {
 				shouldClose = !mouseInPopoverWindow;
 			} else {
-				shouldClose = strongSelf.popoverWindow.parentWindow.isKeyWindow && NSPointInRect(NSEvent.mouseLocation, strongSelf.popoverWindow.parentWindow.frame) && !mouseInPopoverWindow;
+				shouldClose = strongSelf.popoverWindow.parentWindow.isKeyWindow && NSPointInRect(NSEvent.mouseLocation, strongSelf.popoverWindow.parentWindow.frame) && !mouseInPopoverWindow && !self.parentWindowResignedKey;
+				
+				if (strongSelf.popoverWindow.parentWindow.isKeyWindow) self.parentWindowResignedKey = NO;
 			}
 			
 			if (shouldClose) [strongSelf close];
@@ -273,6 +279,10 @@
 			[NSNotificationCenter.defaultCenter addObserver:self selector:@selector(appResignedActive:) name:NSApplicationDidResignActiveNotification object:NSApp];
 			id globalMonitor = [NSEvent addGlobalMonitorForEventsMatchingMask:mask handler:monitor];
 			[newMonitors addObject:globalMonitor];
+		}
+		
+		if (self.behavior == RBLPopoverBehaviorSemiTransient) {
+			[NSNotificationCenter.defaultCenter addObserver:self selector:@selector(parentWindowResignedKey:) name:NSWindowDidResignKeyNotification object:self.popoverWindow.parentWindow];
 		}
 		
 		id localMonitor = [NSEvent addLocalMonitorForEventsMatchingMask:mask | NSKeyUpMask handler:^ NSEvent * (NSEvent *event) {
@@ -357,10 +367,6 @@
 	}
 }
 
-- (void)appResignedActive:(NSNotification *)notification {
-	if (self.behavior == RBLPopoverBehaviorTransient) [self close];
-}
-
 - (IBAction)performClose:(id)sender {
 	[self close];
 }
@@ -374,6 +380,17 @@
 	}
 	self.transientEventMonitors = nil;
 	[NSNotificationCenter.defaultCenter removeObserver:self name:NSApplicationDidResignActiveNotification object:NSApp];
+	[NSNotificationCenter.defaultCenter removeObserver:self name:NSWindowDidResignKeyNotification object:nil];
+}
+
+- (void)appResignedActive:(NSNotification *)notification {
+	if (self.behavior == RBLPopoverBehaviorTransient) [self close];
+}
+
+- (void)parentWindowResignedKey:(NSNotification *)notification {
+	if (self.behavior != RBLPopoverBehaviorSemiTransient) return;
+	
+	self.parentWindowResignedKey = YES;
 }
 
 @end
