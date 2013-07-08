@@ -120,6 +120,10 @@
 	return self;
 }
 
+- (void)dealloc {
+	[self.popoverWindow close];
+}
+
 #pragma mark -
 #pragma mark Derived Properties
 
