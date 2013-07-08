@@ -44,7 +44,7 @@
 // The identifier for the event monitor we are using to watch for mouse clicks
 // outisde of the popover.
 // We are not responsible for its memory management.
-@property (nonatomic, weak) id transientEventMonitor;
+@property (nonatomic, copy) NSSet *transientEventMonitors;
 
 // The size the content view was before the popover was shown.
 @property (nonatomic) CGSize originalViewSize;
@@ -53,7 +53,7 @@
 
 // Correctly removes our event monitor watching for mouse clicks external to the
 // popover.
-- (void)removeEventMonitor;
+- (void)removeEventMonitors;
 
 @end
 
@@ -113,11 +113,15 @@
 	
 	_contentViewController = viewController;
 	_backgroundViewClass = RBLPopoverBackgroundView.class;
-	_behavior = RBLPopoverViewControllerBehaviorApplicationDefined;
+	_behavior = RBLPopoverBehaviorApplicationDefined;
 	_animates = YES;
 	_fadeDuration = 0.3;
 	
 	return self;
+}
+
+- (void)dealloc {
+	[self.popoverWindow close];
 }
 
 #pragma mark -
@@ -239,24 +243,51 @@
 	
 	if (self.willShowBlock != nil) self.willShowBlock(self);
 	
-	if (self.behavior != RBLPopoverViewControllerBehaviorApplicationDefined) {
-		[self removeEventMonitor];
-		
-		self.transientEventMonitor = [NSEvent addLocalMonitorForEventsMatchingMask:(NSLeftMouseDownMask | NSRightMouseDownMask | NSKeyUpMask) handler: ^(NSEvent *event) {
-			if (self.popoverWindow == nil) return event;
-			
-			static NSUInteger escapeKey = 53;
+	if (self.behavior != NSPopoverBehaviorApplicationDefined) {
+		[self removeEventMonitors];
+				
+		__weak RBLPopover *weakSelf = self;
+		void (^monitor)(NSEvent *event) = ^(NSEvent *event) {
+			RBLPopover *strongSelf = weakSelf;
+			if (strongSelf.popoverWindow == nil) return;
 			BOOL shouldClose = NO;
-			if (event.type == NSLeftMouseDown || event.type == NSRightMouseDown) {
-				shouldClose = (!NSPointInRect(NSEvent.mouseLocation, self.popoverWindow.frame) && self.behavior == RBLPopoverViewControllerBehaviorTransient);
+			BOOL mouseInPopoverWindow = NSPointInRect(NSEvent.mouseLocation, strongSelf.popoverWindow.frame);
+			if (strongSelf.behavior == RBLPopoverBehaviorTransient) {
+				shouldClose = !mouseInPopoverWindow;
 			} else {
-				shouldClose = (event.keyCode == escapeKey);
+				shouldClose = strongSelf.popoverWindow.parentWindow.isKeyWindow && NSPointInRect(NSEvent.mouseLocation, strongSelf.popoverWindow.parentWindow.frame) && !mouseInPopoverWindow;
 			}
 			
-			if (shouldClose) [self close];
+			if (shouldClose) [strongSelf close];
+		};
+		
+		NSInteger mask = 0;
+		if (self.behavior == RBLPopoverBehaviorTransient) {
+			mask = NSLeftMouseDownMask | NSRightMouseDownMask;
+		} else {
+			mask = NSLeftMouseUpMask | NSRightMouseUpMask;
+		}
+		
+		NSMutableSet *newMonitors = [[NSMutableSet alloc] init];
+		if (self.behavior == RBLPopoverBehaviorTransient) {
+			[NSNotificationCenter.defaultCenter addObserver:self selector:@selector(appResignedActive:) name:NSApplicationDidResignActiveNotification object:NSApp];
+			id globalMonitor = [NSEvent addGlobalMonitorForEventsMatchingMask:mask handler:monitor];
+			[newMonitors addObject:globalMonitor];
+		}
+		
+		id localMonitor = [NSEvent addLocalMonitorForEventsMatchingMask:mask | NSKeyUpMask handler:^ NSEvent * (NSEvent *event) {
+			RBLPopover *strongSelf = weakSelf;
+			static NSUInteger escapeKey = 53;
+			if (event.type == NSKeyUp && event.keyCode == escapeKey) {
+				[strongSelf close];
+				return nil;
+			}
 			
+			monitor(event);
 			return event;
 		}];
+		[newMonitors addObject:localMonitor];
+		self.transientEventMonitors = newMonitors;
 	}
 	
 	self.backgroundView = [self.backgroundViewClass backgroundViewForContentSize:contentViewSize popoverEdge:popoverEdge originScreenRect:screenPositioningRect];
@@ -304,7 +335,7 @@
 - (void)close {
 	if (!self.shown) return;
 	
-	[self removeEventMonitor];
+	[self removeEventMonitors];
 	
 	if (self.willCloseBlock != nil) self.willCloseBlock(self);
 	
@@ -326,6 +357,10 @@
 	}
 }
 
+- (void)appResignedActive:(NSNotification *)notification {
+	if (self.behavior == RBLPopoverBehaviorTransient) [self close];
+}
+
 - (IBAction)performClose:(id)sender {
 	[self close];
 }
@@ -333,11 +368,12 @@
 #pragma mark -
 #pragma mark Event Monitor
 
-- (void)removeEventMonitor {
-	id strongEventMonitor = self.transientEventMonitor;
-	if (strongEventMonitor == nil) return;
-	[NSEvent removeMonitor:strongEventMonitor];
-	self.transientEventMonitor = nil;
+- (void)removeEventMonitors {
+	for (id eventMonitor in self.transientEventMonitors) {
+		[NSEvent removeMonitor:eventMonitor];
+	}
+	self.transientEventMonitors = nil;
+	[NSNotificationCenter.defaultCenter removeObserver:self name:NSApplicationDidResignActiveNotification object:NSApp];
 }
 
 @end
