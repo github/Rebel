@@ -17,14 +17,23 @@ NSBackgroundStyle const RBLShadowedTextFieldAllBackgroundStyles = 0xFFFFFFFF;
 // Maps keys of backgroundStyles to values of shadows.
 @property (nonatomic, strong) NSMutableDictionary *backgroundStylesToShadows;
 
+@property (nonatomic, readonly, strong) NSTextView *fieldEditor;
+
 @end
 
 @implementation RBLShadowedTextFieldCell
 
 #pragma mark Lifecycle
 
-static void CommonInit(RBLShadowedTextFieldCell *textFieldCell) {
-	textFieldCell.backgroundStylesToShadows = [NSMutableDictionary dictionary];
+static void CommonInit(RBLShadowedTextFieldCell *self) {
+	self.backgroundStylesToShadows = [NSMutableDictionary dictionary];
+
+	NSTextView *textView = [[NSTextView alloc] initWithFrame:CGRectZero];
+	[textView setString:@"blah"];
+	[textView setFieldEditor:YES];
+	[textView setBackgroundColor:NSColor.redColor];
+	[textView setTextColor:NSColor.greenColor];
+	self->_fieldEditor = textView;
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
@@ -61,6 +70,25 @@ static void CommonInit(RBLShadowedTextFieldCell *textFieldCell) {
 	[super drawWithFrame:cellFrame inView:controlView];
 	
 	[NSGraphicsContext restoreGraphicsState];
+}
+
+- (NSText *)setUpFieldEditorAttributes:(NSText *)textObj {
+	NSTextView *fieldEditor = (NSTextView*)[super setUpFieldEditorAttributes:textObj];
+    NSColor *textColor = NSColor.redColor;
+    [fieldEditor setInsertionPointColor:textColor];
+    [fieldEditor setTextColor:textColor];
+    [fieldEditor setDrawsBackground:NO];
+    NSMutableDictionary *attributes = [NSMutableDictionary dictionaryWithDictionary:[fieldEditor selectedTextAttributes]];
+    [attributes setObject:NSColor.greenColor forKey:NSBackgroundColorAttributeName];
+	attributes[NSFontAttributeName] = [NSFont systemFontOfSize:10];
+	attributes[NSForegroundColorAttributeName] = NSColor.redColor;
+	NSShadow *shadow = self.backgroundStylesToShadows[@(self.backgroundStyle)];
+	if (shadow == nil) {
+		shadow = self.backgroundStylesToShadows[@(RBLShadowedTextFieldAllBackgroundStyles)];
+	}
+	attributes[NSShadowAttributeName] = shadow;
+    [fieldEditor setSelectedTextAttributes:attributes];
+    return fieldEditor;
 }
 
 #pragma mark API
