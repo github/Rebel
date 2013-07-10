@@ -17,8 +17,6 @@ NSBackgroundStyle const RBLShadowedTextFieldAllBackgroundStyles = 0xFFFFFFFF;
 // Maps keys of backgroundStyles to values of shadows.
 @property (nonatomic, strong) NSMutableDictionary *backgroundStylesToShadows;
 
-@property (nonatomic, readonly, strong) NSTextView *fieldEditor;
-
 @end
 
 @implementation RBLShadowedTextFieldCell
@@ -27,13 +25,6 @@ NSBackgroundStyle const RBLShadowedTextFieldAllBackgroundStyles = 0xFFFFFFFF;
 
 static void CommonInit(RBLShadowedTextFieldCell *self) {
 	self.backgroundStylesToShadows = [NSMutableDictionary dictionary];
-
-	NSTextView *textView = [[NSTextView alloc] initWithFrame:CGRectZero];
-	[textView setString:@"blah"];
-	[textView setFieldEditor:YES];
-	[textView setBackgroundColor:NSColor.redColor];
-	[textView setTextColor:NSColor.greenColor];
-	self->_fieldEditor = textView;
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
@@ -73,22 +64,21 @@ static void CommonInit(RBLShadowedTextFieldCell *self) {
 }
 
 - (NSText *)setUpFieldEditorAttributes:(NSText *)textObj {
-	NSTextView *fieldEditor = (NSTextView*)[super setUpFieldEditorAttributes:textObj];
-    NSColor *textColor = NSColor.redColor;
-    [fieldEditor setInsertionPointColor:textColor];
-    [fieldEditor setTextColor:textColor];
-    [fieldEditor setDrawsBackground:NO];
-    NSMutableDictionary *attributes = [NSMutableDictionary dictionaryWithDictionary:[fieldEditor selectedTextAttributes]];
-    [attributes setObject:NSColor.greenColor forKey:NSBackgroundColorAttributeName];
-	attributes[NSFontAttributeName] = [NSFont systemFontOfSize:10];
-	attributes[NSForegroundColorAttributeName] = NSColor.redColor;
+	NSTextView *superTextView = (NSTextView *)[super setUpFieldEditorAttributes:textObj];
+	superTextView.font = self.font;
 	NSShadow *shadow = self.backgroundStylesToShadows[@(self.backgroundStyle)];
 	if (shadow == nil) {
 		shadow = self.backgroundStylesToShadows[@(RBLShadowedTextFieldAllBackgroundStyles)];
 	}
-	attributes[NSShadowAttributeName] = shadow;
-    [fieldEditor setSelectedTextAttributes:attributes];
-    return fieldEditor;
+	
+	double delayInSeconds = 0.01;
+	dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+	dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+		NSTextStorage *storage = superTextView.textStorage;
+		[storage addAttribute:NSShadowAttributeName value:shadow range:NSMakeRange(0, storage.length)];
+	});
+	
+	return superTextView;
 }
 
 #pragma mark API
