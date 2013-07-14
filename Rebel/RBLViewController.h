@@ -10,7 +10,7 @@
 
 @interface RBLViewController : NSViewController
 
-+ (id)viewController;
++ (instancetype)viewController;
 
 - (void)viewDidLoad;
 
