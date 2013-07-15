@@ -17,7 +17,7 @@
 
 @implementation RBLViewController
 
-+(id)viewController
++(instancetype)viewController
 {
 	return [[self alloc] initWithNibName:NSStringFromClass([self class]) bundle:nil];
 }
