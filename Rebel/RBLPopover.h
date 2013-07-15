@@ -37,6 +37,12 @@ typedef void (^RBLPopoverDelegateBlock)(RBLPopover *popover);
 // This aims to replicate the API of `NSPopover`, within reason, whilst offering
 // more flexibility when it comes to customising of its appearance.
 //
+// One notable difference in behaviour when compared to `NSPopover` is memory
+// management. `RBLPopover` does not retain itself and when it deallocates it
+// will be removed from screen. Therefore a reference must be kept to the popover
+// (or it should be otherwise retained) for as long as it should appear on
+// screen.
+//
 // A note on layers: by default the clipping method which the popover uses to
 // clip its subviews to its outline does _not_ support any layer backed or
 // hosting views. This can be worked around by adding mask layers to any layers
