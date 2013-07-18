@@ -24,3 +24,4 @@
 #import <Rebel/RBLShadowedTextFieldCell.h>
 #import <Rebel/RBLHTMLView.h>
 #import <Rebel/RBLTableView.h>
+#import <Rebel/RBLExpandingContainerView.h>
