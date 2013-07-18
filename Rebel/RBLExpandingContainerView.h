@@ -1,5 +1,5 @@
 //
-//  GHExpandingContainerView.h
+//  RBLExpandingContainerView.h
 //  GitHub
 //
 //  Created by Alan Rogers on 4/02/13.

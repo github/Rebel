@@ -1,5 +1,5 @@
 //
-//  GHExpandingContainerView.m
+//  RBLExpandingContainerView.m
 //  GitHub
 //
 //  Created by Alan Rogers on 4/02/13.
