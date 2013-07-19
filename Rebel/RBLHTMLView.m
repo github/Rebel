@@ -17,6 +17,7 @@ static void CommonInit(RBLHTMLView *self) {
 	self.maintainsBackForwardList = NO;
 	self.mainFrame.frameView.allowsScrolling = NO;
 	self.policyDelegate = self;
+	self.UIDelegate = self;
 }
 
 - (id)initWithFrame:(NSRect)frameRect {
@@ -48,6 +49,18 @@ static void CommonInit(RBLHTMLView *self) {
 		[listener ignore];
 		[NSWorkspace.sharedWorkspace openURL:request.URL];
 	}
+}
+
+#pragma mark WebUIDelegate
+
+- (NSArray *)webView:(WebView *)sender contextMenuItemsForElement:(NSDictionary *)element defaultMenuItems:(NSArray *)defaultMenuItems {
+	NSMutableArray *strippedMenuItems = [[NSMutableArray alloc] initWithArray:defaultMenuItems];
+	for (NSMenuItem *item in defaultMenuItems) {
+		NSUInteger tag = item.tag;
+		if (tag == WebMenuItemTagReload || tag == WebMenuItemTagGoBack || tag == WebMenuItemTagGoForward || tag == WebMenuItemTagStop || tag == WebMenuItemTagDownloadLinkToDisk) [strippedMenuItems removeObject:item];
+	}
+	
+	return strippedMenuItems;
 }
 
 #pragma mark HTML
