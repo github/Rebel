@@ -10,7 +10,8 @@
 #import "NSView+RBLAnimationAdditions.h"
 #import <QuartzCore/QuartzCore.h>
 
-static const NSTimeInterval RBLTransitioningContainerViewAnimationDuration = 0.3;
+static const NSTimeInterval RBLTransitioningContainerViewResizeAnimationDuration = 0.2;
+static const NSTimeInterval RBLTransitioningContainerViewSlideAnimationDuration = 0.3;
 
 @interface RBLSlidingContainerView ()
 
@@ -108,7 +109,7 @@ static const NSTimeInterval RBLTransitioningContainerViewAnimationDuration = 0.3
 	self.wantsLayer = YES;
 	[self addAnimationConstraintsWithStartingSize:self.contentView.frame.size];
 
-	[NSView rbl_animateWithDuration:0.2 animations:^{
+	[NSView rbl_animateWithDuration:RBLTransitioningContainerViewResizeAnimationDuration animations:^{
 		[self.heightConstraint.animator setConstant:contentView.frame.size.height];
 		[self.widthConstraint.animator setConstant:contentView.frame.size.width];
 	}
@@ -116,11 +117,11 @@ static const NSTimeInterval RBLTransitioningContainerViewAnimationDuration = 0.3
 		CATransition *transition = [CATransition animation];
 		transition.type = kCATransitionPush;
 		transition.subtype = (direction == RBLSlidingContainerViewSlideDirectionFromLeft ? kCATransitionFromLeft : kCATransitionFromRight);
-		transition.duration = RBLTransitioningContainerViewAnimationDuration;
+		transition.duration = RBLTransitioningContainerViewSlideAnimationDuration;
 		transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
 
 		self.animations = @{ @"subviews" : transition };
-		[NSView rbl_animateWithDuration:RBLTransitioningContainerViewAnimationDuration animations:replaceContentView completion:completeTransition];
+		[NSView rbl_animateWithDuration:RBLTransitioningContainerViewSlideAnimationDuration animations:replaceContentView completion:completeTransition];
 	}];
 }
 
