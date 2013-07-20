@@ -129,9 +129,9 @@ static const NSTimeInterval RBLTransitioningContainerViewSlideAnimationDuration 
 
 - (void)addAnimationConstraintsWithStartingSize:(CGSize)size {
 	[self removeConstraints:self.constraints];
-	self.heightConstraint = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:0. constant:size.height];
+	self.heightConstraint = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:0 constant:size.height];
 
-	self.widthConstraint = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeWidth multiplier:0. constant:size.width];
+	self.widthConstraint = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeWidth multiplier:0 constant:size.width];
 
 	[self addConstraints:@[ self.heightConstraint, self.widthConstraint ]];
 
