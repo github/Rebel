@@ -9,7 +9,7 @@
 #import "RBLExpandingContainerView.h"
 #import "NSView+RBLAnimationAdditions.h"
 
-static const CGFloat RBLExpandingContainerViewAnimationDuration = 0.2;
+static const NSTimeInterval RBLExpandingContainerViewAnimationDuration = 0.2;
 
 @interface RBLExpandingContainerView ()
 

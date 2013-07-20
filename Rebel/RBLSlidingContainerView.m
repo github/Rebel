@@ -10,7 +10,7 @@
 #import "NSView+RBLAnimationAdditions.h"
 #import <QuartzCore/QuartzCore.h>
 
-static const CGFloat RBLTransitioningContainerViewAnimationDuration = 0.3;
+static const NSTimeInterval RBLTransitioningContainerViewAnimationDuration = 0.3;
 
 @interface RBLSlidingContainerView ()
 
