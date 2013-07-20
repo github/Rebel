@@ -10,21 +10,21 @@
 // in a RBLSlidingContainerView.
 //
 // RBLSlidingContainerViewSlideDirectionNone      - No animation is used to
-//                                                 transition the contentView.
+//                                                  transition the contentView.
 // RBLSlidingContainerViewSlideDirectionFromLeft  - The containerView is first
-//                                                 animated to match the bounds
-//                                                 of the new contentView, then
-//                                                 the old contentView slides
-//                                                 away to the right as the new
-//                                                 contentView slides in from
-//                                                 the left.
+//                                                  animated to match the bounds
+//                                                  of the new contentView, then
+//                                                  the old contentView slides
+//                                                  away to the right as the new
+//                                                  contentView slides in from
+//                                                  the left.
 // RBLSlidingContainerViewSlideDirectionFromRight - The containerView is first
-//                                                 animated to match the bounds
-//                                                 of the new contentView, then
-//                                                 the old contentView slides
-//                                                 away to the left as the new
-//                                                 contentView slides in from
-//                                                 the right.
+//                                                  animated to match the bounds
+//                                                  of the new contentView, then
+//                                                  the old contentView slides
+//                                                  away to the left as the new
+//                                                  contentView slides in from
+//                                                  the right.
 typedef enum : NSUInteger {
 	RBLSlidingContainerViewSlideDirectionNone = 0,
 	RBLSlidingContainerViewSlideDirectionFromLeft,

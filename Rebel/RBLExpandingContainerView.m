@@ -121,9 +121,9 @@ static const NSTimeInterval RBLExpandingContainerViewAnimationDuration = 0.2;
 
 	[self addConstraints:@[ self.heightConstraint, self.widthConstraint ]];
 
-	// We use NSLayoutPriorityDefaultHigh because so that our contentView
-	// will sit at the top left while the containerView changes its bounds
-	// around it during the animation.
+	// We use NSLayoutPriorityDefaultHigh so that our contentView will sit at
+	// the top left while the containerView changes its bounds around it during
+	// the animation.
 	self.verticalContainerConstraints = [NSLayoutConstraint
 		constraintsWithVisualFormat:[NSString stringWithFormat:@"V:|[contentView]-(0@%d)-|", NSLayoutPriorityDefaultHigh]
 		options:0
