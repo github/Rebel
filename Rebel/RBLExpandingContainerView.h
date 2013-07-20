@@ -14,7 +14,9 @@
 //
 // NOTE: You must use to the provided -setContentView: methods to change the
 // subview. Calling any of the normal subview mutating methods on the receiver
-// will result in undefined behavior. 
+// will result in undefined behavior.
+// IMPORTANT NOTE: Auto Layout will be enabled for any NSWindow you add this
+// view to.
 @interface RBLExpandingContainerView : NSView
 
 // The contentView (single subview) of the receiver.
