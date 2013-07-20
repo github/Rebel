@@ -1,6 +1,6 @@
 //
 //  RBLExpandingContainerView.m
-//  GitHub
+//  Rebel
 //
 //  Created by Alan Rogers on 4/02/13.
 //  Copyright (c) 2013 GitHub. All rights reserved.
