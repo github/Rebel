@@ -73,6 +73,10 @@
 		F63D7C7C171D3CCB0006515F /* <RBLResizableImageSpec>_testimage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F63D7C79171D3CCB0006515F /* <RBLResizableImageSpec>_testimage@2x.png */; };
 		F63D7C7D171D3CCB0006515F /* <RBLResizableImageSpec>_testimage.png in Resources */ = {isa = PBXBuildFile; fileRef = F63D7C7A171D3CCB0006515F /* <RBLResizableImageSpec>_testimage.png */; };
 		F63D7C7E171D3CCB0006515F /* <RBLCGColorAdditionsSpec>_testimage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F63D7C7B171D3CCB0006515F /* <RBLCGColorAdditionsSpec>_testimage.jpg */; };
+		F64F8DEA1797E1F400082A3F /* RBLSlidingContainerView.h in Headers */ = {isa = PBXBuildFile; fileRef = F64F8DE81797E1F400082A3F /* RBLSlidingContainerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F64F8DEB1797E1F400082A3F /* RBLSlidingContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F64F8DE91797E1F400082A3F /* RBLSlidingContainerView.m */; };
+		F6A562C01797DC5A00B651C0 /* RBLExpandingContainerView.h in Headers */ = {isa = PBXBuildFile; fileRef = F6A562BE1797DC5A00B651C0 /* RBLExpandingContainerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F6A562C11797DC5A00B651C0 /* RBLExpandingContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F6A562BF1797DC5A00B651C0 /* RBLExpandingContainerView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -245,6 +249,10 @@
 		F63D7C79171D3CCB0006515F /* <RBLResizableImageSpec>_testimage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "<RBLResizableImageSpec>_testimage@2x.png"; sourceTree = "<group>"; };
 		F63D7C7A171D3CCB0006515F /* <RBLResizableImageSpec>_testimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "<RBLResizableImageSpec>_testimage.png"; sourceTree = "<group>"; };
 		F63D7C7B171D3CCB0006515F /* <RBLCGColorAdditionsSpec>_testimage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "<RBLCGColorAdditionsSpec>_testimage.jpg"; sourceTree = "<group>"; };
+		F64F8DE81797E1F400082A3F /* RBLSlidingContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBLSlidingContainerView.h; sourceTree = "<group>"; };
+		F64F8DE91797E1F400082A3F /* RBLSlidingContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBLSlidingContainerView.m; sourceTree = "<group>"; };
+		F6A562BE1797DC5A00B651C0 /* RBLExpandingContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBLExpandingContainerView.h; sourceTree = "<group>"; };
+		F6A562BF1797DC5A00B651C0 /* RBLExpandingContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBLExpandingContainerView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -299,6 +307,10 @@
 		D0723FBD15C5F9CD004DBDC7 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				F64F8DE81797E1F400082A3F /* RBLSlidingContainerView.h */,
+				F64F8DE91797E1F400082A3F /* RBLSlidingContainerView.m */,
+				F6A562BE1797DC5A00B651C0 /* RBLExpandingContainerView.h */,
+				F6A562BF1797DC5A00B651C0 /* RBLExpandingContainerView.m */,
 				D0E91C561603CC7600D23E93 /* RBLClipView.h */,
 				D0E91C571603CC7600D23E93 /* RBLClipView.m */,
 				D0723FE115C616AF004DBDC7 /* RBLResizableImage.h */,
@@ -547,6 +559,8 @@
 				D011FD5E16239A8600A27946 /* NSImage+RBLResizableImageAdditions.h in Headers */,
 				AB61F63616373FE000DD5D2C /* RBLTableCellView.h in Headers */,
 				B85EE8DE163ECA8C00265870 /* RBLViewController.h in Headers */,
+				F64F8DEA1797E1F400082A3F /* RBLSlidingContainerView.h in Headers */,
+				F6A562C01797DC5A00B651C0 /* RBLExpandingContainerView.h in Headers */,
 				B85EE8E9163ECF4C00265870 /* NSView+RBLViewControllerAdditions.h in Headers */,
 				B85EE8ED163EE15800265870 /* NSObject+RBObjectSizzlingAdditions.h in Headers */,
 				AB61F6D41638370900DD5D2C /* NSApplication+RBLBlockAdditions.h in Headers */,
@@ -751,6 +765,7 @@
 				D0E91C591603CC7600D23E93 /* RBLClipView.m in Sources */,
 				D011FD5F16239A8600A27946 /* NSImage+RBLResizableImageAdditions.m in Sources */,
 				AB61F63716373FE000DD5D2C /* RBLTableCellView.m in Sources */,
+				F64F8DEB1797E1F400082A3F /* RBLSlidingContainerView.m in Sources */,
 				B85EE8DF163ECA8C00265870 /* RBLViewController.m in Sources */,
 				B85EE8EA163ECF4C00265870 /* NSView+RBLViewControllerAdditions.m in Sources */,
 				B85EE8EE163EE15800265870 /* NSObject+RBObjectSizzlingAdditions.m in Sources */,
@@ -759,6 +774,7 @@
 				D088BEFA16747D8F004B2665 /* NSFont+RBLFallbackAdditions.m in Sources */,
 				D03D67191677E13F0041DDF2 /* NSAttributedString+RBLHTMLAdditions.m in Sources */,
 				303DEF4516D2B88700BD65C4 /* RBLShadowedTextFieldCell.m in Sources */,
+				F6A562C11797DC5A00B651C0 /* RBLExpandingContainerView.m in Sources */,
 				0396050B16E2DBA7007A5542 /* NSView+RBLAlignmentAdditions.m in Sources */,
 				88347E6B16F213C500872A0A /* RBLHTMLView.m in Sources */,
 				30309E8E17228C1700BC2923 /* RBLTableView.m in Sources */,
