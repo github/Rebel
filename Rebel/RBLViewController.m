@@ -17,26 +17,23 @@
 
 @implementation RBLViewController
 
-+(instancetype)viewController
-{
++ (instancetype)viewController {
 	return [[self alloc] initWithNibName:NSStringFromClass([self class]) bundle:nil];
 }
 
--(void)dealloc {
+- (void)dealloc {
 	if (_currentView.rbl_viewController == self) {
 		_currentView.rbl_viewController = nil;
 	}
 	_currentView = nil;
 }
 
--(void)loadView
-{
+- (void)loadView {
 	[super loadView];
 	[self viewDidLoad];
 }
 
--(void)setView:(NSView *)view
-{
+- (void)setView:(NSView *)view {
 	super.view = view;
 	self.view.rbl_viewController = self;
 
@@ -46,69 +43,43 @@
 	_currentView = view;
 }
 
-- (void)viewDidLoad
-{
-    
+- (void)viewDidLoad {
 }
 
-- (void)viewWillAppear
-{
-	
+- (void)viewWillAppear {
 }
 
-- (void)viewDidAppear
-{
-	
+- (void)viewDidAppear {
 }
 
-- (void)viewWillDisappear
-{
-    
+- (void)viewWillDisappear {
 }
 
-- (void)viewDidDisappear
-{
-    
+- (void)viewDidDisappear {
 }
 
-- (void)viewWillMoveToSuperview:(NSView *)newSuperview
-{
-    
+- (void)viewWillMoveToSuperview:(NSView *)newSuperview {
 }
 
-- (void)viewDidMoveToSuperview
-{
-	
+- (void)viewDidMoveToSuperview {
 }
 
-- (void)viewWillBeRemovedFromSuperview
-{
-    
+- (void)viewWillBeRemovedFromSuperview {
 }
 
-- (void)viewWasRemovedFromSuperview
-{
-    
+- (void)viewWasRemovedFromSuperview {
 }
 
-- (void)viewWillMoveToWindow:(NSWindow *)newWindow
-{
-    
+- (void)viewWillMoveToWindow:(NSWindow *)newWindow {
 }
 
-- (void)viewDidMoveToWindow
-{
-	
+- (void)viewDidMoveToWindow {
 }
 
-- (void)viewWillBeRemovedFromWindow
-{
-    
+- (void)viewWillBeRemovedFromWindow {
 }
 
-- (void)viewWasRemovedFromWindow
-{
-    
+- (void)viewWasRemovedFromWindow {
 }
 
 @end

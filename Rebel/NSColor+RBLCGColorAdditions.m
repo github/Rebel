@@ -25,6 +25,7 @@ static void releasePatternInfo (void *info) {
 }
 
 @implementation NSColor (RBLCGColorAdditions)
+
 + (NSColor *)rbl_colorWithCGColor:(CGColorRef)color {
 	if (color == nil) {
 		return nil;
