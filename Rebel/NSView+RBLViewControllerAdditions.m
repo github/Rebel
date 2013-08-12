@@ -17,21 +17,21 @@ void *kRBLViewControllerKey = &kRBLViewControllerKey;
 
 #pragma mark - ViewController
 
--(id)rbl_viewController {
+- (id)rbl_viewController {
 	return objc_getAssociatedObject(self, kRBLViewControllerKey);
 }
 
--(void)setRbl_viewController:(id)newViewController {
+- (void)setRbl_viewController:(id)newViewController {
 	[NSView loadSupportForRBLViewControllers];
-	
+
 	if (self.rbl_viewController) {
 		NSResponder *controllerNextResponder = [self.rbl_viewController nextResponder];
 		[self custom_setNextResponder:controllerNextResponder];
 		[self.rbl_viewController setNextResponder:nil];
 	}
-	
+
 	objc_setAssociatedObject(self, kRBLViewControllerKey, newViewController, OBJC_ASSOCIATION_ASSIGN);
-	
+
 	if (newViewController) {
 		NSResponder *ownResponder = [self nextResponder];
 		[self custom_setNextResponder:self.rbl_viewController];
@@ -41,16 +41,16 @@ void *kRBLViewControllerKey = &kRBLViewControllerKey;
 
 #pragma mark - View Controller Methods
 
-+(void)loadSupportForRBLViewControllers {
++ (void)loadSupportForRBLViewControllers {
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{
 		//swizzle swizzle...
 		[self rbl_swapMethod:@selector(viewWillMoveToSuperview:) with:@selector(custom_viewWillMoveToSuperview:)];
 		[self rbl_swapMethod:@selector(viewDidMoveToSuperview) with:@selector(custom_viewDidMoveToSuperview)];
-		
+
 		[self rbl_swapMethod:@selector(viewWillMoveToWindow:) with:@selector(custom_viewWillMoveToWindow:)];
 		[self rbl_swapMethod:@selector(viewDidMoveToWindow) with:@selector(custom_viewDidMoveToWindow)];
-		
+
 		[self rbl_swapMethod:@selector(setNextResponder:) with:@selector(custom_setNextResponder:)];
 	});
 }
