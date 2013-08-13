@@ -63,7 +63,7 @@ static void CommonInit(RBLHTMLView *self) {
 	return strippedMenuItems;
 }
 
-- (NSUInteger)webView:(WebView *)webView dragDestinationActionMaskForDraggingInfo:(id <NSDraggingInfo>)draggingInfo {
+- (NSUInteger)webView:(WebView *)webView dragDestinationActionMaskForDraggingInfo:(id<NSDraggingInfo>)draggingInfo {
 	return WebDragDestinationActionNone;
 }
 
