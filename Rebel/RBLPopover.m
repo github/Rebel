@@ -288,7 +288,9 @@
 		id localMonitor = [NSEvent addLocalMonitorForEventsMatchingMask:mask | NSKeyUpMask handler:^ NSEvent * (NSEvent *event) {
 			RBLPopover *strongSelf = weakSelf;
 			static NSUInteger escapeKey = 53;
-			if (event.type == NSKeyUp && event.keyCode == escapeKey) {
+			NSResponder *firstResponder = strongSelf.popoverWindow.firstResponder;
+			BOOL anythingInterestingAsFirstResponder = [firstResponder isKindOfClass:NSText.class];
+			if (event.type == NSKeyUp && event.keyCode == escapeKey && (!anythingInterestingAsFirstResponder || strongSelf.behavior == RBLPopoverBehaviorTransient)) {
 				[strongSelf close];
 				return nil;
 			}
