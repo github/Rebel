@@ -289,7 +289,7 @@
 			RBLPopover *strongSelf = weakSelf;
 			static NSUInteger escapeKey = 53;
 			NSResponder *firstResponder = strongSelf.popoverWindow.firstResponder;
-			BOOL anythingInterestingAsFirstResponder = [firstResponder isKindOfClass:NSTextView.class];
+			BOOL anythingInterestingAsFirstResponder = [firstResponder isKindOfClass:NSText.class];
 			if (event.type == NSKeyUp && event.keyCode == escapeKey && (!anythingInterestingAsFirstResponder || strongSelf.behavior == RBLPopoverBehaviorTransient)) {
 				[strongSelf close];
 				return nil;
