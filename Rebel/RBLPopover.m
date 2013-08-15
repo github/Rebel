@@ -120,7 +120,7 @@
 	_behavior = RBLPopoverBehaviorApplicationDefined;
 	_animates = YES;
 	_fadeDuration = 0.3;
-	
+
 	return self;
 }
 
@@ -285,16 +285,7 @@
 			[NSNotificationCenter.defaultCenter addObserver:self selector:@selector(parentWindowResignedKey:) name:NSWindowDidResignKeyNotification object:self.popoverWindow.parentWindow];
 		}
 		
-		id localMonitor = [NSEvent addLocalMonitorForEventsMatchingMask:mask | NSKeyUpMask handler:^ NSEvent * (NSEvent *event) {
-			RBLPopover *strongSelf = weakSelf;
-			static NSUInteger escapeKey = 53;
-			NSResponder *firstResponder = strongSelf.popoverWindow.firstResponder;
-			BOOL anythingInterestingAsFirstResponder = [firstResponder isKindOfClass:NSText.class];
-			if (event.type == NSKeyUp && event.keyCode == escapeKey && (!anythingInterestingAsFirstResponder || strongSelf.behavior == RBLPopoverBehaviorTransient)) {
-				[strongSelf close];
-				return nil;
-			}
-			
+		id localMonitor = [NSEvent addLocalMonitorForEventsMatchingMask:mask handler:^(NSEvent *event) {
 			monitor(event);
 			return event;
 		}];
@@ -318,6 +309,14 @@
 	if (self.animates) {
 		self.popoverWindow.alphaValue = 0.0;
 	}
+
+	// We're using a dummy button to capture the escape key equivalent when it
+	// isn't handled by the first responder. This is bad and I feel bad.
+	NSButton *closeButton = [[NSButton alloc] initWithFrame:CGRectZero];
+	closeButton.keyEquivalent = @"\E";
+	closeButton.target = self;
+	closeButton.action = @selector(performClose:);
+	[self.popoverWindow.contentView addSubview:closeButton];
 	
 	RBLPopoverClippingView *clippingView = [[RBLPopoverClippingView alloc] initWithFrame:self.backgroundView.bounds];
 	CGPathRef clippingPath = [self.backgroundView newPopoverPathForEdge:popoverEdge inFrame:clippingView.bounds];
