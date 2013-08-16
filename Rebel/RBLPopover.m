@@ -312,7 +312,7 @@
 
 	// We're using a dummy button to capture the escape key equivalent when it
 	// isn't handled by the first responder. This is bad and I feel bad.
-	NSButton *closeButton = [[NSButton alloc] initWithFrame:CGRectZero];
+	NSButton *closeButton = [[NSButton alloc] initWithFrame:CGRectMake(-1, -1, 0, 0)];
 	closeButton.keyEquivalent = @"\E";
 	closeButton.target = self;
 	closeButton.action = @selector(performClose:);
