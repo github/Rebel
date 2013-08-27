@@ -19,6 +19,6 @@
 //
 // Either way, the cell will not have a superview during this
 // time and will be in an enqueued state.
-- (void)prepareForReuse;
+- (void)rbl_prepareForReuse;
 
 @end

@@ -12,13 +12,13 @@
 
 - (void)viewDidMoveToSuperview {
 	if (self.superview == nil) {
-		[self prepareForReuse];
+		[self rbl_prepareForReuse];
 	}
 	
 	[super viewDidMoveToSuperview];
 }
 
-- (void)prepareForReuse {
+- (void)rbl_prepareForReuse {
 	
 }
 
