@@ -137,7 +137,7 @@ typedef void (^RBLPopoverDelegateBlock)(RBLPopover *popover);
 // popoverEdge - The edge that is adjacent to the `positioningRect`.
 //
 // Returns the overall size of the backgroundView as a `CGSize`.
-+ (CGSize)sizeForBackgroundViewWithContentSize:(CGSize)contentSize popoverEdge:(CGRectEdge)popoverEdge;
+- (CGSize)sizeForBackgroundViewWithContentSize:(CGSize)contentSize popoverEdge:(CGRectEdge)popoverEdge;
 
 // Given a frame for the background this should be overridden by subclasses to
 // describe where the content should fit within the popover.
@@ -149,7 +149,7 @@ typedef void (^RBLPopoverDelegateBlock)(RBLPopover *popover);
 //
 // Returns the frame of the content relative to the given background view frame
 // as a `CGRect`.
-+ (CGRect)contentViewFrameForBackgroundFrame:(CGRect)frame popoverEdge:(CGRectEdge)popoverEdge;
+- (CGRect)contentViewFrameForBackgroundFrame:(CGRect)frame popoverEdge:(CGRectEdge)popoverEdge;
 
 // The outline shape of a popover.
 // This can be overridden by subclasses if they wish to change the shape of the
