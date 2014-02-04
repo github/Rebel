@@ -449,7 +449,8 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 
 + (instancetype)backgroundViewForContentSize:(CGSize)contentSize popoverEdge:(CGRectEdge)popoverEdge originScreenRect:(CGRect)originScreenRect {
 	CGSize size = [self sizeForBackgroundViewWithContentSize:contentSize popoverEdge:popoverEdge];
-	RBLPopoverBackgroundView *returnView = [[self.class alloc] initWithFrame:NSMakeRect(0.0, 0.0, size.width, size.height) popoverEdge:popoverEdge originScreenRect:originScreenRect];
+	RBLPopoverBackgroundView *returnView = [[self.class alloc] initWithFrame:NSMakeRect(0.0, 0.0, size.width, size.height) originScreenRect:originScreenRect];
+	returnView.popoverEdge = popoverEdge;
 	return returnView;
 }
 
@@ -543,11 +544,10 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 	return path;
 }
 
-- (instancetype)initWithFrame:(CGRect)frame popoverEdge:(CGRectEdge)popoverEdge originScreenRect:(CGRect)originScreenRect {
+- (instancetype)initWithFrame:(CGRect)frame originScreenRect:(CGRect)originScreenRect {
 	self = [super initWithFrame:frame];
 	if (self == nil) return nil;
 	
-	_popoverEdge = popoverEdge;
 	_screenOriginRect = originScreenRect;
 	_fillColor = NSColor.whiteColor;
 	
