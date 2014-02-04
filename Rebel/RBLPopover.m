@@ -26,8 +26,6 @@
 
 @interface RBLPopoverBackgroundView ()
 
-@property (nonatomic) CGRect screenOriginRect;
-
 + (instancetype)backgroundViewForContentSize:(CGSize)contentSize popoverEdge:(CGRectEdge)popoverEdge originScreenRect:(CGRect)originScreenRect;
 
 - (CGRectEdge)arrowEdgeForPopoverEdge:(CGRectEdge)popoverEdge;
@@ -449,8 +447,9 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 
 + (instancetype)backgroundViewForContentSize:(CGSize)contentSize popoverEdge:(CGRectEdge)popoverEdge originScreenRect:(CGRect)originScreenRect {
 	CGSize size = [self sizeForBackgroundViewWithContentSize:contentSize popoverEdge:popoverEdge];
-	RBLPopoverBackgroundView *returnView = [[self.class alloc] initWithFrame:NSMakeRect(0.0, 0.0, size.width, size.height) originScreenRect:originScreenRect];
+	RBLPopoverBackgroundView *returnView = [[self.class alloc] initWithFrame:NSMakeRect(0.0, 0.0, size.width, size.height)];
 	returnView.popoverEdge = popoverEdge;
+	returnView.popoverOrigin = originScreenRect;
 	return returnView;
 }
 
@@ -463,7 +462,7 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 	CGFloat minY = NSMinY(contentRect);
 	CGFloat maxY = NSMaxY(contentRect);
 
-	CGRect windowRect = [self.window convertRectFromScreen:self.screenOriginRect];
+	CGRect windowRect = [self.window convertRectFromScreen:self.popoverOrigin];
 	CGRect originRect = [self convertRect:windowRect fromView:nil];
 	CGFloat midOriginY = floor(NSMidY(originRect));
 	CGFloat midOriginX = floor(NSMidX(originRect));
@@ -544,11 +543,10 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 	return path;
 }
 
-- (instancetype)initWithFrame:(CGRect)frame originScreenRect:(CGRect)originScreenRect {
+- (instancetype)initWithFrame:(CGRect)frame {
 	self = [super initWithFrame:frame];
 	if (self == nil) return nil;
 	
-	_screenOriginRect = originScreenRect;
 	_fillColor = NSColor.whiteColor;
 	
 	return self;
