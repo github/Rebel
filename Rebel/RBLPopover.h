@@ -52,16 +52,9 @@ typedef void (^RBLPopoverDelegateBlock)(RBLPopover *popover);
 // The view controller providing the view displayed within the popover.
 @property (nonatomic, strong) NSViewController *contentViewController;
 
-// The class of which an instance is created which sits behind the
-// `contentViewController`'s view. This is useful for customising the appearance
-// of the popover.
-// Note that this must be a subclass of `RBLPopoverBackgroundView`.
-@property (nonatomic, strong) Class backgroundViewClass;
-
-// The popover's background view.
-// This will be nil before the popover has been opened, after that point it will
-// be an instance of the popover's `backgroundViewClass`.
-@property (nonatomic, readonly, strong) RBLPopoverBackgroundView *backgroundView;
+// The popover's background view. You may set your own view, which is useful for
+// customizing the appearance of the popover.
+@property (nonatomic, strong) RBLPopoverBackgroundView *backgroundView;
 
 // The size that, when displayed, the popover's content should be.
 // Passing `CGSizeZero` uses the size of the `contentViewController`'s view.
