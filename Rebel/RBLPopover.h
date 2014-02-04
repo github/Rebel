@@ -167,6 +167,12 @@ typedef void (^RBLPopoverDelegateBlock)(RBLPopover *popover);
 // The rectangle, in screen coordinates, where the popover originated.
 @property (nonatomic, assign) NSRect popoverOrigin;
 
+// The size of the arrow used to indicate the origin of the popover.
+//
+// Note that the height will always be the distance from the view to the tip of
+// the arrow.
+@property (nonatomic, assign) CGSize arrowSize;
+
 // The color used to fill the shape of the background view.
 @property (nonatomic, strong) NSColor *fillColor;
 

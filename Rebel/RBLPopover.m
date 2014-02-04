@@ -424,9 +424,9 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 - (CGSize)sizeForBackgroundViewWithContentSize:(CGSize)contentSize popoverEdge:(CGRectEdge)popoverEdge {
 	CGSize returnSize = contentSize;
 	if (popoverEdge == CGRectMaxXEdge || popoverEdge == CGRectMinXEdge) {
-		returnSize.width += RBLPopoverBackgroundViewArrowHeight;
+		returnSize.width += self.arrowSize.height;
 	} else {
-		returnSize.height += RBLPopoverBackgroundViewArrowHeight;
+		returnSize.height += self.arrowSize.height;
 	}
 	
 	returnSize.width += 2.0;
@@ -439,18 +439,18 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 	CGRect returnFrame = NSInsetRect(backgroundFrame, 1.0, 1.0);
 	switch (popoverEdge) {
 		case CGRectMinXEdge:
-			returnFrame.size.width -= RBLPopoverBackgroundViewArrowHeight;
+			returnFrame.size.width -= self.arrowSize.height;
 			break;
 		case CGRectMinYEdge:
-			returnFrame.size.height -= RBLPopoverBackgroundViewArrowHeight;
+			returnFrame.size.height -= self.arrowSize.height;
 			break;
 		case CGRectMaxXEdge:
-			returnFrame.size.width -= RBLPopoverBackgroundViewArrowHeight;
-			returnFrame.origin.x += RBLPopoverBackgroundViewArrowHeight;
+			returnFrame.size.width -= self.arrowSize.height;
+			returnFrame.origin.x += self.arrowSize.height;
 			break;
 		case CGRectMaxYEdge:
-			returnFrame.size.height -= RBLPopoverBackgroundViewArrowHeight;
-			returnFrame.origin.y += RBLPopoverBackgroundViewArrowHeight;
+			returnFrame.size.height -= self.arrowSize.height;
+			returnFrame.origin.y += self.arrowSize.height;
 			break;
 		default:
 			NSAssert(NO, @"Failed to pass in a valid CGRectEdge");
@@ -485,33 +485,33 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 	// That is what this complete mess below does.
 	
 	if (arrowEdge == CGRectMinYEdge || arrowEdge == CGRectMaxYEdge) {
-		maxArrowX = floor(midOriginX + (RBLPopoverBackgroundViewArrowWidth / 2.0));
+		maxArrowX = floor(midOriginX + (self.arrowSize.width / 2.0));
 		CGFloat maxPossible = (NSMaxX(contentRect) - RBLPopoverBackgroundViewBorderRadius);
 		if (maxArrowX > maxPossible) {
 			CGFloat delta = maxArrowX - maxPossible;
 			maxArrowX = maxPossible;
-			minArrowX = maxArrowX - (RBLPopoverBackgroundViewArrowWidth - delta);
+			minArrowX = maxArrowX - (self.arrowSize.width - delta);
 		} else {
-			minArrowX = floor(midOriginX - (RBLPopoverBackgroundViewArrowWidth / 2.0));
+			minArrowX = floor(midOriginX - (self.arrowSize.width / 2.0));
 			if (minArrowX < RBLPopoverBackgroundViewBorderRadius) {
 				CGFloat delta = RBLPopoverBackgroundViewBorderRadius - minArrowX;
 				minArrowX = RBLPopoverBackgroundViewBorderRadius;
-				maxArrowX = minArrowX + (RBLPopoverBackgroundViewArrowWidth - (delta * 2));
+				maxArrowX = minArrowX + (self.arrowSize.width - (delta * 2));
 			}
 		}
 	} else {
-		minArrowY = floor(midOriginY - (RBLPopoverBackgroundViewArrowWidth / 2.0));
+		minArrowY = floor(midOriginY - (self.arrowSize.width / 2.0));
 		if (minArrowY < RBLPopoverBackgroundViewBorderRadius) {
 			CGFloat delta = RBLPopoverBackgroundViewBorderRadius - minArrowY;
 			minArrowY = RBLPopoverBackgroundViewBorderRadius;
-			maxArrowY = minArrowY + (RBLPopoverBackgroundViewArrowWidth - (delta * 2));
+			maxArrowY = minArrowY + (self.arrowSize.width - (delta * 2));
 		} else {
-			maxArrowY = floor(midOriginY + (RBLPopoverBackgroundViewArrowWidth / 2.0));
+			maxArrowY = floor(midOriginY + (self.arrowSize.width / 2.0));
 			CGFloat maxPossible = (NSMaxY(contentRect) - RBLPopoverBackgroundViewBorderRadius);
 			if (maxArrowY > maxPossible) {
 				CGFloat delta = maxArrowY - maxPossible;
 				maxArrowY = maxPossible;
-				minArrowY = maxArrowY - (RBLPopoverBackgroundViewArrowWidth - delta);
+				minArrowY = maxArrowY - (self.arrowSize.width - delta);
 			}
 		}
 	}
@@ -520,28 +520,28 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 	CGPathMoveToPoint(path, NULL, minX, floor(minY + RBLPopoverBackgroundViewBorderRadius));
 	if (arrowEdge == CGRectMinXEdge) {
 		CGPathAddLineToPoint(path, NULL, minX, minArrowY);
-		CGPathAddLineToPoint(path, NULL, floor(minX - RBLPopoverBackgroundViewArrowHeight), midOriginY);
+		CGPathAddLineToPoint(path, NULL, floor(minX - self.arrowSize.height), midOriginY);
 		CGPathAddLineToPoint(path, NULL, minX, maxArrowY);
 	}
 	
 	CGPathAddArc(path, NULL, floor(minX + RBLPopoverBackgroundViewBorderRadius), floor(minY + contentRect.size.height - RBLPopoverBackgroundViewBorderRadius), RBLPopoverBackgroundViewBorderRadius, M_PI, M_PI / 2, 1);
 	if (arrowEdge == CGRectMaxYEdge) {
 		CGPathAddLineToPoint(path, NULL, minArrowX, maxY);
-		CGPathAddLineToPoint(path, NULL, midOriginX, floor(maxY + RBLPopoverBackgroundViewArrowHeight));
+		CGPathAddLineToPoint(path, NULL, midOriginX, floor(maxY + self.arrowSize.height));
 		CGPathAddLineToPoint(path, NULL, maxArrowX, maxY);
 	}
 	
 	CGPathAddArc(path, NULL, floor(minX + contentRect.size.width - RBLPopoverBackgroundViewBorderRadius), floor(minY + contentRect.size.height - RBLPopoverBackgroundViewBorderRadius), RBLPopoverBackgroundViewBorderRadius, M_PI / 2, 0.0, 1);
 	if (arrowEdge == CGRectMaxXEdge) {
 		CGPathAddLineToPoint(path, NULL, maxX, maxArrowY);
-		CGPathAddLineToPoint(path, NULL, floor(maxX + RBLPopoverBackgroundViewArrowHeight), midOriginY);
+		CGPathAddLineToPoint(path, NULL, floor(maxX + self.arrowSize.height), midOriginY);
 		CGPathAddLineToPoint(path, NULL, maxX, minArrowY);
 	}
 	
 	CGPathAddArc(path, NULL, floor(contentRect.origin.x + contentRect.size.width - RBLPopoverBackgroundViewBorderRadius), floor(minY + RBLPopoverBackgroundViewBorderRadius), RBLPopoverBackgroundViewBorderRadius, 0.0, -M_PI / 2, 1);
 	if (arrowEdge == CGRectMinYEdge) {
 		CGPathAddLineToPoint(path, NULL, maxArrowX, minY);
-		CGPathAddLineToPoint(path, NULL, midOriginX, floor(minY - RBLPopoverBackgroundViewArrowHeight));
+		CGPathAddLineToPoint(path, NULL, midOriginX, floor(minY - self.arrowSize.height));
 		CGPathAddLineToPoint(path, NULL, minArrowX, minY);
 	}
 	
@@ -554,6 +554,7 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 	self = [super initWithFrame:frame];
 	if (self == nil) return nil;
 	
+	_arrowSize = CGSizeMake(RBLPopoverBackgroundViewArrowWidth, RBLPopoverBackgroundViewArrowHeight);
 	_fillColor = NSColor.whiteColor;
 	
 	return self;
