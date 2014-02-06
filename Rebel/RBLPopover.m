@@ -18,7 +18,8 @@
 // `maskLayer` on a `CALayer`.
 @interface RBLPopoverClippingView : NSView
 
-// The path which the view will clip to.
+// The path which the view will clip to. The clippingPath will be retained and
+// released automatically.
 @property (nonatomic) CGPathRef clippingPath;
 
 @end
