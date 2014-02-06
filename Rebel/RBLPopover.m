@@ -307,7 +307,7 @@
 	}
 	
 	CGSize size = [self.backgroundView sizeForBackgroundViewWithContentSize:contentViewSize popoverEdge:popoverEdge];
-	self.backgroundView.frame = NSMakeRect(0, 0, size.width, size.height);
+	self.backgroundView.frame = (NSRect){ .size = size };
 	self.backgroundView.popoverEdge = popoverEdge;
 	self.backgroundView.popoverOrigin = screenPositioningRect;
 	
