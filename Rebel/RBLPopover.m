@@ -322,7 +322,7 @@
 	CGRect contentViewFrame = [self.backgroundView contentViewFrameForBackgroundFrame:self.backgroundView.bounds popoverEdge:popoverEdge];
 	self.contentViewController.view.autoresizingMask = (NSViewWidthSizable | NSViewHeightSizable);
 	self.contentViewController.view.frame = contentViewFrame;
-	[self.backgroundView addSubview:self.contentViewController.view];
+	[self.backgroundView addSubview:self.contentViewController.view positioned:NSWindowBelow relativeTo:self.clippingView];
 	self.popoverWindow = [[RBLPopoverWindow alloc] initWithContentRect:popoverScreenRect styleMask:NSBorderlessWindowMask backing:NSBackingStoreBuffered defer:NO];
 	self.popoverWindow.hasShadow = YES;
 	self.popoverWindow.releasedWhenClosed = NO;
