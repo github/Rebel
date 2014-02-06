@@ -38,6 +38,10 @@
 
 @interface RBLPopoverBackgroundView ()
 
+@property (nonatomic, assign, readwrite) CGRectEdge popoverEdge;
+
+@property (nonatomic, assign, readwrite) NSRect popoverOrigin;
+
 - (CGRectEdge)arrowEdgeForPopoverEdge:(CGRectEdge)popoverEdge;
 
 @end

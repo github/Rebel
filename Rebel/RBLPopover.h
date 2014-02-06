@@ -161,11 +161,13 @@ typedef void (^RBLPopoverDelegateBlock)(RBLPopover *popover);
 // Returns a `CGPathRef` of the outline of the background view.
 - (CGPathRef)newPopoverPathForEdge:(CGRectEdge)popoverEdge inFrame:(CGRect)frame;
 
-// The edge of the target view which the popover is appearing next to.
-@property (nonatomic, assign) CGRectEdge popoverEdge;
+// The edge of the target view which the popover is appearing next to. This will
+// be set by the popover.
+@property (nonatomic, assign, readonly) CGRectEdge popoverEdge;
 
-// The rectangle, in screen coordinates, where the popover originated.
-@property (nonatomic, assign) NSRect popoverOrigin;
+// The rectangle, in screen coordinates, where the popover originated. This will
+// be set by the popover.
+@property (nonatomic, assign, readonly) NSRect popoverOrigin;
 
 // The size of the arrow used to indicate the origin of the popover.
 //
