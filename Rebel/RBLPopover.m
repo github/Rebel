@@ -77,6 +77,10 @@
 
 @implementation RBLPopoverClippingView
 
+- (void)dealloc {
+	self.clippingPath = NULL;
+}
+
 - (void)setClippingPath:(CGPathRef)clippingPath {
 	if (clippingPath == _clippingPath) return;
 	
