@@ -120,18 +120,24 @@
 @implementation RBLPopover
 
 - (instancetype)initWithContentViewController:(NSViewController *)viewController {
+	RBLPopoverBackgroundView *view = [[RBLPopoverBackgroundView alloc] initWithFrame:NSZeroRect];
+	return [self initWithContentViewController:viewController backgroundView:view];
+}
+
+- (instancetype)initWithContentViewController:(NSViewController *)viewController backgroundView:(RBLPopoverBackgroundView *)backgroundView {
 	self = [super init];
 	if (self == nil)
 		return nil;
 	
 	_contentViewController = viewController;
+	_backgroundView = backgroundView;
 	_clippingView = [[RBLPopoverClippingView alloc] initWithFrame:NSZeroRect];
 	_behavior = RBLPopoverBehaviorApplicationDefined;
 	_animates = YES;
 	_fadeDuration = 0.3;
-	
-	self.backgroundView = [[RBLPopoverBackgroundView alloc] initWithFrame:NSZeroRect];
 
+	[self.backgroundView addSubview:self.clippingView];
+	
 	return self;
 }
 
@@ -148,15 +154,6 @@
 
 #pragma mark -
 #pragma mark Showing
-
-- (void)setBackgroundView:(RBLPopoverBackgroundView *)backgroundView {
-	if ([backgroundView isEqual:self.backgroundView]) return;
-	
-	[self.clippingView removeFromSuperview];
-	_backgroundView = backgroundView;
-	self.clippingView.frame = self.backgroundView.bounds;
-	[backgroundView addSubview:self.clippingView];
-}
 
 - (void)showRelativeToRect:(CGRect)positioningRect ofView:(NSView *)positioningView preferredEdge:(CGRectEdge)preferredEdge {
 	if (CGRectEqualToRect(positioningRect, CGRectZero)) {

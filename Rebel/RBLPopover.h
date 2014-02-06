@@ -54,7 +54,7 @@ typedef void (^RBLPopoverDelegateBlock)(RBLPopover *popover);
 
 // The popover's background view. You may set your own view, which is useful for
 // customizing the appearance of the popover.
-@property (nonatomic, strong) RBLPopoverBackgroundView *backgroundView;
+@property (nonatomic, strong, readonly) RBLPopoverBackgroundView *backgroundView;
 
 // The size that, when displayed, the popover's content should be.
 // Passing `CGSizeZero` uses the size of the `contentViewController`'s view.
@@ -99,10 +99,13 @@ typedef void (^RBLPopoverDelegateBlock)(RBLPopover *popover);
 // Defaults to `NO`.
 @property (nonatomic, assign) BOOL canBecomeKey;
 
+// Returns a newly initialised `RBLPopover` with a `RBLPopoverBackgroundView`.
+- (instancetype)initWithContentViewController:(NSViewController *)viewController;
+
 // Designated initialiser.
 //
 // Returns a newly initialised `RBLPopover`.
-- (instancetype)initWithContentViewController:(NSViewController *)viewController;
+- (instancetype)initWithContentViewController:(NSViewController *)viewController backgroundView:(RBLPopoverBackgroundView *)backgroundView;
 
 // Displays the popover
 //
