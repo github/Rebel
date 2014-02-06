@@ -52,16 +52,9 @@ typedef void (^RBLPopoverDelegateBlock)(RBLPopover *popover);
 // The view controller providing the view displayed within the popover.
 @property (nonatomic, strong) NSViewController *contentViewController;
 
-// The class of which an instance is created which sits behind the
-// `contentViewController`'s view. This is useful for customising the appearance
-// of the popover.
-// Note that this must be a subclass of `RBLPopoverBackgroundView`.
-@property (nonatomic, strong) Class backgroundViewClass;
-
-// The popover's background view.
-// This will be nil before the popover has been opened, after that point it will
-// be an instance of the popover's `backgroundViewClass`.
-@property (nonatomic, readonly, strong) RBLPopoverBackgroundView *backgroundView;
+// The popover's background view. You may set your own view, which is useful for
+// customizing the appearance of the popover.
+@property (nonatomic, strong, readonly) RBLPopoverBackgroundView *backgroundView;
 
 // The size that, when displayed, the popover's content should be.
 // Passing `CGSizeZero` uses the size of the `contentViewController`'s view.
@@ -106,10 +99,13 @@ typedef void (^RBLPopoverDelegateBlock)(RBLPopover *popover);
 // Defaults to `NO`.
 @property (nonatomic, assign) BOOL canBecomeKey;
 
+// Returns a newly initialised `RBLPopover` with a `RBLPopoverBackgroundView`.
+- (instancetype)initWithContentViewController:(NSViewController *)viewController;
+
 // Designated initialiser.
 //
 // Returns a newly initialised `RBLPopover`.
-- (instancetype)initWithContentViewController:(NSViewController *)viewController;
+- (instancetype)initWithContentViewController:(NSViewController *)viewController backgroundView:(RBLPopoverBackgroundView *)backgroundView;
 
 // Displays the popover
 //
@@ -144,7 +140,7 @@ typedef void (^RBLPopoverDelegateBlock)(RBLPopover *popover);
 // popoverEdge - The edge that is adjacent to the `positioningRect`.
 //
 // Returns the overall size of the backgroundView as a `CGSize`.
-+ (CGSize)sizeForBackgroundViewWithContentSize:(CGSize)contentSize popoverEdge:(CGRectEdge)popoverEdge;
+- (CGSize)sizeForBackgroundViewWithContentSize:(CGSize)contentSize popoverEdge:(CGRectEdge)popoverEdge;
 
 // Given a frame for the background this should be overridden by subclasses to
 // describe where the content should fit within the popover.
@@ -156,17 +152,7 @@ typedef void (^RBLPopoverDelegateBlock)(RBLPopover *popover);
 //
 // Returns the frame of the content relative to the given background view frame
 // as a `CGRect`.
-+ (CGRect)contentViewFrameForBackgroundFrame:(CGRect)frame popoverEdge:(CGRectEdge)popoverEdge;
-
-// The designated initialiser.
-//
-// frame            - The frame of the background view.
-// popoverEdge      - The edge that is adjacent to the `positioningRect`.
-// originScreenRect - The frame of the screen which the popover has originated
-//                    on.
-//
-// Returns a newly initialised instance of `RBLPopoverBackgroundView`.
-- (instancetype)initWithFrame:(CGRect)frame popoverEdge:(CGRectEdge)popoverEdge originScreenRect:(CGRect)originScreenRect;
+- (CGRect)contentViewFrameForBackgroundFrame:(CGRect)frame popoverEdge:(CGRectEdge)popoverEdge;
 
 // The outline shape of a popover.
 // This can be overridden by subclasses if they wish to change the shape of the
@@ -178,8 +164,19 @@ typedef void (^RBLPopoverDelegateBlock)(RBLPopover *popover);
 // Returns a `CGPathRef` of the outline of the background view.
 - (CGPathRef)newPopoverPathForEdge:(CGRectEdge)popoverEdge inFrame:(CGRect)frame;
 
-// The edge of the target view which the popover is appearing next to.
-@property (nonatomic) CGRectEdge popoverEdge;
+// The edge of the target view which the popover is appearing next to. This will
+// be set by the popover.
+@property (nonatomic, assign, readonly) CGRectEdge popoverEdge;
+
+// The rectangle, in screen coordinates, where the popover originated. This will
+// be set by the popover.
+@property (nonatomic, assign, readonly) NSRect popoverOrigin;
+
+// The size of the arrow used to indicate the origin of the popover.
+//
+// Note that the height will always be the distance from the view to the tip of
+// the arrow.
+@property (nonatomic, assign) CGSize arrowSize;
 
 // The color used to fill the shape of the background view.
 @property (nonatomic, strong) NSColor *fillColor;
