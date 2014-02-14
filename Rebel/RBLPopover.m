@@ -556,7 +556,7 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 	_fillColor = NSColor.whiteColor;
 	
 	_rbl_clippingView = [[RBLPopoverClippingView alloc] initWithFrame:self.bounds];
-	self.rbl_clippingView.autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
+	self.rbl_clippingView.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable;
 	[self addSubview:self.rbl_clippingView];
 	
 	return self;
