@@ -39,6 +39,9 @@
 
 @interface RBLPopoverBackgroundView ()
 
+// The clipping view that's used to shape the popover to the correct path. This
+// property is prefixed because it's private and this class is meant to be
+// subclassed.
 @property (nonatomic, strong, readonly) RBLPopoverClippingView *rbl_clippingView;
 
 @property (nonatomic, assign, readwrite) CGRectEdge popoverEdge;
