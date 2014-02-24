@@ -1,0 +1,565 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BE74216618BBBBBB0008F11D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE74216518BBBBBB0008F11D /* Cocoa.framework */; };
+		BE74217018BBBBBB0008F11D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BE74216E18BBBBBB0008F11D /* InfoPlist.strings */; };
+		BE74217218BBBBBB0008F11D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BE74217118BBBBBB0008F11D /* main.m */; };
+		BE74217918BBBBBB0008F11D /* RPDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BE74217818BBBBBB0008F11D /* RPDAppDelegate.m */; };
+		BE74217C18BBBBBB0008F11D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE74217A18BBBBBB0008F11D /* MainMenu.xib */; };
+		BE74217E18BBBBBB0008F11D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE74217D18BBBBBB0008F11D /* Images.xcassets */; };
+		BE74218518BBBBBB0008F11D /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE74218418BBBBBB0008F11D /* XCTest.framework */; };
+		BE74218618BBBBBB0008F11D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE74216518BBBBBB0008F11D /* Cocoa.framework */; };
+		BE74218E18BBBBBB0008F11D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BE74218C18BBBBBB0008F11D /* InfoPlist.strings */; };
+		BE74219018BBBBBB0008F11D /* RBLPopoverDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BE74218F18BBBBBB0008F11D /* RBLPopoverDemoTests.m */; };
+		BE7421A618BBBE360008F11D /* Rebel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE7421A118BBBE1F0008F11D /* Rebel.framework */; };
+		BE7421A818BBBE4D0008F11D /* Rebel.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = BE7421A118BBBE1F0008F11D /* Rebel.framework */; };
+		BE7421AB18BBC3860008F11D /* RPDContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7421AA18BBC3860008F11D /* RPDContentViewController.m */; };
+		BE7421AE18BBC3A40008F11D /* RPDContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE7421AC18BBC3A40008F11D /* RPDContentViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BE74218718BBBBBB0008F11D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BE74215A18BBBBBB0008F11D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BE74216118BBBBBB0008F11D;
+			remoteInfo = RBLPopoverDemo;
+		};
+		BE7421A018BBBE1F0008F11D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BE74219918BBBE1E0008F11D /* Rebel.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D09AE4DF15C5F45200ECAD10;
+			remoteInfo = Rebel;
+		};
+		BE7421A218BBBE1F0008F11D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BE74219918BBBE1E0008F11D /* Rebel.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D09AE4F715C5F45300ECAD10;
+			remoteInfo = RebelTests;
+		};
+		BE7421A418BBBE300008F11D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BE74219918BBBE1E0008F11D /* Rebel.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D09AE4DE15C5F45200ECAD10;
+			remoteInfo = Rebel;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BE7421A718BBBE3D0008F11D /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BE7421A818BBBE4D0008F11D /* Rebel.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		BE74216218BBBBBB0008F11D /* RBLPopoverDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RBLPopoverDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE74216518BBBBBB0008F11D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		BE74216818BBBBBB0008F11D /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		BE74216918BBBBBB0008F11D /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		BE74216A18BBBBBB0008F11D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		BE74216D18BBBBBB0008F11D /* RBLPopoverDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RBLPopoverDemo-Info.plist"; sourceTree = "<group>"; };
+		BE74216F18BBBBBB0008F11D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BE74217118BBBBBB0008F11D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BE74217318BBBBBB0008F11D /* RBLPopoverDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RBLPopoverDemo-Prefix.pch"; sourceTree = "<group>"; };
+		BE74217718BBBBBB0008F11D /* RPDAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RPDAppDelegate.h; sourceTree = "<group>"; };
+		BE74217818BBBBBB0008F11D /* RPDAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RPDAppDelegate.m; sourceTree = "<group>"; };
+		BE74217B18BBBBBB0008F11D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		BE74217D18BBBBBB0008F11D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		BE74218318BBBBBB0008F11D /* RBLPopoverDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RBLPopoverDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE74218418BBBBBB0008F11D /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		BE74218B18BBBBBB0008F11D /* RBLPopoverDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RBLPopoverDemoTests-Info.plist"; sourceTree = "<group>"; };
+		BE74218D18BBBBBB0008F11D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BE74218F18BBBBBB0008F11D /* RBLPopoverDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RBLPopoverDemoTests.m; sourceTree = "<group>"; };
+		BE74219918BBBE1E0008F11D /* Rebel.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Rebel.xcodeproj; path = ../../Rebel.xcodeproj; sourceTree = "<group>"; };
+		BE7421A918BBC3860008F11D /* RPDContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPDContentViewController.h; sourceTree = "<group>"; };
+		BE7421AA18BBC3860008F11D /* RPDContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPDContentViewController.m; sourceTree = "<group>"; };
+		BE7421AD18BBC3A40008F11D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/RPDContentViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BE74215F18BBBBBB0008F11D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE7421A618BBBE360008F11D /* Rebel.framework in Frameworks */,
+				BE74216618BBBBBB0008F11D /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BE74218018BBBBBB0008F11D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE74218618BBBBBB0008F11D /* Cocoa.framework in Frameworks */,
+				BE74218518BBBBBB0008F11D /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BE74215918BBBBBB0008F11D = {
+			isa = PBXGroup;
+			children = (
+				BE74216B18BBBBBB0008F11D /* RBLPopoverDemo */,
+				BE74218918BBBBBB0008F11D /* RBLPopoverDemoTests */,
+				BE74216418BBBBBB0008F11D /* Frameworks */,
+				BE74216318BBBBBB0008F11D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BE74216318BBBBBB0008F11D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BE74216218BBBBBB0008F11D /* RBLPopoverDemo.app */,
+				BE74218318BBBBBB0008F11D /* RBLPopoverDemoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BE74216418BBBBBB0008F11D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BE74219918BBBE1E0008F11D /* Rebel.xcodeproj */,
+				BE74216518BBBBBB0008F11D /* Cocoa.framework */,
+				BE74218418BBBBBB0008F11D /* XCTest.framework */,
+				BE74216718BBBBBB0008F11D /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BE74216718BBBBBB0008F11D /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BE74216818BBBBBB0008F11D /* AppKit.framework */,
+				BE74216918BBBBBB0008F11D /* CoreData.framework */,
+				BE74216A18BBBBBB0008F11D /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		BE74216B18BBBBBB0008F11D /* RBLPopoverDemo */ = {
+			isa = PBXGroup;
+			children = (
+				BE74217718BBBBBB0008F11D /* RPDAppDelegate.h */,
+				BE74217818BBBBBB0008F11D /* RPDAppDelegate.m */,
+				BE7421A918BBC3860008F11D /* RPDContentViewController.h */,
+				BE7421AA18BBC3860008F11D /* RPDContentViewController.m */,
+				BE7421AC18BBC3A40008F11D /* RPDContentViewController.xib */,
+				BE74217A18BBBBBB0008F11D /* MainMenu.xib */,
+				BE74217D18BBBBBB0008F11D /* Images.xcassets */,
+				BE74216C18BBBBBB0008F11D /* Supporting Files */,
+			);
+			path = RBLPopoverDemo;
+			sourceTree = "<group>";
+		};
+		BE74216C18BBBBBB0008F11D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BE74216D18BBBBBB0008F11D /* RBLPopoverDemo-Info.plist */,
+				BE74216E18BBBBBB0008F11D /* InfoPlist.strings */,
+				BE74217118BBBBBB0008F11D /* main.m */,
+				BE74217318BBBBBB0008F11D /* RBLPopoverDemo-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BE74218918BBBBBB0008F11D /* RBLPopoverDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				BE74218F18BBBBBB0008F11D /* RBLPopoverDemoTests.m */,
+				BE74218A18BBBBBB0008F11D /* Supporting Files */,
+			);
+			path = RBLPopoverDemoTests;
+			sourceTree = "<group>";
+		};
+		BE74218A18BBBBBB0008F11D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BE74218B18BBBBBB0008F11D /* RBLPopoverDemoTests-Info.plist */,
+				BE74218C18BBBBBB0008F11D /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BE74219A18BBBE1E0008F11D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BE7421A118BBBE1F0008F11D /* Rebel.framework */,
+				BE7421A318BBBE1F0008F11D /* RebelTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BE74216118BBBBBB0008F11D /* RBLPopoverDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BE74219318BBBBBB0008F11D /* Build configuration list for PBXNativeTarget "RBLPopoverDemo" */;
+			buildPhases = (
+				BE74215E18BBBBBB0008F11D /* Sources */,
+				BE74215F18BBBBBB0008F11D /* Frameworks */,
+				BE74216018BBBBBB0008F11D /* Resources */,
+				BE7421A718BBBE3D0008F11D /* Copy Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BE7421A518BBBE300008F11D /* PBXTargetDependency */,
+			);
+			name = RBLPopoverDemo;
+			productName = RBLPopoverDemo;
+			productReference = BE74216218BBBBBB0008F11D /* RBLPopoverDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BE74218218BBBBBB0008F11D /* RBLPopoverDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BE74219618BBBBBB0008F11D /* Build configuration list for PBXNativeTarget "RBLPopoverDemoTests" */;
+			buildPhases = (
+				BE74217F18BBBBBB0008F11D /* Sources */,
+				BE74218018BBBBBB0008F11D /* Frameworks */,
+				BE74218118BBBBBB0008F11D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BE74218818BBBBBB0008F11D /* PBXTargetDependency */,
+			);
+			name = RBLPopoverDemoTests;
+			productName = RBLPopoverDemoTests;
+			productReference = BE74218318BBBBBB0008F11D /* RBLPopoverDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BE74215A18BBBBBB0008F11D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = RPD;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = GitHub;
+				TargetAttributes = {
+					BE74218218BBBBBB0008F11D = {
+						TestTargetID = BE74216118BBBBBB0008F11D;
+					};
+				};
+			};
+			buildConfigurationList = BE74215D18BBBBBB0008F11D /* Build configuration list for PBXProject "RBLPopoverDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BE74215918BBBBBB0008F11D;
+			productRefGroup = BE74216318BBBBBB0008F11D /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = BE74219A18BBBE1E0008F11D /* Products */;
+					ProjectRef = BE74219918BBBE1E0008F11D /* Rebel.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				BE74216118BBBBBB0008F11D /* RBLPopoverDemo */,
+				BE74218218BBBBBB0008F11D /* RBLPopoverDemoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		BE7421A118BBBE1F0008F11D /* Rebel.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Rebel.framework;
+			remoteRef = BE7421A018BBBE1F0008F11D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		BE7421A318BBBE1F0008F11D /* RebelTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = RebelTests.octest;
+			remoteRef = BE7421A218BBBE1F0008F11D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BE74216018BBBBBB0008F11D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE74217018BBBBBB0008F11D /* InfoPlist.strings in Resources */,
+				BE7421AE18BBC3A40008F11D /* RPDContentViewController.xib in Resources */,
+				BE74217E18BBBBBB0008F11D /* Images.xcassets in Resources */,
+				BE74217C18BBBBBB0008F11D /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BE74218118BBBBBB0008F11D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE74218E18BBBBBB0008F11D /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BE74215E18BBBBBB0008F11D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE74217218BBBBBB0008F11D /* main.m in Sources */,
+				BE7421AB18BBC3860008F11D /* RPDContentViewController.m in Sources */,
+				BE74217918BBBBBB0008F11D /* RPDAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BE74217F18BBBBBB0008F11D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE74219018BBBBBB0008F11D /* RBLPopoverDemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BE74218818BBBBBB0008F11D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BE74216118BBBBBB0008F11D /* RBLPopoverDemo */;
+			targetProxy = BE74218718BBBBBB0008F11D /* PBXContainerItemProxy */;
+		};
+		BE7421A518BBBE300008F11D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Rebel;
+			targetProxy = BE7421A418BBBE300008F11D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BE74216E18BBBBBB0008F11D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BE74216F18BBBBBB0008F11D /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		BE74217A18BBBBBB0008F11D /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BE74217B18BBBBBB0008F11D /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		BE74218C18BBBBBB0008F11D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BE74218D18BBBBBB0008F11D /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		BE7421AC18BBC3A40008F11D /* RPDContentViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BE7421AD18BBC3A40008F11D /* Base */,
+			);
+			name = RPDContentViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BE74219118BBBBBB0008F11D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		BE74219218BBBBBB0008F11D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		BE74219418BBBBBB0008F11D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RBLPopoverDemo/RBLPopoverDemo-Prefix.pch";
+				INFOPLIST_FILE = "RBLPopoverDemo/RBLPopoverDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		BE74219518BBBBBB0008F11D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RBLPopoverDemo/RBLPopoverDemo-Prefix.pch";
+				INFOPLIST_FILE = "RBLPopoverDemo/RBLPopoverDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		BE74219718BBBBBB0008F11D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RBLPopoverDemo.app/Contents/MacOS/RBLPopoverDemo";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RBLPopoverDemo/RBLPopoverDemo-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "RBLPopoverDemoTests/RBLPopoverDemoTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		BE74219818BBBBBB0008F11D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RBLPopoverDemo.app/Contents/MacOS/RBLPopoverDemo";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RBLPopoverDemo/RBLPopoverDemo-Prefix.pch";
+				INFOPLIST_FILE = "RBLPopoverDemoTests/RBLPopoverDemoTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BE74215D18BBBBBB0008F11D /* Build configuration list for PBXProject "RBLPopoverDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE74219118BBBBBB0008F11D /* Debug */,
+				BE74219218BBBBBB0008F11D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BE74219318BBBBBB0008F11D /* Build configuration list for PBXNativeTarget "RBLPopoverDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE74219418BBBBBB0008F11D /* Debug */,
+				BE74219518BBBBBB0008F11D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		BE74219618BBBBBB0008F11D /* Build configuration list for PBXNativeTarget "RBLPopoverDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE74219718BBBBBB0008F11D /* Debug */,
+				BE74219818BBBBBB0008F11D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BE74215A18BBBBBB0008F11D /* Project object */;
+}
