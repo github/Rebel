@@ -13,10 +13,6 @@
 		BE74217918BBBBBB0008F11D /* RPDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BE74217818BBBBBB0008F11D /* RPDAppDelegate.m */; };
 		BE74217C18BBBBBB0008F11D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE74217A18BBBBBB0008F11D /* MainMenu.xib */; };
 		BE74217E18BBBBBB0008F11D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE74217D18BBBBBB0008F11D /* Images.xcassets */; };
-		BE74218518BBBBBB0008F11D /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE74218418BBBBBB0008F11D /* XCTest.framework */; };
-		BE74218618BBBBBB0008F11D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE74216518BBBBBB0008F11D /* Cocoa.framework */; };
-		BE74218E18BBBBBB0008F11D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BE74218C18BBBBBB0008F11D /* InfoPlist.strings */; };
-		BE74219018BBBBBB0008F11D /* RBLPopoverDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BE74218F18BBBBBB0008F11D /* RBLPopoverDemoTests.m */; };
 		BE7421A618BBBE360008F11D /* Rebel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE7421A118BBBE1F0008F11D /* Rebel.framework */; };
 		BE7421A818BBBE4D0008F11D /* Rebel.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = BE7421A118BBBE1F0008F11D /* Rebel.framework */; };
 		BE7421AB18BBC3860008F11D /* RPDContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7421AA18BBC3860008F11D /* RPDContentViewController.m */; };
@@ -24,13 +20,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		BE74218718BBBBBB0008F11D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BE74215A18BBBBBB0008F11D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BE74216118BBBBBB0008F11D;
-			remoteInfo = RBLPopoverDemo;
-		};
 		BE7421A018BBBE1F0008F11D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BE74219918BBBE1E0008F11D /* Rebel.xcodeproj */;
@@ -82,11 +71,7 @@
 		BE74217818BBBBBB0008F11D /* RPDAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RPDAppDelegate.m; sourceTree = "<group>"; };
 		BE74217B18BBBBBB0008F11D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		BE74217D18BBBBBB0008F11D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		BE74218318BBBBBB0008F11D /* RBLPopoverDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RBLPopoverDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE74218418BBBBBB0008F11D /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		BE74218B18BBBBBB0008F11D /* RBLPopoverDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RBLPopoverDemoTests-Info.plist"; sourceTree = "<group>"; };
-		BE74218D18BBBBBB0008F11D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		BE74218F18BBBBBB0008F11D /* RBLPopoverDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RBLPopoverDemoTests.m; sourceTree = "<group>"; };
 		BE74219918BBBE1E0008F11D /* Rebel.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Rebel.xcodeproj; path = ../../Rebel.xcodeproj; sourceTree = "<group>"; };
 		BE7421A918BBC3860008F11D /* RPDContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPDContentViewController.h; sourceTree = "<group>"; };
 		BE7421AA18BBC3860008F11D /* RPDContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPDContentViewController.m; sourceTree = "<group>"; };
@@ -103,15 +88,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BE74218018BBBBBB0008F11D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BE74218618BBBBBB0008F11D /* Cocoa.framework in Frameworks */,
-				BE74218518BBBBBB0008F11D /* XCTest.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -119,7 +95,6 @@
 			isa = PBXGroup;
 			children = (
 				BE74216B18BBBBBB0008F11D /* RBLPopoverDemo */,
-				BE74218918BBBBBB0008F11D /* RBLPopoverDemoTests */,
 				BE74216418BBBBBB0008F11D /* Frameworks */,
 				BE74216318BBBBBB0008F11D /* Products */,
 			);
@@ -129,7 +104,6 @@
 			isa = PBXGroup;
 			children = (
 				BE74216218BBBBBB0008F11D /* RBLPopoverDemo.app */,
-				BE74218318BBBBBB0008F11D /* RBLPopoverDemoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -181,24 +155,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		BE74218918BBBBBB0008F11D /* RBLPopoverDemoTests */ = {
-			isa = PBXGroup;
-			children = (
-				BE74218F18BBBBBB0008F11D /* RBLPopoverDemoTests.m */,
-				BE74218A18BBBBBB0008F11D /* Supporting Files */,
-			);
-			path = RBLPopoverDemoTests;
-			sourceTree = "<group>";
-		};
-		BE74218A18BBBBBB0008F11D /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				BE74218B18BBBBBB0008F11D /* RBLPopoverDemoTests-Info.plist */,
-				BE74218C18BBBBBB0008F11D /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		BE74219A18BBBE1E0008F11D /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -230,24 +186,6 @@
 			productReference = BE74216218BBBBBB0008F11D /* RBLPopoverDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		BE74218218BBBBBB0008F11D /* RBLPopoverDemoTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = BE74219618BBBBBB0008F11D /* Build configuration list for PBXNativeTarget "RBLPopoverDemoTests" */;
-			buildPhases = (
-				BE74217F18BBBBBB0008F11D /* Sources */,
-				BE74218018BBBBBB0008F11D /* Frameworks */,
-				BE74218118BBBBBB0008F11D /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				BE74218818BBBBBB0008F11D /* PBXTargetDependency */,
-			);
-			name = RBLPopoverDemoTests;
-			productName = RBLPopoverDemoTests;
-			productReference = BE74218318BBBBBB0008F11D /* RBLPopoverDemoTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -257,11 +195,6 @@
 				CLASSPREFIX = RPD;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = GitHub;
-				TargetAttributes = {
-					BE74218218BBBBBB0008F11D = {
-						TestTargetID = BE74216118BBBBBB0008F11D;
-					};
-				};
 			};
 			buildConfigurationList = BE74215D18BBBBBB0008F11D /* Build configuration list for PBXProject "RBLPopoverDemo" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -283,7 +216,6 @@
 			projectRoot = "";
 			targets = (
 				BE74216118BBBBBB0008F11D /* RBLPopoverDemo */,
-				BE74218218BBBBBB0008F11D /* RBLPopoverDemoTests */,
 			);
 		};
 /* End PBXProject section */
@@ -317,14 +249,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BE74218118BBBBBB0008F11D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BE74218E18BBBBBB0008F11D /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -338,22 +262,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BE74217F18BBBBBB0008F11D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BE74219018BBBBBB0008F11D /* RBLPopoverDemoTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		BE74218818BBBBBB0008F11D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BE74216118BBBBBB0008F11D /* RBLPopoverDemo */;
-			targetProxy = BE74218718BBBBBB0008F11D /* PBXContainerItemProxy */;
-		};
 		BE7421A518BBBE300008F11D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Rebel;
@@ -376,14 +287,6 @@
 				BE74217B18BBBBBB0008F11D /* Base */,
 			);
 			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-		BE74218C18BBBBBB0008F11D /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BE74218D18BBBBBB0008F11D /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 		BE7421AC18BBC3A40008F11D /* RPDContentViewController.xib */ = {
@@ -491,46 +394,6 @@
 			};
 			name = Release;
 		};
-		BE74219718BBBBBB0008F11D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RBLPopoverDemo.app/Contents/MacOS/RBLPopoverDemo";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "RBLPopoverDemo/RBLPopoverDemo-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "RBLPopoverDemoTests/RBLPopoverDemoTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		BE74219818BBBBBB0008F11D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/RBLPopoverDemo.app/Contents/MacOS/RBLPopoverDemo";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "RBLPopoverDemo/RBLPopoverDemo-Prefix.pch";
-				INFOPLIST_FILE = "RBLPopoverDemoTests/RBLPopoverDemoTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -550,14 +413,7 @@
 				BE74219518BBBBBB0008F11D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		BE74219618BBBBBB0008F11D /* Build configuration list for PBXNativeTarget "RBLPopoverDemoTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BE74219718BBBBBB0008F11D /* Debug */,
-				BE74219818BBBBBB0008F11D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
