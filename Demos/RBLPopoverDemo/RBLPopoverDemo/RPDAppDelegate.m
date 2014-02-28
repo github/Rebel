@@ -18,18 +18,26 @@
 @property (strong, nonatomic, readonly) NSPopover *NSPopover;
 @property (strong, nonatomic, readonly) RBLPopover *RBLPopover;
 
+@property (strong, nonatomic) NSNumber *arrowWidth;
+@property (strong, nonatomic) NSNumber *arrowHeight;
+
 @end
 
 @implementation RPDAppDelegate
 
 #pragma mark - NSApplicationDelegate
 
-- (void)applicationDidFinishLaunching:(NSNotification *)notification {
+- (instancetype)init {
+	self = [super init];
+	if (self == nil) return nil;
+	
 	_NSPopover = [NSPopover new];
 	self.NSPopover.contentViewController = [RPDContentViewController new];
 	
 	_RBLPopover = [[RBLPopover alloc] initWithContentViewController:[RPDContentViewController new]];
 	self.RBLPopover.canBecomeKey = YES;
+	
+	return self;
 }
 
 #pragma mark - Actions
@@ -73,6 +81,26 @@
 - (NSRectEdge)preferredEdge {
 	NSInteger segment = self.preferredEdgeControl.selectedSegment;
 	return (CGRectEdge)[self.preferredEdgeControl.cell tagForSegment:segment];
+}
+
+- (NSNumber *)arrowHeight {
+	return @(self.RBLPopover.backgroundView.arrowSize.height);
+}
+
+- (void)setArrowHeight:(NSNumber *)arrowHeight {
+	CGSize size = self.RBLPopover.backgroundView.arrowSize;
+	size.height = arrowHeight.integerValue;
+	self.RBLPopover.backgroundView.arrowSize = size;
+}
+
+- (NSNumber *)arrowWidth {
+	return @(self.RBLPopover.backgroundView.arrowSize.width);
+}
+
+- (void)setArrowWidth:(NSNumber *)arrowWidth {
+	CGSize size = self.RBLPopover.backgroundView.arrowSize;
+	size.width = arrowWidth.integerValue;
+	self.RBLPopover.backgroundView.arrowSize = size;
 }
 
 @end
