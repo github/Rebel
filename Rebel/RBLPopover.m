@@ -67,10 +67,6 @@
 // The size the content view was before the popover was shown.
 @property (nonatomic) CGSize originalViewSize;
 
-// Used in semi-transient popovers to make sure we allow a click into the parent
-// window to make it key as opposed to closing the popover immediately.
-@property (nonatomic) BOOL parentWindowResignedKey;
-
 // Correctly removes our event monitor watching for mouse clicks external to the
 // popover.
 - (void)removeEventMonitors;
@@ -278,9 +274,7 @@
 			if (strongSelf.behavior == RBLPopoverBehaviorTransient) {
 				shouldClose = !mouseInPopoverWindow;
 			} else {
-				shouldClose = strongSelf.popoverWindow.parentWindow.isKeyWindow && NSPointInRect(NSEvent.mouseLocation, strongSelf.popoverWindow.parentWindow.frame) && !mouseInPopoverWindow && !strongSelf.parentWindowResignedKey;
-				
-				if (strongSelf.popoverWindow.parentWindow.isKeyWindow) self.parentWindowResignedKey = NO;
+				shouldClose = strongSelf.popoverWindow.parentWindow.isKeyWindow && NSPointInRect(NSEvent.mouseLocation, strongSelf.popoverWindow.parentWindow.frame) && !mouseInPopoverWindow;
 			}
 			
 			if (shouldClose) [strongSelf close];
@@ -298,10 +292,6 @@
 			[NSNotificationCenter.defaultCenter addObserver:self selector:@selector(appResignedActive:) name:NSApplicationDidResignActiveNotification object:NSApp];
 			id globalMonitor = [NSEvent addGlobalMonitorForEventsMatchingMask:mask handler:monitor];
 			[newMonitors addObject:globalMonitor];
-		}
-		
-		if (self.behavior == RBLPopoverBehaviorSemiTransient) {
-			[NSNotificationCenter.defaultCenter addObserver:self selector:@selector(parentWindowResignedKey:) name:NSWindowDidResignKeyNotification object:self.popoverWindow.parentWindow];
 		}
 		
 		id localMonitor = [NSEvent addLocalMonitorForEventsMatchingMask:mask handler:^(NSEvent *event) {
@@ -402,12 +392,6 @@
 
 - (void)appResignedActive:(NSNotification *)notification {
 	if (self.behavior == RBLPopoverBehaviorTransient) [self close];
-}
-
-- (void)parentWindowResignedKey:(NSNotification *)notification {
-	if (self.behavior != RBLPopoverBehaviorSemiTransient) return;
-	
-	self.parentWindowResignedKey = YES;
 }
 
 @end
