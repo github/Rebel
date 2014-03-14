@@ -159,7 +159,6 @@
 	NSRect windowRelativeRect = [positioningView convertRect:positioningRect toView:nil];
 	CGRect screenPositioningRect = [positioningView.window convertRectToScreen:windowRelativeRect];
 	
-	[self.contentViewController.view layoutSubtreeIfNeeded];
 	self.originalViewSize = self.contentViewController.view.frame.size;
 	CGSize contentViewSize = (CGSizeEqualToSize(self.contentSize, CGSizeZero) ? self.contentViewController.view.frame.size : self.contentSize);
 	
