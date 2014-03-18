@@ -158,7 +158,7 @@
 	
 	NSRect windowRelativeRect = [positioningView convertRect:positioningRect toView:nil];
 	CGRect screenPositioningRect = [positioningView.window convertRectToScreen:windowRelativeRect];
-	
+
 	self.originalViewSize = self.contentViewController.view.frame.size;
 	CGSize contentViewSize = (CGSizeEqualToSize(self.contentSize, CGSizeZero) ? self.contentViewController.view.frame.size : self.contentSize);
 	
@@ -248,6 +248,8 @@
 	
 	if (self.shown) {
 		if (self.backgroundView.popoverEdge == popoverEdge) {
+			CGSize size = [self.backgroundView sizeForBackgroundViewWithContentSize:contentViewSize popoverEdge:popoverEdge];
+			self.backgroundView.frame = (NSRect){ .size = size };
 			[self.popoverWindow setFrame:popoverScreenRect display:YES];
 			return;
 		}
