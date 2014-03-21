@@ -13,6 +13,22 @@
 
 //***************************************************************************
 
+// Returns a rectangle with the intersection of two rectangles along the x axis.
+static CGRect RBLRectXIntersection(CGRect rect1, CGRect rect2) {
+	CGFloat minX = MAX(NSMinX(rect1), NSMinX(rect2));
+	CGFloat maxX = MIN(NSMaxX(rect1), NSMaxX(rect2));
+	return CGRectMake(minX, 0, maxX - minX, 0);
+}
+
+// Returns a rectangle with the intersection of two rectangles along the y axis.
+static CGRect RBLRectYIntersection(CGRect rect1, CGRect rect2) {
+	CGFloat minY = MAX(NSMinY(rect1), NSMinY(rect2));
+	CGFloat maxY = MIN(NSMaxY(rect1), NSMaxY(rect2));
+	return CGRectMake(0, minY, 0, maxY - minY);
+}
+
+//***************************************************************************
+
 // A class which forcably draws `NSClearColor.clearColor` around a given path,
 // effectively clipping any views to the path. You can think of it like a
 // `maskLayer` on a `CALayer`.
@@ -128,6 +144,7 @@
 	if (self == nil)
 		return nil;
 	
+	_anchorPoint = CGPointMake(0.5, 0.5);
 	_contentViewController = viewController;
 	_backgroundView = backgroundView;
 	_behavior = RBLPopoverBehaviorApplicationDefined;
@@ -157,28 +174,37 @@
 	}
 	
 	NSRect windowRelativeRect = [positioningView convertRect:positioningRect toView:nil];
-	CGRect screenPositioningRect = [positioningView.window convertRectToScreen:windowRelativeRect];
+	CGRect screenRect = [positioningView.window convertRectToScreen:windowRelativeRect];
+	
+	self.backgroundView.popoverOrigin = screenRect;
 	
 	self.originalViewSize = self.contentViewController.view.frame.size;
 	CGSize contentViewSize = (CGSizeEqualToSize(self.contentSize, CGSizeZero) ? self.contentViewController.view.frame.size : self.contentSize);
 	
+	CGPoint anchorPoint = self.anchorPoint;
 	CGRect (^popoverRectForEdge)(CGRectEdge) = ^(CGRectEdge popoverEdge) {
 		CGSize popoverSize = [self.backgroundView sizeForBackgroundViewWithContentSize:contentViewSize popoverEdge:popoverEdge];
 		CGRect returnRect = NSMakeRect(0.0, 0.0, popoverSize.width, popoverSize.height);
 		if (popoverEdge == CGRectMinYEdge) {
-			CGFloat xOrigin = NSMidX(screenPositioningRect) - floor(popoverSize.width / 2.0);
-			CGFloat yOrigin = NSMinY(screenPositioningRect) - popoverSize.height;
-			returnRect.origin = NSMakePoint(xOrigin, yOrigin);
+			CGFloat x0 = NSMinX(screenRect);
+			CGFloat x1 = NSMaxX(screenRect) - contentViewSize.width;
+			returnRect.origin.x = x0 + floor((x1 - x0) * anchorPoint.x);
+			returnRect.origin.y = NSMinY(screenRect) - popoverSize.height;
 		} else if (popoverEdge == CGRectMaxYEdge) {
-			CGFloat xOrigin = NSMidX(screenPositioningRect) - floor(popoverSize.width / 2.0);
-			returnRect.origin = NSMakePoint(xOrigin, NSMaxY(screenPositioningRect));
+			CGFloat x0 = NSMinX(screenRect);
+			CGFloat x1 = NSMaxX(screenRect) - contentViewSize.width;
+			returnRect.origin.x = x0 + floor((x1 - x0) * anchorPoint.x);
+			returnRect.origin.y = NSMaxY(screenRect);
 		} else if (popoverEdge == CGRectMinXEdge) {
-			CGFloat xOrigin = NSMinX(screenPositioningRect) - popoverSize.width;
-			CGFloat yOrigin = NSMidY(screenPositioningRect) - floor(popoverSize.height / 2.0);
-			returnRect.origin = NSMakePoint(xOrigin, yOrigin);
+			CGFloat y0 = NSMinY(screenRect);
+			CGFloat y1 = NSMaxY(screenRect) - contentViewSize.height;
+			returnRect.origin.x = NSMinX(screenRect) - popoverSize.width;
+			returnRect.origin.y = y0 + floor((y1 - y0) * anchorPoint.y);
 		} else if (popoverEdge == CGRectMaxXEdge) {
-			CGFloat yOrigin = NSMidY(screenPositioningRect) - floor(popoverSize.height / 2.0);
-			returnRect.origin = NSMakePoint(NSMaxX(screenPositioningRect), yOrigin);
+			CGFloat y0 = NSMinY(screenRect);
+			CGFloat y1 = NSMaxY(screenRect) - contentViewSize.height;
+			returnRect.origin.x = NSMaxX(screenRect);
+			returnRect.origin.y = y0 + floor((y1 - y0) * anchorPoint.y);
 		} else {
 			returnRect = CGRectZero;
 		}
@@ -304,7 +330,6 @@
 	CGSize size = [self.backgroundView sizeForBackgroundViewWithContentSize:contentViewSize popoverEdge:popoverEdge];
 	self.backgroundView.frame = (NSRect){ .size = size };
 	self.backgroundView.popoverEdge = popoverEdge;
-	self.backgroundView.popoverOrigin = screenPositioningRect;
 	
 	CGRect contentViewFrame = [self.backgroundView contentViewFrameForBackgroundFrame:self.backgroundView.bounds popoverEdge:popoverEdge];
 	self.contentViewController.view.autoresizingMask = (NSViewWidthSizable | NSViewHeightSizable);
@@ -455,8 +480,8 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 
 	CGRect windowRect = [self.window convertRectFromScreen:self.popoverOrigin];
 	CGRect originRect = [self convertRect:windowRect fromView:nil];
-	CGFloat midOriginY = floor(NSMidY(originRect));
-	CGFloat midOriginX = floor(NSMidX(originRect));
+	CGFloat midOriginY = floor(NSMidY(RBLRectYIntersection(originRect, contentRect)));
+	CGFloat midOriginX = floor(NSMidX(RBLRectXIntersection(originRect, contentRect)));
 	
 	CGFloat maxArrowX = 0.0;
 	CGFloat minArrowX = 0.0;
