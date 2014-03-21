@@ -15,15 +15,15 @@
 
 // Returns a rectangle with the intersection of two rectangles along the x axis.
 static CGRect RBLRectXIntersection(CGRect rect1, CGRect rect2) {
-	CGFloat minX = MAX(NSMinX(rect1), NSMinX(rect2));
-	CGFloat maxX = MIN(NSMaxX(rect1), NSMaxX(rect2));
+	CGFloat minX = fmax(NSMinX(rect1), NSMinX(rect2));
+	CGFloat maxX = fmin(NSMaxX(rect1), NSMaxX(rect2));
 	return CGRectMake(minX, 0, maxX - minX, 0);
 }
 
 // Returns a rectangle with the intersection of two rectangles along the y axis.
 static CGRect RBLRectYIntersection(CGRect rect1, CGRect rect2) {
-	CGFloat minY = MAX(NSMinY(rect1), NSMinY(rect2));
-	CGFloat maxY = MIN(NSMaxY(rect1), NSMaxY(rect2));
+	CGFloat minY = fmax(NSMinY(rect1), NSMinY(rect2));
+	CGFloat maxY = fmin(NSMaxY(rect1), NSMaxY(rect2));
 	return CGRectMake(0, minY, 0, maxY - minY);
 }
 
