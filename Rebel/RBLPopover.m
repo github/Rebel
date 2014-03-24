@@ -13,18 +13,20 @@
 
 //***************************************************************************
 
-// Returns a rectangle with the intersection of two rectangles along the x axis.
-static CGRect RBLRectXIntersection(CGRect rect1, CGRect rect2) {
-	CGFloat minX = fmax(NSMinX(rect1), NSMinX(rect2));
-	CGFloat maxX = fmin(NSMaxX(rect1), NSMaxX(rect2));
-	return CGRectMake(minX, 0, maxX - minX, 0);
+// Returns the median X value of the shared segment of the X edges of the given rects
+static CGFloat RBLRectsGetMedianX(CGRect r1, CGRect r2)
+{
+	CGFloat minX = fmax(NSMinX(r1), NSMinX(r2));
+	CGFloat maxX = fmin(NSMaxX(r1), NSMaxX(r2));
+	return (minX + maxX) / 2;
 }
 
-// Returns a rectangle with the intersection of two rectangles along the y axis.
-static CGRect RBLRectYIntersection(CGRect rect1, CGRect rect2) {
-	CGFloat minY = fmax(NSMinY(rect1), NSMinY(rect2));
-	CGFloat maxY = fmin(NSMaxY(rect1), NSMaxY(rect2));
-	return CGRectMake(0, minY, 0, maxY - minY);
+// Returns the median X value of the shared segment of the X edges of the given rects
+static CGFloat RBLRectsGetMedianY(CGRect r1, CGRect r2)
+{
+	CGFloat minY = fmax(NSMinY(r1), NSMinY(r2));
+	CGFloat maxY = fmin(NSMaxY(r1), NSMaxY(r2));
+	return (minY + maxY) / 2;
 }
 
 //***************************************************************************
@@ -491,8 +493,8 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 
 	CGRect windowRect = [self.window convertRectFromScreen:self.popoverOrigin];
 	CGRect originRect = [self convertRect:windowRect fromView:nil];
-	CGFloat midOriginY = floor(NSMidY(RBLRectYIntersection(originRect, contentRect)));
-	CGFloat midOriginX = floor(NSMidX(RBLRectXIntersection(originRect, contentRect)));
+	CGFloat midOriginY = floor(RBLRectsGetMedianY(originRect, contentRect));
+	CGFloat midOriginX = floor(RBLRectsGetMedianX(originRect, contentRect));
 	
 	CGFloat maxArrowX = 0.0;
 	CGFloat minArrowX = 0.0;
