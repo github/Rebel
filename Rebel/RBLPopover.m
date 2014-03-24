@@ -185,6 +185,17 @@ static CGRect RBLRectYIntersection(CGRect rect1, CGRect rect2) {
 	CGRect (^popoverRectForEdge)(CGRectEdge) = ^(CGRectEdge popoverEdge) {
 		CGSize popoverSize = [self.backgroundView sizeForBackgroundViewWithContentSize:contentViewSize popoverEdge:popoverEdge];
 		CGRect returnRect = NSMakeRect(0.0, 0.0, popoverSize.width, popoverSize.height);
+		
+		// In all the cases below, find the minimum and maximum position of the
+		// popover and then use the anchor point to determine where the popover
+		// should be between these two locations.
+		//
+		// `x0` indicates the x origin of the popover if `self.anchorPoint.x` is
+		// 0 and aligns the left edge of the popover to the left edge of the
+		// origin view. `x1` is the x origin if `self.anchorPoint.x` is 1 and
+		// aligns the right edge of the popover to the right edge of the origin
+		// view. The anchor point determines where the popover should be between
+		// these extremes.
 		if (popoverEdge == CGRectMinYEdge) {
 			CGFloat x0 = NSMinX(screenRect);
 			CGFloat x1 = NSMaxX(screenRect) - contentViewSize.width;
