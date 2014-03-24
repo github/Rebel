@@ -60,16 +60,16 @@ typedef void (^RBLPopoverDelegateBlock)(RBLPopover *popover);
 // Passing `CGSizeZero` uses the size of the `contentViewController`'s view.
 @property (nonatomic) CGSize contentSize;
 
-// The anchor point of the popover in unit coordinate space.
-//
-// This specifies the alignment over the popover to the origin view along the
-// secondary axis. If the popover is on the Y edge, this will determine the X
-// position of the popover.
-//
-// A 0 will align the left or bottom edges of the popover and the origin view. A
-// 1 will align the right or top edges.
-//
-// The default value is (0.5, 0.5), indicating the center of the popover.
+/// The anchor point of the popover in unit coordinate space.
+///
+/// This specifies the alignment over the popover to the origin view along the
+/// secondary axis. If the popover is on the Y edge, this will determine the X
+/// position of the popover.
+///
+/// A 0 will align the left or bottom edges of the popover and the origin view.
+/// A 1 will align the right or top edges.
+///
+/// The default value is (0.5, 0.5), indicating the center of the popover.
 @property (nonatomic, assign) CGPoint anchorPoint;
 
 // Whether the next open/close of the popover should be animated.
