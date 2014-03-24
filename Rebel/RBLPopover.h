@@ -62,9 +62,10 @@ typedef void (^RBLPopoverDelegateBlock)(RBLPopover *popover);
 
 /// The anchor point of the popover in unit coordinate space.
 ///
-/// This specifies the alignment over the popover to the origin view along the
+/// This specifies the alignment of the popover to the origin view along the
 /// secondary axis. If the popover is on the Y edge, this will determine the X
-/// position of the popover.
+/// position of the popover; it it's on the X edge, it will determine the Y
+/// position.
 ///
 /// A 0 will align the left or bottom edges of the popover and the origin view.
 /// A 1 will align the right or top edges.
