@@ -111,9 +111,7 @@
 }
 
 - (void)setAnchorPointX:(NSNumber *)anchorPointX {
-	CGPoint point = self.RBLPopover.anchorPoint;
-	point.x = anchorPointX.floatValue;
-	self.RBLPopover.anchorPoint = point;
+	self.RBLPopover.anchorPoint = (CGPoint){ .x = anchorPointX.floatValue, .y = self.RBLPopover.anchorPoint.y };
 }
 
 - (NSNumber *)anchorPointY {
@@ -121,9 +119,7 @@
 }
 
 - (void)setAnchorPointY:(NSNumber *)anchorPointY {
-	CGPoint point = self.RBLPopover.anchorPoint;
-	point.x = anchorPointY.floatValue;
-	self.RBLPopover.anchorPoint = point;
+	self.RBLPopover.anchorPoint = (CGPoint){ .x = self.RBLPopover.anchorPoint.x, .y = anchorPointY.floatValue };
 }
 
 @end
