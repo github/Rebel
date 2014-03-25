@@ -9,6 +9,8 @@ This framework is very much a work in progress at the moment, and should be cons
 To start building the framework, clone this repository and then run `script/bootstrap`.
 This will automatically pull down any dependencies.
 
+When working on Rebel in isolation, use the `.xcworkspace` file. When integrating it into another project, use the `.xcodeproj` file.
+
 ## License
 
 Rebel is released under the MIT license. See [LICENSE.md](https://github.com/github/Rebel/blob/master/LICENSE.md).
