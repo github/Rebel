@@ -14,16 +14,14 @@
 //***************************************************************************
 
 // Returns the median X value of the shared segment of the X edges of the given rects
-static CGFloat RBLRectsGetMedianX(CGRect r1, CGRect r2)
-{
+static CGFloat RBLRectsGetMedianX(CGRect r1, CGRect r2) {
 	CGFloat minX = fmax(NSMinX(r1), NSMinX(r2));
 	CGFloat maxX = fmin(NSMaxX(r1), NSMaxX(r2));
 	return (minX + maxX) / 2;
 }
 
 // Returns the median X value of the shared segment of the X edges of the given rects
-static CGFloat RBLRectsGetMedianY(CGRect r1, CGRect r2)
-{
+static CGFloat RBLRectsGetMedianY(CGRect r1, CGRect r2) {
 	CGFloat minY = fmax(NSMinY(r1), NSMinY(r2));
 	CGFloat maxY = fmin(NSMaxY(r1), NSMaxY(r2));
 	return (minY + maxY) / 2;
