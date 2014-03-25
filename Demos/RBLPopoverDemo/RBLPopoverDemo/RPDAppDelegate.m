@@ -21,6 +21,9 @@
 @property (strong, nonatomic) NSNumber *arrowWidth;
 @property (strong, nonatomic) NSNumber *arrowHeight;
 
+@property (strong, nonatomic) NSNumber *anchorPointX;
+@property (strong, nonatomic) NSNumber *anchorPointY;
+
 @end
 
 @implementation RPDAppDelegate
@@ -67,7 +70,7 @@
 	} else {
 		NSView *button = sender;
 		self.RBLPopover.behavior = self.behavior;
-		[self.RBLPopover showRelativeToRect:button.bounds ofView:button preferredEdge:(CGRectEdge)self.preferredEdge];
+		[self.RBLPopover showRelativeToRect:CGRectZero ofView:button preferredEdge:(CGRectEdge)self.preferredEdge];
 	}
 }
 
@@ -101,6 +104,22 @@
 	CGSize size = self.RBLPopover.backgroundView.arrowSize;
 	size.width = arrowWidth.integerValue;
 	self.RBLPopover.backgroundView.arrowSize = size;
+}
+
+- (NSNumber *)anchorPointX {
+	return @(self.RBLPopover.anchorPoint.x);
+}
+
+- (void)setAnchorPointX:(NSNumber *)anchorPointX {
+	self.RBLPopover.anchorPoint = (CGPoint){ .x = anchorPointX.floatValue, .y = self.RBLPopover.anchorPoint.y };
+}
+
+- (NSNumber *)anchorPointY {
+	return @(self.RBLPopover.anchorPoint.y);
+}
+
+- (void)setAnchorPointY:(NSNumber *)anchorPointY {
+	self.RBLPopover.anchorPoint = (CGPoint){ .x = self.RBLPopover.anchorPoint.x, .y = anchorPointY.floatValue };
 }
 
 @end
