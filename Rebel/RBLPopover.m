@@ -97,6 +97,10 @@ static CGFloat RBLRectsGetMedianY(CGRect r1, CGRect r2) {
 	self.clippingPath = NULL;
 }
 
+- (NSView *)hitTest:(NSPoint)aPoint {
+	return nil;
+}
+
 - (void)setClippingPath:(CGPathRef)clippingPath {
 	if (clippingPath == _clippingPath) return;
 	
