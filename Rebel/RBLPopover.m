@@ -508,30 +508,26 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 		maxArrowX = floor(midOriginX + (self.arrowSize.width / 2.0));
 		CGFloat maxPossible = (NSMaxX(contentRect) - RBLPopoverBackgroundViewBorderRadius);
 		if (maxArrowX > maxPossible) {
-			CGFloat delta = maxArrowX - maxPossible;
 			maxArrowX = maxPossible;
-			minArrowX = maxArrowX - (self.arrowSize.width - delta);
+			minArrowX = maxArrowX - self.arrowSize.width;
 		} else {
 			minArrowX = floor(midOriginX - (self.arrowSize.width / 2.0));
 			if (minArrowX < RBLPopoverBackgroundViewBorderRadius) {
-				CGFloat delta = RBLPopoverBackgroundViewBorderRadius - minArrowX;
 				minArrowX = RBLPopoverBackgroundViewBorderRadius;
-				maxArrowX = minArrowX + (self.arrowSize.width - (delta * 2));
+				maxArrowX = minArrowX + self.arrowSize.width;
 			}
 		}
 	} else {
 		minArrowY = floor(midOriginY - (self.arrowSize.width / 2.0));
 		if (minArrowY < RBLPopoverBackgroundViewBorderRadius) {
-			CGFloat delta = RBLPopoverBackgroundViewBorderRadius - minArrowY;
 			minArrowY = RBLPopoverBackgroundViewBorderRadius;
-			maxArrowY = minArrowY + (self.arrowSize.width - (delta * 2));
+			maxArrowY = minArrowY + self.arrowSize.width;
 		} else {
 			maxArrowY = floor(midOriginY + (self.arrowSize.width / 2.0));
 			CGFloat maxPossible = (NSMaxY(contentRect) - RBLPopoverBackgroundViewBorderRadius);
 			if (maxArrowY > maxPossible) {
-				CGFloat delta = maxArrowY - maxPossible;
 				maxArrowY = maxPossible;
-				minArrowY = maxArrowY - (self.arrowSize.width - delta);
+				minArrowY = maxArrowY - self.arrowSize.width;
 			}
 		}
 	}
