@@ -538,34 +538,48 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 	
 	CGMutablePathRef path = CGPathCreateMutable();
 	CGPathMoveToPoint(path, NULL, minX, floor(minY + RBLPopoverBackgroundViewBorderRadius));
-	if (arrowEdge == CGRectMinXEdge) {
-		CGPathAddLineToPoint(path, NULL, minX, minArrowY);
-		CGPathAddLineToPoint(path, NULL, floor(minX - self.arrowSize.height), midOriginY);
-		CGPathAddLineToPoint(path, NULL, minX, maxArrowY);
-	}
+
 	
 	CGPathAddArc(path, NULL, floor(minX + RBLPopoverBackgroundViewBorderRadius), floor(minY + contentRect.size.height - RBLPopoverBackgroundViewBorderRadius), RBLPopoverBackgroundViewBorderRadius, M_PI, M_PI / 2, 1);
-	if (arrowEdge == CGRectMaxYEdge) {
-		CGPathAddLineToPoint(path, NULL, minArrowX, maxY);
-		CGPathAddLineToPoint(path, NULL, midOriginX, floor(maxY + self.arrowSize.height));
-		CGPathAddLineToPoint(path, NULL, maxArrowX, maxY);
-	}
+
 	
 	CGPathAddArc(path, NULL, floor(minX + contentRect.size.width - RBLPopoverBackgroundViewBorderRadius), floor(minY + contentRect.size.height - RBLPopoverBackgroundViewBorderRadius), RBLPopoverBackgroundViewBorderRadius, M_PI / 2, 0.0, 1);
-	if (arrowEdge == CGRectMaxXEdge) {
-		CGPathAddLineToPoint(path, NULL, maxX, maxArrowY);
-		CGPathAddLineToPoint(path, NULL, floor(maxX + self.arrowSize.height), midOriginY);
-		CGPathAddLineToPoint(path, NULL, maxX, minArrowY);
-	}
+
 	
 	CGPathAddArc(path, NULL, floor(contentRect.origin.x + contentRect.size.width - RBLPopoverBackgroundViewBorderRadius), floor(minY + RBLPopoverBackgroundViewBorderRadius), RBLPopoverBackgroundViewBorderRadius, 0.0, -M_PI / 2, 1);
-	if (arrowEdge == CGRectMinYEdge) {
-		CGPathAddLineToPoint(path, NULL, maxArrowX, minY);
-		CGPathAddLineToPoint(path, NULL, midOriginX, floor(minY - self.arrowSize.height));
-		CGPathAddLineToPoint(path, NULL, minArrowX, minY);
-	}
 	
 	CGPathAddArc(path, NULL, floor(minX + RBLPopoverBackgroundViewBorderRadius), floor(minY + RBLPopoverBackgroundViewBorderRadius), RBLPopoverBackgroundViewBorderRadius, -M_PI / 2, M_PI, 1);
+
+	CGFloat x1, x2, x3, y1, y2, y3;
+	switch (arrowEdge) {
+		case CGRectMinXEdge:
+			x1 = minX, y1 = minArrowY;
+			x2 = floor(minX - self.arrowSize.height), y2 = midOriginY;
+			x3 = minX, y3 = maxArrowY;
+			break;
+		case CGRectMaxYEdge:
+			x1 = minArrowX, y1 = maxY;
+			x2 = midOriginX, y2 = floor(maxY + self.arrowSize.height);
+			x3 = maxArrowX, y3 = maxY;
+			break;
+		case CGRectMaxXEdge:
+			x1 = maxX, y1 = maxArrowY;
+			x2 = floor(maxX + self.arrowSize.height), y2 = midOriginY;
+			x3 = maxX, y3 = minArrowY;
+			break;
+		case CGRectMinYEdge:
+			x1 = maxArrowX, y1 = minY;
+			x2 = midOriginX, y2 = floor(minY - self.arrowSize.height);
+			x3 = minArrowX, y3 = minY;
+			break;
+		default:
+			break;
+	}
+
+	CGPathMoveToPoint(path, NULL, x1, y1);
+	CGPathAddLineToPoint(path, NULL, x1, y1);
+	CGPathAddLineToPoint(path, NULL, x2, y2);
+	CGPathAddLineToPoint(path, NULL, x3, y3);
 	
 	return path;
 }
