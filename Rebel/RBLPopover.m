@@ -64,6 +64,10 @@ static CGFloat RBLRectsGetMedianY(CGRect r1, CGRect r2) {
 
 @property (nonatomic, assign, readwrite) NSRect popoverOrigin;
 
+@property (nonatomic, assign, readwrite) NSPoint popoverAnchorPoint;
+
+@property (nonatomic, assign, readwrite) BOOL didOffsetFrame;
+
 - (CGRectEdge)rbl_arrowEdgeForPopoverEdge:(CGRectEdge)popoverEdge;
 
 @end
@@ -144,7 +148,8 @@ static CGFloat RBLRectsGetMedianY(CGRect r1, CGRect r2) {
 	if (self == nil)
 		return nil;
 	
-	_anchorPoint = CGPointMake(0.5, 0.5);
+
+	self.anchorPoint = CGPointMake(0.5, 0.5);
 	_contentViewController = viewController;
 	_backgroundView = backgroundView;
 	_behavior = RBLPopoverBehaviorApplicationDefined;
@@ -177,7 +182,8 @@ static CGFloat RBLRectsGetMedianY(CGRect r1, CGRect r2) {
 	CGRect screenRect = [positioningView.window convertRectToScreen:windowRelativeRect];
 	
 	self.backgroundView.popoverOrigin = screenRect;
-	
+	self.backgroundView.popoverAnchorPoint = self.anchorPoint;
+
 	self.originalViewSize = self.contentViewController.view.frame.size;
 	CGSize contentViewSize = (CGSizeEqualToSize(self.contentSize, CGSizeZero) ? self.contentViewController.view.frame.size : self.contentSize);
 	
@@ -270,6 +276,7 @@ static CGFloat RBLRectsGetMedianY(CGRect r1, CGRect r2) {
 		while (!checkPopoverSizeForScreenWithPopoverEdge(popoverEdge)) {
 			if (attemptCount >= 4) {
 				popoverEdge = preferredEdge;
+				self.backgroundView.didOffsetFrame = YES;
 				return fitRectToScreen(popoverRectForEdge(popoverEdge));
 				break;
 			}
@@ -277,15 +284,21 @@ static CGFloat RBLRectsGetMedianY(CGRect r1, CGRect r2) {
 			popoverEdge = nextEdgeForEdge(popoverEdge);
 			attemptCount ++;
 		}
-		
+
+		self.backgroundView.didOffsetFrame = NO;
 		return popoverRectForEdge(popoverEdge);
 	};
 	
 	CGRect popoverScreenRect = popoverRect();
+
 	
 	if (self.shown) {
 		if (self.backgroundView.popoverEdge == popoverEdge) {
+			CGSize size = [self.backgroundView sizeForBackgroundViewWithContentSize:contentViewSize popoverEdge:popoverEdge];
+			self.backgroundView.frame = (NSRect){ .size = size };
+			self.backgroundView.popoverEdge = popoverEdge;
 			[self.popoverWindow setFrame:popoverScreenRect display:YES];
+
 			return;
 		}
 		
@@ -489,10 +502,14 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 	CGFloat minY = NSMinY(contentRect);
 	CGFloat maxY = NSMaxY(contentRect);
 
-	CGRect windowRect = [self.window convertRectFromScreen:self.popoverOrigin];
-	CGRect originRect = [self convertRect:windowRect fromView:nil];
-	CGFloat midOriginY = floor(RBLRectsGetMedianY(originRect, contentRect));
-	CGFloat midOriginX = floor(RBLRectsGetMedianX(originRect, contentRect));
+	CGFloat midOriginY = floor(NSMaxY(contentRect) * self.popoverAnchorPoint.y);
+	CGFloat midOriginX = floor(NSMaxX(contentRect) * self.popoverAnchorPoint.x);
+	if (self.didOffsetFrame) {
+	   CGRect windowRect = [self.window convertRectFromScreen:self.popoverOrigin];
+	   CGRect originRect = [self convertRect:windowRect fromView:nil];
+		midOriginX = floor(RBLRectsGetMedianX(originRect, contentRect));
+		midOriginY = floor(RBLRectsGetMedianY(originRect, contentRect));
+	}
 	
 	CGFloat maxArrowX = 0.0;
 	CGFloat minArrowX = 0.0;
@@ -555,7 +572,7 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 			break;
 		case CGRectMaxYEdge:
 			x1 = minArrowX, y1 = maxY;
-			x2 = midOriginX, y2 = floor(maxY + self.arrowSize.height);
+			x2 = floor((minArrowX + maxArrowX) / 2), y2 = floor(maxY + self.arrowSize.height);
 			x3 = maxArrowX, y3 = maxY;
 			break;
 		case CGRectMaxXEdge:
@@ -565,7 +582,7 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 			break;
 		case CGRectMinYEdge:
 			x1 = maxArrowX, y1 = minY;
-			x2 = midOriginX, y2 = floor(minY - self.arrowSize.height);
+			x2 = floor((minArrowX + maxArrowX) / 2), y2 = floor(minY - self.arrowSize.height);
 			x3 = minArrowX, y3 = minY;
 			break;
 		default:
@@ -614,6 +631,12 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 - (void)setPopoverOrigin:(NSRect)popoverOrigin {
 	if (NSEqualRects(popoverOrigin, self.popoverOrigin)) return;
 	_popoverOrigin = popoverOrigin;
+	[self rbl_updateClippingView];
+}
+
+- (void)setPopoverAnchorPoint:(NSPoint)popoverAnchorPoint {
+	if (NSEqualPoints(popoverAnchorPoint, self.popoverAnchorPoint)) return;
+	_popoverAnchorPoint = popoverAnchorPoint;
 	[self rbl_updateClippingView];
 }
 
