@@ -519,8 +519,8 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 		midOriginX = floor(RBLRectsGetMedianX(originRect, contentRect));
 		midOriginY = floor(RBLRectsGetMedianY(originRect, contentRect));
 	} else {
-		midOriginY = floor(NSMaxY(contentRect) * self.popoverAnchorPoint.y);
-		midOriginX = floor(NSMaxX(contentRect) * self.popoverAnchorPoint.x);
+		midOriginX = floor(maxX * self.popoverAnchorPoint.x);
+		midOriginY = floor(maxY * self.popoverAnchorPoint.y);
 	}
 	
 	CGFloat maxArrowX = 0.0;
