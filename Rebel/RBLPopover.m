@@ -512,13 +512,15 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 	CGFloat minY = NSMinY(contentRect);
 	CGFloat maxY = NSMaxY(contentRect);
 
-	CGFloat midOriginY = floor(NSMaxY(contentRect) * self.popoverAnchorPoint.y);
-	CGFloat midOriginX = floor(NSMaxX(contentRect) * self.popoverAnchorPoint.x);
+	CGFloat midOriginX, midOriginY;
 	if (self.didOffsetFrame) {
 	   CGRect windowRect = [self.window convertRectFromScreen:self.popoverOrigin];
 	   CGRect originRect = [self convertRect:windowRect fromView:nil];
 		midOriginX = floor(RBLRectsGetMedianX(originRect, contentRect));
 		midOriginY = floor(RBLRectsGetMedianY(originRect, contentRect));
+	} else {
+		midOriginY = floor(NSMaxY(contentRect) * self.popoverAnchorPoint.y);
+		midOriginX = floor(NSMaxX(contentRect) * self.popoverAnchorPoint.x);
 	}
 	
 	CGFloat maxArrowX = 0.0;
@@ -561,13 +563,10 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 	
 	CGMutablePathRef path = CGPathCreateMutable();
 	CGPathMoveToPoint(path, NULL, minX, floor(minY + RBLPopoverBackgroundViewBorderRadius));
-
 	
 	CGPathAddArc(path, NULL, floor(minX + RBLPopoverBackgroundViewBorderRadius), floor(minY + contentRect.size.height - RBLPopoverBackgroundViewBorderRadius), RBLPopoverBackgroundViewBorderRadius, M_PI, M_PI / 2, 1);
-
 	
 	CGPathAddArc(path, NULL, floor(minX + contentRect.size.width - RBLPopoverBackgroundViewBorderRadius), floor(minY + contentRect.size.height - RBLPopoverBackgroundViewBorderRadius), RBLPopoverBackgroundViewBorderRadius, M_PI / 2, 0.0, 1);
-
 	
 	CGPathAddArc(path, NULL, floor(contentRect.origin.x + contentRect.size.width - RBLPopoverBackgroundViewBorderRadius), floor(minY + RBLPopoverBackgroundViewBorderRadius), RBLPopoverBackgroundViewBorderRadius, 0.0, -M_PI / 2, 1);
 	
