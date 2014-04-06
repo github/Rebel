@@ -560,17 +560,24 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 			}
 		}
 	}
+
+	CGFloat minMidpointX = floor(minX + RBLPopoverBackgroundViewBorderRadius);
+	CGFloat maxMidpointX = floor(maxX - RBLPopoverBackgroundViewBorderRadius);
+	CGFloat minMidpointY = floor(minY + RBLPopoverBackgroundViewBorderRadius);
+	CGFloat maxMidpointY = floor(maxY - RBLPopoverBackgroundViewBorderRadius);
 	
 	CGMutablePathRef path = CGPathCreateMutable();
-	CGPathMoveToPoint(path, NULL, minX, floor(minY + RBLPopoverBackgroundViewBorderRadius));
+	CGPathMoveToPoint(path, NULL, minX, minMidpointY);
+
+	CGFloat radius = RBLPopoverBackgroundViewBorderRadius;
 	
-	CGPathAddArc(path, NULL, floor(minX + RBLPopoverBackgroundViewBorderRadius), floor(minY + contentRect.size.height - RBLPopoverBackgroundViewBorderRadius), RBLPopoverBackgroundViewBorderRadius, M_PI, M_PI_2, 1);
+	CGPathAddArc(path, NULL, minMidpointX, maxMidpointY, radius, M_PI, M_PI_2, true);
 	
-	CGPathAddArc(path, NULL, floor(minX + contentRect.size.width - RBLPopoverBackgroundViewBorderRadius), floor(minY + contentRect.size.height - RBLPopoverBackgroundViewBorderRadius), RBLPopoverBackgroundViewBorderRadius, M_PI_2, 0.0, 1);
+	CGPathAddArc(path, NULL, maxMidpointX, maxMidpointY, radius, M_PI_2, 0, true);
 	
-	CGPathAddArc(path, NULL, floor(contentRect.origin.x + contentRect.size.width - RBLPopoverBackgroundViewBorderRadius), floor(minY + RBLPopoverBackgroundViewBorderRadius), RBLPopoverBackgroundViewBorderRadius, 0.0, -M_PI_2, 1);
+	CGPathAddArc(path, NULL, maxMidpointX, minMidpointY, radius, 0, -M_PI_2, true);
 	
-	CGPathAddArc(path, NULL, floor(minX + RBLPopoverBackgroundViewBorderRadius), floor(minY + RBLPopoverBackgroundViewBorderRadius), RBLPopoverBackgroundViewBorderRadius, -M_PI_2, M_PI, 1);
+	CGPathAddArc(path, NULL, minMidpointX, minMidpointY, radius, -M_PI_2, M_PI, true);
 
 	CGFloat x1, x2, x3, y1, y2, y3;
 	switch (arrowEdge) {
