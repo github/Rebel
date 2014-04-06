@@ -152,8 +152,7 @@ static CGFloat RBLRectsGetMedianY(CGRect r1, CGRect r2) {
 	if (self == nil)
 		return nil;
 	
-
-	self.anchorPoint = CGPointMake(0.5, 0.5);
+	_anchorPoint = CGPointMake(0.5, 0.5);
 	_contentViewController = viewController;
 	_backgroundView = backgroundView;
 	_behavior = RBLPopoverBehaviorApplicationDefined;
