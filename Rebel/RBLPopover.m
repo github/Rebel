@@ -274,23 +274,30 @@ static CGFloat RBLRectsGetMedianY(CGRect r1, CGRect r2) {
 			
 			return proposedRect;
 		};
-		
+
+		BOOL (^screenRectContainsRectEdge)(CGRectEdge) = ^ BOOL (CGRectEdge edge) {
+				CGRect proposedRect = popoverRectForEdge(edge);
+
+				BOOL minYInBounds = (edge == CGRectMinYEdge && NSMinY(proposedRect) >= NSMinY(screenRect));
+				BOOL maxYInBounds = (popoverEdge == CGRectMaxYEdge && NSMaxY(proposedRect) <= NSMaxY(screenRect));
+				BOOL minXInBounds = (popoverEdge == CGRectMinXEdge && NSMinX(proposedRect) >= NSMinX(screenRect));
+				BOOL maxXInBounds = (popoverEdge == CGRectMaxXEdge && NSMaxX(proposedRect) <= NSMaxX(screenRect));
+
+				return minYInBounds && maxYInBounds && minXInBounds && maxXInBounds;
+		};
+
 		NSUInteger attemptCount = 0;
 		while (!checkPopoverSizeForScreenWithPopoverEdge(popoverEdge)) {
 			if (attemptCount >= 4) {
-				popoverEdge = preferredEdge;
-				CGRect proposedRect = popoverRectForEdge(popoverEdge);
-				BOOL medianYOffscreen = (preferredEdge == CGRectMinYEdge || preferredEdge == CGRectMaxYEdge) && NSMinY(proposedRect) < 0;
-				BOOL medianXOffscreen = (preferredEdge == CGRectMinXEdge || preferredEdge == CGRectMaxXEdge) && NSMinX(proposedRect) < 0;
-				if (medianYOffscreen || medianXOffscreen) {
-					popoverEdge = nextEdgeForEdge(popoverEdge);
+				if (!screenRectContainsRectEdge(preferredEdge)) {
+					popoverEdge = nextEdgeForEdge(preferredEdge);
 				}
 
 				self.backgroundView.didOffsetFrame = YES;
 				return fitRectToScreen(popoverRectForEdge(popoverEdge));
 				break;
 			}
-			
+
 			popoverEdge = nextEdgeForEdge(popoverEdge);
 			attemptCount ++;
 		}
