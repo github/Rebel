@@ -277,13 +277,14 @@ static CGFloat RBLRectsGetMedianY(CGRect r1, CGRect r2) {
 
 		BOOL (^screenRectContainsRectEdge)(CGRectEdge) = ^ BOOL (CGRectEdge edge) {
 				CGRect proposedRect = popoverRectForEdge(edge);
+				NSRect screenRect = positioningView.window.screen.visibleFrame;
 
 				BOOL minYInBounds = (edge == CGRectMinYEdge && NSMinY(proposedRect) >= NSMinY(screenRect));
-				BOOL maxYInBounds = (popoverEdge == CGRectMaxYEdge && NSMaxY(proposedRect) <= NSMaxY(screenRect));
-				BOOL minXInBounds = (popoverEdge == CGRectMinXEdge && NSMinX(proposedRect) >= NSMinX(screenRect));
-				BOOL maxXInBounds = (popoverEdge == CGRectMaxXEdge && NSMaxX(proposedRect) <= NSMaxX(screenRect));
+				BOOL maxYInBounds = (edge == CGRectMaxYEdge && NSMaxY(proposedRect) <= NSMaxY(screenRect));
+				BOOL minXInBounds = (edge == CGRectMinXEdge && NSMinX(proposedRect) >= NSMinX(screenRect));
+				BOOL maxXInBounds = (edge == CGRectMaxXEdge && NSMaxX(proposedRect) <= NSMaxX(screenRect));
 
-				return minYInBounds && maxYInBounds && minXInBounds && maxXInBounds;
+				return minYInBounds || maxYInBounds || minXInBounds || maxXInBounds;
 		};
 
 		NSUInteger attemptCount = 0;
