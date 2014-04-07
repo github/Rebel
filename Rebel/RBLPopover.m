@@ -290,9 +290,7 @@ static CGFloat RBLRectsGetMedianY(CGRect r1, CGRect r2) {
 		NSUInteger attemptCount = 0;
 		while (!checkPopoverSizeForScreenWithPopoverEdge(popoverEdge)) {
 			if (attemptCount >= 4) {
-				if (!screenRectContainsRectEdge(preferredEdge)) {
-					popoverEdge = nextEdgeForEdge(preferredEdge);
-				}
+				popoverEdge = (screenRectContainsRectEdge(preferredEdge) ? preferredEdge : nextEdgeForEdge(preferredEdge));
 
 				self.backgroundView.didOffsetFrame = YES;
 				return fitRectToScreen(popoverRectForEdge(popoverEdge));
