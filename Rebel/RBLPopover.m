@@ -307,7 +307,6 @@ static CGFloat RBLRectsGetMedianY(CGRect r1, CGRect r2) {
 	};
 	
 	CGRect popoverScreenRect = popoverRect();
-
 	
 	if (self.shown) {
 		if (self.backgroundView.popoverEdge == popoverEdge) {
@@ -590,7 +589,7 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 	switch (arrowEdge) {
 		case CGRectMinXEdge:
 			x1 = minX, y1 = minArrowY;
-			x2 = floor(minX - self.arrowSize.height), y2 = midOriginY;
+			x2 = floor(minX - self.arrowSize.height), y2 = floor((minArrowY + maxArrowY) / 2);
 			x3 = minX, y3 = maxArrowY;
 			break;
 		case CGRectMaxYEdge:
@@ -600,7 +599,7 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 			break;
 		case CGRectMaxXEdge:
 			x1 = maxX, y1 = maxArrowY;
-			x2 = floor(maxX + self.arrowSize.height), y2 = midOriginY;
+			x2 = floor(maxX + self.arrowSize.height), y2 = floor((minArrowY + maxArrowY) / 2);
 			x3 = maxX, y3 = minArrowY;
 			break;
 		case CGRectMinYEdge:
