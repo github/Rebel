@@ -64,8 +64,6 @@ static CGFloat RBLRectsGetMedianY(CGRect r1, CGRect r2) {
 
 @property (nonatomic, assign, readwrite) NSRect popoverOrigin;
 
-@property (nonatomic, assign, readwrite) NSPoint popoverAnchorPoint;
-
 - (CGRectEdge)rbl_arrowEdgeForPopoverEdge:(CGRectEdge)popoverEdge;
 
 @end
@@ -183,7 +181,6 @@ static CGFloat RBLRectsGetMedianY(CGRect r1, CGRect r2) {
 	CGRect screenRect = [positioningView.window convertRectToScreen:windowRelativeRect];
 	
 	self.backgroundView.popoverOrigin = screenRect;
-	self.backgroundView.popoverAnchorPoint = self.anchorPoint;
 
 	self.originalViewSize = self.contentViewController.view.frame.size;
 	CGSize contentViewSize = (CGSizeEqualToSize(self.contentSize, CGSizeZero) ? self.contentViewController.view.frame.size : self.contentSize);
@@ -642,12 +639,6 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 - (void)setPopoverOrigin:(NSRect)popoverOrigin {
 	if (NSEqualRects(popoverOrigin, self.popoverOrigin)) return;
 	_popoverOrigin = popoverOrigin;
-	[self rbl_updateClippingView];
-}
-
-- (void)setPopoverAnchorPoint:(NSPoint)popoverAnchorPoint {
-	if (NSEqualPoints(popoverAnchorPoint, self.popoverAnchorPoint)) return;
-	_popoverAnchorPoint = popoverAnchorPoint;
 	[self rbl_updateClippingView];
 }
 
