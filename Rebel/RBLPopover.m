@@ -597,7 +597,6 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 	}
 
 	CGPathMoveToPoint(path, NULL, minBasePoint.x, minBasePoint.y);
-	CGPathAddLineToPoint(path, NULL, minBasePoint.x, minBasePoint.y);
 	CGPathAddLineToPoint(path, NULL, tipPoint.x, tipPoint.y);
 	CGPathAddLineToPoint(path, NULL, maxBasePoint.x, maxBasePoint.y);
 
