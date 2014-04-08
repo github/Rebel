@@ -181,7 +181,7 @@ static CGFloat RBLRectsGetMedianY(CGRect r1, CGRect r2) {
 		positioningRect = [positioningView bounds];
 	}
 	
-	NSRect windowRelativeRect = [positioningView convertRect:positioningRect toView:nil];
+	NSRect windowRelativeRect = [positioningView convertRect:[positioningView alignmentRectForFrame:positioningRect] toView:nil];
 	CGRect screenRect = [positioningView.window convertRectToScreen:windowRelativeRect];
 	
 	self.backgroundView.popoverOrigin = screenRect;
