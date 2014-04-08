@@ -304,7 +304,6 @@ static CGFloat RBLRectsGetMedianY(CGRect r1, CGRect r2) {
 		if (self.backgroundView.popoverEdge == popoverEdge) {
 			CGSize size = [self.backgroundView sizeForBackgroundViewWithContentSize:contentViewSize popoverEdge:popoverEdge];
 			self.backgroundView.frame = (NSRect){ .size = size };
-			self.backgroundView.popoverEdge = popoverEdge;
 			[self.popoverWindow setFrame:popoverScreenRect display:YES];
 
 			return;
