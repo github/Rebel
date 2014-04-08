@@ -66,8 +66,6 @@ static CGFloat RBLRectsGetMedianY(CGRect r1, CGRect r2) {
 
 @property (nonatomic, assign, readwrite) NSPoint popoverAnchorPoint;
 
-@property (nonatomic, assign, readwrite) BOOL didOffsetFrame;
-
 - (CGRectEdge)rbl_arrowEdgeForPopoverEdge:(CGRectEdge)popoverEdge;
 
 @end
@@ -292,7 +290,6 @@ static CGFloat RBLRectsGetMedianY(CGRect r1, CGRect r2) {
 			if (attemptCount >= 4) {
 				popoverEdge = (screenRectContainsRectEdge(preferredEdge) ? preferredEdge : nextEdgeForEdge(preferredEdge));
 
-				self.backgroundView.didOffsetFrame = YES;
 				return fitRectToScreen(popoverRectForEdge(popoverEdge));
 				break;
 			}
@@ -301,7 +298,6 @@ static CGFloat RBLRectsGetMedianY(CGRect r1, CGRect r2) {
 			attemptCount ++;
 		}
 
-		self.backgroundView.didOffsetFrame = NO;
 		return popoverRectForEdge(popoverEdge);
 	};
 	
