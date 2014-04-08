@@ -517,17 +517,11 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 	CGFloat minY = NSMinY(contentRect);
 	CGFloat maxY = NSMaxY(contentRect);
 
-	CGFloat midOriginX, midOriginY;
-	if (self.didOffsetFrame) {
-	   CGRect windowRect = [self.window convertRectFromScreen:self.popoverOrigin];
-	   CGRect originRect = [self convertRect:windowRect fromView:nil];
-		midOriginX = floor(RBLRectsGetMedianX(originRect, contentRect));
-		midOriginY = floor(RBLRectsGetMedianY(originRect, contentRect));
-	} else {
-		midOriginX = floor(maxX * self.popoverAnchorPoint.x);
-		midOriginY = floor(maxY * self.popoverAnchorPoint.y);
-	}
-	
+	CGRect windowRect = [self.window convertRectFromScreen:self.popoverOrigin];
+	CGRect originRect = [self convertRect:windowRect fromView:nil];
+	CGFloat midOriginX = floor(RBLRectsGetMedianX(originRect, contentRect));
+	CGFloat midOriginY = floor(RBLRectsGetMedianY(originRect, contentRect));
+
 	CGFloat maxArrowX = 0.0;
 	CGFloat minArrowX = 0.0;
 	CGFloat minArrowY = 0.0;
