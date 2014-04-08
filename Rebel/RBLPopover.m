@@ -552,23 +552,24 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 		}
 	}
 
-	CGFloat minMidpointX = floor(minX + RBLPopoverBackgroundViewBorderRadius);
-	CGFloat maxMidpointX = floor(maxX - RBLPopoverBackgroundViewBorderRadius);
-	CGFloat minMidpointY = floor(minY + RBLPopoverBackgroundViewBorderRadius);
-	CGFloat maxMidpointY = floor(maxY - RBLPopoverBackgroundViewBorderRadius);
+	// These represent the centerpoints of the popover's corner arcs.
+	CGFloat minCenterpointX = floor(minX + RBLPopoverBackgroundViewBorderRadius);
+	CGFloat maxCenterpointX = floor(maxX - RBLPopoverBackgroundViewBorderRadius);
+	CGFloat minCenterpointY = floor(minY + RBLPopoverBackgroundViewBorderRadius);
+	CGFloat maxCenterpointY = floor(maxY - RBLPopoverBackgroundViewBorderRadius);
 
 	CGMutablePathRef path = CGPathCreateMutable();
-	CGPathMoveToPoint(path, NULL, minX, minMidpointY);
+	CGPathMoveToPoint(path, NULL, minX, minCenterpointY);
 
 	CGFloat radius = RBLPopoverBackgroundViewBorderRadius;
 
-	CGPathAddArc(path, NULL, minMidpointX, maxMidpointY, radius, M_PI, M_PI_2, true);
+	CGPathAddArc(path, NULL, minCenterpointX, maxCenterpointY, radius, M_PI, M_PI_2, true);
 
-	CGPathAddArc(path, NULL, maxMidpointX, maxMidpointY, radius, M_PI_2, 0, true);
+	CGPathAddArc(path, NULL, maxCenterpointX, maxCenterpointY, radius, M_PI_2, 0, true);
 
-	CGPathAddArc(path, NULL, maxMidpointX, minMidpointY, radius, 0, -M_PI_2, true);
+	CGPathAddArc(path, NULL, maxCenterpointX, minCenterpointY, radius, 0, -M_PI_2, true);
 
-	CGPathAddArc(path, NULL, minMidpointX, minMidpointY, radius, -M_PI_2, M_PI, true);
+	CGPathAddArc(path, NULL, minCenterpointX, minCenterpointY, radius, -M_PI_2, M_PI, true);
 
 	CGPoint minBasePoint, tipPoint, maxBasePoint;
 	switch (arrowEdge) {
