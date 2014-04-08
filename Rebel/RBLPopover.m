@@ -556,51 +556,51 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 	CGFloat maxMidpointX = floor(maxX - RBLPopoverBackgroundViewBorderRadius);
 	CGFloat minMidpointY = floor(minY + RBLPopoverBackgroundViewBorderRadius);
 	CGFloat maxMidpointY = floor(maxY - RBLPopoverBackgroundViewBorderRadius);
-	
+
 	CGMutablePathRef path = CGPathCreateMutable();
 	CGPathMoveToPoint(path, NULL, minX, minMidpointY);
 
 	CGFloat radius = RBLPopoverBackgroundViewBorderRadius;
-	
+
 	CGPathAddArc(path, NULL, minMidpointX, maxMidpointY, radius, M_PI, M_PI_2, true);
-	
+
 	CGPathAddArc(path, NULL, maxMidpointX, maxMidpointY, radius, M_PI_2, 0, true);
-	
+
 	CGPathAddArc(path, NULL, maxMidpointX, minMidpointY, radius, 0, -M_PI_2, true);
-	
+
 	CGPathAddArc(path, NULL, minMidpointX, minMidpointY, radius, -M_PI_2, M_PI, true);
 
-	CGFloat x1, x2, x3, y1, y2, y3;
+	CGPoint minBasePoint, tipPoint, maxBasePoint;
 	switch (arrowEdge) {
 		case CGRectMinXEdge:
-			x1 = minX, y1 = minArrowY;
-			x2 = floor(minX - self.arrowSize.height), y2 = floor((minArrowY + maxArrowY) / 2);
-			x3 = minX, y3 = maxArrowY;
+			minBasePoint = CGPointMake(minX, minArrowY);
+			tipPoint = CGPointMake(floor(minX - self.arrowSize.height), floor((minArrowY + maxArrowY) / 2));
+			maxBasePoint = CGPointMake(minX, maxArrowY);
 			break;
 		case CGRectMaxYEdge:
-			x1 = minArrowX, y1 = maxY;
-			x2 = floor((minArrowX + maxArrowX) / 2), y2 = floor(maxY + self.arrowSize.height);
-			x3 = maxArrowX, y3 = maxY;
+			minBasePoint = CGPointMake(minArrowX, maxY);
+			tipPoint = CGPointMake(floor((minArrowX + maxArrowX) / 2), floor(maxY + self.arrowSize.height));
+			maxBasePoint = CGPointMake(maxArrowX, maxY);
 			break;
 		case CGRectMaxXEdge:
-			x1 = maxX, y1 = maxArrowY;
-			x2 = floor(maxX + self.arrowSize.height), y2 = floor((minArrowY + maxArrowY) / 2);
-			x3 = maxX, y3 = minArrowY;
+			minBasePoint = CGPointMake(maxX, minArrowY);
+			tipPoint = CGPointMake(floor(maxX + self.arrowSize.height), floor((minArrowY + maxArrowY) / 2));
+			maxBasePoint = CGPointMake(maxX, maxArrowY);
 			break;
 		case CGRectMinYEdge:
-			x1 = maxArrowX, y1 = minY;
-			x2 = floor((minArrowX + maxArrowX) / 2), y2 = floor(minY - self.arrowSize.height);
-			x3 = minArrowX, y3 = minY;
+			minBasePoint = CGPointMake(minArrowX, minY);
+			tipPoint = CGPointMake(floor((minArrowX + maxArrowX) / 2), floor(minY - self.arrowSize.height));
+			maxBasePoint = CGPointMake(maxArrowX, minY);
 			break;
 		default:
 			break;
 	}
 
-	CGPathMoveToPoint(path, NULL, x1, y1);
-	CGPathAddLineToPoint(path, NULL, x1, y1);
-	CGPathAddLineToPoint(path, NULL, x2, y2);
-	CGPathAddLineToPoint(path, NULL, x3, y3);
-	
+	CGPathMoveToPoint(path, NULL, minBasePoint.x, minBasePoint.y);
+	CGPathAddLineToPoint(path, NULL, minBasePoint.x, minBasePoint.y);
+	CGPathAddLineToPoint(path, NULL, tipPoint.x, tipPoint.y);
+	CGPathAddLineToPoint(path, NULL, maxBasePoint.x, maxBasePoint.y);
+
 	return path;
 }
 
