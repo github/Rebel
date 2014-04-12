@@ -70,7 +70,7 @@
 	} else {
 		NSView *button = sender;
 		self.RBLPopover.behavior = self.behavior;
-		[self.RBLPopover showRelativeToRect:CGRectZero ofView:button preferredEdge:(CGRectEdge)self.preferredEdge];
+		[self.RBLPopover showRelativeToRect:button.bounds ofView:button preferredEdge:(CGRectEdge)self.preferredEdge];
 	}
 }
 
