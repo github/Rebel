@@ -67,6 +67,10 @@
 		D0E91C581603CC7600D23E93 /* RBLClipView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E91C561603CC7600D23E93 /* RBLClipView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0E91C591603CC7600D23E93 /* RBLClipView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E91C571603CC7600D23E93 /* RBLClipView.m */; };
 		D0E91C5B1603CDC300D23E93 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E91C5A1603CDC300D23E93 /* QuartzCore.framework */; };
+		D419E3B7193392AD00F77217 /* RBLOutlineView.h in Headers */ = {isa = PBXBuildFile; fileRef = D419E3B5193392AD00F77217 /* RBLOutlineView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D419E3B8193392AD00F77217 /* RBLOutlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = D419E3B6193392AD00F77217 /* RBLOutlineView.m */; };
+		D4559AE81934C2910051A6BE /* RBLScrolling.h in Headers */ = {isa = PBXBuildFile; fileRef = D4559AE61934C2910051A6BE /* RBLScrolling.h */; };
+		D4559AE91934C2910051A6BE /* RBLScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = D4559AE71934C2910051A6BE /* RBLScrolling.m */; };
 		D4ACA4CB18DB95F900EBD899 /* libExpecta.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4ACA4CA18DB95F900EBD899 /* libExpecta.a */; };
 		D4ACA4CD18DB95FC00EBD899 /* libSpecta.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4ACA4CC18DB95FC00EBD899 /* libSpecta.a */; };
 		F63D7C78171D31010006515F /* RBLResizableImageSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = F63D7C77171D31010006515F /* RBLResizableImageSpec.m */; };
@@ -173,6 +177,10 @@
 		D0E91C561603CC7600D23E93 /* RBLClipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBLClipView.h; sourceTree = "<group>"; };
 		D0E91C571603CC7600D23E93 /* RBLClipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBLClipView.m; sourceTree = "<group>"; };
 		D0E91C5A1603CDC300D23E93 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		D419E3B5193392AD00F77217 /* RBLOutlineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBLOutlineView.h; sourceTree = "<group>"; };
+		D419E3B6193392AD00F77217 /* RBLOutlineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBLOutlineView.m; sourceTree = "<group>"; };
+		D4559AE61934C2910051A6BE /* RBLScrolling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBLScrolling.h; sourceTree = "<group>"; };
+		D4559AE71934C2910051A6BE /* RBLScrolling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBLScrolling.m; sourceTree = "<group>"; };
 		D4ACA4CA18DB95F900EBD899 /* libExpecta.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libExpecta.a; path = External/expecta/build/Debug/libExpecta.a; sourceTree = "<group>"; };
 		D4ACA4CC18DB95FC00EBD899 /* libSpecta.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSpecta.a; path = External/specta/build/Debug/libSpecta.a; sourceTree = "<group>"; };
 		F63D7C77171D31010006515F /* RBLResizableImageSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBLResizableImageSpec.m; sourceTree = "<group>"; };
@@ -239,6 +247,10 @@
 				88347E6916F213C500872A0A /* RBLHTMLView.m */,
 				30309E8B17228C1700BC2923 /* RBLTableView.h */,
 				30309E8C17228C1700BC2923 /* RBLTableView.m */,
+				D419E3B5193392AD00F77217 /* RBLOutlineView.h */,
+				D419E3B6193392AD00F77217 /* RBLOutlineView.m */,
+				D4559AE61934C2910051A6BE /* RBLScrolling.h */,
+				D4559AE71934C2910051A6BE /* RBLScrolling.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -469,10 +481,12 @@
 				B85EE8DE163ECA8C00265870 /* RBLViewController.h in Headers */,
 				F64F8DEA1797E1F400082A3F /* RBLSlidingContainerView.h in Headers */,
 				F6A562C01797DC5A00B651C0 /* RBLExpandingContainerView.h in Headers */,
+				D4559AE81934C2910051A6BE /* RBLScrolling.h in Headers */,
 				B85EE8E9163ECF4C00265870 /* NSView+RBLViewControllerAdditions.h in Headers */,
 				B85EE8ED163EE15800265870 /* NSObject+RBObjectSizzlingAdditions.h in Headers */,
 				AB61F6D41638370900DD5D2C /* NSApplication+RBLBlockAdditions.h in Headers */,
 				88347E6A16F213C500872A0A /* RBLHTMLView.h in Headers */,
+				D419E3B7193392AD00F77217 /* RBLOutlineView.h in Headers */,
 				AB10DB4D166EA9CA00AB7AB1 /* RBLScrollView.h in Headers */,
 				30309E8D17228C1700BC2923 /* RBLTableView.h in Headers */,
 				303DEF4416D2B88700BD65C4 /* RBLShadowedTextFieldCell.h in Headers */,
@@ -581,12 +595,14 @@
 				D0410EAC15C61895003A3203 /* NSTextView+RBLAntialiasingAdditions.m in Sources */,
 				D04CBFC915F6D87B004A5BCC /* NSView+RBLAnimationAdditions.m in Sources */,
 				306A81DC1601C7A300BF45F3 /* RBLPopover.m in Sources */,
+				D419E3B8193392AD00F77217 /* RBLOutlineView.m in Sources */,
 				306A81E91601E92000BF45F3 /* CAAnimation+RBLBlockAdditions.m in Sources */,
 				D0E91C591603CC7600D23E93 /* RBLClipView.m in Sources */,
 				D011FD5F16239A8600A27946 /* NSImage+RBLResizableImageAdditions.m in Sources */,
 				AB61F63716373FE000DD5D2C /* RBLTableCellView.m in Sources */,
 				F64F8DEB1797E1F400082A3F /* RBLSlidingContainerView.m in Sources */,
 				B85EE8DF163ECA8C00265870 /* RBLViewController.m in Sources */,
+				D4559AE91934C2910051A6BE /* RBLScrolling.m in Sources */,
 				B85EE8EA163ECF4C00265870 /* NSView+RBLViewControllerAdditions.m in Sources */,
 				B85EE8EE163EE15800265870 /* NSObject+RBObjectSizzlingAdditions.m in Sources */,
 				AB61F6D51638370900DD5D2C /* NSApplication+RBLBlockAdditions.m in Sources */,

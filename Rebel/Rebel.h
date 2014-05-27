@@ -26,3 +26,4 @@
 #import <Rebel/RBLTableView.h>
 #import <Rebel/RBLExpandingContainerView.h>
 #import <Rebel/RBLSlidingContainerView.h>
+#import <Rebel/RBLOutlineView.h>
