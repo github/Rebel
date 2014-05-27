@@ -67,7 +67,7 @@
 		D0E91C581603CC7600D23E93 /* RBLClipView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E91C561603CC7600D23E93 /* RBLClipView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0E91C591603CC7600D23E93 /* RBLClipView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E91C571603CC7600D23E93 /* RBLClipView.m */; };
 		D0E91C5B1603CDC300D23E93 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E91C5A1603CDC300D23E93 /* QuartzCore.framework */; };
-		D419E3B7193392AD00F77217 /* RBLOutlineView.h in Headers */ = {isa = PBXBuildFile; fileRef = D419E3B5193392AD00F77217 /* RBLOutlineView.h */; };
+		D419E3B7193392AD00F77217 /* RBLOutlineView.h in Headers */ = {isa = PBXBuildFile; fileRef = D419E3B5193392AD00F77217 /* RBLOutlineView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D419E3B8193392AD00F77217 /* RBLOutlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = D419E3B6193392AD00F77217 /* RBLOutlineView.m */; };
 		D4559AE81934C2910051A6BE /* RBLScrolling.h in Headers */ = {isa = PBXBuildFile; fileRef = D4559AE61934C2910051A6BE /* RBLScrolling.h */; };
 		D4559AE91934C2910051A6BE /* RBLScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = D4559AE71934C2910051A6BE /* RBLScrolling.m */; };
