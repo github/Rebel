@@ -69,6 +69,8 @@
 		D0E91C5B1603CDC300D23E93 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E91C5A1603CDC300D23E93 /* QuartzCore.framework */; };
 		D419E3B7193392AD00F77217 /* RBLOutlineView.h in Headers */ = {isa = PBXBuildFile; fileRef = D419E3B5193392AD00F77217 /* RBLOutlineView.h */; };
 		D419E3B8193392AD00F77217 /* RBLOutlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = D419E3B6193392AD00F77217 /* RBLOutlineView.m */; };
+		D4559AE81934C2910051A6BE /* RBLScrolling.h in Headers */ = {isa = PBXBuildFile; fileRef = D4559AE61934C2910051A6BE /* RBLScrolling.h */; };
+		D4559AE91934C2910051A6BE /* RBLScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = D4559AE71934C2910051A6BE /* RBLScrolling.m */; };
 		D4ACA4CB18DB95F900EBD899 /* libExpecta.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4ACA4CA18DB95F900EBD899 /* libExpecta.a */; };
 		D4ACA4CD18DB95FC00EBD899 /* libSpecta.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4ACA4CC18DB95FC00EBD899 /* libSpecta.a */; };
 		F63D7C78171D31010006515F /* RBLResizableImageSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = F63D7C77171D31010006515F /* RBLResizableImageSpec.m */; };
@@ -177,6 +179,8 @@
 		D0E91C5A1603CDC300D23E93 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D419E3B5193392AD00F77217 /* RBLOutlineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBLOutlineView.h; sourceTree = "<group>"; };
 		D419E3B6193392AD00F77217 /* RBLOutlineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBLOutlineView.m; sourceTree = "<group>"; };
+		D4559AE61934C2910051A6BE /* RBLScrolling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBLScrolling.h; sourceTree = "<group>"; };
+		D4559AE71934C2910051A6BE /* RBLScrolling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBLScrolling.m; sourceTree = "<group>"; };
 		D4ACA4CA18DB95F900EBD899 /* libExpecta.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libExpecta.a; path = External/expecta/build/Debug/libExpecta.a; sourceTree = "<group>"; };
 		D4ACA4CC18DB95FC00EBD899 /* libSpecta.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSpecta.a; path = External/specta/build/Debug/libSpecta.a; sourceTree = "<group>"; };
 		F63D7C77171D31010006515F /* RBLResizableImageSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBLResizableImageSpec.m; sourceTree = "<group>"; };
@@ -245,6 +249,8 @@
 				30309E8C17228C1700BC2923 /* RBLTableView.m */,
 				D419E3B5193392AD00F77217 /* RBLOutlineView.h */,
 				D419E3B6193392AD00F77217 /* RBLOutlineView.m */,
+				D4559AE61934C2910051A6BE /* RBLScrolling.h */,
+				D4559AE71934C2910051A6BE /* RBLScrolling.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -475,6 +481,7 @@
 				B85EE8DE163ECA8C00265870 /* RBLViewController.h in Headers */,
 				F64F8DEA1797E1F400082A3F /* RBLSlidingContainerView.h in Headers */,
 				F6A562C01797DC5A00B651C0 /* RBLExpandingContainerView.h in Headers */,
+				D4559AE81934C2910051A6BE /* RBLScrolling.h in Headers */,
 				B85EE8E9163ECF4C00265870 /* NSView+RBLViewControllerAdditions.h in Headers */,
 				B85EE8ED163EE15800265870 /* NSObject+RBObjectSizzlingAdditions.h in Headers */,
 				AB61F6D41638370900DD5D2C /* NSApplication+RBLBlockAdditions.h in Headers */,
@@ -595,6 +602,7 @@
 				AB61F63716373FE000DD5D2C /* RBLTableCellView.m in Sources */,
 				F64F8DEB1797E1F400082A3F /* RBLSlidingContainerView.m in Sources */,
 				B85EE8DF163ECA8C00265870 /* RBLViewController.m in Sources */,
+				D4559AE91934C2910051A6BE /* RBLScrolling.m in Sources */,
 				B85EE8EA163ECF4C00265870 /* NSView+RBLViewControllerAdditions.m in Sources */,
 				B85EE8EE163EE15800265870 /* NSObject+RBObjectSizzlingAdditions.m in Sources */,
 				AB61F6D51638370900DD5D2C /* NSApplication+RBLBlockAdditions.m in Sources */,
