@@ -390,6 +390,12 @@ static CGFloat RBLRectsGetMedianY(CGRect r1, CGRect r2) {
 	while (topmostParentWindow.parentWindow != nil) {
 		topmostParentWindow = topmostParentWindow.parentWindow;
 	}
+
+	if (self.behavior != RBLPopoverBehaviorApplicationDefined) {
+		[NSNotificationCenter.defaultCenter addObserver:self selector:@selector(fullScreenChanged:) name:NSWindowWillEnterFullScreenNotification object:topmostParentWindow];
+		[NSNotificationCenter.defaultCenter addObserver:self selector:@selector(fullScreenChanged:) name:NSWindowWillExitFullScreenNotification object:topmostParentWindow];
+	}
+
 	[topmostParentWindow addChildWindow:self.popoverWindow ordered:NSWindowAbove];
 	[self.popoverWindow makeKeyAndOrderFront:self];
 	
@@ -448,10 +454,21 @@ static CGFloat RBLRectsGetMedianY(CGRect r1, CGRect r2) {
 	self.transientEventMonitors = nil;
 	[NSNotificationCenter.defaultCenter removeObserver:self name:NSApplicationDidResignActiveNotification object:NSApp];
 	[NSNotificationCenter.defaultCenter removeObserver:self name:NSWindowDidResignKeyNotification object:nil];
+	[NSNotificationCenter.defaultCenter removeObserver:self name:NSWindowWillEnterFullScreenNotification object:nil];
+	[NSNotificationCenter.defaultCenter removeObserver:self name:NSWindowWillExitFullScreenNotification object:nil];
 }
 
 - (void)appResignedActive:(NSNotification *)notification {
 	if (self.behavior == RBLPopoverBehaviorTransient) [self close];
+}
+
+- (void)fullScreenChanged:(NSNotification *)notification {
+	// Turn off animations. We want the close to be instantaneous since the
+	// parent window's going to be animating too.
+	BOOL shouldAnimate = self.animates;
+	self.animates = NO;
+	[self close];
+	self.animates = shouldAnimate;
 }
 
 @end
