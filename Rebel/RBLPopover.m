@@ -385,8 +385,12 @@ static CGFloat RBLRectsGetMedianY(CGRect r1, CGRect r2) {
 	closeButton.target = self;
 	closeButton.action = @selector(performClose:);
 	[self.popoverWindow.contentView addSubview:closeButton];
-	
-	[positioningView.window addChildWindow:self.popoverWindow ordered:NSWindowAbove];
+
+	NSWindow *topmostParentWindow = positioningView.window;
+	while (topmostParentWindow.parentWindow != nil) {
+		topmostParentWindow = topmostParentWindow.parentWindow;
+	}
+	[topmostParentWindow addChildWindow:self.popoverWindow ordered:NSWindowAbove];
 	[self.popoverWindow makeKeyAndOrderFront:self];
 	
 	void (^postDisplayBlock)(void) = ^{		
