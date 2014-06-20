@@ -642,25 +642,25 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 
 - (void)setFrame:(NSRect)frameRect {
 	[super setFrame:frameRect];
-	[self rbl_updateClippingView];
+	self.needsDisplay = YES;
 }
 
 - (void)setArrowSize:(CGSize)arrowSize {
 	if (CGSizeEqualToSize(arrowSize, self.arrowSize)) return;
 	_arrowSize = arrowSize;
-	[self rbl_updateClippingView];
+	self.needsDisplay = YES;
 }
 
 - (void)setPopoverEdge:(CGRectEdge)popoverEdge {
 	if (popoverEdge == self.popoverEdge) return;
 	_popoverEdge = popoverEdge;
-	[self rbl_updateClippingView];
+	self.needsDisplay = YES;
 }
 
 - (void)setPopoverOrigin:(NSRect)popoverOrigin {
 	if (NSEqualRects(popoverOrigin, self.popoverOrigin)) return;
 	_popoverOrigin = popoverOrigin;
-	[self rbl_updateClippingView];
+	self.needsDisplay = YES;
 }
 
 - (void)drawRect:(NSRect)rect {
@@ -673,8 +673,8 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 	return NO;
 }
 
-- (void)viewDidMoveToWindow {
-	[super viewDidMoveToWindow];
+- (void)viewWillDraw {
+	[super viewWillDraw];
 	[self rbl_updateClippingView];
 }
 
