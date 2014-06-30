@@ -463,12 +463,15 @@ static CGFloat RBLRectsGetMedianY(CGRect r1, CGRect r2) {
 }
 
 - (void)fullScreenChanged:(NSNotification *)notification {
+	// Grab a reference to self in case we're deallocated in -close.
+	RBLPopover *popover = self;
+
 	// Turn off animations. We want the close to be instantaneous since the
 	// parent window's going to be animating too.
-	BOOL shouldAnimate = self.animates;
-	self.animates = NO;
-	[self close];
-	self.animates = shouldAnimate;
+	BOOL shouldAnimate = popover.animates;
+	popover.animates = NO;
+	[popover close];
+	popover.animates = shouldAnimate;
 }
 
 @end
