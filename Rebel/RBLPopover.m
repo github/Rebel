@@ -471,8 +471,13 @@ static CGFloat RBLRectsGetMedianY(CGRect r1, CGRect r2) {
 	self.transientEventMonitors = nil;
 	[NSNotificationCenter.defaultCenter removeObserver:self name:NSApplicationDidResignActiveNotification object:NSApp];
 	[NSNotificationCenter.defaultCenter removeObserver:self name:NSWindowDidResignKeyNotification object:nil];
-	[NSNotificationCenter.defaultCenter removeObserver:self.willEnterFullScreenObserver];
-	[NSNotificationCenter.defaultCenter removeObserver:self.willExitFullScreenObserver];
+
+	if (self.willEnterFullScreenObserver != nil && self.willExitFullScreenObserver != nil) {
+		[NSNotificationCenter.defaultCenter removeObserver:self.willEnterFullScreenObserver];
+		[NSNotificationCenter.defaultCenter removeObserver:self.willExitFullScreenObserver];
+		self.willEnterFullScreenObserver = nil;
+		self.willExitFullScreenObserver = nil;
+	}
 }
 
 - (void)appResignedActive:(NSNotification *)notification {
