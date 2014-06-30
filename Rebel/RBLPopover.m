@@ -331,7 +331,7 @@ static CGFloat RBLRectsGetMedianY(CGRect r1, CGRect r2) {
 				shouldClose = !mouseInPopoverWindow;
 			} else {
 				BOOL inParentWindow = NSPointInRect(NSEvent.mouseLocation, strongSelf.popoverWindow.parentWindow.frame);
-				shouldClose = strongSelf.popoverWindow.parentWindow.isKeyWindow && inParentWindow && !mouseInPopoverWindow;
+				shouldClose = inParentWindow && !mouseInPopoverWindow;
 			}
 			
 			if (shouldClose) [strongSelf close];
