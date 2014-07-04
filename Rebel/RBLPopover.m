@@ -653,11 +653,6 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 	return self;
 }
 
-- (void)setFrame:(NSRect)frameRect {
-	[super setFrame:frameRect];
-	self.needsDisplay = YES;
-}
-
 - (void)setArrowSize:(CGSize)arrowSize {
 	if (CGSizeEqualToSize(arrowSize, self.arrowSize)) return;
 	_arrowSize = arrowSize;
