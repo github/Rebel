@@ -682,8 +682,8 @@ static CGFloat const RBLPopoverBackgroundViewArrowWidth = 35.0;
 }
 
 - (void)viewWillDraw {
-	[super viewWillDraw];
 	[self rbl_updateClippingView];
+	[super viewWillDraw];
 }
 
 #pragma mark - Private Methods
