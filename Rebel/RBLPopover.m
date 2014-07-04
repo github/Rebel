@@ -117,11 +117,15 @@ static CGFloat RBLRectsGetMedianY(CGRect r1, CGRect r2) {
 	self.needsDisplay = YES;
 }
 
+extern void CGPathPrint(CGPathRef path, FILE* file);
+
 - (void)drawRect:(NSRect)dirtyRect {
 	if (self.clippingPath == NULL) return;
 	
 	CGContextRef currentContext = NSGraphicsContext.currentContext.graphicsPort;
 	CGContextAddRect(currentContext, self.bounds);
+
+	CGPathPrint(self.clippingPath, NULL);
 	CGContextAddPath(currentContext, self.clippingPath);
 	CGContextSetBlendMode(currentContext, kCGBlendModeCopy);
 	[NSColor.clearColor set];
