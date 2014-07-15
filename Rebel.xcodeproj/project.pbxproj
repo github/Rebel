@@ -37,6 +37,7 @@
 		B85EE8EA163ECF4C00265870 /* NSView+RBLViewControllerAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B85EE8E8163ECF4C00265870 /* NSView+RBLViewControllerAdditions.m */; };
 		B85EE8ED163EE15800265870 /* NSObject+RBObjectSizzlingAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = B85EE8EB163EE15800265870 /* NSObject+RBObjectSizzlingAdditions.h */; };
 		B85EE8EE163EE15800265870 /* NSObject+RBObjectSizzlingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B85EE8EC163EE15800265870 /* NSObject+RBObjectSizzlingAdditions.m */; };
+		BE17699A1975D93900EE78ED /* libSpecta-OSX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE1769991975D93900EE78ED /* libSpecta-OSX.a */; };
 		D011FD5E16239A8600A27946 /* NSImage+RBLResizableImageAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D011FD5C16239A8600A27946 /* NSImage+RBLResizableImageAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D011FD5F16239A8600A27946 /* NSImage+RBLResizableImageAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D011FD5D16239A8600A27946 /* NSImage+RBLResizableImageAdditions.m */; };
 		D03D67181677E13F0041DDF2 /* NSAttributedString+RBLHTMLAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D03D67161677E13F0041DDF2 /* NSAttributedString+RBLHTMLAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -71,7 +72,6 @@
 		D4559AE81934C2910051A6BE /* RBLScrolling.h in Headers */ = {isa = PBXBuildFile; fileRef = D4559AE61934C2910051A6BE /* RBLScrolling.h */; };
 		D4559AE91934C2910051A6BE /* RBLScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = D4559AE71934C2910051A6BE /* RBLScrolling.m */; };
 		D4ACA4CB18DB95F900EBD899 /* libExpecta.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4ACA4CA18DB95F900EBD899 /* libExpecta.a */; };
-		D4ACA4CD18DB95FC00EBD899 /* libSpecta.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4ACA4CC18DB95FC00EBD899 /* libSpecta.a */; };
 		F63D7C78171D31010006515F /* RBLResizableImageSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = F63D7C77171D31010006515F /* RBLResizableImageSpec.m */; };
 		F63D7C7C171D3CCB0006515F /* <RBLResizableImageSpec>_testimage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F63D7C79171D3CCB0006515F /* <RBLResizableImageSpec>_testimage@2x.png */; };
 		F63D7C7D171D3CCB0006515F /* <RBLResizableImageSpec>_testimage.png in Resources */ = {isa = PBXBuildFile; fileRef = F63D7C7A171D3CCB0006515F /* <RBLResizableImageSpec>_testimage.png */; };
@@ -123,6 +123,7 @@
 		B85EE8E8163ECF4C00265870 /* NSView+RBLViewControllerAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+RBLViewControllerAdditions.m"; sourceTree = "<group>"; };
 		B85EE8EB163EE15800265870 /* NSObject+RBObjectSizzlingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+RBObjectSizzlingAdditions.h"; sourceTree = "<group>"; };
 		B85EE8EC163EE15800265870 /* NSObject+RBObjectSizzlingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+RBObjectSizzlingAdditions.m"; sourceTree = "<group>"; };
+		BE1769991975D93900EE78ED /* libSpecta-OSX.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libSpecta-OSX.a"; path = "External/specta/build/Debug/libSpecta-OSX.a"; sourceTree = "<group>"; };
 		D011FD5C16239A8600A27946 /* NSImage+RBLResizableImageAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+RBLResizableImageAdditions.h"; sourceTree = "<group>"; };
 		D011FD5D16239A8600A27946 /* NSImage+RBLResizableImageAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+RBLResizableImageAdditions.m"; sourceTree = "<group>"; };
 		D03D67161677E13F0041DDF2 /* NSAttributedString+RBLHTMLAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+RBLHTMLAdditions.h"; sourceTree = "<group>"; };
@@ -209,8 +210,8 @@
 				301569981602161400E3BE46 /* QuartzCore.framework in Frameworks */,
 				D09AE4FA15C5F45300ECAD10 /* Cocoa.framework in Frameworks */,
 				D09AE4FD15C5F45300ECAD10 /* Rebel.framework in Frameworks */,
+				BE17699A1975D93900EE78ED /* libSpecta-OSX.a in Frameworks */,
 				D4ACA4CB18DB95F900EBD899 /* libExpecta.a in Frameworks */,
-				D4ACA4CD18DB95FC00EBD899 /* libSpecta.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -385,6 +386,7 @@
 		D09AE4E115C5F45200ECAD10 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BE1769991975D93900EE78ED /* libSpecta-OSX.a */,
 				D4ACA4CC18DB95FC00EBD899 /* libSpecta.a */,
 				D4ACA4CA18DB95F900EBD899 /* libExpecta.a */,
 				306A81EC1601F44200BF45F3 /* QuartzCore.framework */,
@@ -538,7 +540,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastTestingUpgradeCheck = 0510;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = GitHub;
 			};
 			buildConfigurationList = D09AE4D815C5F45200ECAD10 /* Build configuration list for PBXProject "Rebel" */;
@@ -665,7 +667,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D08BB2DE15CB307200CC9868 /* Profile.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
@@ -710,7 +711,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D08BB2DD15CB307200CC9868 /* Debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
@@ -722,7 +722,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D08BB2DF15CB307200CC9868 /* Release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
