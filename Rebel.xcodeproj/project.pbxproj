@@ -42,8 +42,6 @@
 		D0410EAC15C61895003A3203 /* NSTextView+RBLAntialiasingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D0410EAA15C61895003A3203 /* NSTextView+RBLAntialiasingAdditions.m */; };
 		D04CBFC815F6D87B004A5BCC /* NSView+RBLAnimationAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D04CBFC615F6D87B004A5BCC /* NSView+RBLAnimationAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D04CBFC915F6D87B004A5BCC /* NSView+RBLAnimationAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D04CBFC715F6D87B004A5BCC /* NSView+RBLAnimationAdditions.m */; };
-		D0723FC015C5F9D8004DBDC7 /* RBLView.h in Headers */ = {isa = PBXBuildFile; fileRef = D0723FBE15C5F9D8004DBDC7 /* RBLView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D0723FC115C5F9D8004DBDC7 /* RBLView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0723FBF15C5F9D8004DBDC7 /* RBLView.m */; };
 		D0723FC215C5FA13004DBDC7 /* Rebel.h in Headers */ = {isa = PBXBuildFile; fileRef = D09AE4EF15C5F45200ECAD10 /* Rebel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0723FC615C5FB68004DBDC7 /* NSColor+RBLCGColorAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D0723FC415C5FB68004DBDC7 /* NSColor+RBLCGColorAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0723FC715C5FB68004DBDC7 /* NSColor+RBLCGColorAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D0723FC515C5FB68004DBDC7 /* NSColor+RBLCGColorAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -126,8 +124,6 @@
 		D04844EC15C5F8DA00834EDE /* RebelTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RebelTests-Prefix.pch"; sourceTree = "<group>"; };
 		D04CBFC615F6D87B004A5BCC /* NSView+RBLAnimationAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+RBLAnimationAdditions.h"; sourceTree = "<group>"; };
 		D04CBFC715F6D87B004A5BCC /* NSView+RBLAnimationAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+RBLAnimationAdditions.m"; sourceTree = "<group>"; };
-		D0723FBE15C5F9D8004DBDC7 /* RBLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBLView.h; sourceTree = "<group>"; };
-		D0723FBF15C5F9D8004DBDC7 /* RBLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBLView.m; sourceTree = "<group>"; };
 		D0723FC415C5FB68004DBDC7 /* NSColor+RBLCGColorAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSColor+RBLCGColorAdditions.h"; sourceTree = "<group>"; };
 		D0723FC515C5FB68004DBDC7 /* NSColor+RBLCGColorAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor+RBLCGColorAdditions.m"; sourceTree = "<group>"; };
 		D0723FDB15C60846004DBDC7 /* NSColor+RBLCGColorAdditionsSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor+RBLCGColorAdditionsSpec.m"; sourceTree = "<group>"; };
@@ -221,8 +217,6 @@
 				D0E91C571603CC7600D23E93 /* RBLClipView.m */,
 				D0723FE115C616AF004DBDC7 /* RBLResizableImage.h */,
 				D0723FE215C616AF004DBDC7 /* RBLResizableImage.m */,
-				D0723FBE15C5F9D8004DBDC7 /* RBLView.h */,
-				D0723FBF15C5F9D8004DBDC7 /* RBLView.m */,
 				306A81D91601C7A300BF45F3 /* RBLPopover.h */,
 				306A81DA1601C7A300BF45F3 /* RBLPopover.m */,
 				AB61F63416373FE000DD5D2C /* RBLTableCellView.h */,
@@ -455,7 +449,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0723FC215C5FA13004DBDC7 /* Rebel.h in Headers */,
-				D0723FC015C5F9D8004DBDC7 /* RBLView.h in Headers */,
 				D0723FC615C5FB68004DBDC7 /* NSColor+RBLCGColorAdditions.h in Headers */,
 				D0723FE315C616AF004DBDC7 /* RBLResizableImage.h in Headers */,
 				D04CBFC815F6D87B004A5BCC /* NSView+RBLAnimationAdditions.h in Headers */,
@@ -574,7 +567,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0723FC115C5F9D8004DBDC7 /* RBLView.m in Sources */,
 				D0723FC715C5FB68004DBDC7 /* NSColor+RBLCGColorAdditions.m in Sources */,
 				D0723FE415C616AF004DBDC7 /* RBLResizableImage.m in Sources */,
 				D0410EAC15C61895003A3203 /* NSTextView+RBLAntialiasingAdditions.m in Sources */,
