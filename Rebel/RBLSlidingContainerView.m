@@ -139,12 +139,12 @@ static const NSTimeInterval RBLTransitioningContainerViewSlideAnimationDuration 
 	// will sit at the top left while the containerView changes its bounds
 	// around it during the animation.
 	self.verticalContainerConstraints = [NSLayoutConstraint
-		constraintsWithVisualFormat:[NSString stringWithFormat:@"V:|[contentView]-(0@%d)-|", NSLayoutPriorityDefaultHigh]
+		constraintsWithVisualFormat:[NSString stringWithFormat:@"V:|[contentView]-(0@%f)-|", NSLayoutPriorityDefaultHigh]
 		options:0
 		metrics:0
 		views:@{ @"contentView": self.contentView }];
 	self.horizontalContainerConstraints = [NSLayoutConstraint
-		constraintsWithVisualFormat:[NSString stringWithFormat:@"H:|[contentView]-(0@%d)-|", NSLayoutPriorityDefaultHigh]
+		constraintsWithVisualFormat:[NSString stringWithFormat:@"H:|[contentView]-(0@%f)-|", NSLayoutPriorityDefaultHigh]
 		options:0
 		metrics:0
 		views:@{ @"contentView": self.contentView }];
