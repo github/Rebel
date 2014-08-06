@@ -340,7 +340,7 @@ static CGFloat RBLRectsGetMedianY(CGRect r1, CGRect r2) {
 				shouldClose = inParentWindow && !mouseInPopoverWindow;
 			}
 			
-			if (shouldClose) [strongSelf close];
+			if (shouldClose && [NSApp modalWindow] == nil) [strongSelf close];
 		};
 		
 		NSInteger mask = 0;
