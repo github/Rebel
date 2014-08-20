@@ -8,6 +8,12 @@
 
 #import "RBLScrolling.h"
 
+@interface NSScrollView (RBLScrolling1010APIs)
+
+@property NSEdgeInsets contentInsets;
+
+@end
+
 BOOL RBLScrollRectInViewToVisible(NSView *view, NSRect rect) {
 	NSScrollView *scrollView = view.enclosingScrollView;
 	NSRect visibleRect = view.visibleRect;
