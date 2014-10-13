@@ -18,6 +18,6 @@
 //
 // Any portion of the image not covered by end caps will be tiled when the image
 // is drawn.
-@property (nonatomic, assign) NSEdgeInsets capInsets;
+@property (nonatomic, assign) NSEdgeInsets rbl_capInsets;
 
 @end

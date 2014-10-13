@@ -15,7 +15,7 @@
 	RBLResizableImage *image = [[RBLResizableImage alloc] initWithSize:self.size];
 	[image addRepresentations:self.representations];
 
-	image.capInsets = capInsets;
+	image.rbl_capInsets = capInsets;
 	return image;
 }
 
