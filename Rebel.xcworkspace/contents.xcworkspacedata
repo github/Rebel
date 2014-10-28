@@ -4,10 +4,4 @@
    <FileRef
       location = "group:Rebel.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:External/expecta/Expecta.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:External/specta/Specta.xcodeproj">
-   </FileRef>
 </Workspace>
