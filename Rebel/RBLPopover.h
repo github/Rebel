@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 GitHub. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <Cocoa/Cocoa.h>
 
 @class RBLPopover;
 @class RBLPopoverBackgroundView;

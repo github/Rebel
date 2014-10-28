@@ -6,6 +6,14 @@
 //  Copyright (c) 2012 GitHub. All rights reserved.
 //
 
+#import <Cocoa/Cocoa.h>
+
+//! Project version number for Rebel.
+FOUNDATION_EXPORT double RebelVersionNumber;
+
+//! Project version string for Rebel.
+FOUNDATION_EXPORT const unsigned char RebelVersionString[];
+
 #import <Rebel/CAAnimation+RBLBlockAdditions.h>
 #import <Rebel/NSApplication+RBLBlockAdditions.h>
 #import <Rebel/NSAttributedString+RBLHTMLAdditions.h>

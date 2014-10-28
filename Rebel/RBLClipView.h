@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 GitHub. All rights reserved.
 //
 
+#import <Cocoa/Cocoa.h>
 #import <QuartzCore/QuartzCore.h>
 
 // A faster NSClipView based on CAScrollLayer.

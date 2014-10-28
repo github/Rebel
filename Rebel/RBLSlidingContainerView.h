@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 GitHub. All rights reserved.
 //
 
+#import <Cocoa/Cocoa.h>
+
 // Defines the different types of animation used to transition the contentView
 // in a RBLSlidingContainerView.
 //
