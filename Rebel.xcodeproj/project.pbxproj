@@ -50,6 +50,7 @@
 		D078B7DE15F6DB420063DDD5 /* NSView+RBLAnimationAdditionsSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = D078B7DD15F6DB420063DDD5 /* NSView+RBLAnimationAdditionsSpec.m */; };
 		D07CD30719FF589C006C2D24 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07CD30619FF589C006C2D24 /* Quick.framework */; };
 		D07CD30919FF58BA006C2D24 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07CD30819FF58BA006C2D24 /* Nimble.framework */; };
+		D07CD30B19FF5B12006C2D24 /* SwiftSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07CD30A19FF5B12006C2D24 /* SwiftSpec.swift */; };
 		D088BEF916747D8F004B2665 /* NSFont+RBLFallbackAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D088BEF716747D8F004B2665 /* NSFont+RBLFallbackAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D088BEFA16747D8F004B2665 /* NSFont+RBLFallbackAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D088BEF816747D8F004B2665 /* NSFont+RBLFallbackAdditions.m */; };
 		D088BEFC16747EE1004B2665 /* NSFont+RBLFallbackAdditionsSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = D088BEFB16747EE1004B2665 /* NSFont+RBLFallbackAdditionsSpec.m */; };
@@ -127,6 +128,7 @@
 		D078B7DD15F6DB420063DDD5 /* NSView+RBLAnimationAdditionsSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+RBLAnimationAdditionsSpec.m"; sourceTree = "<group>"; };
 		D07CD30619FF589C006C2D24 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Quick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D07CD30819FF58BA006C2D24 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Nimble.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D07CD30A19FF5B12006C2D24 /* SwiftSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftSpec.swift; sourceTree = "<group>"; };
 		D088BEF716747D8F004B2665 /* NSFont+RBLFallbackAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFont+RBLFallbackAdditions.h"; sourceTree = "<group>"; };
 		D088BEF816747D8F004B2665 /* NSFont+RBLFallbackAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFont+RBLFallbackAdditions.m"; sourceTree = "<group>"; };
 		D088BEFB16747EE1004B2665 /* NSFont+RBLFallbackAdditionsSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFont+RBLFallbackAdditionsSpec.m"; sourceTree = "<group>"; };
@@ -411,6 +413,7 @@
 		D09AE4FF15C5F45300ECAD10 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D07CD30A19FF5B12006C2D24 /* SwiftSpec.swift */,
 				D09AE50015C5F45300ECAD10 /* RebelTests-Info.plist */,
 			);
 			name = "Supporting Files";
@@ -583,6 +586,7 @@
 				D078B7DE15F6DB420063DDD5 /* NSView+RBLAnimationAdditionsSpec.m in Sources */,
 				306A81EB1601EAE700BF45F3 /* CAAnimation+RBLBlockAdditionsSpec.m in Sources */,
 				AB10DB53166EADD000AB7AB1 /* RBLScrollViewSpec.m in Sources */,
+				D07CD30B19FF5B12006C2D24 /* SwiftSpec.swift in Sources */,
 				D088BEFC16747EE1004B2665 /* NSFont+RBLFallbackAdditionsSpec.m in Sources */,
 				D03D671B1677E2950041DDF2 /* NSAttributedString+RBLHTMLAdditionsSpec.m in Sources */,
 				03ECBD9816FD2E6800DA27D0 /* NSView+RBLAlignmentAdditionsSpec.m in Sources */,
@@ -626,11 +630,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D08BB2E815CB307200CC9868 /* Mac-Application.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "RebelTests/RebelTests-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Profile;
@@ -679,12 +685,15 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D08BB2E815CB307200CC9868 /* Mac-Application.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "RebelTests/RebelTests-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -692,11 +701,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D08BB2E815CB307200CC9868 /* Mac-Application.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "RebelTests/RebelTests-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
