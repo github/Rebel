@@ -6,7 +6,11 @@
 //  Copyright (c) 2012 GitHub. All rights reserved.
 //
 
-SpecBegin(NSAttributedStringHTMLAdditions)
+#import <Nimble/Nimble.h>
+#import <Quick/Quick.h>
+#import <Rebel/Rebel.h>
+
+QuickSpecBegin(NSAttributedStringHTMLAdditions)
 
 it(@"should initialize from a simple HTML string", ^{
 	NSAttributedString *attributedString = [NSAttributedString rbl_attributedStringWithHTML:@"some <u>formatted</u><br />text"];
@@ -30,4 +34,4 @@ it(@"should initialize from an HTML string with CSS styling", ^{
 	expect(font.familyName).to.equal(@"Courier");
 });
 
-SpecEnd
+QuickSpecEnd

@@ -6,8 +6,12 @@
 //  Copyright (c) 2012 GitHub. All rights reserved.
 //
 
-SpecBegin(NSColorRBLCGColorAdditions)
-	
+#import <Nimble/Nimble.h>
+#import <Quick/Quick.h>
+#import <Rebel/Rebel.h>
+
+QuickSpecBegin(NSColorRBLCGColorAdditions)
+
 describe(@"CGColor from NSColor", ^{
 	__block NSColor *nsColor;
 
@@ -81,10 +85,10 @@ it(@"should return a pattern CGColor", ^{
 
 	NSColor *patternNSColor = [NSColor colorWithPatternImage:image];
 	expect(patternNSColor).notTo.beNil();
-	
+
 	CGColorRef patternCGColor = patternNSColor.rbl_CGColor;
 	expect(patternCGColor).notTo.beNil();
 	expect(CGColorGetPattern(patternCGColor)).notTo.beNil();
 });
 
-SpecEnd
+QuickSpecEnd

@@ -6,7 +6,11 @@
 //  Copyright (c) 2012 GitHub. All rights reserved.
 //
 
-SpecBegin(NSFontRBLFallbackAdditions)
+#import <Nimble/Nimble.h>
+#import <Quick/Quick.h>
+#import <Rebel/Rebel.h>
+
+QuickSpecBegin(NSFontRBLFallbackAdditions)
 
 describe(@"+rbl_fontWithName:size:fallbackNames:", ^{
 	__block NSFont *font;
@@ -39,4 +43,4 @@ describe(@"+rbl_fontWithName:size:fallbackNames:", ^{
 	});
 });
 
-SpecEnd
+QuickSpecEnd

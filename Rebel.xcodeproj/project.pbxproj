@@ -49,6 +49,8 @@
 		D0723FE315C616AF004DBDC7 /* RBLResizableImage.h in Headers */ = {isa = PBXBuildFile; fileRef = D0723FE115C616AF004DBDC7 /* RBLResizableImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0723FE415C616AF004DBDC7 /* RBLResizableImage.m in Sources */ = {isa = PBXBuildFile; fileRef = D0723FE215C616AF004DBDC7 /* RBLResizableImage.m */; };
 		D078B7DE15F6DB420063DDD5 /* NSView+RBLAnimationAdditionsSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = D078B7DD15F6DB420063DDD5 /* NSView+RBLAnimationAdditionsSpec.m */; };
+		D07CD30719FF589C006C2D24 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07CD30619FF589C006C2D24 /* Quick.framework */; };
+		D07CD30919FF58BA006C2D24 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D07CD30819FF58BA006C2D24 /* Nimble.framework */; };
 		D088BEF916747D8F004B2665 /* NSFont+RBLFallbackAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D088BEF716747D8F004B2665 /* NSFont+RBLFallbackAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D088BEFA16747D8F004B2665 /* NSFont+RBLFallbackAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D088BEF816747D8F004B2665 /* NSFont+RBLFallbackAdditions.m */; };
 		D088BEFC16747EE1004B2665 /* NSFont+RBLFallbackAdditionsSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = D088BEFB16747EE1004B2665 /* NSFont+RBLFallbackAdditionsSpec.m */; };
@@ -125,6 +127,8 @@
 		D0723FE115C616AF004DBDC7 /* RBLResizableImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBLResizableImage.h; sourceTree = "<group>"; };
 		D0723FE215C616AF004DBDC7 /* RBLResizableImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBLResizableImage.m; sourceTree = "<group>"; };
 		D078B7DD15F6DB420063DDD5 /* NSView+RBLAnimationAdditionsSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+RBLAnimationAdditionsSpec.m"; sourceTree = "<group>"; };
+		D07CD30619FF589C006C2D24 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Quick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D07CD30819FF58BA006C2D24 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Nimble.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D088BEF716747D8F004B2665 /* NSFont+RBLFallbackAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFont+RBLFallbackAdditions.h"; sourceTree = "<group>"; };
 		D088BEF816747D8F004B2665 /* NSFont+RBLFallbackAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFont+RBLFallbackAdditions.m"; sourceTree = "<group>"; };
 		D088BEFB16747EE1004B2665 /* NSFont+RBLFallbackAdditionsSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFont+RBLFallbackAdditionsSpec.m"; sourceTree = "<group>"; };
@@ -184,6 +188,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D07CD30919FF58BA006C2D24 /* Nimble.framework in Frameworks */,
+				D07CD30719FF589C006C2D24 /* Quick.framework in Frameworks */,
 				301569981602161400E3BE46 /* QuartzCore.framework in Frameworks */,
 				D09AE4FA15C5F45300ECAD10 /* Cocoa.framework in Frameworks */,
 				D09AE4FD15C5F45300ECAD10 /* Rebel.framework in Frameworks */,
@@ -355,6 +361,8 @@
 		D09AE4E115C5F45200ECAD10 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D07CD30819FF58BA006C2D24 /* Nimble.framework */,
+				D07CD30619FF589C006C2D24 /* Quick.framework */,
 				306A81EC1601F44200BF45F3 /* QuartzCore.framework */,
 				D09AE4E215C5F45200ECAD10 /* Cocoa.framework */,
 				D0E91C5A1603CDC300D23E93 /* QuartzCore.framework */,

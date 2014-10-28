@@ -6,7 +6,11 @@
 //  Copyright (c) 2012 GitHub. All rights reserved.
 //
 
-SpecBegin(NSViewRBLAnimationAdditions)
+#import <Nimble/Nimble.h>
+#import <Quick/Quick.h>
+#import <Rebel/Rebel.h>
+
+QuickSpecBegin(NSViewRBLAnimationAdditions)
 
 describe(@"animation contexts", ^{
 	it(@"should not be in an animation context by default", ^{
@@ -54,4 +58,4 @@ describe(@"animator proxies", ^{
 	});
 });
 
-SpecEnd
+QuickSpecEnd

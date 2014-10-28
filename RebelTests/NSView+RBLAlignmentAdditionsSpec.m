@@ -6,7 +6,11 @@
 //  Copyright (c) 2013 GitHub. All rights reserved.
 //
 
-SpecBegin(NSViewRBLAlignmentAdditions)
+#import <Nimble/Nimble.h>
+#import <Quick/Quick.h>
+#import <Rebel/Rebel.h>
+
+QuickSpecBegin(NSViewRBLAlignmentAdditions)
 
 describe(@"view alignment", ^{
 	NSRect nonAlignedRect = NSMakeRect(10.2, 11.8, 12, 13);
@@ -32,4 +36,4 @@ describe(@"view alignment", ^{
 	});
 });
 
-SpecEnd
+QuickSpecEnd

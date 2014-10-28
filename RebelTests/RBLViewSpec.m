@@ -6,7 +6,11 @@
 //  Copyright (c) 2012 GitHub. All rights reserved.
 //
 
-SpecBegin(RBLView)
+#import <Nimble/Nimble.h>
+#import <Quick/Quick.h>
+#import <Rebel/Rebel.h>
+
+QuickSpecBegin(RBLViewSpec)
 
 __block RBLView *view;
 __block void (^moveAroundAndVerify)(dispatch_block_t);
@@ -83,4 +87,4 @@ it(@"should set cornerRadius on its backing layer", ^{
 	});
 });
 
-SpecEnd
+QuickSpecEnd

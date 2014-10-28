@@ -6,7 +6,11 @@
 //  Copyright (c) 2012 GitHub. All rights reserved.
 //
 
-SpecBegin(CAAnimationRBLBlockAdditions)
+#import <Nimble/Nimble.h>
+#import <Quick/Quick.h>
+#import <Rebel/Rebel.h>
+
+QuickSpecBegin(CAAnimationRBLBlockAdditions)
 
 __block CAAnimation *animation = nil;
 __block BOOL completionExecuted = NO;
@@ -17,7 +21,7 @@ __block void (^completionBlock)(BOOL) = ^(BOOL finished) {
 before(^{
 	animation = [[CAAnimation alloc] init];
 	animation.rbl_completionBlock = completionBlock;
-	
+
 	expect(animation).toNot.beNil();
 });
 
@@ -52,4 +56,4 @@ it(@"Should return nil if no completion block has been set", ^{
 });
 
 
-SpecEnd
+QuickSpecEnd

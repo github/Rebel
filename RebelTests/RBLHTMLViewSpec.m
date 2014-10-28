@@ -6,7 +6,11 @@
 //  Copyright (c) 2013 GitHub. All rights reserved.
 //
 
-SpecBegin(RBLHTMLView)
+#import <Nimble/Nimble.h>
+#import <Quick/Quick.h>
+#import <Rebel/Rebel.h>
+
+QuickSpecBegin(RBLHTMLViewSpec)
 
 static NSString * const HTML = @"<span>hey brother</span>";
 
@@ -30,4 +34,4 @@ it(@"shouldn't be loading after setting the CSS", ^{
 	expect(view.isLoading).to.beFalsy();
 });
 
-SpecEnd
+QuickSpecEnd
