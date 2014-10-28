@@ -18,22 +18,22 @@ __block void (^completionBlock)(BOOL) = ^(BOOL finished) {
 	completionExecuted = YES;
 };
 
-before(^{
+beforeEach(^{
 	animation = [[CAAnimation alloc] init];
 	animation.rbl_completionBlock = completionBlock;
 
-	expect(animation).toNot.beNil();
+	expect(animation).notTo(beNil());
 });
 
 it(@"Should have set a completion block", ^ {
-	expect(animation.rbl_completionBlock).toNot.beNil();
-	expect(animation.rbl_completionBlock).to.equal(completionBlock);
+	expect(animation.rbl_completionBlock).notTo(beNil());
+	expect(animation.rbl_completionBlock).to(equal(completionBlock));
 	if (animation.rbl_completionBlock != nil) animation.rbl_completionBlock(YES);
-	expect(completionExecuted).to.beTruthy();
+	expect(@(completionExecuted)).to(beTruthy());
 });
 
 it(@"Should not have a nil delegate", ^{
-	expect(animation.delegate).toNot.beNil();
+	expect(animation.delegate).notTo(beNil());
 });
 
 it(@"Should fire once animation is completed", ^{
@@ -47,12 +47,12 @@ it(@"Should fire once animation is completed", ^{
 	sampleAnimation.duration = 0.0;
 	[layer addAnimation:sampleAnimation forKey:@"opacity"];
 	layer.opacity = 1.f;
-	expect(fired).will.beTruthy();
+	expect(@(fired)).toEventually(beTruthy());
 });
 
 it(@"Should return nil if no completion block has been set", ^{
 	CAAnimation *animation = [CAAnimation animation];
-	expect(animation.rbl_completionBlock).to.beNil();
+	expect(animation.rbl_completionBlock).to(beNil());
 });
 
 

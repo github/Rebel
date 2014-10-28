@@ -22,16 +22,16 @@ beforeEach(^{
 });
 
 it(@"should contain the set HTML", ^{
-	expect([view.mainFrame.DOMDocument.body.innerHTML rangeOfString:HTML].length).to.beGreaterThan(0);
+	expect(@([view.mainFrame.DOMDocument.body.innerHTML rangeOfString:HTML].length)).to(beGreaterThan(0));
 });
 
 it(@"shouldn't be loading after setting the HTML", ^{
-	expect(view.isLoading).to.beFalsy();
+	expect(@(view.isLoading)).to(beFalsy());
 });
 
 it(@"shouldn't be loading after setting the CSS", ^{
 	view.CSS = @"body { color: red; }";
-	expect(view.isLoading).to.beFalsy();
+	expect(@(view.isLoading)).to(beFalsy());
 });
 
 QuickSpecEnd

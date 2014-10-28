@@ -17,9 +17,9 @@ describe(@"+rbl_fontWithName:size:fallbackNames:", ^{
 
 	afterEach(^{
 		// All of the below tests should return Helvetica size 12.
-		expect(font).notTo.beNil();
-		expect(font.familyName).to.equal(@"Helvetica");
-		expect(font.pointSize).to.equal(12);
+		expect(font).notTo(beNil());
+		expect(font.familyName).to(equal(@"Helvetica"));
+		expect(@(font.pointSize)).to(equal(@12));
 	});
 
 	it(@"should return a valid font without any fallback names", ^{

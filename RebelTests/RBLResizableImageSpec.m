@@ -18,11 +18,11 @@ __block void(^expectBlueBorder)(NSBitmapImageRep* imageRep, NSSize size) = nil;
 beforeEach(^{
 	NSURL *testImageURL = [[NSBundle bundleForClass:self.class] URLForResource:@"<RBLResizableImageSpec>_testimage" withExtension:@"tiff"];
 
-	expect(testImageURL).toNot.beNil();
+	expect(testImageURL).notTo(beNil());
 
 	testImage = [[RBLResizableImage alloc] initByReferencingURL:testImageURL];
 
-	expect(testImage).toNot.beNil();
+	expect(testImage).notTo(beNil());
 
 	expectBlueBorder = ^(NSBitmapImageRep *imageRep, NSSize size) {
 		NSUInteger topLeft[4], bottomRight[4];
@@ -35,10 +35,10 @@ beforeEach(^{
 		NSUInteger blue = topLeft[2];
 		NSUInteger alpha = topLeft[3];
 
-		expect(red).to.equal(0);
-		expect(green).to.equal(0);
-		expect(blue).to.equal(255);
-		expect(alpha).to.equal(255);
+		expect(@(red)).to(equal(@0));
+		expect(@(green)).to(equal(@0));
+		expect(@(blue)).to(equal(@255));
+		expect(@(alpha)).to(equal(@255));
 
 		[imageRep getPixel:&bottomRight[0] atX:(NSUInteger)(size.width - 1) y:(NSUInteger)(size.height - 1)];
 
@@ -47,10 +47,10 @@ beforeEach(^{
 		blue = bottomRight[2];
 		alpha = bottomRight[3];
 
-		expect(red).to.equal(0);
-		expect(green).to.equal(0);
-		expect(blue).to.equal(255);
-		expect(alpha).to.equal(255);
+		expect(@(red)).to(equal(@0));
+		expect(@(green)).to(equal(@0));
+		expect(@(blue)).to(equal(@255));
+		expect(@(alpha)).to(equal(@255));
 	};
 });
 
@@ -77,10 +77,10 @@ it(@"should use @1x asset in @1x context", ^{
 	NSUInteger alpha = testPixel[3];
 
 	// Should be a red pixel here if we used the @1x asset
-	expect(red).to.equal(255);
-	expect(green).to.equal(0);
-	expect(blue).to.equal(0);
-	expect(alpha).to.equal(255);
+	expect(@(red)).to(equal(@255));
+	expect(@(green)).to(equal(@0));
+	expect(@(blue)).to(equal(@0));
+	expect(@(alpha)).to(equal(@255));
 
 	expectBlueBorder(bitmapImageRep, targetSize);
 });
@@ -108,10 +108,10 @@ it(@"should use @2x asset in @2x context", ^{
 	NSUInteger alpha = testPixel[3];
 
 	// Should be a green pixel here if we used the @1x asset
-	expect(red).to.equal(0);
-	expect(green).to.equal(255);
-	expect(blue).to.equal(0);
-	expect(alpha).to.equal(255);
+	expect(@(red)).to(equal(@0));
+	expect(@(green)).to(equal(@255));
+	expect(@(blue)).to(equal(@0));
+	expect(@(alpha)).to(equal(@255));
 
 	expectBlueBorder(bitmapImageRep, targetSize);
 });

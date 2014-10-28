@@ -15,22 +15,22 @@ QuickSpecBegin(NSColorRBLCGColorAdditions)
 describe(@"CGColor from NSColor", ^{
 	__block NSColor *nsColor;
 
-	before(^{
+	beforeEach(^{
 		nsColor = nil;
 	});
 
-	after(^{
-		expect(nsColor).notTo.beNil();
+	afterEach(^{
+		expect(nsColor).notTo(beNil());
 
 		CGColorRef rblColor = nsColor.rbl_CGColor;
-		expect(rblColor).notTo.beNil();
+		expect((__bridge id)rblColor).notTo(beNil());
 
 		if ([NSColor instancesRespondToSelector:@selector(CGColor)]) {
 			// The result of our method should match that of the 10.8 API.
 			CGColorRef cgColor = nsColor.CGColor;
-			expect(cgColor).notTo.beNil();
+			expect((__bridge id)cgColor).notTo(beNil());
 
-			expect(CGColorEqualToColor(rblColor, cgColor)).to.beTruthy();
+			expect(@(CGColorEqualToColor(rblColor, cgColor))).to(beTruthy());
 		}
 	});
 
@@ -46,20 +46,20 @@ describe(@"CGColor from NSColor", ^{
 describe(@"NSColor from CGColor", ^{
 	__block CGColorRef cgColor;
 
-	before(^{
+	beforeEach(^{
 		cgColor = NULL;
 	});
 
-	after(^{
-		expect(cgColor).notTo.beNil();
+	afterEach(^{
+		expect((__bridge id)cgColor).notTo(beNil());
 
 		NSColor *rblColor = [NSColor rbl_colorWithCGColor:cgColor];
-		expect(rblColor).notTo.beNil();
+		expect(rblColor).notTo(beNil());
 
 		if ([NSColor respondsToSelector:@selector(colorWithCGColor:)]) {
 			// The result of our method should match that of the 10.8 API.
 			NSColor *nsColor = [NSColor colorWithCGColor:cgColor];
-			expect(rblColor).to.equal(nsColor);
+			expect(rblColor).to(equal(nsColor));
 		}
 	});
 
@@ -78,17 +78,17 @@ describe(@"NSColor from CGColor", ^{
 
 it(@"should return a pattern CGColor", ^{
 	NSURL *imageURL = [[NSBundle bundleForClass:self.class] URLForResource:@"<RBLCGColorAdditionsSpec>_testimage" withExtension:@"jpg"];
-	expect(imageURL).notTo.beNil();
+	expect(imageURL).notTo(beNil());
 
 	NSImage *image = [[NSImage alloc] initByReferencingURL:imageURL];
-	expect(image).notTo.beNil();
+	expect(image).notTo(beNil());
 
 	NSColor *patternNSColor = [NSColor colorWithPatternImage:image];
-	expect(patternNSColor).notTo.beNil();
+	expect(patternNSColor).notTo(beNil());
 
 	CGColorRef patternCGColor = patternNSColor.rbl_CGColor;
-	expect(patternCGColor).notTo.beNil();
-	expect(CGColorGetPattern(patternCGColor)).notTo.beNil();
+	expect((__bridge id)patternCGColor).notTo(beNil());
+	expect((__bridge id)CGColorGetPattern(patternCGColor)).notTo(beNil());
 });
 
 QuickSpecEnd
