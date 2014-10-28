@@ -45,7 +45,6 @@
 		D0723FC615C5FB68004DBDC7 /* NSColor+RBLCGColorAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = D0723FC415C5FB68004DBDC7 /* NSColor+RBLCGColorAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0723FC715C5FB68004DBDC7 /* NSColor+RBLCGColorAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D0723FC515C5FB68004DBDC7 /* NSColor+RBLCGColorAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D0723FDC15C60846004DBDC7 /* NSColor+RBLCGColorAdditionsSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = D0723FDB15C60846004DBDC7 /* NSColor+RBLCGColorAdditionsSpec.m */; };
-		D0723FE015C60E94004DBDC7 /* RBLViewSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = D0723FDF15C60E94004DBDC7 /* RBLViewSpec.m */; };
 		D0723FE315C616AF004DBDC7 /* RBLResizableImage.h in Headers */ = {isa = PBXBuildFile; fileRef = D0723FE115C616AF004DBDC7 /* RBLResizableImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0723FE415C616AF004DBDC7 /* RBLResizableImage.m in Sources */ = {isa = PBXBuildFile; fileRef = D0723FE215C616AF004DBDC7 /* RBLResizableImage.m */; };
 		D078B7DE15F6DB420063DDD5 /* NSView+RBLAnimationAdditionsSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = D078B7DD15F6DB420063DDD5 /* NSView+RBLAnimationAdditionsSpec.m */; };
@@ -123,7 +122,6 @@
 		D0723FC415C5FB68004DBDC7 /* NSColor+RBLCGColorAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSColor+RBLCGColorAdditions.h"; sourceTree = "<group>"; };
 		D0723FC515C5FB68004DBDC7 /* NSColor+RBLCGColorAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor+RBLCGColorAdditions.m"; sourceTree = "<group>"; };
 		D0723FDB15C60846004DBDC7 /* NSColor+RBLCGColorAdditionsSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor+RBLCGColorAdditionsSpec.m"; sourceTree = "<group>"; };
-		D0723FDF15C60E94004DBDC7 /* RBLViewSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBLViewSpec.m; sourceTree = "<group>"; };
 		D0723FE115C616AF004DBDC7 /* RBLResizableImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBLResizableImage.h; sourceTree = "<group>"; };
 		D0723FE215C616AF004DBDC7 /* RBLResizableImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBLResizableImage.m; sourceTree = "<group>"; };
 		D078B7DD15F6DB420063DDD5 /* NSView+RBLAnimationAdditionsSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+RBLAnimationAdditionsSpec.m"; sourceTree = "<group>"; };
@@ -264,12 +262,11 @@
 				D03D671A1677E2950041DDF2 /* NSAttributedString+RBLHTMLAdditionsSpec.m */,
 				D0723FDB15C60846004DBDC7 /* NSColor+RBLCGColorAdditionsSpec.m */,
 				D088BEFB16747EE1004B2665 /* NSFont+RBLFallbackAdditionsSpec.m */,
-				D078B7DD15F6DB420063DDD5 /* NSView+RBLAnimationAdditionsSpec.m */,
-				AB10DB52166EADD000AB7AB1 /* RBLScrollViewSpec.m */,
-				D0723FDF15C60E94004DBDC7 /* RBLViewSpec.m */,
 				03ECBD9716FD2E6800DA27D0 /* NSView+RBLAlignmentAdditionsSpec.m */,
+				D078B7DD15F6DB420063DDD5 /* NSView+RBLAnimationAdditionsSpec.m */,
 				884675FE16F2574200016B56 /* RBLHTMLViewSpec.m */,
 				F63D7C77171D31010006515F /* RBLResizableImageSpec.m */,
+				AB10DB52166EADD000AB7AB1 /* RBLScrollViewSpec.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -583,7 +580,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0723FDC15C60846004DBDC7 /* NSColor+RBLCGColorAdditionsSpec.m in Sources */,
-				D0723FE015C60E94004DBDC7 /* RBLViewSpec.m in Sources */,
 				D078B7DE15F6DB420063DDD5 /* NSView+RBLAnimationAdditionsSpec.m in Sources */,
 				306A81EB1601EAE700BF45F3 /* CAAnimation+RBLBlockAdditionsSpec.m in Sources */,
 				AB10DB53166EADD000AB7AB1 /* RBLScrollViewSpec.m in Sources */,
