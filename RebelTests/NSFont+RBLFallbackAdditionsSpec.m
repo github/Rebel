@@ -6,16 +6,20 @@
 //  Copyright (c) 2012 GitHub. All rights reserved.
 //
 
-SpecBegin(NSFontRBLFallbackAdditions)
+#import <Nimble/Nimble.h>
+#import <Quick/Quick.h>
+#import <Rebel/Rebel.h>
+
+QuickSpecBegin(NSFontRBLFallbackAdditions)
 
 describe(@"+rbl_fontWithName:size:fallbackNames:", ^{
 	__block NSFont *font;
 
 	afterEach(^{
 		// All of the below tests should return Helvetica size 12.
-		expect(font).notTo.beNil();
-		expect(font.familyName).to.equal(@"Helvetica");
-		expect(font.pointSize).to.equal(12);
+		expect(font).notTo(beNil());
+		expect(font.familyName).to(equal(@"Helvetica"));
+		expect(@(font.pointSize)).to(equal(@12));
 	});
 
 	it(@"should return a valid font without any fallback names", ^{
@@ -39,4 +43,4 @@ describe(@"+rbl_fontWithName:size:fallbackNames:", ^{
 	});
 });
 
-SpecEnd
+QuickSpecEnd

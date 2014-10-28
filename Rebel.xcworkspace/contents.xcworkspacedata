@@ -5,9 +5,9 @@
       location = "group:Rebel.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:External/expecta/Expecta.xcodeproj">
+      location = "group:External/Quick/Quick/Quick.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:External/specta/Specta.xcodeproj">
+      location = "group:External/Quick/Externals/Nimble/Nimble.xcodeproj">
    </FileRef>
 </Workspace>

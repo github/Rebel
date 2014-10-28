@@ -6,7 +6,11 @@
 //  Copyright (c) 2013 GitHub. All rights reserved.
 //
 
-SpecBegin(NSViewRBLAlignmentAdditions)
+#import <Nimble/Nimble.h>
+#import <Quick/Quick.h>
+#import <Rebel/Rebel.h>
+
+QuickSpecBegin(NSViewRBLAlignmentAdditions)
 
 describe(@"view alignment", ^{
 	NSRect nonAlignedRect = NSMakeRect(10.2, 11.8, 12, 13);
@@ -14,22 +18,14 @@ describe(@"view alignment", ^{
 
 	__block NSView *view;
 
-	before(^{
+	beforeEach(^{
 		 view = [[NSView alloc] initWithFrame:NSMakeRect(20, 20, 20, 20)];
-	});
-
-	it(@"should return a rect aligned to the view backing", ^{
-		NSWindow *window = [[NSWindow alloc] initWithContentRect:NSMakeRect(0, 0, 100, 100) styleMask:NSTitledWindowMask | NSClosableWindowMask | NSMiniaturizableWindowMask | NSResizableWindowMask backing:NSBackingStoreBuffered defer:NO];
-		[window.contentView addSubview:view];
-
-		NSRect alignedRect = [view rbl_viewBackingAlignedRect:nonAlignedRect options:NSAlignAllEdgesNearest];
-		expect(NSEqualRects(alignedRect, expectedRect)).to.beTruthy();
 	});
 
 	it(@"should return a rect aligned to the view backing without a window", ^{
 		NSRect alignedRect = [view rbl_viewBackingAlignedRect:nonAlignedRect options:NSAlignAllEdgesNearest];
-		expect(NSEqualRects(alignedRect, expectedRect)).to.beTruthy();
+		expect(@(NSEqualRects(alignedRect, expectedRect))).to(beTruthy());
 	});
 });
 
-SpecEnd
+QuickSpecEnd
