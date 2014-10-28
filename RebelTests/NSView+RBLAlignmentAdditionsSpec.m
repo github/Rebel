@@ -22,14 +22,6 @@ describe(@"view alignment", ^{
 		 view = [[NSView alloc] initWithFrame:NSMakeRect(20, 20, 20, 20)];
 	});
 
-	it(@"should return a rect aligned to the view backing", ^{
-		NSWindow *window = [[NSWindow alloc] initWithContentRect:NSMakeRect(0, 0, 100, 100) styleMask:NSTitledWindowMask | NSClosableWindowMask | NSMiniaturizableWindowMask | NSResizableWindowMask backing:NSBackingStoreBuffered defer:NO];
-		[window.contentView addSubview:view];
-
-		NSRect alignedRect = [view rbl_viewBackingAlignedRect:nonAlignedRect options:NSAlignAllEdgesNearest];
-		expect(@(NSEqualRects(alignedRect, expectedRect))).to(beTruthy());
-	});
-
 	it(@"should return a rect aligned to the view backing without a window", ^{
 		NSRect alignedRect = [view rbl_viewBackingAlignedRect:nonAlignedRect options:NSAlignAllEdgesNearest];
 		expect(@(NSEqualRects(alignedRect, expectedRect))).to(beTruthy());
