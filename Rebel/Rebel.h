@@ -20,6 +20,7 @@
 #import <Rebel/RBLOutlineView.h>
 #import <Rebel/RBLPopover.h>
 #import <Rebel/RBLResizableImage.h>
+#import <Rebel/RBLTableCellView.h>
 #import <Rebel/RBLScrollView.h>
 #import <Rebel/RBLShadowedTextFieldCell.h>
 #import <Rebel/RBLSlidingContainerView.h>
