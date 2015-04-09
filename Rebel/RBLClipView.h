@@ -18,11 +18,11 @@
 @interface RBLClipView : NSClipView
 
 // The backing layer for this view.
-@property (nonatomic, strong) CAScrollLayer *layer;
+@property (atomic, strong) CAScrollLayer *layer;
 
 // Whether the content in this view is opaque.
 //
 // Defaults to NO.
-@property (nonatomic, getter = isOpaque) BOOL opaque;
+@property (atomic, getter = isOpaque) BOOL opaque;
 
 @end
