@@ -8,6 +8,9 @@
 
 #import "RBLHTMLView.h"
 
+@interface RBLHTMLView () <WebPolicyDelegate, WebUIDelegate>
+@end
+
 @implementation RBLHTMLView
 
 #pragma mark Lifecycle
