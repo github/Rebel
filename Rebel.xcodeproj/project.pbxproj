@@ -506,6 +506,7 @@
 		D09AE4D515C5F45200ECAD10 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastTestingUpgradeCheck = 0510;
 				LastUpgradeCheck = 0620;
 				ORGANIZATIONNAME = GitHub;
