@@ -282,7 +282,7 @@
 				D08BB2ED15CB307200CC9868 /* README.md */,
 			);
 			name = Configuration;
-			path = External/xcconfigs;
+			path = Carthage/Checkouts/xcconfigs;
 			sourceTree = "<group>";
 		};
 		D08BB2DA15CB307200CC9868 /* Base */ = {
