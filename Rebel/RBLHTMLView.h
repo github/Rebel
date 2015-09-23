@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 GitHub. All rights reserved.
 //
 
-#import <WebKit/WebKit.h>
+@import WebKit;
 
 // A view for displaying HTML-styled text.
 @interface RBLHTMLView : WebView
