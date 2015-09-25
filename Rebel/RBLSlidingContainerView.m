@@ -95,7 +95,7 @@ static const NSTimeInterval RBLTransitioningContainerViewSlideAnimationDuration 
 		[self addConstraints:self.verticalContainerConstraints];
 		[self addConstraints:self.horizontalContainerConstraints];
 
-		self.animations = nil;
+		self.animations = @{};
 
 		if (completionBlock != nil) completionBlock();
 	};

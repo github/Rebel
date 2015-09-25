@@ -8,6 +8,12 @@
 
 #import "RBLHTMLView.h"
 
+// These protocols are informal on 10.10, but required on 10.11. 😞
+#ifdef MAC_OS_X_VERSION_10_11
+@interface RBLHTMLView () <WebPolicyDelegate, WebUIDelegate>
+@end
+#endif
+
 @implementation RBLHTMLView
 
 #pragma mark Lifecycle
